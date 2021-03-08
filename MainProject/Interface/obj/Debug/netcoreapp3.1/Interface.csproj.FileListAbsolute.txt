@@ -1,0 +1,9 @@
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\bin\Debug\netcoreapp3.1\Interface.deps.json
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\bin\Debug\netcoreapp3.1\Interface.dll
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\bin\Debug\netcoreapp3.1\Interface.pdb
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\obj\Debug\netcoreapp3.1\Interface.csprojAssemblyReference.cache
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\obj\Debug\netcoreapp3.1\Interface.AssemblyInfoInputs.cache
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\obj\Debug\netcoreapp3.1\Interface.AssemblyInfo.cs
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\obj\Debug\netcoreapp3.1\Interface.csproj.CoreCompileInputs.cache
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\obj\Debug\netcoreapp3.1\Interface.dll
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\obj\Debug\netcoreapp3.1\Interface.pdb

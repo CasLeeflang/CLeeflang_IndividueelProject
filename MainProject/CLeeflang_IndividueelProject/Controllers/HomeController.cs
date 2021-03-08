@@ -28,6 +28,16 @@ namespace CLeeflang_IndividueelProject.Controllers
             return View();
         }
 
+        public IActionResult Slot()
+        {
+            return View();
+        }
+
+        public void SaveSlot(TimeSlotViewModel timeSlot)
+        {
+            Console.WriteLine(timeSlot.StartTime);
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
