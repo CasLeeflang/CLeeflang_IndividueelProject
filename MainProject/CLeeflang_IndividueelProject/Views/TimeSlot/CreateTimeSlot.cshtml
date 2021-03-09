@@ -66,7 +66,12 @@
         <button class="tablinks" onclick="openDay(event, 'Tue')">Tuesday</button>
         <button class="tablinks" onclick="openDay(event, 'Wed')">Wednesday</button>
     </div>
-    @{ List<TimeSlotModel> timeSlots = TimeSlotManager.LoadTimeSlot(1); } @*Load Based on BusinessUserId*@
+    @{ List<TimeSlotModel> timeSlots = TimeSlotManager.LoadTimeSlot(1);
+        List<ITimeSlotModel> mondayTimeSlots = new List<ITimeSlotModel>();
+        List<ITimeSlotModel> TuesdayTimeSlots = new List<ITimeSlotModel>();
+        List<ITimeSlotModel> WednesdayTimeSlots = new List<ITimeSlotModel>();
+
+            } @*Load Based on BusinessUserId*@
     <!-- Tab content -->
     <div id="Mon" class="tabcontent" style="display: block;">
         <h3>Monday</h3>
@@ -80,13 +85,24 @@
                 </tr>
                 @foreach (var timeSlot in timeSlots)
                 {
-                    if (timeSlot.DayOTWeek == "Mo")
+                    if (timeSlot.DayOTWeek == "Mon")
                     {
-                        <tr>
-                            <th>@timeSlot.DayOTWeek</th>
-                            <th>@timeSlot.StartTime</th>
-                            <th>@timeSlot.EndTime</th>
-                        </tr>
+                        mondayTimeSlots.Add(timeSlot);
+                    }
+                }
+
+                @{
+                    mondayTimeSlots = mondayTimeSlots.OrderBy(o => o.StartTime).ToList();
+                    @foreach (var mondayTimeSlot in mondayTimeSlots)
+                    {
+                        if (mondayTimeSlot.DayOTWeek == "Mon")
+                        {
+                            <tr>
+                                <th>@mondayTimeSlot.DayOTWeek</th>
+                                <th>@mondayTimeSlot.StartTime</th>
+                                <th>@mondayTimeSlot.EndTime</th>
+                            </tr>
+                        }
                     }
                 }
 

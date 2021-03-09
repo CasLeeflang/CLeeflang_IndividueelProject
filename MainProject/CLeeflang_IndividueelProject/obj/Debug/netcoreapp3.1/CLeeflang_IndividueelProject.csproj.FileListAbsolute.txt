@@ -1,6 +1,5 @@
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\bin\Debug\netcoreapp3.1\appsettings.json
-C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\bin\Debug\netcoreapp3.1\CLeeflang_IndividueelProject.exe
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\bin\Debug\netcoreapp3.1\CLeeflang_IndividueelProject.deps.json
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\bin\Debug\netcoreapp3.1\CLeeflang_IndividueelProject.runtimeconfig.json
@@ -410,3 +409,4 @@ C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeefla
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\bin\Debug\netcoreapp3.1\SQLDataAccess.pdb
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\bin\Debug\netcoreapp3.1\Models.dll
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\bin\Debug\netcoreapp3.1\Models.pdb
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\obj\Debug\netcoreapp3.1\scopedcss\bundle\CLeeflang_IndividueelProject.styles.css
