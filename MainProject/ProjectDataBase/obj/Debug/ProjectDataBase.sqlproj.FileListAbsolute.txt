@@ -1,0 +1,6 @@
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\ProjectDataBase\bin\Debug\ProjectDataBase.dacpac
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\ProjectDataBase\bin\Debug\ProjectDataBase.dll
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\ProjectDataBase\bin\Debug\ProjectDataBase.pdb
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\ProjectDataBase\obj\Debug\ProjectDataBase.sqlprojAssemblyReference.cache
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\ProjectDataBase\obj\Debug\ProjectDataBase.dll
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\ProjectDataBase\obj\Debug\ProjectDataBase.pdb

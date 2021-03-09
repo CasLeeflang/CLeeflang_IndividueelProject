@@ -1,0 +1,9 @@
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Models\bin\Debug\netcoreapp3.1\Model.deps.json
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Models\bin\Debug\netcoreapp3.1\Model.dll
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Models\bin\Debug\netcoreapp3.1\Model.pdb
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Models\obj\Debug\netcoreapp3.1\Model.csprojAssemblyReference.cache
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Models\obj\Debug\netcoreapp3.1\Model.AssemblyInfoInputs.cache
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Models\obj\Debug\netcoreapp3.1\Model.AssemblyInfo.cs
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Models\obj\Debug\netcoreapp3.1\Model.csproj.CoreCompileInputs.cache
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Models\obj\Debug\netcoreapp3.1\Model.dll
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Models\obj\Debug\netcoreapp3.1\Model.pdb

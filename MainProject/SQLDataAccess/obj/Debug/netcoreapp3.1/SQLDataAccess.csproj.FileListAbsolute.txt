@@ -1,0 +1,9 @@
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\SQLDataAccess\bin\Debug\netcoreapp3.1\SQLDataAccess.deps.json
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\SQLDataAccess\bin\Debug\netcoreapp3.1\SQLDataAccess.dll
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\SQLDataAccess\obj\Debug\netcoreapp3.1\SQLDataAccess.csprojAssemblyReference.cache
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\SQLDataAccess\obj\Debug\netcoreapp3.1\SQLDataAccess.AssemblyInfoInputs.cache
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\SQLDataAccess\obj\Debug\netcoreapp3.1\SQLDataAccess.AssemblyInfo.cs
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\SQLDataAccess\bin\Debug\netcoreapp3.1\SQLDataAccess.pdb
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\SQLDataAccess\obj\Debug\netcoreapp3.1\SQLDataAccess.csproj.CoreCompileInputs.cache
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\SQLDataAccess\obj\Debug\netcoreapp3.1\SQLDataAccess.dll
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\SQLDataAccess\obj\Debug\netcoreapp3.1\SQLDataAccess.pdb

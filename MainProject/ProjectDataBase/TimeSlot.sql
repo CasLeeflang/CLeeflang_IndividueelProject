@@ -1,0 +1,4 @@
+﻿CREATE TABLE [dbo].[TimeSlot]
+(
+	[Id] INT NOT NULL PRIMARY KEY
+)

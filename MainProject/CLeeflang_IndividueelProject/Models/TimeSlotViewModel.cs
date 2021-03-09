@@ -21,5 +21,9 @@ namespace CLeeflang_IndividueelProject.Models
         [Required]
         [DataType(DataType.Time)]
         public string EndTime { get; set; }
+
+        [Required]
+        public int NumberOfSpotsAvailable { get; set; }
+
     }
 }

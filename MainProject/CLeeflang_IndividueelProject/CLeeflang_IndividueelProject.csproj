@@ -12,6 +12,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Interface\Interface.csproj" />
+    <ProjectReference Include="..\Logic\Logic.csproj" />
+    <ProjectReference Include="..\Models\Models.csproj" />
+    <ProjectReference Include="..\SQLDataAccess\SQLDataAccess.csproj" />
   </ItemGroup>
 
 </Project>
