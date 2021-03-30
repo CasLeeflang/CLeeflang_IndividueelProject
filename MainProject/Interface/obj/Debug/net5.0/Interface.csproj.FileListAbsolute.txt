@@ -1,0 +1,12 @@
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\bin\Debug\net5.0\Interface.deps.json
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\bin\Debug\net5.0\Interface.dll
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\bin\Debug\net5.0\ref\Interface.dll
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\bin\Debug\net5.0\Interface.pdb
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\obj\Debug\net5.0\Interface.csprojAssemblyReference.cache
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\obj\Debug\net5.0\Interface.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\obj\Debug\net5.0\Interface.AssemblyInfoInputs.cache
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\obj\Debug\net5.0\Interface.AssemblyInfo.cs
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\obj\Debug\net5.0\Interface.csproj.CoreCompileInputs.cache
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\obj\Debug\net5.0\Interface.dll
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\obj\Debug\net5.0\ref\Interface.dll
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\obj\Debug\net5.0\Interface.pdb

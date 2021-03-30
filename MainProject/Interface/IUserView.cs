@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CLeeflang_IndividueelProject.Models
+namespace Interface
 {
     public interface IUserView
     {

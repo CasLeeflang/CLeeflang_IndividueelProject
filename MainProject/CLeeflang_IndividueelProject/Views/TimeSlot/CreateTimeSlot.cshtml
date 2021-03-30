@@ -4,7 +4,6 @@
 }
 
 @using Logic;
-@using Models;
 
 
 <head>
@@ -72,7 +71,8 @@
                     <button class="tablinks" onclick="openDay(event, 'Sat')">Saturday</button>
                     <button class="tablinks" onclick="openDay(event, 'Sun')">Sunday</button>
                 </div>
-                @{ List<TimeSlotModel> timeSlots = TimeSlotManager.LoadTimeSlot(1).OrderBy(o => o.StartTime).ToList();
+                @{ TimeSlotCollection _timeSlotCollection = new TimeSlotCollection();
+                    IEnumerable<TimeSlotModel> timeSlots = _timeSlotCollection.GetTimeSlotByBusinessId(1).OrderBy(o => o.StartTime);
 
                     List<string> DotW = new List<string> { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" };
 

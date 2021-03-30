@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "j03Cznua9k2s5y2dzv0bL5b38fMjAwzG3S/FzjLNofvBnGQn+KQJ/UqdDSmI0wlJaaYA+RRjgMhHzLja3MfxmA==",
+  "dgSpecHash": "EIHQDjobhlEqDzN7TgyLNYXLdQ6m/swMOW5dxN+MiWWb1u7Y+N0ELj3MkFF1B1yBYBvlZyjry94fcvlhM3IlZA==",
   "success": true,
   "projectFilePath": "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\SQLDataAccess\\SQLDataAccess.csproj",
   "expectedPackageFiles": [
@@ -12,7 +12,6 @@
     "C:\\Users\\casle\\.nuget\\packages\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\casle\\.nuget\\packages\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\casle\\.nuget\\packages\\system.data.sqlclient\\4.8.2\\system.data.sqlclient.4.8.2.nupkg.sha512",
-    "C:\\Users\\casle\\.nuget\\packages\\system.reflection.emit.lightweight\\4.7.0\\system.reflection.emit.lightweight.4.7.0.nupkg.sha512",
     "C:\\Users\\casle\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
     "C:\\Users\\casle\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512"
   ],

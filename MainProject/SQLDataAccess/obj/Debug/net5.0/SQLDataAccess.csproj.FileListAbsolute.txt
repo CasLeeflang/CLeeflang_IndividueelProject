@@ -1,0 +1,12 @@
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\SQLDataAccess\bin\Debug\net5.0\SQLDataAccess.deps.json
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\SQLDataAccess\bin\Debug\net5.0\SQLDataAccess.dll
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\SQLDataAccess\bin\Debug\net5.0\ref\SQLDataAccess.dll
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\SQLDataAccess\bin\Debug\net5.0\SQLDataAccess.pdb
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\SQLDataAccess\obj\Debug\net5.0\SQLDataAccess.csprojAssemblyReference.cache
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\SQLDataAccess\obj\Debug\net5.0\SQLDataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\SQLDataAccess\obj\Debug\net5.0\SQLDataAccess.AssemblyInfoInputs.cache
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\SQLDataAccess\obj\Debug\net5.0\SQLDataAccess.AssemblyInfo.cs
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\SQLDataAccess\obj\Debug\net5.0\SQLDataAccess.csproj.CoreCompileInputs.cache
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\SQLDataAccess\obj\Debug\net5.0\SQLDataAccess.dll
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\SQLDataAccess\obj\Debug\net5.0\ref\SQLDataAccess.dll
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\SQLDataAccess\obj\Debug\net5.0\SQLDataAccess.pdb
