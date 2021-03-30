@@ -10,16 +10,16 @@ namespace CLeeflang_IndividueelProject.Models
     {
         [Required]
         [DataType(DataType.Text)]
+
+        public string UserName { get; set; }
+        [Required]
+        [DataType(DataType.Text)]
         public string FirstName { get; set; }
 
         [Required]
         [DataType(DataType.Text)]
         public string LastName { get; set; }
 
-        [Required]
-        [DataType(DataType.Text)]
-
-        public string UserName { get; set; }
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
@@ -28,7 +28,9 @@ namespace CLeeflang_IndividueelProject.Models
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
-
+        [Required]
+        [DataType(DataType.DateTime)]
+        public DateTime DoB { get; set; }
 
 
     }

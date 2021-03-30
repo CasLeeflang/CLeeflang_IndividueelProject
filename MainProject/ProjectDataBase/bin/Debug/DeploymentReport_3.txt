@@ -1,0 +1,36 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       [dbo].[TimeSlot]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       The column [dbo].[TimeSlot].[BusinessuserId] is being dropped, data loss could occur.
+       The column [dbo].[TimeSlot].[BusinessId] on table [dbo].[TimeSlot] must be added, but the column has no default value
+         and does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue you must
+         either: add a default value to the column, mark it as allowing NULL values, or enable the generation of smart-defaults
+         as a deployment option.
+       The type for column EndTime in table [dbo].[TimeSlot] is currently  VARCHAR (50) NOT NULL but is being changed to 
+         DATETIME NOT NULL. Data loss could occur and deployment may fail if the column contains data that is incompatible with
+         type  DATETIME NOT NULL.
+       The type for column StartTime in table [dbo].[TimeSlot] is currently  VARCHAR (50) NOT NULL but is being changed to 
+         DATETIME NOT NULL. Data loss could occur and deployment may fail if the column contains data that is incompatible with
+         type  DATETIME NOT NULL.
+
+** User actions
+     Rename
+       [dbo].[TimeSlot].[NumberOfSpots] (Column)
+     Table rebuild
+       [dbo].[TimeSlot] (Table)
+     Create
+       [dbo].[BusinessUser] (Table)
+       [dbo].[User] (Table)
+
+** Supporting actions
+
+The column [dbo].[TimeSlot].[BusinessuserId] is being dropped, data loss could occur.
+The column [dbo].[TimeSlot].[BusinessId] on table [dbo].[TimeSlot] must be added, but the column has no default value and does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue you must either: add a default value to the column, mark it as allowing NULL values, or enable the generation of smart-defaults as a deployment option.
+The type for column EndTime in table [dbo].[TimeSlot] is currently  VARCHAR (50) NOT NULL but is being changed to  DATETIME NOT NULL. Data loss could occur and deployment may fail if the column contains data that is incompatible with type  DATETIME NOT NULL.
+The type for column StartTime in table [dbo].[TimeSlot] is currently  VARCHAR (50) NOT NULL but is being changed to  DATETIME NOT NULL. Data loss could occur and deployment may fail if the column contains data that is incompatible with type  DATETIME NOT NULL.
+

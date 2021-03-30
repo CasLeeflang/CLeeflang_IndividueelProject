@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CLeeflang_IndividueelProject.Models
 {
-    public class BusinessUserViewModel : IBusinessUserView
+    public class BusinessUserViewModel
     {
         [Required]
         [DataType(DataType.Text)]
@@ -26,7 +26,7 @@ namespace CLeeflang_IndividueelProject.Models
 
         [Required]
         [DataType(DataType.Text)]
-        public string Description { get; set; }
+        public string Info { get; set; }
 
     }
 }

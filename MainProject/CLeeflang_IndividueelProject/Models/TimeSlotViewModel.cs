@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -6,24 +7,24 @@ using System.Threading.Tasks;
 
 namespace CLeeflang_IndividueelProject.Models
 {
-    public class TimeSlotViewModel : ITimeSlotView
+    public class TimeSlotViewModel : ITimeSlot
     {
         [Required]
-        public int BusinessUserId { get; set; }
+        public int BusinessId { get; set; }
 
         [Required]
         public string DayOTWeek { get; set; }
 
         [Required]
         [DataType(DataType.Time)]
-        public string StartTime { get; set; }
+        public DateTime StartTime { get; set; }
 
         [Required]
         [DataType(DataType.Time)]
-        public string EndTime { get; set; }
+        public DateTime EndTime { get; set; }
 
-        [Required]
-        public int NumberOfSpotsAvailable { get; set; }
+        [Required]        
+        public int NumberOfSpots { get; set; }
 
     }
 }

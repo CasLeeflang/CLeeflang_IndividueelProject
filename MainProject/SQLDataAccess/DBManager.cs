@@ -14,7 +14,7 @@ namespace SQLDataAccess
     {
         public static string GetConnectionString()
         {
-            return "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=ProjectDataBase;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            return "Data Source=DESKTOP-KQ65BAV;Initial Catalog=ProjectDataBase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         }
 
         public static int SaveData<T>(string sql, T data)
@@ -32,6 +32,8 @@ namespace SQLDataAccess
                 return cnn.Query<T>(sql).ToList();
             }
         }
+
+
 
     }
 }

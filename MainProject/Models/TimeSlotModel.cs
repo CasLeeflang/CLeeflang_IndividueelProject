@@ -2,14 +2,22 @@
 
 namespace Models
 {
-    public class TimeSlotModel : ITimeSlotModel
+    public class TimeSlotModel : ITimeSlot
     {
 
-        public int BusinessUserId { get; set; }
+        public int BusinessId { get; set; }
         public string DayOTWeek { get; set; }
-        public string StartTime { get; set; }
-        public string EndTime { get; set; }
-        public int NumberOfSpotsAvailable { get; set; }
+        public DateTime StartTime { get; set; }
+        public DateTime EndTime { get; set; }
+        public TimeSpan TimeSpan
+        {
+            get
+            {
+                return EndTime.TimeOfDay - StartTime.TimeOfDay;
+            }
+
+        }
+        public int NumberOfSpots { get; set; }
 
     }
 }

@@ -5,12 +5,13 @@ using System.Threading.Tasks;
 using CLeeflang_IndividueelProject.Models;
 using Logic;
 using Microsoft.AspNetCore.Mvc;
+using Models;
 
 namespace CLeeflang_IndividueelProject.Controllers
 {
     public class TimeSlotController : Controller
     {
-        List<ITimeSlotView> timeSlots = new List<ITimeSlotView>();
+        List<ITimeSlot> timeSlots = new List<ITimeSlot>();
 
         public IActionResult CreateTimeSlot()
         {

@@ -59,6 +59,8 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="TimeSlot.sql" />
+    <Build Include="User.sql" />
+    <Build Include="BusinessUser.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ProjectDataBase.refactorlog" />
