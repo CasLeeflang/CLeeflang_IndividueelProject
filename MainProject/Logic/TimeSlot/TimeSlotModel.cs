@@ -46,7 +46,7 @@ namespace Logic
 
         public bool Validate()
         {
-            if(TimeSpan.TotalMinutes > 0)
+            if(TimeSpan.TotalMinutes > 0 && NumberOfSpots >= 0)
             {
                 return true;
             }

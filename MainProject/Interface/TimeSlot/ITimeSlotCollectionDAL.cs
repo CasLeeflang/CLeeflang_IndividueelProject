@@ -13,5 +13,6 @@ namespace Interface.TimeSlot
         // void DeleteTimeSlot();
         // void UpdateTimeSlot();
         IEnumerable<TimeSlotDTO> LoadTimeSlotByBusinessId(int businessId);
+        void DeleteTimeSlot(int id);
     }
 }

@@ -47,5 +47,10 @@ namespace Logic
 
             return timeSlots;
         }
+
+        public void DeleteTimeSlot(int id)
+        {
+            _timeSlotCollectionDAL.DeleteTimeSlot(id);
+        }
     }
 }

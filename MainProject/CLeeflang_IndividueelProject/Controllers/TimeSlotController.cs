@@ -13,8 +13,6 @@ namespace CLeeflang_IndividueelProject.Controllers
     {
         TimeSlotCollection _timeSlotCollection = new TimeSlotCollection();
 
-        List<ITimeSlot> timeSlots = new List<ITimeSlot>();
-
         public IActionResult CreateTimeSlot()
         {
             return View();
@@ -36,6 +34,12 @@ namespace CLeeflang_IndividueelProject.Controllers
                 Console.WriteLine("Model not valid");
                 return RedirectToAction("CreateTimeSlot");
             }
+        }
+
+        public IActionResult DeleteTimeSlot(int id)
+        {
+            _timeSlotCollection.DeleteTimeSlot(id);
+            return RedirectToAction("CreateTimeSlot");
         }
     }
 }

@@ -1,10 +1,8 @@
-﻿using Interface;
-using Interface.TimeSlot;
+﻿using Interface.TimeSlot;
 using Models;
 using SQLDataAccess;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,9 +26,11 @@ namespace DAL.TimeSlot
             return DBManager.LoadDataList<TimeSlotDTO>(sql);
         }
 
-        public void DeleteTimeSlot()
+        public void DeleteTimeSlot(int id)
         {
-            throw new NotImplementedException();
+            string sql = $"delete from dbo.TimeSlot WHERE Id = {id}";
+
+            DBManager.DeleteData<TimeSlotDTO>(sql);
         }
 
         public void UpdateTimeSlot()

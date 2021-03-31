@@ -95,6 +95,7 @@
                                             <th>Start Time</th>
                                             <th>End Time</th>
                                             <th>Spots</th>
+                                            <th></th>
 
                                         </tr>
                                         @foreach (var timeSlot in timeSlots)
@@ -106,7 +107,9 @@
                                                     <td>@timeSlot.StartTime.TimeOfDay</td>
                                                     <td>@timeSlot.EndTime.TimeOfDay</td>
                                                     <td>@timeSlot.NumberOfSpots</td>
-
+                                                    <td>
+                                                        <a asp-controller="TimeSlot" asp-action="DeleteTimeSlot" asp-route-id="@timeSlot.Id">Delete</a>
+                                                    </td>
                                                 </tr>
                                             }
                                         }
@@ -125,6 +128,7 @@
                                             <th>Start Time</th>
                                             <th>End Time</th>
                                             <th>Spots</th>
+                                            <th></th>
 
                                         </tr>
                                         @foreach (var timeSlot in timeSlots)
@@ -133,10 +137,12 @@
                                             {
                                                 <tr>
                                                     <th>@timeSlot.DayOTWeek</th>
-                                                    <td>@timeSlot.StartTime</td>
-                                                    <td>@timeSlot.EndTime</td>
+                                                    <td>@timeSlot.StartTime.TimeOfDay</td>
+                                                    <td>@timeSlot.EndTime.TimeOfDay</td>
                                                     <td>@timeSlot.NumberOfSpots</td>
-                                                    
+                                                    <td>
+                                                        <a asp-controller="TimeSlot" asp-action="DeleteTimeSlot" asp-route-id="@timeSlot.Id">Delete</a>
+                                                    </td>
 
                                                 </tr>
 
