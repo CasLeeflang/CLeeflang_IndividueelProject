@@ -108,8 +108,16 @@
         }
       },
       "Interface/1.0.0": {
+        "dependencies": {
+          "Models": "1.0.0"
+        },
         "runtime": {
           "Interface.dll": {}
+        }
+      },
+      "Models/1.0.0": {
+        "runtime": {
+          "Models.dll": {}
         }
       },
       "SQLDataAccess/1.0.0": {
@@ -205,6 +213,11 @@
       "sha512": ""
     },
     "Interface/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Models/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

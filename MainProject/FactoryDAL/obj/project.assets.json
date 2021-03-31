@@ -157,11 +157,24 @@
       "Interface/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "Models": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/Interface.dll": {}
         },
         "runtime": {
           "bin/placeholder/Interface.dll": {}
+        }
+      },
+      "Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Models.dll": {}
         }
       },
       "SQLDataAccess/1.0.0": {
@@ -520,6 +533,11 @@
       "type": "project",
       "path": "../Interface/Interface.csproj",
       "msbuildProject": "../Interface/Interface.csproj"
+    },
+    "Models/1.0.0": {
+      "type": "project",
+      "path": "../Models/Models.csproj",
+      "msbuildProject": "../Models/Models.csproj"
     },
     "SQLDataAccess/1.0.0": {
       "type": "project",

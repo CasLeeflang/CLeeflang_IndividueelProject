@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,8 +10,8 @@ namespace Interface.TimeSlot
     public interface ITimeSlotCollectionDAL
     {
         void CreateTimeSlot(TimeSlotDTO newTimeSlot);
+        // void DeleteTimeSlot();
+        // void UpdateTimeSlot();
         IEnumerable<TimeSlotDTO> LoadTimeSlotByBusinessId(int businessId);
-
-        void DeleteTimeSlot();
     }
 }

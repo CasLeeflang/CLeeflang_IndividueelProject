@@ -1,4 +1,6 @@
-﻿using Interface.TimeSlot;
+﻿using Interface;
+using Interface.TimeSlot;
+using Models;
 using SQLDataAccess;
 using System;
 using System.Collections.Generic;

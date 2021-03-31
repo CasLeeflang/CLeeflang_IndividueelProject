@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Interface.TimeSlot
+namespace Models
 {
     public class TimeSlotDTO
     {
+        public int Id { get; set; }
         public int BusinessId { get; set; }
         public string DayOTWeek { get; set; }
         public DateTime StartTime { get; set; }

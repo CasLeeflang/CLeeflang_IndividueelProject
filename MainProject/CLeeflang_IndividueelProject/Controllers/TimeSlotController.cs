@@ -22,9 +22,20 @@ namespace CLeeflang_IndividueelProject.Controllers
 
         public IActionResult SaveTimeSlot(TimeSlotViewModel timeSlot)
         {
-            _timeSlotCollection.CreateTimeSlot(timeSlot); 
+            // Map viewmodel to logic model
+            TimeSlotModel timeSlotLog = new TimeSlotModel(timeSlot.BusinessId, timeSlot.DayOTWeek, timeSlot.StartTime, timeSlot.EndTime, timeSlot.NumberOfSpots);
 
-            return RedirectToAction("CreateTimeSlot");
+            // Validate the timespan
+            if (timeSlotLog.Validate())
+            {
+                _timeSlotCollection.CreateTimeSlot(timeSlotLog);
+                return RedirectToAction("CreateTimeSlot");
+            }
+            else
+            {
+                Console.WriteLine("Model not valid");
+                return RedirectToAction("CreateTimeSlot");
+            }
         }
     }
 }

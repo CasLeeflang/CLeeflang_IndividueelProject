@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CLeeflang_IndividueelProject.Models
 {
-    public class UserViewModel : IUserView
+    public class UserViewModel 
     {
         [Required]
         [DataType(DataType.Text)]
@@ -32,7 +32,6 @@ namespace CLeeflang_IndividueelProject.Models
         [Required]
         [DataType(DataType.DateTime)]
         public DateTime DoB { get; set; }
-
 
     }
 }
