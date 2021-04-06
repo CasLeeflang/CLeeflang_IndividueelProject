@@ -12,37 +12,42 @@ namespace Logic.User
     public class UserCollection
     {
         IUserCollectionDAL _userCollectionDAL = UserFactoryDAL.CreateUserCollectionDAL();
-
+        private List<UserModel> users { get; set; } = new List<UserModel>();
         public void CreateUser(UserModel newUser)
         {
-            // Map View model to Logic Model
-            UserDTO newUserDTO = new UserDTO
+            // newUser.Validate();      // Validate the new userModel
+            if (newUser.Validate())
             {
-                UserName = newUser.UserName,
-                FirstName = newUser.FirstName,
-                LastName = newUser.LastName,
-                Password = newUser.Password,
-                Email = newUser.Email,
-                DoB = newUser.DoB
-            };
+                // Map Logic model to DTO
+                UserDTO newUserDTO = new UserDTO
+                {
+                    UserName = newUser.UserName,
+                    FirstName = newUser.FirstName,
+                    LastName = newUser.LastName,
+                    Password = newUser.Password,
+                    Email = newUser.Email,
+                    DoB = newUser.DoB
+                };
 
-            // _userCollectionDAL.CreateUser(newUserDTO);
+                _userCollectionDAL.CreateUser(newUserDTO);
+            }
+            else
+            {
+                Console.WriteLine("UserModel not valid");
+            }
         }
 
         public IEnumerable<UserModel> GetUserByUserNameOrEmail(string identifier)
         {
-            IEnumerable<UserDTO> userDTO = _userCollectionDAL.GetUserByUserNameOrEmail(identifier);
-
-
-
-            //IEnumerable<UserModel> user = new List<UserModel>
-            //{
-            //  new UserModel(userDTO.First())
-            //};
-  
-
-            return userDTO as IEnumerable<UserModel>;
-
+            IEnumerable<UserDTO> userDTOs = _userCollectionDAL.GetUserByUserNameOrEmail(identifier);
+            foreach(var userDTO in userDTOs)
+            {
+                UserModel user = new UserModel(userDTO);
+                users.Add(user);
+            }
+            return users;
         }
+
+
     }
 }

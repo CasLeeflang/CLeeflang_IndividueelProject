@@ -6,9 +6,8 @@ namespace Interface.User
     public interface IUserDAL
     {
         void CreateUser(UserDTO newUser);
-        void DeleteTimeSlot();
-        IEnumerable<UserDTO> GetUserByUserNameOrEmail(string identifier);
-       
-        void UpdateTimeSlot();
+        bool ValidateNewUser(string userName, string email);
+
+
     }
 }

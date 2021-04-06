@@ -23,13 +23,20 @@ namespace SQLDataAccess
             {
                 return cnn.Execute(sql, data);
             }
-        }      
+        }
 
         public static List<T> LoadDataList<T>(string sql)
         {
             using (IDbConnection cnn = new SqlConnection(GetConnectionString()))
             {
                 return cnn.Query<T>(sql).ToList();
+            }
+        }
+        public static IEnumerable<T> LoadData<T>(string sql)
+        {
+            using (IDbConnection cnn = new SqlConnection(GetConnectionString()))
+            {
+                return cnn.Query<T>(sql);
             }
         }
 

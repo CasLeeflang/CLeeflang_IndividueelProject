@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DAL\DAL.csproj" />
     <ProjectReference Include="..\FactoryDAL\FactoryDAL.csproj" />
     <ProjectReference Include="..\Models\Models.csproj" />
   </ItemGroup>

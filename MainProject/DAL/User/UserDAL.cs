@@ -21,20 +21,37 @@ namespace DAL.User
         }
         public IEnumerable<UserDTO> GetUserByUserNameOrEmail(string identifier)
         {
-            string sql = $"select * from dbo.[User] where UserName = {identifier} or Email = {identifier}";
+            string sql = $"select * from dbo.[User] where UserName = '{identifier}' or Email = '{identifier}'";
 
-            return DBManager.LoadDataList<UserDTO>(sql);
+            return DBManager.LoadData<UserDTO>(sql);
         }
 
-        public void DeleteTimeSlot()
+        public void UpdateUser(UserDTO updatedUser)
         {
-            throw new NotImplementedException();
+            string sql = $"";
         }
 
-        public void UpdateTimeSlot()
+        public IEnumerable<UserDTO> CheckUserNameEmail(string userName, string email)
         {
-            throw new NotImplementedException();
+            string sql = $"select * from dbo.[User] where (UserName = '{userName}' or Email = '{email}');";
+
+            return DBManager.LoadData<UserDTO>(sql);
         }
 
+        public bool ValidateNewUser(string userName, string email)
+        {
+
+            bool valid = false;
+
+            UserDTO existingUser = CheckUserNameEmail(userName, email).FirstOrDefault();
+
+
+            if (existingUser == null)
+            {
+                valid = true;
+            }
+
+            return valid;
+        }
     }
 }

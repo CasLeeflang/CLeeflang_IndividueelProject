@@ -566,7 +566,6 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
-      "DAL >= 1.0.0",
       "FactoryDAL >= 1.0.0",
       "Models >= 1.0.0"
     ]
@@ -598,9 +597,6 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\DAL\\DAL.csproj": {
-              "projectPath": "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\DAL\\DAL.csproj"
-            },
             "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\FactoryDAL\\FactoryDAL.csproj": {
               "projectPath": "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\FactoryDAL\\FactoryDAL.csproj"
             },

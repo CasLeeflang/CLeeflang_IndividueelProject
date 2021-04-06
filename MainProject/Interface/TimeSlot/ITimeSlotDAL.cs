@@ -9,5 +9,6 @@ namespace Interface.TimeSlot
     public interface ITimeSlotDAL
     {
         void UpdateTimeSlot();
+
     }
 }

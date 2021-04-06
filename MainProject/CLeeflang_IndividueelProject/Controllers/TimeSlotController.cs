@@ -5,15 +5,17 @@ using System.Threading.Tasks;
 using CLeeflang_IndividueelProject.Models;
 using Interface;
 using Logic;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CLeeflang_IndividueelProject.Controllers
 {
+    //[Authorize(Roles = "Business")]
     public class TimeSlotController : Controller
     {
         TimeSlotCollection _timeSlotCollection = new TimeSlotCollection();
 
-        public IActionResult CreateTimeSlot()
+        public IActionResult ManageTimeSlot()
         {
             return View();
         }
@@ -27,19 +29,19 @@ namespace CLeeflang_IndividueelProject.Controllers
             if (timeSlotLog.Validate())
             {
                 _timeSlotCollection.CreateTimeSlot(timeSlotLog);
-                return RedirectToAction("CreateTimeSlot");
+                return RedirectToAction("ManageTimeSlot");
             }
             else
             {
                 Console.WriteLine("Model not valid");
-                return RedirectToAction("CreateTimeSlot");
+                return RedirectToAction("ManageTimeSlot");
             }
         }
 
         public IActionResult DeleteTimeSlot(int id)
         {
             _timeSlotCollection.DeleteTimeSlot(id);
-            return RedirectToAction("CreateTimeSlot");
+            return RedirectToAction("ManageTimeSlot");
         }
     }
 }

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0">
+  <Operation Name="Rename Refactor" Key="f01e7699-3415-42e4-a138-c637c04decc2" ChangeDateTime="03/09/2021 11:05:07" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+    <Property Name="ElementName" Value="[dbo].[TimeSlot].[BusinessId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TimeSlot]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="BusinessUserId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b1262752-d110-4818-bee8-9e6b6b215b7b" ChangeDateTime="03/22/2021 08:35:42" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+    <Property Name="ElementName" Value="[dbo].[TimeSlot].[NumberOfSpotsAvailable]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TimeSlot]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="NumberOfSpots" />
+  </Operation>
+</Operations>

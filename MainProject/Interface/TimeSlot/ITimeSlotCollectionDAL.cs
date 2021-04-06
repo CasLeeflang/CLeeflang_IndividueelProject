@@ -10,7 +10,7 @@ namespace Interface.TimeSlot
     public interface ITimeSlotCollectionDAL
     {
         void CreateTimeSlot(TimeSlotDTO newTimeSlot);
-        // void DeleteTimeSlot();
+
         // void UpdateTimeSlot();
         IEnumerable<TimeSlotDTO> LoadTimeSlotByBusinessId(int businessId);
         void DeleteTimeSlot(int id);

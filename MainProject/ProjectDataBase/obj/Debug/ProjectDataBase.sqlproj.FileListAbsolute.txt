@@ -4,3 +4,7 @@ C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Project
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\ProjectDataBase\obj\Debug\ProjectDataBase.sqlprojAssemblyReference.cache
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\ProjectDataBase\obj\Debug\ProjectDataBase.dll
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\ProjectDataBase\obj\Debug\ProjectDataBase.pdb
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\ProjectDataBase\obj\Debug\Model.xml
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\ProjectDataBase\obj\Debug\refactor.xml
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\ProjectDataBase\obj\Debug\postdeploy.sql
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\ProjectDataBase\obj\Debug\predeploy.sql

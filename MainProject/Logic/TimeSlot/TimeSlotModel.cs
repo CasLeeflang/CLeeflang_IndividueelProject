@@ -8,6 +8,8 @@ namespace Logic
 {
     public class TimeSlotModel : ITimeSlot
     {
+
+        ITimeSlotDAL _timeSlotDAL = TimeSlotFactoryDAL.CreateTimeSlotDAL();
         public int Id { get; set; }
         public int BusinessId { get; set; }
         public string DayOTWeek { get; set; }
@@ -22,7 +24,6 @@ namespace Logic
             {
                 return EndTime.TimeOfDay - StartTime.TimeOfDay;
             }
-
         }
 
         public TimeSlotModel(int businessId, string dayOTWeek, DateTime startTime, DateTime endTime, int numberOfSpots)
@@ -55,6 +56,5 @@ namespace Logic
             // Check other properties too
         }
 
-        ITimeSlotDAL _timeSlotDAL = TimeSlotFactoryDAL.CreateTimeSlotDAL();
     }
 }

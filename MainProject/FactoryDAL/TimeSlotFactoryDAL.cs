@@ -6,6 +6,7 @@ namespace FactoryDAL
 {
     public class TimeSlotFactoryDAL
     {
+        // Interface Segregation
         public static ITimeSlotDAL CreateTimeSlotDAL()
         {
             return new TimeSlotDAL();

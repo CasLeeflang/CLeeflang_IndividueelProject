@@ -1,4 +1,5 @@
-﻿using Interface.User;
+﻿using FactoryDAL;
+using Interface.User;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace Logic.User
 {
     public class UserModel : IUser
     {
+        IUserDAL _userDAL = UserFactoryDAL.CreateUserDAL();
         public int Id { get; set; }
         public string UserName { get; set; }
         public string FirstName { get; set; }
@@ -17,6 +19,7 @@ namespace Logic.User
         public string Password { get; set; } // Hashed and salted
         public string Email { get; set; }
         public DateTime DoB { get; set; }
+
 
         public UserModel(string userName, string firstName, string lastName, string Password, string Email, DateTime DoB)
         {
@@ -39,24 +42,20 @@ namespace Logic.User
             DoB = userDTO.DoB;
         }
 
-        public bool Validate()
+        public void Update(UserModel updatedUser)
         {
-            // implement validation for all properties
-            return true;
+            this.Id = updatedUser.Id;
+            this.UserName = updatedUser.UserName;
+            this.FirstName = updatedUser.FirstName;
+            this.LastName = updatedUser.LastName;
+            this.Password = updatedUser.Password;
+            this.Email = updatedUser.Email;
+            this.DoB = updatedUser.DoB;
         }
 
-        public bool HashSaltPassword()
-        {
-            try
-            {
-                // Hash and Salt password, then overwrite
-                return true;
-
-            }
-            catch
-            {
-                return false;
-            }
+        public bool Validate()
+        {           
+            return  _userDAL.ValidateNewUser(UserName, Email);
         }
     }
 }

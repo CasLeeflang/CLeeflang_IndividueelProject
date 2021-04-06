@@ -18,7 +18,6 @@ C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeefla
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
-C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\obj\Debug\net5.0\Razor\Views\TimeSlot\CreateTimeSlot.cshtml.g.cs
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\obj\Debug\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\obj\Debug\net5.0\Razor\Views\_ViewStart.cshtml.g.cs
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\obj\Debug\net5.0\CLeeflang_IndividueelProject.RazorTargetAssemblyInfo.cache
@@ -339,7 +338,6 @@ C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeefla
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\bin\Debug\net5.0\Newtonsoft.Json.dll
-C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\bin\Debug\net5.0\NuGet.Frameworks.dll
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\bin\Debug\net5.0\System.Composition.AttributedModel.dll
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\bin\Debug\net5.0\System.Composition.Convention.dll
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\bin\Debug\net5.0\System.Composition.Hosting.dll
@@ -418,3 +416,14 @@ C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeefla
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\obj\Debug\net5.0\CLeeflang_IndividueelProject.Views.pdb
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\obj\Debug\net5.0\CLeeflang_IndividueelProject.csproj.CopyComplete
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\obj\Debug\net5.0\CLeeflang_IndividueelProject.genruntimeconfig.cache
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\bin\Debug\net5.0\Variables.dll
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\bin\Debug\net5.0\Humanizer.dll
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\bin\Debug\net5.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\bin\Debug\net5.0\System.Web.Helpers.Crypto.dll
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\bin\Debug\net5.0\runtimes\win-arm\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\bin\Debug\net5.0\Variables.pdb
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\obj\Debug\net5.0\Razor\Views\User\Register.cshtml.g.cs
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\obj\Debug\net5.0\Razor\Views\User\Login.cshtml.g.cs
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\obj\Debug\net5.0\Razor\Views\TimeSlot\ManageTimeSlot.cshtml.g.cs
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\obj\Debug\net5.0\Razor\Views\User\UserPage.cshtml.g.cs
