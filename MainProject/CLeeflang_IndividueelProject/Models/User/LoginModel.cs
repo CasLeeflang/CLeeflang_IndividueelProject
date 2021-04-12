@@ -9,7 +9,7 @@ namespace Models.User
     public class LoginModel
     {
         [Required]
-        [RegularExpression(@"^[0-9a-zA-Z''-'\s]{1,40}$", ErrorMessage = "special characters are not  allowed.")]
+        //[RegularExpression(@"^[0-9a-zA-Z''-'\s]{1,40}$", ErrorMessage = "special characters are not  allowed.")]
         public string Identifier { get; set; }
 
         [Required]

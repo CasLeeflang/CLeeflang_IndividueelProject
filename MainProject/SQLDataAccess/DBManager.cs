@@ -25,7 +25,23 @@ namespace SQLDataAccess
             }
         }
 
-        public static IEnumerable<T> LoadData<T>(string sql)
+        public static IEnumerable<T> LoadData<T>(string sql, DynamicParameters parameters)
+        {
+            using (IDbConnection cnn = new SqlConnection(GetConnectionString()))
+            {
+                try
+                {
+                    return cnn.Query<T>(sql, parameters);
+                }
+                catch
+                {
+                    throw new Exception();
+                }
+  
+            }
+        }
+
+        public static IEnumerable<T> LoadAllData<T>(string sql)
         {
             using (IDbConnection cnn = new SqlConnection(GetConnectionString()))
             {
@@ -37,7 +53,7 @@ namespace SQLDataAccess
                 {
                     throw new Exception();
                 }
-  
+
             }
         }
 

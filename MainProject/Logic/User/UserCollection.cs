@@ -31,9 +31,9 @@ namespace Logic.User
 
         }
 
-        public IEnumerable<UserModel> GetUserByUserNameOrEmail(string identifier, string password)
+        public IEnumerable<UserModel> GetUserByUserNameOrEmail(string identifier)
         {
-            IEnumerable<UserDTO> userDTOs = _userCollectionDAL.GetUserByUserNameOrEmail(identifier, password);
+            IEnumerable<UserDTO> userDTOs = _userCollectionDAL.GetUserByUserNameOrEmail(identifier);
             foreach (var userDTO in userDTOs)
             {
                 UserModel user = new UserModel(userDTO);

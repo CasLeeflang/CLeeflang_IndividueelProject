@@ -31,7 +31,7 @@ namespace DAL.BusinessUser
 
             var parameters = new DynamicParameters(dictionary);
 
-            return DBManager.LoadData<BusinessUserDTO>(sql);
+            return DBManager.LoadData<BusinessUserDTO>(sql, parameters);
         }
 
         public void UpdateBusinessUser(BusinessUserDTO updatedBusinessUser)
@@ -43,20 +43,38 @@ namespace DAL.BusinessUser
         {
             string sql = $"select * from dbo.BusinessUser;";
 
-            return DBManager.LoadData<BusinessUserDTO>(sql);
+            return DBManager.LoadAllData<BusinessUserDTO>(sql);
         }
         public IEnumerable<BusinessUserDTO> CheckBusinessUserNameEmail(string userName, string email)
         {
-            string sql = $"select * from dbo.BusinessUser where (UserName = '{userName}' or Email = '{email}');";
+            string sql = $"select * from dbo.BusinessUser where (UserName = @userName or Email = @email);";
+            var dictionary = new Dictionary<string, object>
+            {
+                {"@userName", userName},
+                {"@email", email }
 
-            return DBManager.LoadData<BusinessUserDTO>(sql);
+            };
+
+
+            var parameters = new DynamicParameters(dictionary);
+
+            return DBManager.LoadData<BusinessUserDTO>(sql, parameters);
         }
 
         public int GetBusinessId(string userName)
         {
-            string sql = $"select Id from dbo.BusinessUser where (UserName = '{userName}');";
+            string sql = $"select Id from dbo.BusinessUser where (UserName = @userName);";
 
-            BusinessUserDTO businessUserDTO = DBManager.LoadData<BusinessUserDTO>(sql).FirstOrDefault();
+            var dictionary = new Dictionary<string, object>
+            {
+                {"@userName", userName}
+
+            };
+
+
+            var parameters = new DynamicParameters(dictionary);
+
+            BusinessUserDTO businessUserDTO = DBManager.LoadData<BusinessUserDTO>(sql, parameters).FirstOrDefault();
 
             if (businessUserDTO != null)
             {

@@ -90,7 +90,7 @@ namespace CLeeflang_IndividueelProject.Controllers
         [HttpPost]
         public ActionResult Login(LoginModel LogDetails)
         {  
-            UserModel loginUser = _userCollection.GetUserByUserNameOrEmail(LogDetails.Identifier, Crypto.HashPassword(LogDetails.Password + _salt)).FirstOrDefault();    // Get the User with the specic identifier, username or email
+            UserModel loginUser = _userCollection.GetUserByUserNameOrEmail(LogDetails.Identifier).FirstOrDefault();    // Get the User with the specic identifier, username or email
 
             if (loginUser != null)    // Check if the password is correct with the hashed password in the DB
             {

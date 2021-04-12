@@ -1,4 +1,5 @@
-﻿using Interface.User;
+﻿using Dapper;
+using Interface.User;
 using Models;
 using SQLDataAccess;
 using System;
@@ -19,11 +20,20 @@ namespace DAL.User
 
             DBManager.SaveData(sql, newUser);
         }
-        public IEnumerable<UserDTO> GetUserByUserNameOrEmail(string identifier, string password)
+        public IEnumerable<UserDTO> GetUserByUserNameOrEmail(string identifier)
         {
-            string sql = $"select * from dbo.[User] where UserName = '{identifier}' or Email = '{identifier}' and Password = '{password}'";
+            string sql = $"select * from dbo.[User] where UserName = @identifier or Email = @identifier";
 
-            return DBManager.LoadData<UserDTO>(sql);
+            var dictionary = new Dictionary<string, object>
+            {
+                {"@identifier", identifier}
+
+            };
+
+
+            var parameters = new DynamicParameters(dictionary);
+
+            return DBManager.LoadData<UserDTO>(sql, parameters);
         }
 
         public void UpdateUser(UserDTO updatedUser)
@@ -33,9 +43,18 @@ namespace DAL.User
 
         public IEnumerable<UserDTO> CheckUserNameEmail(string userName, string email)
         {
-            string sql = $"select * from dbo.[User] where (UserName = '{userName}' or Email = '{email}');";
+            string sql = $"select * from dbo.[User] where (UserName = @userName or Email = @email);";
 
-            return DBManager.LoadData<UserDTO>(sql);
+            var dictionary = new Dictionary<string, object>
+            {
+                {"@userName", userName},
+                {"@email", email }
+
+            };
+
+
+            var parameters = new DynamicParameters(dictionary);
+            return DBManager.LoadData<UserDTO>(sql, parameters);
         }
 
         public IEnumerable<UserDTO> GetUserByUserName(string userName)
