@@ -46,22 +46,42 @@ namespace CLeeflang_IndividueelProject.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateUser(UserViewModel newViewUser)
+        public IActionResult Register(UserViewModel newViewUser)
         {
             newViewUser.Password = Crypto.HashPassword(newViewUser.Password + _salt);   // hash and salt the password
+            newViewUser.PasswordConfirm = "";
 
             if (ModelState.IsValid)
             {
 
                 UserModel newUser = new UserModel(newViewUser.UserName, newViewUser.FirstName, newViewUser.LastName, newViewUser.Password, newViewUser.Email, newViewUser.DoB);
 
+                if (newUser.Validate())
+                {
+                    if(newUser.DoB < DateTime.Now)
+                    {
+                        _userCollection.CreateUser(newUser);
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        ViewBag.ErrorMessage = "Please enter a valid date of birth!";
+                        return View();
+                    }
 
-                _userCollection.CreateUser(newUser);
-                return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ViewBag.ErrorMessage = "Username or Email already in use!";
+                    return View();
+                }
+
+
             }
             else
             {
-                return RedirectToAction("Register");
+                ViewBag.ErrorMessage = "Oops, something went wrong. Please try again!";
+                return View();
             }
         }
 
@@ -85,7 +105,7 @@ namespace CLeeflang_IndividueelProject.Controllers
             var claims = new List<Claim>();
 
             claims.Add(new Claim(ClaimTypes.Role, "User"));
-            claims.Add(new Claim(ClaimTypes.Name, user.FirstName + " " + user.LastName));
+            claims.Add(new Claim(ClaimTypes.Name, user.UserName));
             //claims.Add(new Claim(ClaimTypes.NameIdentifier, user.Id));
 
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);

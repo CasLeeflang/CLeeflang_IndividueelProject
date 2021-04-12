@@ -48,6 +48,5 @@ namespace Logic.User
             return users;
         }
 
-
     }
 }

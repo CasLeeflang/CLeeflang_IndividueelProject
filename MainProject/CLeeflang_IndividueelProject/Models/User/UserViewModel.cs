@@ -13,6 +13,7 @@ namespace CLeeflang_IndividueelProject.Models
         [DataType(DataType.Text)]
 
         public string UserName { get; set; }
+
         [Required]
         [DataType(DataType.Text)]
         public string FirstName { get; set; }
@@ -23,7 +24,13 @@ namespace CLeeflang_IndividueelProject.Models
 
         [Required]
         [DataType(DataType.Password)]
+        [StringLength(100, ErrorMessage = "Password {0} needs to be at least {2} characters!", MinimumLength = 8)]
         public string Password { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        [Compare("Password", ErrorMessage = "Passwords do not match!")]
+        public string PasswordConfirm { get; set; }
 
         [Required]
         [DataType(DataType.EmailAddress)]
