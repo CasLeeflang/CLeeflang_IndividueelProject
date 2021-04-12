@@ -5,7 +5,7 @@ namespace Interface.User
 {
     public interface IUserDAL
     {
-        void CreateUser(UserDTO newUser);
+        void UpdateUser(UserDTO newUser);
         bool ValidateNewUser(string userName, string email);
 
 

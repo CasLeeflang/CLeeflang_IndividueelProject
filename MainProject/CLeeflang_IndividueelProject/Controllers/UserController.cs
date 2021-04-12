@@ -18,7 +18,7 @@ namespace CLeeflang_IndividueelProject.Controllers
     public class UserController : Controller
     {
         // Initialise the Salt variable (defined in startup.cs)
-        private static string _salt; 
+        private static string _salt;
         //private readonly UserManager<UserModel> _userManager;
 
         public UserController(PasswordSalt PassSalt /*, UserManager<UserModel> userManager*/)
@@ -46,22 +46,42 @@ namespace CLeeflang_IndividueelProject.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateUser(UserViewModel newViewUser)
+        public IActionResult Register(UserViewModel newViewUser)
         {
             newViewUser.Password = Crypto.HashPassword(newViewUser.Password + _salt);   // hash and salt the password
+            newViewUser.PasswordConfirm = "";
 
             if (ModelState.IsValid)
             {
 
                 UserModel newUser = new UserModel(newViewUser.UserName, newViewUser.FirstName, newViewUser.LastName, newViewUser.Password, newViewUser.Email, newViewUser.DoB);
 
+                if (newUser.Validate())
+                {
+                    if (newUser.DoB < DateTime.Now)
+                    {
+                        _userCollection.CreateUser(newUser);
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        ViewBag.ErrorMessage = "Please enter a valid date of birth!";
+                        return View();
+                    }
 
-                _userCollection.CreateUser(newUser);
-                return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ViewBag.ErrorMessage = "Username or Email already in use!";
+                    return View();
+                }
+
+
             }
             else
             {
-                return RedirectToAction("Register");
+                ViewBag.ErrorMessage = "Oops, something went wrong. Please try again!";
+                return View();
             }
         }
 
@@ -69,15 +89,30 @@ namespace CLeeflang_IndividueelProject.Controllers
 
         [HttpPost]
         public ActionResult Login(LoginModel LogDetails)
-        {
+        {  
             UserModel loginUser = _userCollection.GetUserByUserNameOrEmail(LogDetails.Identifier).FirstOrDefault();    // Get the User with the specic identifier, username or email
 
-            if (Crypto.VerifyHashedPassword(loginUser.Password, LogDetails.Password + _salt))    // Check if the password is correct with the hashed password in the DB
+            if (loginUser != null)    // Check if the password is correct with the hashed password in the DB
             {
-                LogDetails.Password = null;     // Delete the unhashed password
-                Authenticate(loginUser);        // authenticate the user
+                if (Crypto.VerifyHashedPassword(loginUser.Password, LogDetails.Password + _salt) && (LogDetails.Identifier == loginUser.UserName || LogDetails.Identifier == loginUser.Email))
+                {
+                    LogDetails.Password = null;     // Delete the unhashed password
+                    Authenticate(loginUser);        // authenticate the user
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ViewBag.LoginError = "Username or Password incorrect";
+                    return View();
+                }
+
             }
-            return RedirectToAction("Index", "Home");
+            else
+            {
+                ViewBag.LoginError = "Username or Password incorrect";
+                return View();
+            }
+
         }
 
         public void Authenticate(UserModel user)     // Method to authenticate the user once the password is checked
@@ -85,7 +120,7 @@ namespace CLeeflang_IndividueelProject.Controllers
             var claims = new List<Claim>();
 
             claims.Add(new Claim(ClaimTypes.Role, "User"));
-            claims.Add(new Claim(ClaimTypes.Name, user.FirstName + " " + user.LastName));
+            claims.Add(new Claim(ClaimTypes.Name, user.UserName));
             //claims.Add(new Claim(ClaimTypes.NameIdentifier, user.Id));
 
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);

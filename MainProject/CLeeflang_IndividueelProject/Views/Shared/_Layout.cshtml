@@ -3,71 +3,83 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - CLeeflang_IndividueelProject</title>
+    <title>@ViewData["Title"] - ProftaakDemo</title>
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/style.css">
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">CLeeflang_IndividueelProject</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        @if (User.IsInRole("User"))@*Only for businesses, change from isinrole user*@
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="TimeSlot" asp-action="ManageTimeSlot">Manage TimeSlots</a>
-                            </li>
-                        }
+    <aside class="sidebar">
+        <div class="toggle">
+            <a href="#" class="burger js-menu-toggle" data-toggle="collapse" data-target="#main-navbar">
+                <span></span>
+            </a>
+        </div>
 
-                        @if (User.Identity.IsAuthenticated)
-                        {
-
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-route-userName="" asp-controller="User" asp-action="UserPage">Welcome: @User.Identity.Name</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Logout">Logout</a>
-
-                            </li>
-                        }
-                        else
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Register">Register</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Login">Login</a>
-                            </li>
-
-                        }
-                    </ul>
-                </div>
+        <div class="side-inner">
+            <div class="" style="">
+                <img class="center" style="margin-left:auto; margin-right:auto;   display: block;" src="" alt="Logo Image" /><br>
             </div>
-        </nav>
-    </header>
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div class="profile">
+                    <img src="~/images/person_4.jpg" alt="Image" class="img-fluid">
+                    <h3 class="name">@User.Identity.Name</h3>
+                </div>
+                if (User.IsInRole("User"))
+                {
+                    <div class="counter d-flex justify-content-center">
+                        <div class="col">
+                            <strong class="number">0</strong>
+                            <span class="number-label">Reservations</span>
+                        </div>
+                    </div>
+                }
+            }
+
+            <div class="nav-menu">
+                <ul>
+                    <li><a asp-area="" asp-controller="Home" asp-action=""><span class="icon-home mr-3"></span>Home</a></li>
+
+                    @if (User.IsInRole("BusinessUser"))@*Only for businesses, change from isinrole user*@
+                    {
+                        <li><a asp-area="" asp-controller="TimeSlot" asp-action="ManageTimeSlot"><span class="icon-search2 mr-3"></span>Manage TimeSlots</a></li>
+
+                    }
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li><a asp-area="" asp-route-userName="" asp-controller="User" asp-action="UserPage"><span class="icon-search2 mr-3"></span>Profile</a></li>
+                        <li><a asp-area="" asp-controller="User" asp-action="Logout"><span class="icon-search2 mr-3"></span>Log Out</a></li>
+                    }
+                    else
+                    {
+                        <li><a asp-area="" asp-controller="User" asp-action="Register"><span class="icon-search2 mr-3"></span>Register</a></li>
+                        <li><a asp-area="" asp-controller="User" asp-action="Login"><span class="icon-search2 mr-3"></span>Login</a></li>
+                    }
+
+                    <li><a href="#"><span class="icon-pie-chart mr-3"></span>Contact</a></li>
+
+                </ul>
+            </div>
+        </div>
+
+    </aside>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - CLeeflang_IndividueelProject - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+
+
+    <script src="~/js/jquery-3.3.1.min.js"></script>
+    <script src="~/js/popper.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/main.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
