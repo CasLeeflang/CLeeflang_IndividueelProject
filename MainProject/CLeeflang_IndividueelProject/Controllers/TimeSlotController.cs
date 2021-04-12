@@ -5,15 +5,17 @@ using System.Threading.Tasks;
 using CLeeflang_IndividueelProject.Models;
 using Interface;
 using Logic;
+using Logic.BusinessUser;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CLeeflang_IndividueelProject.Controllers
 {
-    //[Authorize(Roles = "Business")]
+    [Authorize(Roles = "BusinessUser")]
     public class TimeSlotController : Controller
     {
         TimeSlotCollection _timeSlotCollection = new TimeSlotCollection();
+        BusinessUserCollection _businessUserCollection = new BusinessUserCollection();
 
         public IActionResult ManageTimeSlot()
         {
@@ -23,7 +25,7 @@ namespace CLeeflang_IndividueelProject.Controllers
         public IActionResult SaveTimeSlot(TimeSlotViewModel timeSlot)
         {
             // Map viewmodel to logic model
-            TimeSlotModel timeSlotLog = new TimeSlotModel(timeSlot.BusinessId, timeSlot.DayOTWeek, timeSlot.StartTime, timeSlot.EndTime, timeSlot.NumberOfSpots);
+            TimeSlotModel timeSlotLog = new TimeSlotModel(_businessUserCollection.GetBusinessId(User.Identity.Name), timeSlot.DayOTWeek, timeSlot.StartTime, timeSlot.EndTime, timeSlot.NumberOfSpots);
 
             // Validate the timespan
             if (timeSlotLog.Validate())

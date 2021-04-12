@@ -13,36 +13,29 @@ namespace Logic.BusinessUser
     {
         IBusinessUserCollectionDAL _BusinessUserCollectionDAL = BusinessUserFactoryDAL.CreateBusinessUserCollectionDAL();
 
-        private List<BusinessUserModel> businessUsers { get; set; } = new List<BusinessUserModel>();
+        private List<BusinessUserModel> businessUsers { get; } = new List<BusinessUserModel>();
 
         public void CreateBusinessUser(BusinessUserModel newBusinessUser)
         {
-            if (newBusinessUser.Validate())
+            BusinessUserDTO newBusinessUserDTO = new BusinessUserDTO
             {
-                BusinessUserDTO newBusinessUserDTO = new BusinessUserDTO
-                {
-                    BusinessName = newBusinessUser.BusinessName,
-                    UserName = newBusinessUser.UserName,
-                    Password = newBusinessUser.Password,
-                    Email = newBusinessUser.Email,
-                    Info = newBusinessUser.Info,
-                    Sector = newBusinessUser.Sector
-                };
+                BusinessName = newBusinessUser.BusinessName,
+                UserName = newBusinessUser.UserName,
+                Password = newBusinessUser.Password,
+                Email = newBusinessUser.Email,
+                Info = newBusinessUser.Info,
+                Sector = newBusinessUser.Sector
+            };
 
-                _BusinessUserCollectionDAL.CreateBusinessUser(newBusinessUserDTO);
-            }
+            _BusinessUserCollectionDAL.CreateBusinessUser(newBusinessUserDTO);
 
-            else
-            {
-                Console.WriteLine("Model invalid"); 
-            }
         }
 
-        public IEnumerable<BusinessUserModel> GetBusinessUserByUserNameOrEmail(string identifier)
+        public IEnumerable<BusinessUserModel> GetAllBusinesses()
         {
-            IEnumerable<BusinessUserDTO> businessUserDTOs = _BusinessUserCollectionDAL.GetBusinessByUserNameOrEmail(identifier);
 
-            foreach(var businessUserDTO in businessUserDTOs)
+            IEnumerable<BusinessUserDTO> businessUserDTOs = _BusinessUserCollectionDAL.GetAllBusinesses();
+            foreach (var businessUserDTO in businessUserDTOs)
             {
                 BusinessUserModel businessUser = new BusinessUserModel(businessUserDTO);
                 businessUsers.Add(businessUser);
@@ -50,5 +43,21 @@ namespace Logic.BusinessUser
             return businessUsers;
         }
 
+        public IEnumerable<BusinessUserModel> GetBusinessUserByUserNameOrEmail(string identifier)
+        {
+            IEnumerable<BusinessUserDTO> businessUserDTOs = _BusinessUserCollectionDAL.GetBusinessByUserNameOrEmail(identifier);
+
+            foreach (var businessUserDTO in businessUserDTOs)
+            {
+                BusinessUserModel businessUser = new BusinessUserModel(businessUserDTO);
+                businessUsers.Add(businessUser);
+            }
+            return businessUsers;
+        }
+
+        public int GetBusinessId(string userName)
+        {
+            return _BusinessUserCollectionDAL.GetBusinessId(userName);
+        }
     }
 }

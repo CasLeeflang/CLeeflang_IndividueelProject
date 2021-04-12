@@ -10,7 +10,7 @@ namespace Interface.User
     public interface IUserCollectionDAL
     {
         void CreateUser(UserDTO newUser);
-        IEnumerable<UserDTO> GetUserByUserNameOrEmail(string identifier);
+        IEnumerable<UserDTO> GetUserByUserNameOrEmail(string identifier, string password);
 
     }
 }

@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace CLeeflang_IndividueelProject.Models
 {
-    public class UserViewModel 
+    public class UserViewModel
     {
         [Required]
         [DataType(DataType.Text)]
-
+        [RegularExpression(@"^[0-9a-zA-Z''-'\s]{1,40}$", ErrorMessage = "special characters are not  allowed.")]
         public string UserName { get; set; }
 
         [Required]

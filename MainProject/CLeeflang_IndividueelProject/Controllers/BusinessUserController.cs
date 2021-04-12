@@ -1,9 +1,12 @@
 ﻿using CLeeflang_IndividueelProject.Models.BusinessUser;
 using Logic.BusinessUser;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web.Helpers;
 using Variables;
@@ -63,7 +66,49 @@ namespace CLeeflang_IndividueelProject.Controllers
             }
         }
 
+        [HttpPost]
+        public IActionResult Login(BusinessLoginModel logDetails)
+        {
+            BusinessUserModel loginBusinessUser = _businessUserCollection.GetBusinessUserByUserNameOrEmail(logDetails.Identifier).FirstOrDefault();
 
+            if(loginBusinessUser != null)
+            {
+                if (Crypto.VerifyHashedPassword(loginBusinessUser.Password, logDetails.Password + _salt) && (logDetails.Identifier == loginBusinessUser.UserName || logDetails.Identifier == loginBusinessUser.Email))
+                {
+                    logDetails.Password = null;
+                    Authenticate(loginBusinessUser);
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ViewBag.LoginError = "Username or Password incorrect";
+                    return View();
+                }
+            }
 
+            else
+            {
+                ViewBag.LoginError = "Username or Password incorrect";
+                return View();
+            }
+
+        }
+
+        public void Authenticate(BusinessUserModel businessUser)     // Method to authenticate the user once the password is checked
+        {
+            var claims = new List<Claim>();
+
+            claims.Add(new Claim(ClaimTypes.Role, "BusinessUser"));
+            claims.Add(new Claim(ClaimTypes.Name, businessUser.UserName));
+            //claims.Add(new Claim(ClaimTypes.NameIdentifier, user.Id));
+
+            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            var authProperties = new AuthenticationProperties();
+
+            HttpContext.SignInAsync(
+                CookieAuthenticationDefaults.AuthenticationScheme,
+                new ClaimsPrincipal(claimsIdentity),
+                authProperties);
+        }
     }
 }

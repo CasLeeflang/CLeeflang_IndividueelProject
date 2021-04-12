@@ -13,5 +13,8 @@ namespace Interface.BusinessUser
 
         IEnumerable<BusinessUserDTO> GetBusinessByUserNameOrEmail(string identifier);
 
+        int GetBusinessId(string userName);
+
+        IEnumerable<BusinessUserDTO> GetAllBusinesses();
     }
 }

@@ -14,6 +14,7 @@ namespace CLeeflang_IndividueelProject.Models.BusinessUser
 
         [Required]
         [DataType(DataType.Text)]
+        [RegularExpression(@"^[0-9a-zA-Z''-'\s]{1,40}$", ErrorMessage = "special characters are not  allowed.")]
         public string UserName { get; set; }
 
         [Required]
@@ -30,7 +31,7 @@ namespace CLeeflang_IndividueelProject.Models.BusinessUser
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
-        [Required]
+        //[Required]
         [DataType(DataType.Text)]
         public string Sector { get; set; }
     }

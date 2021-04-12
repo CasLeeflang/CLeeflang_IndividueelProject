@@ -12,7 +12,7 @@ namespace Logic
     {
         ITimeSlotCollectionDAL _timeSlotCollectionDAL = TimeSlotFactoryDAL.CreateTimeSlotCollectionDAL();
 
-        private List<TimeSlotModel> timeSlots { get; set; } = new List<TimeSlotModel>();
+        private List<TimeSlotModel> timeSlots { get;} = new List<TimeSlotModel>();
 
         public void CreateTimeSlot(TimeSlotModel newTimeSlot)
         {

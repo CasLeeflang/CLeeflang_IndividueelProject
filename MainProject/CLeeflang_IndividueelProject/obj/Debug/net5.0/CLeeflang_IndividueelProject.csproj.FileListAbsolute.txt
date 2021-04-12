@@ -427,3 +427,5 @@ C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeefla
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\obj\Debug\net5.0\Razor\Views\User\Login.cshtml.g.cs
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\obj\Debug\net5.0\Razor\Views\TimeSlot\ManageTimeSlot.cshtml.g.cs
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\obj\Debug\net5.0\Razor\Views\User\UserPage.cshtml.g.cs
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\obj\Debug\net5.0\Razor\Views\BusinessUser\Register.cshtml.g.cs
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\obj\Debug\net5.0\Razor\Views\BusinessUser\Login.cshtml.g.cs

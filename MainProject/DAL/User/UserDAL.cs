@@ -19,9 +19,9 @@ namespace DAL.User
 
             DBManager.SaveData(sql, newUser);
         }
-        public IEnumerable<UserDTO> GetUserByUserNameOrEmail(string identifier)
+        public IEnumerable<UserDTO> GetUserByUserNameOrEmail(string identifier, string password)
         {
-            string sql = $"select * from dbo.[User] where UserName = '{identifier}' or Email = '{identifier}'";
+            string sql = $"select * from dbo.[User] where UserName = '{identifier}' or Email = '{identifier}' and Password = '{password}'";
 
             return DBManager.LoadData<UserDTO>(sql);
         }
@@ -36,6 +36,12 @@ namespace DAL.User
             string sql = $"select * from dbo.[User] where (UserName = '{userName}' or Email = '{email}');";
 
             return DBManager.LoadData<UserDTO>(sql);
+        }
+
+        public IEnumerable<UserDTO> GetUserByUserName(string userName)
+        {
+            string sql = $"";
+            return null as IEnumerable<UserDTO>;
         }
 
         public bool ValidateNewUser(string userName, string email)
