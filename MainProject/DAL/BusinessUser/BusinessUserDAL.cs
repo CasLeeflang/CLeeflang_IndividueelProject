@@ -43,7 +43,7 @@ namespace DAL.BusinessUser
         {
             string sql = $"select * from dbo.BusinessUser;";
 
-            return DBManager.LoadData<BusinessUserDTO>(sql, ");
+            return DBManager.LoadData<BusinessUserDTO>(sql);
         }
         public IEnumerable<BusinessUserDTO> CheckBusinessUserNameEmail(string userName, string email)
         {
