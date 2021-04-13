@@ -1,6 +1,5 @@
 ﻿using Dapper;
 using DTOs;
-using SQLDataAccess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,18 +7,20 @@ using System.Text;
 using System.Threading.Tasks;
 using Variables;
 using Contract_Layer.User;
+using DAL.DataBase;
 
 namespace DAL.User
 {
     public class UserDAL : IUserDAL, IUserCollectionDAL
     {
+        DBManager _dBManager = new DBManager();
         public void CreateUser(UserDTO newUser)
         {
             // Prepare SQL
             string sql = @"insert into dbo.[User] (UserName, FirstName, LastName, Password, Email, DoB)
                             values(@UserName, @FirstName, @LastName, @Password, @Email, @DoB);";
 
-            DBManager.SaveData(sql, newUser);
+            _dBManager.SaveData(sql, newUser);
         }  
         
         public IEnumerable<UserDTO> GetUserByUserName(string userName)
@@ -35,7 +36,7 @@ namespace DAL.User
 
             var parameters = new DynamicParameters(dictionary);
 
-            return DBManager.LoadData<UserDTO>(sql, parameters);
+            return _dBManager.LoadData<UserDTO>(sql, parameters);
         }
 
         public IEnumerable<UserDTO> GetUserByUserNameOrEmail(string identifier)
@@ -51,7 +52,7 @@ namespace DAL.User
 
             var parameters = new DynamicParameters(dictionary);
 
-            return DBManager.LoadData<UserDTO>(sql, parameters);
+            return _dBManager.LoadData<UserDTO>(sql, parameters);
         }
 
         public void UpdateUser(UserDTO updatedUser)
@@ -72,7 +73,7 @@ namespace DAL.User
 
             var parameters = new DynamicParameters(dictionary);
 
-            return DBManager.LoadData<UserDTO>(sql, parameters);
+            return _dBManager.LoadData<UserDTO>(sql, parameters);
         }
     }
 }

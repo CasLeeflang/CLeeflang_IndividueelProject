@@ -1,6 +1,6 @@
 ﻿using Dapper;
 using DTOs;
-using SQLDataAccess;
+
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -8,16 +8,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Contract_Layer.BusinessUser;
+using DAL.DataBase;
 
 namespace DAL.BusinessUser
 {
     public class BusinessUserDAL : IBusinessUserDAL, IBusinessUserCollectionDAL
     {
+        DBManager _dBManager = new DBManager();
         public void CreateBusinessUser(BusinessUserDTO newBusinessUser)
         {
             string sql = @"insert into dbo.BusinessUser (BusinessName, UserName, Password, Email, Info, Sector)
                           values(@BusinessName, @UserName, @Password, @Email, @Info, @Sector);";
-            DBManager.SaveData(sql, newBusinessUser);
+            _dBManager.SaveData(sql, newBusinessUser);
         }
 
         public IEnumerable<BusinessUserDTO> GetBusinessByUserNameOrEmail(string identifier)
@@ -31,7 +33,7 @@ namespace DAL.BusinessUser
 
             var parameters = new DynamicParameters(dictionary);
 
-            return DBManager.LoadData<BusinessUserDTO>(sql, parameters);
+            return _dBManager.LoadData<BusinessUserDTO>(sql, parameters);
         }
 
         public void UpdateBusinessUser(BusinessUserDTO updatedBusinessUser)
@@ -43,7 +45,7 @@ namespace DAL.BusinessUser
         {
             string sql = $"select * from dbo.BusinessUser;";
 
-            return DBManager.LoadAllData<BusinessUserDTO>(sql);
+            return _dBManager.LoadAllData<BusinessUserDTO>(sql);
         }
   
 
@@ -60,7 +62,7 @@ namespace DAL.BusinessUser
 
             var parameters = new DynamicParameters(dictionary);
 
-            BusinessUserDTO businessUserDTO = DBManager.LoadData<BusinessUserDTO>(sql, parameters).FirstOrDefault();
+            BusinessUserDTO businessUserDTO = _dBManager.LoadData<BusinessUserDTO>(sql, parameters).FirstOrDefault();
 
             if (businessUserDTO != null)
             {
@@ -111,7 +113,7 @@ namespace DAL.BusinessUser
 
             var parameters = new DynamicParameters(dictionary);
 
-            return DBManager.LoadData<BusinessUserDTO>(sql, parameters);
+            return _dBManager.LoadData<BusinessUserDTO>(sql, parameters);
         }
     }
 }

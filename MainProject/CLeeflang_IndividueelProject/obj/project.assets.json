@@ -2050,6 +2050,7 @@
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
           "DTOs": "1.0.0",
+          "Dapper": "2.0.78",
           "Variables": "1.0.0"
         },
         "compile": {

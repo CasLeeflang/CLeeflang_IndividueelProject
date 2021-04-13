@@ -17,15 +17,22 @@ namespace DAL.DataBase
         public DBManager(IConfiguration configuration)
         {
             _configuration = configuration;
+
         }
+
+        public DBManager()
+        {
+        }
+
         public string GetConnectionString()
         {
-            return _configuration.GetConnectionString("ConnDb");
+            //return _configuration.GetConnectionString("ConnDb");
+            return "Data Source=DESKTOP-KQ65BAV;Initial Catalog=Database;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         }
 
         public int SaveData<T>(string sql, T data)
         {
-            using( IDbConnection cnn = new SqlConnection(GetConnectionString()))
+            using (IDbConnection cnn = new SqlConnection(GetConnectionString()))
             {
                 return cnn.Execute(sql, data);
             }
@@ -43,7 +50,7 @@ namespace DAL.DataBase
                 {
                     throw new Exception();
                 }
-  
+
             }
         }
 

@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "4fboMz8ExqoC1N1hbH7fAk4emI+Rn6aK8eIodKHpj1HRzFqxNXTknhuLjjF8cm6tzyo0YpN5KAbVMCNAsAsMEQ==",
+  "dgSpecHash": "xq6NxqRP8tdnpVtp5KlcACfARTpu1eKToJL8zFpm/MXfMTuqogOUANVf71ey3/VeoYKBztdrNCQBzQ/xlC324Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Interface\\Contract Layer.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\casle\\.nuget\\packages\\dapper\\2.0.78\\dapper.2.0.78.nupkg.sha512"
+  ],
   "logs": []
 }

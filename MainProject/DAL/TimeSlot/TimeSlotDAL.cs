@@ -1,23 +1,24 @@
 ﻿using Dapper;
 using DTOs;
-using SQLDataAccess;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Contract_Layer.TimeSlot;
+using DAL.DataBase;
 
 namespace DAL.TimeSlot
 {
     public class TimeSlotDAL : ITimeSlotDAL, ITimeSlotCollectionDAL
     {
+        DBManager _dBManager = new DBManager();
         public void CreateTimeSlot(TimeSlotDTO newTimeSlot)
         {
             //Prepare sql query
             string sql = @"insert into dbo.TimeSlot (BusinessId, DayOTWeek, StartTime, EndTime, NumberOfSpots) 
                            values(@BusinessId, @DayOTWeek, @StartTime, @EndTime, @NumberOfSpots);";
 
-            DBManager.SaveData(sql, newTimeSlot);
+            _dBManager.SaveData(sql, newTimeSlot);
         }
 
         public IEnumerable<TimeSlotDTO> LoadTimeSlotByBusinessId(int businessId)
@@ -33,7 +34,7 @@ namespace DAL.TimeSlot
 
             var parameters = new DynamicParameters(dictionary);
 
-            return DBManager.LoadData<TimeSlotDTO>(sql, parameters);
+            return _dBManager.LoadData<TimeSlotDTO>(sql, parameters);
         }
 
         public void DeleteTimeSlot(int id)
@@ -50,7 +51,7 @@ namespace DAL.TimeSlot
             var parameters = new DynamicParameters(dictionary);
 
 
-            DBManager.DeleteData<TimeSlotDTO>(sql, parameters);
+            _dBManager.DeleteData<TimeSlotDTO>(sql, parameters);
         }
 
         public void UpdateTimeSlot()
