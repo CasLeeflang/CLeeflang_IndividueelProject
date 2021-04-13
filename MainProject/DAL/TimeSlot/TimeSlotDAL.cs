@@ -40,7 +40,17 @@ namespace DAL.TimeSlot
         {
             string sql = $"delete from dbo.TimeSlot WHERE Id = @id";
 
-            DBManager.DeleteData<TimeSlotDTO>(sql);
+            var dictionary = new Dictionary<string, object>
+            {
+                {"@id", id},
+
+            };
+
+
+            var parameters = new DynamicParameters(dictionary);
+
+
+            DBManager.DeleteData<TimeSlotDTO>(sql, parameters);
         }
 
         public void UpdateTimeSlot()

@@ -6,18 +6,24 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using Microsoft.Extensions.Configuration;
 
-
-namespace SQLDataAccess
+namespace DAL.DataBase
 {
     public class DBManager
     {
-        public static string GetConnectionString()
+        private readonly IConfiguration _configuration;
+
+        public DBManager(IConfiguration configuration)
         {
-            return "Data Source=DESKTOP-KQ65BAV;Initial Catalog=Database;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            _configuration = configuration;
+        }
+        public string GetConnectionString()
+        {
+            return _configuration.GetConnectionString("ConnDb");
         }
 
-        public static int SaveData<T>(string sql, T data)
+        public int SaveData<T>(string sql, T data)
         {
             using( IDbConnection cnn = new SqlConnection(GetConnectionString()))
             {
@@ -25,7 +31,7 @@ namespace SQLDataAccess
             }
         }
 
-        public static IEnumerable<T> LoadData<T>(string sql, DynamicParameters parameters)
+        public IEnumerable<T> LoadData<T>(string sql, DynamicParameters parameters)
         {
             using (IDbConnection cnn = new SqlConnection(GetConnectionString()))
             {
@@ -41,7 +47,7 @@ namespace SQLDataAccess
             }
         }
 
-        public static IEnumerable<T> LoadAllData<T>(string sql)
+        public IEnumerable<T> LoadAllData<T>(string sql)
         {
             using (IDbConnection cnn = new SqlConnection(GetConnectionString()))
             {
@@ -57,7 +63,7 @@ namespace SQLDataAccess
             }
         }
 
-        public static int DeleteData<T>(string sql, DynamicParameters parameters)
+        public int DeleteData<T>(string sql, DynamicParameters parameters)
         {
             using (IDbConnection cnn = new SqlConnection(GetConnectionString()))
             {

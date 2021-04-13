@@ -52,8 +52,8 @@ namespace DAL.User
 
             };
 
-
             var parameters = new DynamicParameters(dictionary);
+
             return DBManager.LoadData<UserDTO>(sql, parameters);
         }
 

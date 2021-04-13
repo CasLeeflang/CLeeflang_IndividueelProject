@@ -12,7 +12,9 @@ namespace Logic.User
     public class UserCollection
     {
         IUserCollectionDAL _userCollectionDAL = UserFactoryDAL.CreateUserCollectionDAL();
+
         private List<UserModel> users { get;} = new List<UserModel>();
+
         public void CreateUser(UserModel newUser)
         {
 

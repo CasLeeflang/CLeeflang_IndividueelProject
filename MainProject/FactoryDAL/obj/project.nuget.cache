@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "rtZgqloi1ZuDradUVFdBl8eFznt6+Ml8SOm1EHpAZfR85PlyntdIcOJ1T4aZz9b/L6MxNJxCoXxMXZBNfWpRlg==",
+  "dgSpecHash": "9UzSGR/fes/IbsBqsL1vl/+AxW9DRk1Y7E1Ba8suyMaIflSww4mSwfXNY4DIZgBO+PoKVF3Fol4LwCKoT6s2JA==",
   "success": true,
   "projectFilePath": "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\FactoryDAL\\FactoryDAL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\casle\\.nuget\\packages\\dapper\\2.0.78\\dapper.2.0.78.nupkg.sha512",
+    "C:\\Users\\casle\\.nuget\\packages\\microsoft.extensions.configuration\\5.0.0\\microsoft.extensions.configuration.5.0.0.nupkg.sha512",
+    "C:\\Users\\casle\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0\\microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\casle\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
     "C:\\Users\\casle\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\casle\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\casle\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
