@@ -9,12 +9,16 @@ using System.Text;
 using System.Threading.Tasks;
 using Contract_Layer.BusinessUser;
 using DAL.DataBase;
+using Microsoft.Extensions.Configuration;
 
 namespace DAL.BusinessUser
 {
     public class BusinessUserDAL : IBusinessUserDAL, IBusinessUserCollectionDAL
     {
+
+
         DBManager _dBManager = new DBManager();
+
         public void CreateBusinessUser(BusinessUserDTO newBusinessUser)
         {
             string sql = @"insert into dbo.BusinessUser (BusinessName, UserName, Password, Email, Info, Sector)

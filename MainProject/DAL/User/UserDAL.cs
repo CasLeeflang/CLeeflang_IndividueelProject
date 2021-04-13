@@ -8,11 +8,14 @@ using System.Threading.Tasks;
 using Variables;
 using Contract_Layer.User;
 using DAL.DataBase;
+using Microsoft.Extensions.Configuration;
 
 namespace DAL.User
 {
     public class UserDAL : IUserDAL, IUserCollectionDAL
     {
+
+
         DBManager _dBManager = new DBManager();
         public void CreateUser(UserDTO newUser)
         {
@@ -25,7 +28,7 @@ namespace DAL.User
         
         public IEnumerable<UserDTO> GetUserByUserName(string userName)
         {
-            string sql = $"select * dbo.[User] where UserName = @userName";
+            string sql = $"select * from dbo.[User] where UserName = @userName";
 
             var dictionary = new Dictionary<string, object>
             {

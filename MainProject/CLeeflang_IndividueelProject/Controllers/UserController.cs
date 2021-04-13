@@ -41,8 +41,8 @@ namespace CLeeflang_IndividueelProject.Controllers
 
         public IActionResult UserPage()
         {
-
-            return View();
+            UserModel user = _userCollection.GetUserByUserName(User.Identity.Name).FirstOrDefault();
+            return View(user);
         }
 
         [HttpPost]

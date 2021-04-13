@@ -29,6 +29,7 @@ namespace CLeeflang_IndividueelProject
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddSingleton<IConfiguration>(Configuration);
 
             Action<PasswordSalt> passwordSalt = (opt =>
             {
@@ -37,6 +38,7 @@ namespace CLeeflang_IndividueelProject
             services.Configure(passwordSalt);
             services.AddSingleton(resolver => resolver.GetRequiredService<IOptions<PasswordSalt>>().Value);
 
+            
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 

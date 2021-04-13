@@ -6,11 +6,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Contract_Layer.TimeSlot;
 using DAL.DataBase;
+using Microsoft.Extensions.Configuration;
 
 namespace DAL.TimeSlot
 {
     public class TimeSlotDAL : ITimeSlotDAL, ITimeSlotCollectionDAL
     {
+
+
         DBManager _dBManager = new DBManager();
         public void CreateTimeSlot(TimeSlotDTO newTimeSlot)
         {

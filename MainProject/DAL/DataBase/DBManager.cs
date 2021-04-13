@@ -2,31 +2,24 @@
 using System.Collections.Generic;
 using System.Text;
 using Dapper;
-using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using Microsoft.Extensions.Configuration;
 
+
 namespace DAL.DataBase
 {
     public class DBManager
     {
-        private readonly IConfiguration _configuration;
-
-        public DBManager(IConfiguration configuration)
-        {
-            _configuration = configuration;
-
-        }
-        public DBManager()
-        {
-        }
+        //private readonly IConfiguration _configuration;
+        private readonly string connectionString = "Data Source=DESKTOP-KQ65BAV;Initial Catalog=Database;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         public string GetConnectionString()
         {
+
             //return _configuration.GetConnectionString("ConnDb");
-            return "Data Source=DESKTOP-KQ65BAV;Initial Catalog=Database;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            return connectionString;
         }
 
         public int SaveData<T>(string sql, T data)
@@ -41,14 +34,9 @@ namespace DAL.DataBase
         {
             using (IDbConnection cnn = new SqlConnection(GetConnectionString()))
             {
-                try
-                {
-                    return cnn.Query<T>(sql, parameters);
-                }
-                catch
-                {
-                    throw new Exception();
-                }
+
+                return cnn.Query<T>(sql, parameters);
+
 
             }
         }
@@ -57,14 +45,10 @@ namespace DAL.DataBase
         {
             using (IDbConnection cnn = new SqlConnection(GetConnectionString()))
             {
-                try
-                {
-                    return cnn.Query<T>(sql);
-                }
-                catch
-                {
-                    throw new Exception();
-                }
+
+                return cnn.Query<T>(sql);
+
+
 
             }
         }

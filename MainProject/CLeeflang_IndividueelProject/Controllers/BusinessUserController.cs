@@ -18,7 +18,7 @@ namespace CLeeflang_IndividueelProject.Controllers
     {
         // Initialise the Salt variable (defined in startup.cs)
         private static string _salt;
-
+        
         public BusinessUserController(PasswordSalt PassSalt)
         {
             _salt = PassSalt.Salt;      // Set Salt
