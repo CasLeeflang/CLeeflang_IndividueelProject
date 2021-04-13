@@ -31,7 +31,7 @@ namespace CLeeflang_IndividueelProject.Models.BusinessUser
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
-        //[Required]
+        [Required]
         [DataType(DataType.Text)]
         public string Sector { get; set; }
     }

@@ -33,11 +33,10 @@
     ".NETCoreApp,Version=v5.0": {
       "CLeeflang_IndividueelProject/1.0.0": {
         "dependencies": {
-          "Interface": "1.0.0",
+          "DTOs": "1.0.0",
           "Logic": "1.0.0",
           "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": "3.1.12",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "5.0.2",
-          "Models": "1.0.0",
           "SQLDataAccess": "1.0.0",
           "System.Web.Helpers.Crypto": "3.2.3",
           "Variables": "1.0.0",
@@ -1739,9 +1738,21 @@
           "System.Xml.ReaderWriter": "4.3.0"
         }
       },
+      "Contract Layer/1.0.0": {
+        "dependencies": {
+          "DTOs": "1.0.0",
+          "Variables": "1.0.0"
+        },
+        "runtime": {
+          "Contract Layer.dll": {}
+        },
+        "compile": {
+          "Contract Layer.dll": {}
+        }
+      },
       "DAL/1.0.0": {
         "dependencies": {
-          "Interface": "1.0.0",
+          "Contract Layer": "1.0.0",
           "Microsoft.Extensions.Configuration": "5.0.0",
           "SQLDataAccess": "1.0.0",
           "Variables": "1.0.0"
@@ -1753,48 +1764,36 @@
           "DAL.dll": {}
         }
       },
-      "FactoryDAL/1.0.0": {
-        "dependencies": {
-          "DAL": "1.0.0",
-          "Interface": "1.0.0"
-        },
+      "DTOs/1.0.0": {
         "runtime": {
-          "FactoryDAL.dll": {}
+          "DTOs.dll": {}
         },
         "compile": {
-          "FactoryDAL.dll": {}
+          "DTOs.dll": {}
         }
       },
-      "Interface/1.0.0": {
+      "FactoryDAL/1.0.0": {
         "dependencies": {
-          "Models": "1.0.0",
-          "Variables": "1.0.0"
+          "Contract Layer": "1.0.0",
+          "DAL": "1.0.0"
         },
         "runtime": {
-          "Interface.dll": {}
+          "FactoryDAL.dll": {}
         },
         "compile": {
-          "Interface.dll": {}
+          "FactoryDAL.dll": {}
         }
       },
       "Logic/1.0.0": {
         "dependencies": {
-          "FactoryDAL": "1.0.0",
-          "Models": "1.0.0"
+          "DTOs": "1.0.0",
+          "FactoryDAL": "1.0.0"
         },
         "runtime": {
           "Logic.dll": {}
         },
         "compile": {
           "Logic.dll": {}
-        }
-      },
-      "Models/1.0.0": {
-        "runtime": {
-          "Models.dll": {}
-        },
-        "compile": {
-          "Models.dll": {}
         }
       },
       "SQLDataAccess/1.0.0": {
@@ -4398,7 +4397,17 @@
       "path": "system.xml.xdocument/4.3.0",
       "hashPath": "system.xml.xdocument.4.3.0.nupkg.sha512"
     },
+    "Contract Layer/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "DAL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DTOs/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -4408,17 +4417,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Interface/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
     "Logic/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Models/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

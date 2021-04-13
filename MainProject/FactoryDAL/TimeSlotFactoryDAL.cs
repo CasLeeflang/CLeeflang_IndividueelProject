@@ -1,5 +1,5 @@
-﻿using DAL.TimeSlot;
-using Interface.TimeSlot;
+﻿using Contract_Layer.TimeSlot;
+using DAL.TimeSlot;
 using System;
 
 namespace FactoryDAL

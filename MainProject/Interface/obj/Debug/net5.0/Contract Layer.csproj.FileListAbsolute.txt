@@ -1,0 +1,17 @@
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\bin\Debug\net5.0\Contract Layer.deps.json
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\bin\Debug\net5.0\Contract Layer.dll
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\bin\Debug\net5.0\ref\Contract Layer.dll
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\bin\Debug\net5.0\Contract Layer.pdb
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\bin\Debug\net5.0\Variables.dll
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\bin\Debug\net5.0\Variables.pdb
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\obj\Debug\net5.0\Contract Layer.csprojAssemblyReference.cache
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\obj\Debug\net5.0\Contract Layer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\obj\Debug\net5.0\Contract Layer.AssemblyInfoInputs.cache
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\obj\Debug\net5.0\Contract Layer.AssemblyInfo.cs
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\obj\Debug\net5.0\Contract Layer.csproj.CoreCompileInputs.cache
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\obj\Debug\net5.0\Contract Layer.csproj.CopyComplete
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\obj\Debug\net5.0\Contract Layer.dll
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\obj\Debug\net5.0\ref\Contract Layer.dll
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\obj\Debug\net5.0\Contract Layer.pdb
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\bin\Debug\net5.0\DTOs.dll
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\bin\Debug\net5.0\DTOs.pdb

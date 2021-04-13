@@ -27,7 +27,7 @@ namespace CLeeflang_IndividueelProject.Controllers
             _salt = PassSalt.Salt;      // Set Salt
         }
 
-
+        //  Dependicy injection?
         UserCollection _userCollection = new UserCollection();
 
         public IActionResult Register()
@@ -87,6 +87,7 @@ namespace CLeeflang_IndividueelProject.Controllers
             }
             else
             {
+                //  If this far, something went wrong and abort
                 ViewBag.ErrorMessage = "Oops, something went wrong. Please try again!";
                 return View();
             }
@@ -102,7 +103,7 @@ namespace CLeeflang_IndividueelProject.Controllers
 
             UserModel loginUser = _userCollection.GetUserByUserNameOrEmail(LogDetails.Identifier).FirstOrDefault();    // Get the User with the specic identifier which equals the username or email
 
-            if (loginUser != null)    // Check if the password corresponds with the hashed password in the DB
+            if (loginUser != null)
             {
                 if (Crypto.VerifyHashedPassword(loginUser.Password, LogDetails.Password + _salt) && (LogDetails.Identifier == loginUser.UserName || LogDetails.Identifier == loginUser.Email))
                 {
@@ -130,8 +131,8 @@ namespace CLeeflang_IndividueelProject.Controllers
         {
             var claims = new List<Claim>();
 
-            claims.Add(new Claim(ClaimTypes.Role, "User"));          //  Define the role
-            claims.Add(new Claim(ClaimTypes.Name, user.UserName));  //  Define the UserName
+            claims.Add(new Claim(ClaimTypes.Role, "User"));             //  Define the role
+            claims.Add(new Claim(ClaimTypes.Name, user.UserName));      //  Define the UserName
 
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             var authProperties = new AuthenticationProperties();

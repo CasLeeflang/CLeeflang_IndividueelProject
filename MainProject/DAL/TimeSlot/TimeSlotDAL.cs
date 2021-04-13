@@ -1,11 +1,11 @@
 ﻿using Dapper;
-using Interface.TimeSlot;
-using Models;
+using DTOs;
 using SQLDataAccess;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Contract_Layer.TimeSlot;
 
 namespace DAL.TimeSlot
 {

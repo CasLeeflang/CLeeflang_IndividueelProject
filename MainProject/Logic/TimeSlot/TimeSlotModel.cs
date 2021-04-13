@@ -1,8 +1,8 @@
 ﻿using FactoryDAL;
-using Interface;
-using Interface.TimeSlot;
-using Models;
+using Contract_Layer;
+using DTOs;
 using System;
+using Contract_Layer.TimeSlot;
 
 namespace Logic
 {

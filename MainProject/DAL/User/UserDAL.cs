@@ -1,6 +1,5 @@
 ﻿using Dapper;
-using Interface.User;
-using Models;
+using DTOs;
 using SQLDataAccess;
 using System;
 using System.Collections.Generic;
@@ -8,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Variables;
+using Contract_Layer.User;
 
 namespace DAL.User
 {
@@ -58,35 +58,6 @@ namespace DAL.User
         {
             string sql = $"";
         }
-
-        //public ValidationResponse ValidateNewUser(string userName, string email)
-        //{
-
-        //    ValidationResponse _registerValidation = new ValidationResponse();
-
-        //    UserDTO existingUser = CheckUserNameEmail(userName, email).FirstOrDefault();
-
-
-        //    if (existingUser == null)
-        //    {
-        //        _registerValidation.Valid = true;
-        //    }
-        //    else
-        //    {
-        //        if(existingUser.UserName == userName)
-        //        {
-        //            _registerValidation.Valid = false;
-        //            _registerValidation.Error = "UserName";
-        //        }
-        //        else if(existingUser.Email == email)
-        //        {
-        //            _registerValidation.Valid = false;
-        //            _registerValidation.Error = "Email";
-        //        }
-        //    }
-
-        //    return _registerValidation;
-        //}    
         
         public IEnumerable<UserDTO> CheckUserNameEmail(string userName, string email)       // Used for checking whether the username is in use or not when registering
         {

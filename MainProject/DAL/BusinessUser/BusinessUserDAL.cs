@@ -1,6 +1,5 @@
 ﻿using Dapper;
-using Interface.BusinessUser;
-using Models;
+using DTOs;
 using SQLDataAccess;
 using System;
 using System.Collections.Generic;
@@ -8,6 +7,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Contract_Layer.BusinessUser;
 
 namespace DAL.BusinessUser
 {

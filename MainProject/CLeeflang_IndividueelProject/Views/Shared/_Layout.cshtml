@@ -48,12 +48,16 @@
                         <li><a asp-area="" asp-controller="TimeSlot" asp-action="ManageTimeSlot"><span class="icon-search2 mr-3"></span>Manage TimeSlots</a></li>
                     }
 
-                    @if (User.Identity.IsAuthenticated)
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("User"))
                     {
                         <li><a asp-area="" asp-route-userName="" asp-controller="User" asp-action="UserPage"><span class="icon-search2 mr-3"></span>Profile</a></li>
                         <li><a asp-area="" asp-controller="User" asp-action="Logout"><span class="icon-search2 mr-3"></span>Log Out</a></li>
                     }
-                    else
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("BusinessUser"))
+                    {
+                        <li><a asp-area="" asp-controller="BusinessUser" asp-action="Logout"><span class="icon-search2 mr-3"></span>Log Out</a></li>
+                    }
+                    @if(!User.Identity.IsAuthenticated)
                     {
                         <li><a asp-area="" asp-controller="User" asp-action="Register"><span class="icon-search2 mr-3"></span>Register</a></li>
                         <li><a asp-area="" asp-controller="User" asp-action="Login"><span class="icon-search2 mr-3"></span>Login</a></li>

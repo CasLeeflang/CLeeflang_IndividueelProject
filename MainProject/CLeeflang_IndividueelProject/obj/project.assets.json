@@ -2049,7 +2049,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
-          "Models": "1.0.0",
+          "DTOs": "1.0.0",
           "Variables": "1.0.0"
         },
         "compile": {
@@ -2075,6 +2075,16 @@
           "bin/placeholder/DAL.dll": {}
         }
       },
+      "DTOs/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/DTOs.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DTOs.dll": {}
+        }
+      },
       "FactoryDAL/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
@@ -2093,24 +2103,14 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
-          "FactoryDAL": "1.0.0",
-          "Models": "1.0.0"
+          "DTOs": "1.0.0",
+          "FactoryDAL": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Logic.dll": {}
         },
         "runtime": {
           "bin/placeholder/Logic.dll": {}
-        }
-      },
-      "Models/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
-        "compile": {
-          "bin/placeholder/Models.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Models.dll": {}
         }
       },
       "SQLDataAccess/1.0.0": {
@@ -7016,6 +7016,11 @@
       "path": "../DAL/DAL.csproj",
       "msbuildProject": "../DAL/DAL.csproj"
     },
+    "DTOs/1.0.0": {
+      "type": "project",
+      "path": "../Models/DTOs.csproj",
+      "msbuildProject": "../Models/DTOs.csproj"
+    },
     "FactoryDAL/1.0.0": {
       "type": "project",
       "path": "../FactoryDAL/FactoryDAL.csproj",
@@ -7025,11 +7030,6 @@
       "type": "project",
       "path": "../Logic/Logic.csproj",
       "msbuildProject": "../Logic/Logic.csproj"
-    },
-    "Models/1.0.0": {
-      "type": "project",
-      "path": "../Models/Models.csproj",
-      "msbuildProject": "../Models/Models.csproj"
     },
     "SQLDataAccess/1.0.0": {
       "type": "project",
@@ -7045,10 +7045,10 @@
   "projectFileDependencyGroups": {
     "net5.0": [
       "Contract Layer >= 1.0.0",
+      "DTOs >= 1.0.0",
       "Logic >= 1.0.0",
       "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation >= 3.1.12",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 5.0.2",
-      "Models >= 1.0.0",
       "SQLDataAccess >= 1.0.0",
       "System.Web.Helpers.Crypto >= 3.2.3",
       "Variables >= 1.0.0"
@@ -7087,8 +7087,8 @@
             "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Logic\\Logic.csproj": {
               "projectPath": "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Logic\\Logic.csproj"
             },
-            "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Models\\Models.csproj": {
-              "projectPath": "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Models\\Models.csproj"
+            "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Models\\DTOs.csproj": {
+              "projectPath": "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Models\\DTOs.csproj"
             },
             "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\SQLDataAccess\\SQLDataAccess.csproj": {
               "projectPath": "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\SQLDataAccess\\SQLDataAccess.csproj"

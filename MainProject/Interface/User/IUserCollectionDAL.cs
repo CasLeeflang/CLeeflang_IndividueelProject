@@ -1,11 +1,11 @@
-﻿using Models;
+﻿using DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Interface.User
+namespace Contract_Layer.User
 {
     public interface IUserCollectionDAL
     {

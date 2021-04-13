@@ -18,14 +18,13 @@ namespace CLeeflang_IndividueelProject.Controllers
     {
         // Initialise the Salt variable (defined in startup.cs)
         private static string _salt;
-        //private readonly UserManager<UserModel> _userManager;
 
-        public BusinessUserController(PasswordSalt PassSalt /*, UserManager<UserModel> userManager*/)
+        public BusinessUserController(PasswordSalt PassSalt)
         {
             _salt = PassSalt.Salt;      // Set Salt
-            //_userManager = userManager;
         }
-
+        
+        //  Dependicy injection?
         BusinessUserCollection _businessUserCollection = new BusinessUserCollection();
 
         public IActionResult Register()
@@ -41,13 +40,16 @@ namespace CLeeflang_IndividueelProject.Controllers
         [HttpPost]
         public IActionResult Register(BusinessUserViewModel newViewBusinessUser)
         {
-            newViewBusinessUser.Password = Crypto.HashPassword(newViewBusinessUser.Password + _salt);
+            //  Method to register a new Business user
+
+            newViewBusinessUser.Password = Crypto.HashPassword(newViewBusinessUser.Password + _salt);   //  Hash and salt the password
             newViewBusinessUser.ConfirmPassword = null;
 
-            if (ModelState.IsValid)
+            if (ModelState.IsValid)     //  Check if the viewmodel is valid
             {
                 BusinessUserModel newBusinessUser = new BusinessUserModel(newViewBusinessUser.BusinessName, newViewBusinessUser.UserName, newViewBusinessUser.Password, newViewBusinessUser.Email, newViewBusinessUser.Sector);
-                BusinessRegistration _businessUserValidation = newBusinessUser.Validate();
+
+                BusinessRegistration _businessUserValidation = newBusinessUser.Validate();      //  Get the registration validation response
 
                 if (_businessUserValidation.Valid)
                 {
@@ -56,6 +58,7 @@ namespace CLeeflang_IndividueelProject.Controllers
                 }
                 else
                 {
+                    //  Definde error messages for registration
                     if (_businessUserValidation.BusinessNameError)
                     {
                         ViewBag.ErrorMessageBusinessName = "Business name already in use!";
@@ -77,6 +80,7 @@ namespace CLeeflang_IndividueelProject.Controllers
             }
             else
             {
+                //  If this far, something went wrong and abort
                 ViewBag.ErrorMessage = "Oops, something went wrong. Please try again!";
                 return View();
             }
@@ -85,14 +89,17 @@ namespace CLeeflang_IndividueelProject.Controllers
         [HttpPost]
         public IActionResult Login(BusinessLoginModel logDetails)
         {
+            //  Method to login a business user 
+
             BusinessUserModel loginBusinessUser = _businessUserCollection.GetBusinessUserByUserNameOrEmail(logDetails.Identifier).FirstOrDefault();
 
             if(loginBusinessUser != null)
             {
                 if (Crypto.VerifyHashedPassword(loginBusinessUser.Password, logDetails.Password + _salt) && (logDetails.Identifier == loginBusinessUser.UserName || logDetails.Identifier == loginBusinessUser.Email))
                 {
-                    logDetails.Password = null;
-                    Authenticate(loginBusinessUser);
+                    logDetails.Password = null;         //  Delete the unhashed password
+                    Authenticate(loginBusinessUser);    //  Authenticate the business user
+
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -114,9 +121,8 @@ namespace CLeeflang_IndividueelProject.Controllers
         {
             var claims = new List<Claim>();
 
-            claims.Add(new Claim(ClaimTypes.Role, "BusinessUser"));
-            claims.Add(new Claim(ClaimTypes.Name, businessUser.UserName));
-            //claims.Add(new Claim(ClaimTypes.NameIdentifier, user.Id));
+            claims.Add(new Claim(ClaimTypes.Role, "BusinessUser"));             //Define the role
+            claims.Add(new Claim(ClaimTypes.Name, businessUser.UserName));      //Define the UserName
 
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             var authProperties = new AuthenticationProperties();
@@ -125,6 +131,14 @@ namespace CLeeflang_IndividueelProject.Controllers
                 CookieAuthenticationDefaults.AuthenticationScheme,
                 new ClaimsPrincipal(claimsIdentity),
                 authProperties);
+        }
+
+        public ActionResult Logout()
+        {
+            //  Method to log out the business user
+
+            HttpContext.SignOutAsync();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

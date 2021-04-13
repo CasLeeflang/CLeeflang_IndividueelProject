@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Interface.TimeSlot
+namespace Contract_Layer.TimeSlot
 {
     public interface ITimeSlotDAL
     {

@@ -14,39 +14,39 @@
 
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="UserName" class="control-label"></label>
+                <label asp-for="UserName" class="control-label">Username (case sensitive):</label>
                 <input asp-for="UserName" class="form-control" />
                 <span asp-validation-for="UserName" class="text-danger"></span>
             </div>
             <div class="text-danger">@ViewBag.ErrorMessageUserName</div>
             <div class="form-group">
-                <label asp-for="FirstName" class="control-label"></label>
+                <label asp-for="FirstName" class="control-label">Firstname:</label>
                 <input asp-for="FirstName" class="form-control" />
                 <span asp-validation-for="FirstName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="LastName" class="control-label"></label>
+                <label asp-for="LastName" class="control-label">Lastname:</label>
                 <input asp-for="LastName" class="form-control" />
                 <span asp-validation-for="LastName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
+                <label asp-for="Password" class="control-label">Password</label>
                 <input asp-for="Password" class="form-control" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PasswordConfirm" class="control-label"></label>
+                <label asp-for="PasswordConfirm" class="control-label">Confirm password:</label>
                 <input asp-for="PasswordConfirm" class="form-control" />
                 <span asp-validation-for="PasswordConfirm" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
+                <label asp-for="Email" class="control-label">Email adress (case sensitive):</label>
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="text-danger">@ViewBag.ErrorMessageEmail</div>
             <div class="form-group">
-                <label asp-for="DoB" class="control-label"></label>
+                <label asp-for="DoB" class="control-label">Date of Birth:</label>
                 <input asp-for="DoB" class="form-control" />
                 <span asp-validation-for="DoB" class="text-danger"></span>
             </div>
@@ -61,8 +61,9 @@
     </div>
 </div>
 
-<div>
-    <a asp-controller="Home" asp-action="Index">Back to Home</a>
+<div style="display:inline-block">
+    <div style="background-color:rgb(255 0 0 / 0.31); border-radius:5px; padding:5px; ">Trying to register a business?<br /> <a asp-controller="BusinessUser" asp-action="Register">Register a new business</a></div>
+    <a  asp-controller="Home" asp-action="Index">Back to Home</a>
 </div>
 
 @section Scripts {

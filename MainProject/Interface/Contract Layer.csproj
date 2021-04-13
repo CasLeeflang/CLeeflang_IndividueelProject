@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Models\Models.csproj" />
+    <ProjectReference Include="..\Models\DTOs.csproj" />
     <ProjectReference Include="..\Variables\Variables.csproj" />
   </ItemGroup>
 

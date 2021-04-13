@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FactoryDAL\FactoryDAL.csproj" />
-    <ProjectReference Include="..\Models\Models.csproj" />
+    <ProjectReference Include="..\Models\DTOs.csproj" />
   </ItemGroup>
 
 </Project>

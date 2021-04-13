@@ -1,5 +1,5 @@
-﻿using DAL.BusinessUser;
-using Interface.BusinessUser;
+﻿using Contract_Layer.BusinessUser;
+using DAL.BusinessUser;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,10 +1,10 @@
 ﻿using FactoryDAL;
-using Interface;
-using Interface.TimeSlot;
-using Models;
+using Contract_Layer;
+using DTOs;
 using SQLDataAccess;
 using System;
 using System.Collections.Generic;
+using Contract_Layer.TimeSlot;
 
 namespace Logic
 {

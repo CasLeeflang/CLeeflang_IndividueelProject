@@ -4,21 +4,21 @@
     ViewData["Title"] = "Login";
 }
 
-<h1>Login</h1>
+<h1>Login to your business account</h1>
 
-<h4>BusinessLoginModel</h4>
+
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Login">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Identifier" class="control-label"></label>
+                <label asp-for="Identifier" class="control-label">Username or Email (case sensitive):</label>
                 <input asp-for="Identifier" class="form-control" />
                 <span asp-validation-for="Identifier" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
+                <label asp-for="Password" class="control-label">Password:</label>
                 <input asp-for="Password" class="form-control" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
@@ -30,9 +30,9 @@
     </div>
 </div>
 
-<div>
-    <div>Don't have a business account yet? <br/> <a asp-controller="BusinessUser" asp-action="Register">Register as a new business</a></div>
-    <a asp-controller="Home" asp-action="Index">Back</a>
+<div style="display:inline-block">
+    <div style="background-color: rgb(255 0 0 / 0.31); border-radius:5px; padding: 5px;">Don't have a business account yet? <br/> <a asp-controller="BusinessUser" asp-action="Register">Register as a new business</a></div>
+    <a asp-controller="Home" asp-action="Index">Back to Home</a>
 </div>
 
 @section Scripts {

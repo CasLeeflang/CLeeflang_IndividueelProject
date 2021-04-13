@@ -178,7 +178,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
-          "Models": "1.0.0",
+          "DTOs": "1.0.0",
           "Variables": "1.0.0"
         },
         "compile": {
@@ -188,14 +188,14 @@
           "bin/placeholder/Contract Layer.dll": {}
         }
       },
-      "Models/1.0.0": {
+      "DTOs/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "compile": {
-          "bin/placeholder/Models.dll": {}
+          "bin/placeholder/DTOs.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Models.dll": {}
+          "bin/placeholder/DTOs.dll": {}
         }
       },
       "SQLDataAccess/1.0.0": {
@@ -622,10 +622,10 @@
       "path": "../Interface/Contract Layer.csproj",
       "msbuildProject": "../Interface/Contract Layer.csproj"
     },
-    "Models/1.0.0": {
+    "DTOs/1.0.0": {
       "type": "project",
-      "path": "../Models/Models.csproj",
-      "msbuildProject": "../Models/Models.csproj"
+      "path": "../Models/DTOs.csproj",
+      "msbuildProject": "../Models/DTOs.csproj"
     },
     "SQLDataAccess/1.0.0": {
       "type": "project",

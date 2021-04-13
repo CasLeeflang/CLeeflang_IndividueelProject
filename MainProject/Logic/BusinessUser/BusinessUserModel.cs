@@ -1,6 +1,5 @@
 ﻿using FactoryDAL;
-using Interface.BusinessUser;
-using Models;
+using DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Variables;
 using Variables.ValidationResponse;
+using Contract_Layer.BusinessUser;
 
 namespace Logic.BusinessUser
 {

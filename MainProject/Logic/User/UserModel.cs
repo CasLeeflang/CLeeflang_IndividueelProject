@@ -1,12 +1,12 @@
 ﻿using FactoryDAL;
-using Interface.User;
-using Models;
+using DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Variables.ValidationResponse;
+using Contract_Layer.User;
 
 namespace Logic.User
 {

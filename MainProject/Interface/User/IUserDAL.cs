@@ -1,8 +1,8 @@
-﻿using Models;
+﻿using DTOs;
 using System.Collections.Generic;
 using Variables;
 
-namespace Interface.User
+namespace Contract_Layer.User
 {
     public interface IUserDAL
     {
