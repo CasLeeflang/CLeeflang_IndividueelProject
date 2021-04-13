@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Logic.User
 {
-    public class UserModel : IUser
+    public class UserModel 
     {
         IUserDAL _userDAL = UserFactoryDAL.CreateUserDAL();
         public int Id { get; set; }

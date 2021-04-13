@@ -6,7 +6,7 @@ using System;
 
 namespace Logic
 {
-    public class TimeSlotModel : ITimeSlot
+    public class TimeSlotModel
     {
 
         ITimeSlotDAL _timeSlotDAL = TimeSlotFactoryDAL.CreateTimeSlotDAL();
@@ -43,6 +43,11 @@ namespace Logic
             StartTime = timeSlotDTO.StartTime;
             EndTime = timeSlotDTO.EndTime;
             NumberOfSpots = timeSlotDTO.NumberOfSpots;
+        }
+
+        public void UpdateTimeSlot()
+        {
+            throw new NotImplementedException();
         }
 
         public bool Validate()

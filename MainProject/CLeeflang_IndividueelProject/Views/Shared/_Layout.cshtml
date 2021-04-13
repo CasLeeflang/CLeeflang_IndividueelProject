@@ -46,7 +46,6 @@
                     @if (User.IsInRole("BusinessUser"))
                     {
                         <li><a asp-area="" asp-controller="TimeSlot" asp-action="ManageTimeSlot"><span class="icon-search2 mr-3"></span>Manage TimeSlots</a></li>
-
                     }
 
                     @if (User.Identity.IsAuthenticated)

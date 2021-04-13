@@ -44,5 +44,10 @@ namespace Logic.User
             return users;
         }
 
+        public int GetUserId(string userName)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }
