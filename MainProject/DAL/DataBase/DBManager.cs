@@ -19,7 +19,6 @@ namespace DAL.DataBase
             _configuration = configuration;
 
         }
-
         public DBManager()
         {
         }
