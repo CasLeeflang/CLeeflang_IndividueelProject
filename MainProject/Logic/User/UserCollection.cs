@@ -11,12 +11,14 @@ namespace Logic.User
 {
     public class UserCollection
     {
+        //  Dependicy injection
         IUserCollectionDAL _userCollectionDAL = UserFactoryDAL.CreateUserCollectionDAL();
 
         private List<UserModel> users { get;} = new List<UserModel>();
 
         public void CreateUser(UserModel newUser)
         {
+            //  Creates a new user
 
             // Map Logic model to DTO
             UserDTO newUserDTO = new UserDTO
@@ -35,6 +37,8 @@ namespace Logic.User
 
         public IEnumerable<UserModel> GetUserByUserNameOrEmail(string identifier)
         {
+            //  Returns the user where the username or email equals the identifier
+
             IEnumerable<UserDTO> userDTOs = _userCollectionDAL.GetUserByUserNameOrEmail(identifier);
             foreach (var userDTO in userDTOs)
             {
@@ -46,6 +50,8 @@ namespace Logic.User
 
         public IEnumerable<UserModel> GetUserByUserName(string userName)
         {
+            //  Returns a user based on the username
+
             IEnumerable<UserDTO> userDTOs = _userCollectionDAL.GetUserByUserName(userName);
 
             foreach(var userDTO in userDTOs)
@@ -58,6 +64,8 @@ namespace Logic.User
 
         public int GetUserId(string userName)
         {
+            //  returns the id based on the username of the user
+
             throw new NotImplementedException();
         }
 

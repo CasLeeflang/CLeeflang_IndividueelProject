@@ -11,12 +11,15 @@ namespace Logic.BusinessUser
 {
     public class BusinessUserCollection
     {
+        //  Dependicy injection
         IBusinessUserCollectionDAL _BusinessUserCollectionDAL = BusinessUserFactoryDAL.CreateBusinessUserCollectionDAL();
 
         private List<BusinessUserModel> businessUsers { get; } = new List<BusinessUserModel>();
 
         public void CreateBusinessUser(BusinessUserModel newBusinessUser)
         {
+            //  Creates new business user
+
             BusinessUserDTO newBusinessUserDTO = new BusinessUserDTO
             {
                 BusinessName = newBusinessUser.BusinessName,
@@ -33,6 +36,7 @@ namespace Logic.BusinessUser
 
         public IEnumerable<BusinessUserModel> GetAllBusinesses()
         {
+            //  Returns all businesses
 
             IEnumerable<BusinessUserDTO> businessUserDTOs = _BusinessUserCollectionDAL.GetAllBusinesses();
             foreach (var businessUserDTO in businessUserDTOs)
@@ -45,6 +49,8 @@ namespace Logic.BusinessUser
 
         public IEnumerable<BusinessUserModel> GetBusinessUserByUserNameOrEmail(string identifier)
         {
+            //  Returns businesses where username or email equals the identifier
+            
             IEnumerable<BusinessUserDTO> businessUserDTOs = _BusinessUserCollectionDAL.GetBusinessByUserNameOrEmail(identifier);
 
             foreach (var businessUserDTO in businessUserDTOs)
@@ -57,6 +63,8 @@ namespace Logic.BusinessUser
 
         public int GetBusinessId(string userName)
         {
+            //  Returns te business id based on the username of the business
+
             return _BusinessUserCollectionDAL.GetBusinessId(userName);
         }
     }

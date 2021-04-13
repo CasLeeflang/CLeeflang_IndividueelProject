@@ -7,11 +7,12 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
-@{ BusinessUserCollection _businessUserCollection = new BusinessUserCollection(); }
+@{ BusinessUserCollection _businessUserCollection = new BusinessUserCollection(); } @*Dependency injection correct?*@
 
 <div>
     @foreach(var business in _businessUserCollection.GetAllBusinesses())
             {
                 <p>@business.BusinessName</p>
+
             }
 </div>

@@ -12,6 +12,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web.Helpers;
 using Variables;
+using Variables.ValidationResponse;
 
 namespace CLeeflang_IndividueelProject.Controllers
 {
@@ -47,14 +48,17 @@ namespace CLeeflang_IndividueelProject.Controllers
         [HttpPost]
         public IActionResult Register(UserViewModel newViewUser)
         {
-            newViewUser.Password = Crypto.HashPassword(newViewUser.Password + _salt);   // hash and salt the password
+            //  Method to register a new user
+
+            newViewUser.Password = Crypto.HashPassword(newViewUser.Password + _salt);   //  hash and salt the password
             newViewUser.PasswordConfirm = null;
 
-            if (ModelState.IsValid)
+            if (ModelState.IsValid)     //  Checks if viewmodel is valid
             {
 
                 UserModel newUser = new UserModel(newViewUser.UserName, newViewUser.FirstName, newViewUser.LastName, newViewUser.Password, newViewUser.Email, newViewUser.DoB);
-                RegistrationValidationResponse _userValidation = newUser.Validate();
+
+                UserRegistration _userValidation = newUser.Validate();      //   Get the registration validation response
 
                 if (_userValidation.Valid)
                 {
@@ -62,7 +66,8 @@ namespace CLeeflang_IndividueelProject.Controllers
                     return RedirectToAction("Index", "Home");
                 }
                 else
-                {
+                {   
+                    //  Define the error messages for registration
                     if (_userValidation.UserNameError)
                     {
                         ViewBag.ErrorMessageUserName = "Username already in use!";
@@ -93,14 +98,17 @@ namespace CLeeflang_IndividueelProject.Controllers
         [HttpPost]
         public ActionResult Login(LoginModel LogDetails)
         {
-            UserModel loginUser = _userCollection.GetUserByUserNameOrEmail(LogDetails.Identifier).FirstOrDefault();    // Get the User with the specic identifier, username or email
+            //  Method to login a user
 
-            if (loginUser != null)    // Check if the password is correct with the hashed password in the DB
+            UserModel loginUser = _userCollection.GetUserByUserNameOrEmail(LogDetails.Identifier).FirstOrDefault();    // Get the User with the specic identifier which equals the username or email
+
+            if (loginUser != null)    // Check if the password corresponds with the hashed password in the DB
             {
                 if (Crypto.VerifyHashedPassword(loginUser.Password, LogDetails.Password + _salt) && (LogDetails.Identifier == loginUser.UserName || LogDetails.Identifier == loginUser.Email))
                 {
-                    LogDetails.Password = null;     // Delete the unhashed password
-                    Authenticate(loginUser);        // authenticate the user
+                    LogDetails.Password = null;     //  Delete the unhashed password
+                    Authenticate(loginUser);        //  authenticate the user
+
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -122,9 +130,8 @@ namespace CLeeflang_IndividueelProject.Controllers
         {
             var claims = new List<Claim>();
 
-            claims.Add(new Claim(ClaimTypes.Role, "User"));
-            claims.Add(new Claim(ClaimTypes.Name, user.UserName));
-            //claims.Add(new Claim(ClaimTypes.NameIdentifier, user.Id));
+            claims.Add(new Claim(ClaimTypes.Role, "User"));          //  Define the role
+            claims.Add(new Claim(ClaimTypes.Name, user.UserName));  //  Define the UserName
 
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             var authProperties = new AuthenticationProperties();
@@ -137,6 +144,8 @@ namespace CLeeflang_IndividueelProject.Controllers
 
         public ActionResult Logout()
         {
+            //  Method to log out the user
+
             HttpContext.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }

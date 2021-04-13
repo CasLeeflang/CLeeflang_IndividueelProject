@@ -10,6 +10,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web.Helpers;
 using Variables;
+using Variables.ValidationResponse;
 
 namespace CLeeflang_IndividueelProject.Controllers
 {
@@ -46,7 +47,7 @@ namespace CLeeflang_IndividueelProject.Controllers
             if (ModelState.IsValid)
             {
                 BusinessUserModel newBusinessUser = new BusinessUserModel(newViewBusinessUser.BusinessName, newViewBusinessUser.UserName, newViewBusinessUser.Password, newViewBusinessUser.Email, newViewBusinessUser.Sector);
-                BusinessRegistrationValidationResponse _businessUserValidation = newBusinessUser.Validate();
+                BusinessRegistration _businessUserValidation = newBusinessUser.Validate();
 
                 if (_businessUserValidation.Valid)
                 {

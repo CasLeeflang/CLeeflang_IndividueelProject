@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Variables;
+using Variables.ValidationResponse;
 
 namespace Logic.User
 {
@@ -54,11 +54,13 @@ namespace Logic.User
             this.DoB = updatedUser.DoB;
         }
 
-        public RegistrationValidationResponse Validate()
+        public UserRegistration Validate()
         {
+            //  Method used to Validate a new user
+
             UserDTO existingUser = _userDAL.CheckUserNameEmail(UserName, Email).FirstOrDefault();
 
-            RegistrationValidationResponse _registerValidation = new RegistrationValidationResponse();
+            UserRegistration _registerValidation = new UserRegistration();
 
             if (existingUser == null)
             {

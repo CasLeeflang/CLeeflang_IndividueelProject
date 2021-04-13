@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Variables
+namespace Variables.ValidationResponse
 {
-    public class BusinessRegistrationValidationResponse
+    public class BusinessRegistration
     {
+        //  Object to store Business user registration validation
         public bool Valid { get; set; } = false;
         public bool BusinessNameError { get; set; }
         public bool UserNameError { get; set; }

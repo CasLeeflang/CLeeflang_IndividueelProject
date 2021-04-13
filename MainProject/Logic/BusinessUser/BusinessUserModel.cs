@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Variables;
+using Variables.ValidationResponse;
 
 namespace Logic.BusinessUser
 {
     public class BusinessUserModel
     {
+        //  Dependicy injection
         IBusinessUserDAL _businessUserDAL = BusinessUserFactoryDAL.CreateBusinessUserDAL();
 
         public int Id { get; set; }
@@ -48,12 +50,13 @@ namespace Logic.BusinessUser
 
         }
 
-        public BusinessRegistrationValidationResponse Validate()
+        public BusinessRegistration Validate()
         {
-            
+            //  Method to validate a new business user
+
             BusinessUserDTO existingBusinessUser = _businessUserDAL.CheckBusinessUserNameEmailName(UserName, Email, BusinessName).FirstOrDefault();
 
-            BusinessRegistrationValidationResponse _registerValidation = new BusinessRegistrationValidationResponse();
+            BusinessRegistration _registerValidation = new BusinessRegistration();
 
             if (existingBusinessUser == null)
             {
