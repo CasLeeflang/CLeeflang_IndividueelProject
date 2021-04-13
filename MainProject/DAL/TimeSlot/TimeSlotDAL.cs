@@ -22,6 +22,7 @@ namespace DAL.TimeSlot
                            values(@BusinessId, @DayOTWeek, @StartTime, @EndTime, @NumberOfSpots);";
 
             _dBManager.SaveData(sql, newTimeSlot);
+
         }
 
         public IEnumerable<TimeSlotDTO> LoadTimeSlotByBusinessId(int businessId)
