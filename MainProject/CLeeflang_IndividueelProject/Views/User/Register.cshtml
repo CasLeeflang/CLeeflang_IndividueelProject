@@ -18,6 +18,7 @@
                 <input asp-for="UserName" class="form-control" />
                 <span asp-validation-for="UserName" class="text-danger"></span>
             </div>
+            <div class="text-danger">@ViewBag.ErrorMessageUserName</div>
             <div class="form-group">
                 <label asp-for="FirstName" class="control-label"></label>
                 <input asp-for="FirstName" class="form-control" />
@@ -43,11 +44,13 @@
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
+            <div class="text-danger">@ViewBag.ErrorMessageEmail</div>
             <div class="form-group">
                 <label asp-for="DoB" class="control-label"></label>
                 <input asp-for="DoB" class="form-control" />
                 <span asp-validation-for="DoB" class="text-danger"></span>
             </div>
+            <div class="text-danger">@ViewBag.ErrorMessageDoB</div>
 
             <div class="text-danger">@ViewBag.ErrorMessage</div>
 

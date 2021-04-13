@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Variables;
 
 namespace DAL.User
 {
@@ -19,7 +20,24 @@ namespace DAL.User
                             values(@UserName, @FirstName, @LastName, @Password, @Email, @DoB);";
 
             DBManager.SaveData(sql, newUser);
+        }  
+        
+        public IEnumerable<UserDTO> GetUserByUserName(string userName)
+        {
+            string sql = $"select * dbo.[User] where UserName = @userName";
+
+            var dictionary = new Dictionary<string, object>
+            {
+                {"@userName", userName}
+
+            };
+
+
+            var parameters = new DynamicParameters(dictionary);
+
+            return DBManager.LoadData<UserDTO>(sql, parameters);
         }
+
         public IEnumerable<UserDTO> GetUserByUserNameOrEmail(string identifier)
         {
             string sql = $"select * from dbo.[User] where UserName = @identifier or Email = @identifier";
@@ -41,7 +59,36 @@ namespace DAL.User
             string sql = $"";
         }
 
-        public IEnumerable<UserDTO> CheckUserNameEmail(string userName, string email)
+        //public ValidationResponse ValidateNewUser(string userName, string email)
+        //{
+
+        //    ValidationResponse _registerValidation = new ValidationResponse();
+
+        //    UserDTO existingUser = CheckUserNameEmail(userName, email).FirstOrDefault();
+
+
+        //    if (existingUser == null)
+        //    {
+        //        _registerValidation.Valid = true;
+        //    }
+        //    else
+        //    {
+        //        if(existingUser.UserName == userName)
+        //        {
+        //            _registerValidation.Valid = false;
+        //            _registerValidation.Error = "UserName";
+        //        }
+        //        else if(existingUser.Email == email)
+        //        {
+        //            _registerValidation.Valid = false;
+        //            _registerValidation.Error = "Email";
+        //        }
+        //    }
+
+        //    return _registerValidation;
+        //}    
+        
+        public IEnumerable<UserDTO> CheckUserNameEmail(string userName, string email)       // Used for checking whether the username is in use or not when registering
         {
             string sql = $"select * from dbo.[User] where (UserName = @userName or Email = @email);";
 
@@ -55,28 +102,6 @@ namespace DAL.User
             var parameters = new DynamicParameters(dictionary);
 
             return DBManager.LoadData<UserDTO>(sql, parameters);
-        }
-
-        public IEnumerable<UserDTO> GetUserByUserName(string userName)
-        {
-            string sql = $"";
-            return null as IEnumerable<UserDTO>;
-        }
-
-        public bool ValidateNewUser(string userName, string email)
-        {
-
-            bool valid = false;
-
-            UserDTO existingUser = CheckUserNameEmail(userName, email).FirstOrDefault();
-
-
-            if (existingUser == null)
-            {
-                valid = true;
-            }
-
-            return valid;
         }
     }
 }

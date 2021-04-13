@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CLeeflang_IndividueelProject.Models
 {
-    public class TimeSlotViewModel : ITimeSlot
+    public class TimeSlotViewModel
     {
         [Required]
         public int BusinessId { get; set; }

@@ -2045,13 +2045,28 @@
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
       },
+      "Contract Layer/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "Models": "1.0.0",
+          "Variables": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Contract Layer.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Contract Layer.dll": {}
+        }
+      },
       "DAL/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
-          "Interface": "1.0.0",
+          "Contract Layer": "1.0.0",
           "Microsoft.Extensions.Configuration": "5.0.0",
-          "SQLDataAccess": "1.0.0"
+          "SQLDataAccess": "1.0.0",
+          "Variables": "1.0.0"
         },
         "compile": {
           "bin/placeholder/DAL.dll": {}
@@ -2064,27 +2079,14 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
-          "DAL": "1.0.0",
-          "Interface": "1.0.0"
+          "Contract Layer": "1.0.0",
+          "DAL": "1.0.0"
         },
         "compile": {
           "bin/placeholder/FactoryDAL.dll": {}
         },
         "runtime": {
           "bin/placeholder/FactoryDAL.dll": {}
-        }
-      },
-      "Interface/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
-        "dependencies": {
-          "Models": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/Interface.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Interface.dll": {}
         }
       },
       "Logic/1.0.0": {
@@ -7004,6 +7006,11 @@
         "system.xml.xdocument.nuspec"
       ]
     },
+    "Contract Layer/1.0.0": {
+      "type": "project",
+      "path": "../Interface/Contract Layer.csproj",
+      "msbuildProject": "../Interface/Contract Layer.csproj"
+    },
     "DAL/1.0.0": {
       "type": "project",
       "path": "../DAL/DAL.csproj",
@@ -7013,11 +7020,6 @@
       "type": "project",
       "path": "../FactoryDAL/FactoryDAL.csproj",
       "msbuildProject": "../FactoryDAL/FactoryDAL.csproj"
-    },
-    "Interface/1.0.0": {
-      "type": "project",
-      "path": "../Interface/Interface.csproj",
-      "msbuildProject": "../Interface/Interface.csproj"
     },
     "Logic/1.0.0": {
       "type": "project",
@@ -7042,7 +7044,7 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
-      "Interface >= 1.0.0",
+      "Contract Layer >= 1.0.0",
       "Logic >= 1.0.0",
       "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation >= 3.1.12",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 5.0.2",
@@ -7079,8 +7081,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Interface\\Interface.csproj": {
-              "projectPath": "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Interface\\Interface.csproj"
+            "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Interface\\Contract Layer.csproj": {
+              "projectPath": "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Interface\\Contract Layer.csproj"
             },
             "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Logic\\Logic.csproj": {
               "projectPath": "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Logic\\Logic.csproj"

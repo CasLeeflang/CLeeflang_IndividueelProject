@@ -12,5 +12,6 @@ namespace Interface.User
         void CreateUser(UserDTO newUser);
         IEnumerable<UserDTO> GetUserByUserNameOrEmail(string identifier);
 
+        IEnumerable<UserDTO> GetUserByUserName(string userName);
     }
 }

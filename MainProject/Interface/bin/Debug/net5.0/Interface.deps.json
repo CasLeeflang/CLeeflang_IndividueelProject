@@ -8,7 +8,8 @@
     ".NETCoreApp,Version=v5.0": {
       "Interface/1.0.0": {
         "dependencies": {
-          "Models": "1.0.0"
+          "Models": "1.0.0",
+          "Variables": "1.0.0"
         },
         "runtime": {
           "Interface.dll": {}
@@ -17,6 +18,11 @@
       "Models/1.0.0": {
         "runtime": {
           "Models.dll": {}
+        }
+      },
+      "Variables/1.0.0": {
+        "runtime": {
+          "Variables.dll": {}
         }
       }
     }
@@ -28,6 +34,11 @@
       "sha512": ""
     },
     "Models/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Variables/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

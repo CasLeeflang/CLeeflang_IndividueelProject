@@ -40,7 +40,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Interface\Interface.csproj" />
+    <ProjectReference Include="..\Interface\Contract Layer.csproj" />
     <ProjectReference Include="..\Logic\Logic.csproj" />
     <ProjectReference Include="..\Models\Models.csproj" />
     <ProjectReference Include="..\SQLDataAccess\SQLDataAccess.csproj" />

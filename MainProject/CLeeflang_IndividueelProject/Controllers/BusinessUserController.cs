@@ -41,21 +41,36 @@ namespace CLeeflang_IndividueelProject.Controllers
         public IActionResult Register(BusinessUserViewModel newViewBusinessUser)
         {
             newViewBusinessUser.Password = Crypto.HashPassword(newViewBusinessUser.Password + _salt);
-            newViewBusinessUser.ConfirmPassword = "";
+            newViewBusinessUser.ConfirmPassword = null;
 
             if (ModelState.IsValid)
             {
                 BusinessUserModel newBusinessUser = new BusinessUserModel(newViewBusinessUser.BusinessName, newViewBusinessUser.UserName, newViewBusinessUser.Password, newViewBusinessUser.Email, newViewBusinessUser.Sector);
+                BusinessRegistrationValidationResponse _businessUserValidation = newBusinessUser.Validate();
 
-                if (newBusinessUser.Validate())
+                if (_businessUserValidation.Valid)
                 {
                     _businessUserCollection.CreateBusinessUser(newBusinessUser);
                     return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    ViewBag.ErrorMessage = "Username or Email already in use!";
+                    if (_businessUserValidation.BusinessNameError)
+                    {
+                        ViewBag.ErrorMessageBusinessName = "Business name already in use!";
+                    }
+                    if (_businessUserValidation.UserNameError)
+                    {
+                        ViewBag.ErrorMessageUserName = "Username already in use!";
+
+                    }
+                    if (_businessUserValidation.EmailError)
+                    {
+                        ViewBag.ErrorMessageEmail = "Email adress already in use!";
+
+                    }
                     return View();
+
                 }
 
             }

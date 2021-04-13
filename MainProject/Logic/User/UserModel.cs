@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Variables;
 
 namespace Logic.User
 {
@@ -53,9 +54,34 @@ namespace Logic.User
             this.DoB = updatedUser.DoB;
         }
 
-        public bool Validate()
-        {           
-            return  _userDAL.ValidateNewUser(UserName, Email);
+        public RegistrationValidationResponse Validate()
+        {
+            UserDTO existingUser = _userDAL.CheckUserNameEmail(UserName, Email).FirstOrDefault();
+
+            RegistrationValidationResponse _registerValidation = new RegistrationValidationResponse();
+
+            if (existingUser == null)
+            {
+                _registerValidation.Valid = true;
+            }
+            else
+            {
+                if (existingUser.UserName == UserName)
+                {
+                    _registerValidation.UserNameError = true;
+
+                }
+                if (existingUser.Email == Email)
+                {
+                    _registerValidation.EmailError = true;
+                }
+                if(existingUser.DoB < DateTime.Now)
+                {
+                    _registerValidation.DoBError = true;
+                }
+            }
+
+            return _registerValidation;
         }
     }
 }

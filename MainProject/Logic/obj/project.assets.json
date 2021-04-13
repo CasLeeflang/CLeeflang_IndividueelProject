@@ -174,13 +174,28 @@
           }
         }
       },
+      "Contract Layer/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "Models": "1.0.0",
+          "Variables": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Contract Layer.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Contract Layer.dll": {}
+        }
+      },
       "DAL/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
-          "Interface": "1.0.0",
+          "Contract Layer": "1.0.0",
           "Microsoft.Extensions.Configuration": "5.0.0",
-          "SQLDataAccess": "1.0.0"
+          "SQLDataAccess": "1.0.0",
+          "Variables": "1.0.0"
         },
         "compile": {
           "bin/placeholder/DAL.dll": {}
@@ -193,27 +208,14 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
-          "DAL": "1.0.0",
-          "Interface": "1.0.0"
+          "Contract Layer": "1.0.0",
+          "DAL": "1.0.0"
         },
         "compile": {
           "bin/placeholder/FactoryDAL.dll": {}
         },
         "runtime": {
           "bin/placeholder/FactoryDAL.dll": {}
-        }
-      },
-      "Interface/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
-        "dependencies": {
-          "Models": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/Interface.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Interface.dll": {}
         }
       },
       "Models/1.0.0": {
@@ -238,6 +240,16 @@
         },
         "runtime": {
           "bin/placeholder/SQLDataAccess.dll": {}
+        }
+      },
+      "Variables/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/Variables.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Variables.dll": {}
         }
       }
     }
@@ -635,6 +647,11 @@
         "version.txt"
       ]
     },
+    "Contract Layer/1.0.0": {
+      "type": "project",
+      "path": "../Interface/Contract Layer.csproj",
+      "msbuildProject": "../Interface/Contract Layer.csproj"
+    },
     "DAL/1.0.0": {
       "type": "project",
       "path": "../DAL/DAL.csproj",
@@ -645,11 +662,6 @@
       "path": "../FactoryDAL/FactoryDAL.csproj",
       "msbuildProject": "../FactoryDAL/FactoryDAL.csproj"
     },
-    "Interface/1.0.0": {
-      "type": "project",
-      "path": "../Interface/Interface.csproj",
-      "msbuildProject": "../Interface/Interface.csproj"
-    },
     "Models/1.0.0": {
       "type": "project",
       "path": "../Models/Models.csproj",
@@ -659,6 +671,11 @@
       "type": "project",
       "path": "../SQLDataAccess/SQLDataAccess.csproj",
       "msbuildProject": "../SQLDataAccess/SQLDataAccess.csproj"
+    },
+    "Variables/1.0.0": {
+      "type": "project",
+      "path": "../Variables/Variables.csproj",
+      "msbuildProject": "../Variables/Variables.csproj"
     }
   },
   "projectFileDependencyGroups": {

@@ -19,12 +19,11 @@ namespace CLeeflang_IndividueelProject.Controllers
     {
         // Initialise the Salt variable (defined in startup.cs)
         private static string _salt;
-        //private readonly UserManager<UserModel> _userManager;
 
-        public UserController(PasswordSalt PassSalt /*, UserManager<UserModel> userManager*/)
+
+        public UserController(PasswordSalt PassSalt)
         {
             _salt = PassSalt.Salt;      // Set Salt
-            //_userManager = userManager;
         }
 
 
@@ -41,7 +40,7 @@ namespace CLeeflang_IndividueelProject.Controllers
 
         public IActionResult UserPage()
         {
-            //ViewBag.userId = _userManager.GetUserId(HttpContext.User);
+
             return View();
         }
 
@@ -49,47 +48,51 @@ namespace CLeeflang_IndividueelProject.Controllers
         public IActionResult Register(UserViewModel newViewUser)
         {
             newViewUser.Password = Crypto.HashPassword(newViewUser.Password + _salt);   // hash and salt the password
-            newViewUser.PasswordConfirm = "";
+            newViewUser.PasswordConfirm = null;
 
             if (ModelState.IsValid)
             {
 
                 UserModel newUser = new UserModel(newViewUser.UserName, newViewUser.FirstName, newViewUser.LastName, newViewUser.Password, newViewUser.Email, newViewUser.DoB);
+                RegistrationValidationResponse _userValidation = newUser.Validate();
 
-                if (newUser.Validate())
+                if (_userValidation.Valid)
                 {
-                    if (newUser.DoB < DateTime.Now)
-                    {
-                        _userCollection.CreateUser(newUser);
-                        return RedirectToAction("Index", "Home");
-                    }
-                    else
-                    {
-                        ViewBag.ErrorMessage = "Please enter a valid date of birth!";
-                        return View();
-                    }
-
+                    _userCollection.CreateUser(newUser);
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    ViewBag.ErrorMessage = "Username or Email already in use!";
+                    if (_userValidation.UserNameError)
+                    {
+                        ViewBag.ErrorMessageUserName = "Username already in use!";
+
+                    }
+                    if (_userValidation.EmailError)
+                    {
+                        ViewBag.ErrorMessageEmail = "Email adress already in use!";
+
+                    }
+                    if (_userValidation.DoBError)
+                    {
+                        ViewBag.ErrorMessageDoB = "Please enter a valid date of birth!";
+                    }
                     return View();
                 }
-
-
             }
             else
             {
                 ViewBag.ErrorMessage = "Oops, something went wrong. Please try again!";
                 return View();
             }
+
         }
 
 
 
         [HttpPost]
         public ActionResult Login(LoginModel LogDetails)
-        {  
+        {
             UserModel loginUser = _userCollection.GetUserByUserNameOrEmail(LogDetails.Identifier).FirstOrDefault();    // Get the User with the specic identifier, username or email
 
             if (loginUser != null)    // Check if the password is correct with the hashed password in the DB

@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj" />
-    <ProjectReference Include="..\Interface\Interface.csproj" />
+    <ProjectReference Include="..\Interface\Contract Layer.csproj" />
   </ItemGroup>
 
 </Project>

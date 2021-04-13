@@ -11,6 +11,16 @@
         "runtime": {
           "bin/placeholder/Models.dll": {}
         }
+      },
+      "Variables/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/Variables.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Variables.dll": {}
+        }
       }
     }
   },
@@ -19,11 +29,17 @@
       "type": "project",
       "path": "../Models/Models.csproj",
       "msbuildProject": "../Models/Models.csproj"
+    },
+    "Variables/1.0.0": {
+      "type": "project",
+      "path": "../Variables/Variables.csproj",
+      "msbuildProject": "../Variables/Variables.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
-      "Models >= 1.0.0"
+      "Models >= 1.0.0",
+      "Variables >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -32,9 +48,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Interface\\Interface.csproj",
-      "projectName": "Interface",
-      "projectPath": "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Interface\\Interface.csproj",
+      "projectUniqueName": "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Interface\\Contract Layer.csproj",
+      "projectName": "Contract Layer",
+      "projectPath": "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Interface\\Contract Layer.csproj",
       "packagesPath": "C:\\Users\\casle\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Interface\\obj\\",
       "projectStyle": "PackageReference",
@@ -55,6 +71,9 @@
           "projectReferences": {
             "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Models\\Models.csproj": {
               "projectPath": "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Models\\Models.csproj"
+            },
+            "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Variables\\Variables.csproj": {
+              "projectPath": "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Variables\\Variables.csproj"
             }
           }
         }

@@ -10,7 +10,10 @@ namespace Interface.BusinessUser
     public interface IBusinessUserDAL
     {
         void UpdateBusinessUser(BusinessUserDTO newBusinessUser);
-        public bool ValidateNewBusinessUser(string userName, string email);
+
+        //public bool ValidateNewBusinessUser(string userName, string email);
+
+        IEnumerable<BusinessUserDTO> CheckBusinessUserNameEmailName(string userName, string email, string businessName);
 
     }
 }

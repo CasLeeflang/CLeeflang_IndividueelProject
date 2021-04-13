@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Variables;
 
 namespace Logic.BusinessUser
 {
@@ -47,9 +48,35 @@ namespace Logic.BusinessUser
 
         }
 
-        public bool Validate()
+        public BusinessRegistrationValidationResponse Validate()
         {
-            return _businessUserDAL.ValidateNewBusinessUser(UserName, Email);
+            
+            BusinessUserDTO existingBusinessUser = _businessUserDAL.CheckBusinessUserNameEmailName(UserName, Email, BusinessName).FirstOrDefault();
+
+            BusinessRegistrationValidationResponse _registerValidation = new BusinessRegistrationValidationResponse();
+
+            if (existingBusinessUser == null)
+            {
+                _registerValidation.Valid = true;
+            }
+            else
+            {
+                if (existingBusinessUser.UserName == UserName)
+                {
+                    _registerValidation.UserNameError = true;
+
+                }
+                if (existingBusinessUser.Email == Email)
+                {
+                    _registerValidation.EmailError = true;
+                }
+                if (existingBusinessUser.BusinessName == BusinessName)
+                {
+                    _registerValidation.BusinessNameError = true;
+                }
+            }
+
+            return _registerValidation;
         }
     }
 }

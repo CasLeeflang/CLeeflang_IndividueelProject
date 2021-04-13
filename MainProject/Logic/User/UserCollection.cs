@@ -44,6 +44,18 @@ namespace Logic.User
             return users;
         }
 
+        public IEnumerable<UserModel> GetUserByUserName(string userName)
+        {
+            IEnumerable<UserDTO> userDTOs = _userCollectionDAL.GetUserByUserName(userName);
+
+            foreach(var userDTO in userDTOs)
+            {
+                UserModel user = new UserModel(userDTO);
+                users.Add(user);
+            }
+            return users;
+        }
+
         public int GetUserId(string userName)
         {
             throw new NotImplementedException();

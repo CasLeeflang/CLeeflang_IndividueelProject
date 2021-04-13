@@ -10,7 +10,8 @@
         "dependencies": {
           "Interface": "1.0.0",
           "Microsoft.Extensions.Configuration": "5.0.0",
-          "SQLDataAccess": "1.0.0"
+          "SQLDataAccess": "1.0.0",
+          "Variables": "1.0.0"
         },
         "runtime": {
           "DAL.dll": {}
@@ -132,7 +133,8 @@
       "System.Security.Principal.Windows/4.7.0": {},
       "Interface/1.0.0": {
         "dependencies": {
-          "Models": "1.0.0"
+          "Models": "1.0.0",
+          "Variables": "1.0.0"
         },
         "runtime": {
           "Interface.dll": {}
@@ -150,6 +152,11 @@
         },
         "runtime": {
           "SQLDataAccess.dll": {}
+        }
+      },
+      "Variables/1.0.0": {
+        "runtime": {
+          "Variables.dll": {}
         }
       }
     }
@@ -262,6 +269,11 @@
       "sha512": ""
     },
     "SQLDataAccess/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Variables/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

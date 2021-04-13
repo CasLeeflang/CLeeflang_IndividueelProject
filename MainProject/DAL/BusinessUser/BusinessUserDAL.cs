@@ -45,21 +45,7 @@ namespace DAL.BusinessUser
 
             return DBManager.LoadAllData<BusinessUserDTO>(sql);
         }
-        public IEnumerable<BusinessUserDTO> CheckBusinessUserNameEmail(string userName, string email)
-        {
-            string sql = $"select * from dbo.BusinessUser where (UserName = @userName or Email = @email);";
-            var dictionary = new Dictionary<string, object>
-            {
-                {"@userName", userName},
-                {"@email", email }
-
-            };
-
-
-            var parameters = new DynamicParameters(dictionary);
-
-            return DBManager.LoadData<BusinessUserDTO>(sql, parameters);
-        }
+  
 
         public int GetBusinessId(string userName)
         {
@@ -95,20 +81,37 @@ namespace DAL.BusinessUser
             }
         }
 
-        public bool ValidateNewBusinessUser(string userName, string email)
+        //public bool ValidateNewBusinessUser(string userName, string email)
+        //{
+
+        //    bool valid = false;
+
+        //    BusinessUserDTO existingBusinessUser = CheckBusinessUserNameEmail(userName, email).FirstOrDefault();
+
+
+        //    if (existingBusinessUser == null)
+        //    {
+        //        valid = true;
+        //    }
+
+        //    return valid;
+        //}    
+        
+        public IEnumerable<BusinessUserDTO> CheckBusinessUserNameEmailName(string userName, string email, string businessName)
         {
-
-            bool valid = false;
-
-            BusinessUserDTO existingBusinessUser = CheckBusinessUserNameEmail(userName, email).FirstOrDefault();
-
-
-            if (existingBusinessUser == null)
+            string sql = $"select * from dbo.BusinessUser where (UserName = @userName or Email = @email or BusinessName = @businessName);";
+            var dictionary = new Dictionary<string, object>
             {
-                valid = true;
-            }
+                {"@userName", userName},
+                {"@email", email },
+                {"@businessName", businessName }
 
-            return valid;
+            };
+
+
+            var parameters = new DynamicParameters(dictionary);
+
+            return DBManager.LoadData<BusinessUserDTO>(sql, parameters);
         }
     }
 }

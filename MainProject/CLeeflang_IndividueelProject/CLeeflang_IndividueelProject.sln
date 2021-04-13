@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CLeeflang_IndividueelProject", "CLeeflang_IndividueelProject.csproj", "{350965CF-FEE7-4B47-A475-8F7871C0226F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Interface", "..\Interface\Interface.csproj", "{C83EC96F-1B44-472F-848A-DB3EA3639231}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contract Layer", "..\Interface\Contract Layer.csproj", "{C83EC96F-1B44-472F-848A-DB3EA3639231}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logic", "..\Logic\Logic.csproj", "{86EAAA4E-D727-48B2-B35B-1266B0CEB2D0}"
 EndProject
