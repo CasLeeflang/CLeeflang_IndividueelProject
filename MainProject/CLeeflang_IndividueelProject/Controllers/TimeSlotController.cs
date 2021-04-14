@@ -8,6 +8,7 @@ using Logic;
 using Logic.BusinessUser;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Variables.ValidationResponse;
 
 namespace CLeeflang_IndividueelProject.Controllers
 {
@@ -19,6 +20,14 @@ namespace CLeeflang_IndividueelProject.Controllers
 
         public IActionResult ManageTimeSlot()
         {
+            var t = TempData["TimeSlotError"];
+            var s = TempData["SpotError"];
+
+            if (t != null || s != null)
+            {
+                ViewBag.TimeSlotError = t;
+                ViewBag.SpotError = s;
+            }
             return View();
         }
 
@@ -27,15 +36,24 @@ namespace CLeeflang_IndividueelProject.Controllers
             // Map viewmodel to logic model
             TimeSlotModel timeSlotLog = new TimeSlotModel(_businessUserCollection.GetBusinessId(User.Identity.Name), timeSlot.DayOTWeek, timeSlot.StartTime, timeSlot.EndTime, timeSlot.NumberOfSpots);
 
+            TimeSlotCreation _creationValidation = timeSlotLog.Validate();   //  Initialise validation object
+
             // Validate the timespan
-            if (timeSlotLog.Validate())
+            if (_creationValidation.Valid)
             {
                 _timeSlotCollection.CreateTimeSlot(timeSlotLog);
                 return RedirectToAction("ManageTimeSlot");
             }
             else
             {
-                Console.WriteLine("Model not valid");
+                if (_creationValidation.TimeError)
+                {
+                    TempData["TimeSlotError"] = "Select end time later than start time!";
+                }
+                if (_creationValidation.SpotError)
+                {
+                    TempData["SpotError"] = "Timeslot needs at least 1 spot!";
+                }
                 return RedirectToAction("ManageTimeSlot");
             }
         }

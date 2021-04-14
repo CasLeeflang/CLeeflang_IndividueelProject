@@ -3,6 +3,7 @@ using Contract_Layer;
 using DTOs;
 using System;
 using Contract_Layer.TimeSlot;
+using Variables.ValidationResponse;
 
 namespace Logic
 {
@@ -50,15 +51,24 @@ namespace Logic
             throw new NotImplementedException();
         }
 
-        public bool Validate()
+        public TimeSlotCreation Validate()
         {
-            if(TimeSpan.TotalMinutes > 0 && NumberOfSpots >= 0)
-            {
-                return true;
-            }
-            else { return false; }
+            TimeSlotCreation _creationValidation = new();
 
-            // Check other properties too
+            if(TimeSpan.TotalMinutes < 1)
+            {
+                _creationValidation.TimeError = true;
+            }
+            if(NumberOfSpots <= 0)
+            {
+                _creationValidation.SpotError = true;
+            }
+            if(_creationValidation.TimeError == false && _creationValidation.SpotError == false)
+            {
+                _creationValidation.Valid = true;
+            }
+            return _creationValidation;         
+
         }
 
     }

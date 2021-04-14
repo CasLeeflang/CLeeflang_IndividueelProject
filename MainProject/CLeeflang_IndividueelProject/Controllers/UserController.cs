@@ -103,9 +103,9 @@ namespace CLeeflang_IndividueelProject.Controllers
 
             UserModel loginUser = _userCollection.GetUserByUserNameOrEmail(LogDetails.Identifier).FirstOrDefault();    // Get the User with the specic identifier which equals the username or email
 
-            if (loginUser != null)
+            if (loginUser.UserName != null)
             {
-                if (Crypto.VerifyHashedPassword(loginUser.Password, LogDetails.Password + _salt) && (LogDetails.Identifier == loginUser.UserName || LogDetails.Identifier == loginUser.Email))
+                if (Crypto.VerifyHashedPassword(loginUser.Password, LogDetails.Password + _salt))
                 {
                     LogDetails.Password = null;     //  Delete the unhashed password
                     Authenticate(loginUser);        //  authenticate the user

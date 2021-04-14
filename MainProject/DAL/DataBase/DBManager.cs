@@ -43,8 +43,6 @@ namespace DAL.DataBase
             {
 
                 return cnn.Query<T>(sql, parameters);
-
-
             }
         }
 
@@ -54,9 +52,6 @@ namespace DAL.DataBase
             {
 
                 return cnn.Query<T>(sql);
-
-
-
             }
         }
 

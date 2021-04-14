@@ -93,9 +93,9 @@ namespace CLeeflang_IndividueelProject.Controllers
 
             BusinessUserModel loginBusinessUser = _businessUserCollection.GetBusinessUserByUserNameOrEmail(logDetails.Identifier).FirstOrDefault();
 
-            if(loginBusinessUser != null)
+            if(loginBusinessUser.UserName != null)
             {
-                if (Crypto.VerifyHashedPassword(loginBusinessUser.Password, logDetails.Password + _salt) && (logDetails.Identifier == loginBusinessUser.UserName || logDetails.Identifier == loginBusinessUser.Email))
+                if (Crypto.VerifyHashedPassword(loginBusinessUser.Password, logDetails.Password + _salt))
                 {
                     logDetails.Password = null;         //  Delete the unhashed password
                     Authenticate(loginBusinessUser);    //  Authenticate the business user

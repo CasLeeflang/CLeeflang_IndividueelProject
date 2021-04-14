@@ -42,11 +42,13 @@
                         <input asp-for="EndTime" class="form-control" />
                         <span asp-validation-for="EndTime" class="text-danger"></span>
                     </div>
+                    <div class="text-danger">@ViewBag.TimeSlotError</div>
                     <div class="form-group">
                         <label asp-for="NumberOfSpots" class="control-label">Available spots:</label>
                         <input asp-for="NumberOfSpots" class="form-control" />
                         <span asp-validation-for="NumberOfSpots" class="text-danger"></span>
                     </div>
+                    <div class="text-danger">@ViewBag.SpotError</div>
                     <div class="form-group row">
                         <input type="submit" value="Create" class="btn btn-primary mb-3" />
                         <a asp-controller="Home" asp-action="Index">Back to List</a>
