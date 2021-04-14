@@ -64,16 +64,16 @@ namespace Logic.BusinessUser
             }
             else
             {
-                if (existingBusinessUser.UserName == UserName)
+                if (existingBusinessUser.UserName.ToLower() == UserName.ToLower())
                 {
                     _registerValidation.UserNameError = true;
 
                 }
-                if (existingBusinessUser.Email == Email)
+                if (existingBusinessUser.Email.ToLower() == Email.ToLower())
                 {
                     _registerValidation.EmailError = true;
                 }
-                if (existingBusinessUser.BusinessName == BusinessName)
+                if (existingBusinessUser.BusinessName.ToLower() == BusinessName.ToLower())
                 {
                     _registerValidation.BusinessNameError = true;
                 }

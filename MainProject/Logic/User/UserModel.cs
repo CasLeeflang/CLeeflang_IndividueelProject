@@ -68,12 +68,12 @@ namespace Logic.User
             }
             else
             {
-                if (existingUser.UserName == UserName)
+                if (existingUser.UserName.ToLower() == UserName.ToLower())
                 {
                     _registerValidation.UserNameError = true;
 
                 }
-                if (existingUser.Email == Email)
+                if (existingUser.Email.ToLower() == Email.ToLower())
                 {
                     _registerValidation.EmailError = true;
                 }
