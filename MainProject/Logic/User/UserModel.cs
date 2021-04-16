@@ -10,7 +10,7 @@ using Contract_Layer.User;
 
 namespace Logic.User
 {
-    public class UserModel 
+    public class UserModel
     {
         IUserDAL _userDAL = UserFactoryDAL.CreateUserDAL();
         public int Id { get; set; }
@@ -64,8 +64,17 @@ namespace Logic.User
 
             if (existingUser == null)
             {
-                _registerValidation.Valid = true;
+                if (DoB.Date < DateTime.Now.Date)
+                {
+                    _registerValidation.Valid = true;   //  If everything checks out
+                }
+                else
+                {
+                    _registerValidation.DoBError = true;
+                }
+
             }
+
             else
             {
                 if (existingUser.UserName.ToLower() == UserName.ToLower())
@@ -77,11 +86,13 @@ namespace Logic.User
                 {
                     _registerValidation.EmailError = true;
                 }
-                if(existingUser.DoB < DateTime.Now)
+                if (DoB.Date >= DateTime.Now.Date)
                 {
                     _registerValidation.DoBError = true;
                 }
             }
+
+
 
             return _registerValidation;
         }

@@ -18,12 +18,12 @@ namespace CLeeflang_IndividueelProject.Controllers
     {
         // Initialise the Salt variable (defined in startup.cs)
         private static string _salt;
-        
+
         public BusinessUserController(PasswordSalt PassSalt)
         {
             _salt = PassSalt.Salt;      // Set Salt
         }
-        
+
         //  Dependicy injection?
         BusinessUserCollection _businessUserCollection = new BusinessUserCollection();
 
@@ -71,16 +71,15 @@ namespace CLeeflang_IndividueelProject.Controllers
                     if (_businessUserValidation.EmailError)
                     {
                         ViewBag.ErrorMessageEmail = "Email adress already in use!";
-
                     }
-                    return View();
 
+                    return View();
                 }
 
             }
             else
             {
-                //  If this far, something went wrong and abort
+                //  If this far, something went wrong and abort, view checks didnt work
                 ViewBag.ErrorMessage = "Oops, something went wrong. Please try again!";
                 return View();
             }
@@ -91,29 +90,38 @@ namespace CLeeflang_IndividueelProject.Controllers
         {
             //  Method to login a business user 
 
-            BusinessUserModel loginBusinessUser = _businessUserCollection.GetBusinessUserByUserNameOrEmail(logDetails.Identifier).FirstOrDefault();
-
-            if(loginBusinessUser.UserName != null)
+            try
             {
-                if (Crypto.VerifyHashedPassword(loginBusinessUser.Password, logDetails.Password + _salt))
-                {
-                    logDetails.Password = null;         //  Delete the unhashed password
-                    Authenticate(loginBusinessUser);    //  Authenticate the business user
+                BusinessUserModel loginBusinessUser = _businessUserCollection.GetBusinessUserByUserNameOrEmail(logDetails.Identifier).FirstOrDefault();
 
-                    return RedirectToAction("Index", "Home");
+                if (loginBusinessUser != null)
+                {
+                    if (Crypto.VerifyHashedPassword(loginBusinessUser.Password, logDetails.Password + _salt))
+                    {
+                        logDetails.Password = null;         //  Delete the unhashed password
+                        Authenticate(loginBusinessUser);    //  Authenticate the business user
+
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        ViewBag.LoginError = "Username or Password incorrect";
+                        return View();
+                    }
                 }
+
                 else
                 {
                     ViewBag.LoginError = "Username or Password incorrect";
                     return View();
                 }
             }
-
-            else
+            catch (Exception)
             {
-                ViewBag.LoginError = "Username or Password incorrect";
+                ViewBag.LoginError = "Error occured while loging in, please try again!";
                 return View();
             }
+
 
         }
 

@@ -12,6 +12,6 @@ namespace Variables.ValidationResponse
         public bool Valid { get; set; } = false;
         public bool UserNameError { get; set; }
         public bool EmailError { get; set; }
-        public bool DoBError { get; set; }
+        public bool DoBError { get; set; } = false;
     }
 }

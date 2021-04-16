@@ -100,31 +100,38 @@ namespace CLeeflang_IndividueelProject.Controllers
         public ActionResult Login(LoginModel LogDetails)
         {
             //  Method to login a user
-
-            UserModel loginUser = _userCollection.GetUserByUserNameOrEmail(LogDetails.Identifier).FirstOrDefault();    // Get the User with the specic identifier which equals the username or email
-
-            if (loginUser.UserName != null)
+            try
             {
-                if (Crypto.VerifyHashedPassword(loginUser.Password, LogDetails.Password + _salt))
+                UserModel loginUser = _userCollection.GetUserByUserNameOrEmail(LogDetails.Identifier).FirstOrDefault();    // Get the User with the specic identifier which equals the username or email
+                
+                if (loginUser != null)
                 {
-                    LogDetails.Password = null;     //  Delete the unhashed password
-                    Authenticate(loginUser);        //  authenticate the user
+                    if (Crypto.VerifyHashedPassword(loginUser.Password, LogDetails.Password + _salt))
+                    {
+                        LogDetails.Password = null;     //  Delete the unhashed password
+                        Authenticate(loginUser);        //  authenticate the user
 
-                    return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        ViewBag.LoginError = "Username or Password incorrect";
+                        return View();
+                    }
+
                 }
                 else
                 {
                     ViewBag.LoginError = "Username or Password incorrect";
                     return View();
                 }
-
             }
-            else
+
+            catch (Exception)
             {
-                ViewBag.LoginError = "Username or Password incorrect";
+                ViewBag.LoginError = "Error occured while logging in, please try again!";
                 return View();
             }
-
         }
 
         public void Authenticate(UserModel user)     // Method to authenticate the user once the password is checked
