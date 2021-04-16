@@ -6,12 +6,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using CLeeflang_IndividueelProject.Models;
+using Logic;
+using Logic.BusinessUser;
 
 namespace CLeeflang_IndividueelProject.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+
+        BusinessUserCollection _businessUserCollection = new();
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -27,6 +31,12 @@ namespace CLeeflang_IndividueelProject.Controllers
         {
             return View();
         }        
+
+        public IActionResult BusinessPage(int id)
+        {
+            BusinessUserModel businessUser = _businessUserCollection.GetBusinessByIdForView(id);
+            return View(businessUser);
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

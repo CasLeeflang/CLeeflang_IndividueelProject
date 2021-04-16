@@ -12,6 +12,7 @@ namespace Contract_Layer.BusinessUser
         void CreateBusinessUser(BusinessUserDTO newBusinessUser);
 
         IEnumerable<BusinessUserDTO> GetBusinessByUserNameOrEmail(string identifier);
+        IEnumerable<BusinessUserDTO> GetBusinessByIdForView(int id);
 
         int GetBusinessId(string userName);
 

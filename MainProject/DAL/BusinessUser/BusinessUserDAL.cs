@@ -40,6 +40,20 @@ namespace DAL.BusinessUser
             return _dBManager.LoadData<BusinessUserDTO>(sql, parameters);
         }
 
+        public IEnumerable<BusinessUserDTO> GetBusinessByIdForView(int id)
+        {
+            string sql = $"select Id, BusinessName, Info, Sector from dbo.BusinessUser where Id = @id ";
+
+            var dictionary = new Dictionary<string, object>
+            {
+                {"@id", id }
+            };
+
+            var parameters = new DynamicParameters(dictionary);
+
+            return _dBManager.LoadData<BusinessUserDTO>(sql, parameters);
+        }
+
         public void UpdateBusinessUser(BusinessUserDTO updatedBusinessUser)
         {
             string sql = $"";
@@ -86,22 +100,6 @@ namespace DAL.BusinessUser
                 throw new Exception();
             }
         }
-
-        //public bool ValidateNewBusinessUser(string userName, string email)
-        //{
-
-        //    bool valid = false;
-
-        //    BusinessUserDTO existingBusinessUser = CheckBusinessUserNameEmail(userName, email).FirstOrDefault();
-
-
-        //    if (existingBusinessUser == null)
-        //    {
-        //        valid = true;
-        //    }
-
-        //    return valid;
-        //}    
         
         public IEnumerable<BusinessUserDTO> CheckBusinessUserNameEmailName(string userName, string email, string businessName)
         {

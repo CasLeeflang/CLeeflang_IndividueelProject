@@ -1,0 +1,6 @@
+﻿.expand-hover {
+    transition: transform 0.3s;
+}
+    .expand-hover:hover, expand-hover:focus {
+        transform: scale(1.1);
+    }

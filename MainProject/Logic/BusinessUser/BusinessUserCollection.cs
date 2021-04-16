@@ -61,6 +61,20 @@ namespace Logic.BusinessUser
             return businessUsers;
         }
 
+        public BusinessUserModel GetBusinessByIdForView(int id)
+        {
+            IEnumerable<BusinessUserDTO> _businessDTOS =  _BusinessUserCollectionDAL.GetBusinessByIdForView(id);
+
+            foreach (var businessDTO in _businessDTOS)
+            {
+                BusinessUserModel business = new BusinessUserModel(businessDTO);
+                businessUsers.Add(business);
+            }
+
+            return businessUsers.FirstOrDefault();
+            
+        }
+
         public int GetBusinessId(string userName)
         {
             //  Returns te business id based on the username of the business

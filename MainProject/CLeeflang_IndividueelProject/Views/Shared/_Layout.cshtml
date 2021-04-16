@@ -9,17 +9,17 @@
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/css/style.css">
 </head>
-<body>
+<body >
     <aside class="sidebar">
-        <div class="toggle">
+        <div class="toggle mr-2">
             <a href="#" class="burger js-menu-toggle" data-toggle="collapse" data-target="#main-navbar">
                 <span></span>
             </a>
         </div>
 
-        <div class="side-inner">
-            <div class="" style="">
-                <img class="center" style="margin-left:auto; margin-right:auto;   display: block;" src="" alt="Logo Image" /><br>
+        <div class="side-inner" style="overflow: hidden;">
+            <div class="" style="display:inline-block">
+                <img class="center mb-5" style="max-width:95%;" src="~/Logo/SpotSaverLogo.png" alt="Logo Image" /><br>
             </div>
 
             @if (User.Identity.IsAuthenticated)
@@ -72,7 +72,7 @@
     </aside>
 
     <div class="container">
-        <main role="main" class="pb-3">
+        <main role="main" class="pb-3 ml-3">
             @RenderBody()
         </main>
     </div>

@@ -1,18 +1,27 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+
+<head>
+    <link rel="stylesheet" href="~/css/card_animation.css">
+</head>
+
 @using Logic.BusinessUser;
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h1>Welcome to Spot Saver!</h1>
+<h3>Ensure your spot for your favourite activity</h3>
+<h4>Select the business and check availability</h4>
 @{ BusinessUserCollection _businessUserCollection = new BusinessUserCollection(); } @*Dependency injection correct?*@
 
 <div>
-    @foreach(var business in _businessUserCollection.GetAllBusinesses())
-            {
-                <p>@business.BusinessName</p>
-
-            }
+    @foreach (var business in _businessUserCollection.GetAllBusinesses())
+    {
+        <a class="nav-link expand-hover" asp-controller="Home" asp-action="BusinessPage" asp-route-id="@business.Id">
+            <div class="card mb-2">
+                <div class="row">
+                    <div class="card-body">@business.BusinessName</div>
+                </div>
+            </div>
+        </a>
+    }
 </div>
