@@ -1,14 +1,8 @@
 ﻿using Dapper;
 using DTOs;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Variables;
 using Contract_Layer.User;
 using DAL.DataBase;
-using Microsoft.Extensions.Configuration;
 
 namespace DAL.User
 {

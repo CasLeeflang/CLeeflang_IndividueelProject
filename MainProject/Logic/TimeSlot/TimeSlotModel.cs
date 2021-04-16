@@ -1,5 +1,4 @@
 ﻿using FactoryDAL;
-using Contract_Layer;
 using DTOs;
 using System;
 using Contract_Layer.TimeSlot;
@@ -11,6 +10,7 @@ namespace Logic
     {
 
         ITimeSlotDAL _timeSlotDAL = TimeSlotFactoryDAL.CreateTimeSlotDAL();
+
         public int Id { get; set; }
         public int BusinessId { get; set; }
         public string DayOTWeek { get; set; }
@@ -48,7 +48,7 @@ namespace Logic
 
         public void UpdateTimeSlot()
         {
-            throw new NotImplementedException();
+            _timeSlotDAL.UpdateTimeSlot();
         }
 
         public TimeSlotCreation Validate()

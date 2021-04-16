@@ -10,7 +10,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Models\DTOs.csproj" />
-    <ProjectReference Include="..\Variables\Variables.csproj" />
   </ItemGroup>
 
 </Project>

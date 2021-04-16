@@ -20,16 +20,6 @@
         "runtime": {
           "bin/placeholder/DTOs.dll": {}
         }
-      },
-      "Variables/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
-        "compile": {
-          "bin/placeholder/Variables.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Variables.dll": {}
-        }
       }
     }
   },
@@ -55,18 +45,12 @@
       "type": "project",
       "path": "../Models/DTOs.csproj",
       "msbuildProject": "../Models/DTOs.csproj"
-    },
-    "Variables/1.0.0": {
-      "type": "project",
-      "path": "../Variables/Variables.csproj",
-      "msbuildProject": "../Variables/Variables.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
       "DTOs >= 1.0.0",
-      "Dapper >= 2.0.78",
-      "Variables >= 1.0.0"
+      "Dapper >= 2.0.78"
     ]
   },
   "packageFolders": {
@@ -98,9 +82,6 @@
           "projectReferences": {
             "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Models\\DTOs.csproj": {
               "projectPath": "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Models\\DTOs.csproj"
-            },
-            "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Variables\\Variables.csproj": {
-              "projectPath": "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Variables\\Variables.csproj"
             }
           }
         }

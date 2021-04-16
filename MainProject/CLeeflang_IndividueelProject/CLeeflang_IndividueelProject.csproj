@@ -34,7 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.12" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.5" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
     <PackageReference Include="System.Web.Helpers.Crypto" Version="3.2.3" />
   </ItemGroup>
@@ -43,7 +43,6 @@
     <ProjectReference Include="..\Interface\Contract Layer.csproj" />
     <ProjectReference Include="..\Logic\Logic.csproj" />
     <ProjectReference Include="..\Models\DTOs.csproj" />
-    <ProjectReference Include="..\SQLDataAccess\SQLDataAccess.csproj" />
     <ProjectReference Include="..\Variables\Variables.csproj" />
   </ItemGroup>
 
