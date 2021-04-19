@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using Contract_Layer.TimeSlot;
 
-namespace Logic
+namespace Logic.TimeSlot
 {
     public class TimeSlotCollection
     {
@@ -51,6 +51,47 @@ namespace Logic
                 return timeSlots;
             }            
         }
+
+        public IEnumerable<TimeSlotModel> GetTimeSlotById(int id)
+        {
+            // Load in the TimeSlotDTOs into IEnumerable
+            IEnumerable<TimeSlotDTO> timeSlotDTOs = _timeSlotCollectionDAL.LoadTimeSlotById(id);
+
+            // Map DTO to LogicModel and put into collection list
+            try
+            {
+                foreach (var timeSlotDTO in timeSlotDTOs)
+                {
+                    TimeSlotModel timeSlot = new TimeSlotModel(timeSlotDTO);
+                    timeSlots.Add(timeSlot);
+                }
+                return timeSlots;
+            }
+            catch
+            {
+                return timeSlots;
+            }
+        }
+
+        public IEnumerable<TimeSlotModel> GetTimeSlotByDayAndBusinessId(string day, int businessId)
+        {
+
+            IEnumerable<TimeSlotDTO> timeSlotDTOs = _timeSlotCollectionDAL.GetTimeSlotByDayAndBusinessId(day, businessId);
+            try
+            {
+                foreach(var timeslotDTO in timeSlotDTOs)
+                {
+                    TimeSlotModel timeSlot = new TimeSlotModel(timeslotDTO);
+                    timeSlots.Add(timeSlot);
+                }
+                return timeSlots;
+            }
+            catch
+            {
+                return timeSlots;
+            }
+        }
+            
 
         public void DeleteTimeSlot(int id)
         {

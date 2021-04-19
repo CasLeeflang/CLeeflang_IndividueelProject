@@ -66,7 +66,8 @@ namespace Logic.User
         {
             //  returns the id based on the username of the user
 
-            throw new NotImplementedException();
+            int userId = _userCollectionDAL.GetUserId(userName).FirstOrDefault().Id;
+            return userId;
         }
 
     }

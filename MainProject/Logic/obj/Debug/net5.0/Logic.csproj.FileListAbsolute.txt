@@ -4,10 +4,8 @@ C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Logic\b
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Logic\bin\Debug\net5.0\Logic.pdb
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Logic\bin\Debug\net5.0\DAL.dll
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Logic\bin\Debug\net5.0\FactoryDAL.dll
-C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Logic\bin\Debug\net5.0\SQLDataAccess.dll
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Logic\bin\Debug\net5.0\DAL.pdb
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Logic\bin\Debug\net5.0\FactoryDAL.pdb
-C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Logic\bin\Debug\net5.0\SQLDataAccess.pdb
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Logic\obj\Debug\net5.0\Logic.csprojAssemblyReference.cache
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Logic\obj\Debug\net5.0\Logic.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Logic\obj\Debug\net5.0\Logic.AssemblyInfoInputs.cache

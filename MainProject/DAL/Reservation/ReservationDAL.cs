@@ -16,8 +16,8 @@ namespace DAL.Reservation
 
         public void CreateReservation(ReservationDTO newReservaton)
         {
-            string sql = @"insert into dbo.Reservation ()
-                            values(@);";
+            string sql = @"insert into dbo.Reservation (Date, UserId, BusinessId, TimeSlotId)
+                            values(@Date, @UserId, @BusinessId, @TimeSlotId);";
 
             _dBManager.SaveData(sql, newReservaton);
         }

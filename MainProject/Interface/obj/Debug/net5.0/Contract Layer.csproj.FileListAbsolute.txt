@@ -2,8 +2,6 @@ C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interfa
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\bin\Debug\net5.0\Contract Layer.dll
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\bin\Debug\net5.0\ref\Contract Layer.dll
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\bin\Debug\net5.0\Contract Layer.pdb
-C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\bin\Debug\net5.0\Variables.dll
-C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\bin\Debug\net5.0\Variables.pdb
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\obj\Debug\net5.0\Contract Layer.csprojAssemblyReference.cache
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\obj\Debug\net5.0\Contract Layer.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\Interface\obj\Debug\net5.0\Contract Layer.AssemblyInfoInputs.cache

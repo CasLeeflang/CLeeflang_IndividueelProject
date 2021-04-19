@@ -13,6 +13,8 @@ namespace Contract_Layer.TimeSlot
 
         // void UpdateTimeSlot();
         IEnumerable<TimeSlotDTO> LoadTimeSlotByBusinessId(int businessId);
+        IEnumerable<TimeSlotDTO> GetTimeSlotByDayAndBusinessId(string day, int businessId);
+        IEnumerable<TimeSlotDTO> LoadTimeSlotById(int id);
         void DeleteTimeSlot(int id);
     }
 }

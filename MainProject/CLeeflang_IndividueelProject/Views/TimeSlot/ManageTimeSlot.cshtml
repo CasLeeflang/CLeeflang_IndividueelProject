@@ -3,7 +3,7 @@
     ViewData["Title"] = "CreateTimeSlot";
 }
 
-@using Logic;
+@using Logic.TimeSlot;
 @using Logic.BusinessUser; 
 
 
@@ -136,7 +136,7 @@
                                             {
                                                 <tr>
                                                     <th>@timeSlot.DayOTWeek</th>
-                                                    <td>@timeSlot.StartTime.TimeOfDay</td>
+                                                    <td>@timeSlot.StartTime.TimeOfDay<td>
                                                     <td>@timeSlot.EndTime.TimeOfDay</td>
                                                     <td>@timeSlot.NumberOfSpots</td>
                                                     <td>

@@ -46,8 +46,4 @@
     <ProjectReference Include="..\Variables\Variables.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Reservation\" />
-  </ItemGroup>
-
 </Project>

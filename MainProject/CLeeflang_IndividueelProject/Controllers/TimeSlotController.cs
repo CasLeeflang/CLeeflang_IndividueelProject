@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CLeeflang_IndividueelProject.Models;
-using Logic;
+using Logic.TimeSlot;
 using Logic.BusinessUser;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

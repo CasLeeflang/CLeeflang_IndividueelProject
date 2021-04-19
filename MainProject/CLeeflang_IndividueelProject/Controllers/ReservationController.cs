@@ -1,4 +1,9 @@
-﻿using Logic.Reservation;
+﻿using CLeeflang_IndividueelProject.Models.Date;
+using CLeeflang_IndividueelProject.Models.Reservation;
+using Logic.BusinessUser;
+using Logic.Reservation;
+using Logic.TimeSlot;
+using Logic.User;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,10 +15,40 @@ namespace CLeeflang_IndividueelProject.Controllers
     public class ReservationController : Controller
     {
         ReservationCollection _reservationCollection = new();
+        BusinessUserCollection _businessUserCollection = new();
+        TimeSlotCollection _timeSlotCollection = new();
+        UserCollection _userCollection = new();
 
-        public IActionResult Index()
+        public IActionResult DatePicker(int businessId)
         {
+            ViewBag.businessId = businessId;
             return View();
+        }
+
+        public IActionResult TimeSlotPicker(int businessId, DateViewModel DateModel)
+        {
+            List<string> DotW = new List<string> { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" };
+            int dayIndex = (int)DateModel.Date.DayOfWeek;
+            string day = DotW[dayIndex - 1];
+
+            ViewBag.Date = DateModel.Date.Date;
+            ViewBag.Day = day;
+            ViewBag.businessId = businessId;
+
+            IEnumerable<TimeSlotModel> timeSlots = _timeSlotCollection.GetTimeSlotByDayAndBusinessId(day, businessId);
+            return View(timeSlots);
+        }
+
+        public IActionResult CreateReservation(string dateString, string userName, int businessId, int pickedTimeSlotId)
+        {
+            DateTime date = DateTime.Parse(dateString);
+    
+            int userId = _userCollection.GetUserId(userName);
+
+            ReservationModel newReservation = new ReservationModel(date, userId, businessId, pickedTimeSlotId);
+            _reservationCollection.CreateReservation(newReservation);
+            return RedirectToAction("Index", "Home");
+
         }
     }
 }

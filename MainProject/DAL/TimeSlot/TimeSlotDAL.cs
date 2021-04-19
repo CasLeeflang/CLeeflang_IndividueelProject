@@ -30,7 +30,38 @@ namespace DAL.TimeSlot
 
             var dictionary = new Dictionary<string, object>
             {
-                {"@businessId", businessId},
+                {"@businessId", businessId}
+
+            };
+
+
+            var parameters = new DynamicParameters(dictionary);
+
+            return _dBManager.LoadData<TimeSlotDTO>(sql, parameters);
+        }
+
+        public IEnumerable<TimeSlotDTO> GetTimeSlotByDayAndBusinessId(string day, int businessId)
+        {
+            string sql = $"Select * from dbo.TimeSlot where BusinessId = @businessId and DayOTWeek = @day";
+
+            var dictionary = new Dictionary<string, object>
+            {
+                {"@businessId", businessId },
+                {"@day", day}
+            };
+
+            var parameters = new DynamicParameters(dictionary);
+
+            return _dBManager.LoadData<TimeSlotDTO>(sql, parameters);
+        }
+
+        public IEnumerable<TimeSlotDTO> LoadTimeSlotById(int id)
+        {
+            string sql = $"select * from dbo.TimeSlot where Id = @id";
+
+            var dictionary = new Dictionary<string, object>
+            {
+                {"@id", id}
 
             };
 

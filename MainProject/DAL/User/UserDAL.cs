@@ -8,8 +8,6 @@ namespace DAL.User
 {
     public class UserDAL : IUserDAL, IUserCollectionDAL
     {
-
-
         DBManager _dBManager = new DBManager();
         public void CreateUser(UserDTO newUser)
         {
@@ -42,9 +40,22 @@ namespace DAL.User
             var dictionary = new Dictionary<string, object>
             {
                 {"@identifier", identifier}
-
             };
 
+
+            var parameters = new DynamicParameters(dictionary);
+
+            return _dBManager.LoadData<UserDTO>(sql, parameters);
+        }
+
+        public IEnumerable<UserDTO> GetUserId(string userName)
+        {
+            string sql = $"select Id from dbo.[User] where Username = @username";
+
+            var dictionary = new Dictionary<string, object>
+            {
+                {"@username", userName }
+            };
 
             var parameters = new DynamicParameters(dictionary);
 

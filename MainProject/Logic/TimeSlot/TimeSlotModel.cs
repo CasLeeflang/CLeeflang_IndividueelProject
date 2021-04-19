@@ -4,7 +4,7 @@ using System;
 using Contract_Layer.TimeSlot;
 using Variables.ValidationResponse;
 
-namespace Logic
+namespace Logic.TimeSlot
 {
     public class TimeSlotModel
     {
@@ -29,10 +29,11 @@ namespace Logic
 
         public TimeSlotModel(int businessId, string dayOTWeek, DateTime startTime, DateTime endTime, int numberOfSpots)
         {
+            
             BusinessId = businessId;
             DayOTWeek = dayOTWeek;
-            StartTime = startTime;
-            EndTime = endTime;
+            StartTime = new DateTime(9999, 01, 01) + startTime.TimeOfDay;   //  Removes the date from the datetime object
+            EndTime = new DateTime(9999, 01, 01) + endTime.TimeOfDay;
             NumberOfSpots = numberOfSpots;
         }
 

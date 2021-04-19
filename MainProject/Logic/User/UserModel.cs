@@ -45,13 +45,17 @@ namespace Logic.User
 
         public void Update(UserModel updatedUser)
         {
-            this.Id = updatedUser.Id;
-            this.UserName = updatedUser.UserName;
-            this.FirstName = updatedUser.FirstName;
-            this.LastName = updatedUser.LastName;
-            this.Password = updatedUser.Password;
-            this.Email = updatedUser.Email;
-            this.DoB = updatedUser.DoB;
+            UserDTO updateUserDTO = new UserDTO
+            {
+               UserName = updatedUser.UserName,
+                FirstName = updatedUser.FirstName,
+                LastName = updatedUser.LastName,
+                Password = updatedUser.Password,
+                Email = updatedUser.Email,
+                DoB = updatedUser.DoB
+            };            
+
+            _userDAL.UpdateUser(updateUserDTO);
         }
 
         public UserRegistration Validate()

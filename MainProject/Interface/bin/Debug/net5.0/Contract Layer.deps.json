@@ -9,8 +9,7 @@
       "Contract Layer/1.0.0": {
         "dependencies": {
           "DTOs": "1.0.0",
-          "Dapper": "2.0.78",
-          "Variables": "1.0.0"
+          "Dapper": "2.0.78"
         },
         "runtime": {
           "Contract Layer.dll": {}
@@ -27,11 +26,6 @@
       "DTOs/1.0.0": {
         "runtime": {
           "DTOs.dll": {}
-        }
-      },
-      "Variables/1.0.0": {
-        "runtime": {
-          "Variables.dll": {}
         }
       }
     }
@@ -50,11 +44,6 @@
       "hashPath": "dapper.2.0.78.nupkg.sha512"
     },
     "DTOs/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Variables/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

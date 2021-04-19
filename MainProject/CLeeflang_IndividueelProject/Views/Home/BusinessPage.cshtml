@@ -3,48 +3,23 @@
 @{
     ViewData["Title"] = "BusinessPage";
 }
-@using Logic;
+@using Logic.TimeSlot;
 
 <head>
     <link rel="stylesheet" href="~/css/TimeSlotContainer.css" />
     <script src="~/js/TimeSlot.js"></script>
 </head>
 
-<h1>BusinessPage</h1>
+<h1>Welcome to @Model.BusinessName!</h1>
+<h3>See the available timeslots below to make a reservation</h3>
 
 <div>
-    <h4>BusinessUserModel</h4>
-    <hr />
     <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Id)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Id)
-        </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.BusinessName)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.BusinessName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.UserName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.UserName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Password)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Email)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Info)
@@ -61,104 +36,12 @@
     </dl>
 </div>
 
+<div>
+    <a asp-controller="Reservation" asp-action="DatePicker" asp-route-businessId="@Model.Id">Make Reservation</a>
+</div>
+
 <div class="mb-5">
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Back to Home</a>
 </div>
 
-<div class="row">
-    <div class="container">
-        <div class="tab">
-            <button class="tablinks" onclick="openDay(event, 'Mon')">Monday</button>
-            <button class="tablinks" onclick="openDay(event, 'Tue')">Tuesday</button>
-            <button class="tablinks" onclick="openDay(event, 'Wed')">Wednesday</button>
-            <button class="tablinks" onclick="openDay(event, 'Thu')">Thursday</button>
-            <button class="tablinks" onclick="openDay(event, 'Fri')">Friday</button>
-            <button class="tablinks" onclick="openDay(event, 'Sat')">Saturday</button>
-            <button class="tablinks" onclick="openDay(event, 'Sun')">Sunday</button>
-        </div>
-        @{ TimeSlotCollection _timeSlotCollection = new TimeSlotCollection();
-            IEnumerable<TimeSlotModel> timeSlots = _timeSlotCollection.GetTimeSlotByBusinessId(Model.Id).OrderBy(o => o.StartTime);
-
-            List<string> DotW = new List<string> { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" };
-
-        } @*Load Based on BusinessUserId*@
-
-
-
-        <!-- Tab content -->
-        <div class="weekBox">
-
-            @foreach (var day in DotW)
-            {
-                if (day == "Mon")
-                {
-                    <div id="@day" class="tabcontent" style="display: block;">
-                        <div class="TimeSlots">
-                            <table style="width:100%">
-                                <tr>
-                                    <th>Day</th>
-                                    <th>Start Time</th>
-                                    <th>End Time</th>
-                                    <th>Spots</th>
-                                    <th></th>
-
-                                </tr>
-                                @foreach (var timeSlot in timeSlots)
-                                {
-                                    if (timeSlot.DayOTWeek == day)
-                                    {
-                                        <tr>
-                                            <th>@timeSlot.DayOTWeek</th>
-                                            <td>@timeSlot.StartTime.TimeOfDay</td>
-                                            <td>@timeSlot.EndTime.TimeOfDay</td>
-                                            <td>@timeSlot.NumberOfSpots</td>
-                                        </tr>
-                                    }
-                                }
-                            </table>
-                        </div>
-                    </div>
-                }
-                else
-                {
-                    <div id="@day" class="tabcontent" style="display: none;">
-                        <div class="TimeSlots">
-                            <table style="width:100%">
-                                <tr>
-                                    <th>Day</th>
-                                    <th>Start Time</th>
-                                    <th>End Time</th>
-                                    <th>Spots</th>
-                                    <th></th>
-
-                                </tr>
-                                @foreach (var timeSlot in timeSlots)
-                                {
-                                    if (timeSlot.DayOTWeek == day)
-                                    {
-                                        <tr>
-                                            <th>@timeSlot.DayOTWeek</th>
-                                            <td>@timeSlot.StartTime.TimeOfDay</td>
-                                            <td>@timeSlot.EndTime.TimeOfDay</td>
-                                            <td>@timeSlot.NumberOfSpots</td>
-
-                                        </tr>
-
-                                    }
-                                }
-                            </table>
-
-                        </div>
-                    </div>
-                }
-
-            }
-
-
-        </div>
-    </div>
-
-
-</div>
 

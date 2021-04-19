@@ -1,0 +1,35 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@using Logic.TimeSlot
+@model IEnumerable<TimeSlotModel>
+
+<h3>Timeslots for @ViewBag.Day @ViewBag.Date.ToString("dd/MM/yyyy")</h3>
+
+<table style="width:100%">
+    <tr>
+        <th>Day</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+        <th>Spots</th>
+        <th></th>
+
+    </tr>
+    @foreach (var timeSlot in Model)
+    {
+
+        <tr>
+            <td>@timeSlot.DayOTWeek</td>
+            <td>@timeSlot.StartTime.TimeOfDay</td>
+            <td>@timeSlot.EndTime.TimeOfDay</td>
+            <td>@timeSlot.NumberOfSpots</td>
+        </tr>
+
+        <div>
+            <a asp-action="CreateReservation" asp-route-dateString="@ViewBag.Date.ToString("dd/MM/yyyy")" asp-route-userName="@User.Identity.Name" asp-route-pickedTimeSlotId="@timeSlot.Id" asp-route-businessId="@ViewBag.businessId">Reserve</a>
+        </div>
+    }
+</table>
+<div>
+    <a asp-action="DatePicker" asp-route-businessId="@ViewBag.businessId">Select different date</a>
+</div>
