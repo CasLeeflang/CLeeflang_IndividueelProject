@@ -36,6 +36,20 @@ namespace DAL.Reservation
             return _dBManager.LoadData<ReservationDTO>(sql, parameters);
         }
 
+        public int GetNumberOfReservationsByUserId(int userId)
+        {
+            string sql = $"select Date from dbo.Reservation where UserId = @userId";
+
+            var dictionary = new Dictionary<string, object>
+            {
+                {"@userId", userId }
+            };
+
+            var parameters = new DynamicParameters(dictionary);
+
+            return _dBManager.LoadData<ReservationDTO>(sql, parameters).Count();
+        }
+
         public IEnumerable<ReservationDTO> GetReservationByBusinessId(int businessId)
         {
             string sql = $"select * from dbo.Reservation where BusinessId = @businessId";

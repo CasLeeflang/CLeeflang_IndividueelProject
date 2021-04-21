@@ -9,7 +9,13 @@
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/css/style.css">
 </head>
-<body >
+
+@using Logic.Reservation;
+@using Logic.User
+@{ ReservationCollection _reservationCollection = new();
+    UserCollection _userCollection = new();
+}
+<body>
     <aside class="sidebar">
         <div class="toggle mr-2">
             <a href="#" class="burger js-menu-toggle" data-toggle="collapse" data-target="#main-navbar">
@@ -31,9 +37,16 @@
                 if (User.IsInRole("User"))
                 {
                     <div class="counter d-flex justify-content-center">
-                        <div class="col">
-                            <strong class="number">0</strong>
-                            <span class="number-label">Reservations</span>
+                        <div class="col nav-menu">
+                            <ul>
+                                <li>
+                                    <a style="text-decoration:none;" asp-area="" asp-controller="User" asp-action="ReservationOverview">
+                                        <strong class="number">@_reservationCollection.GetNumberOfReservationsByUserId((int)_userCollection.GetUserId(User.Identity.Name))</strong>
+                                        <span class="number-label">Reservations</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            
                         </div>
                     </div>
                 }
@@ -57,7 +70,7 @@
                     {
                         <li><a asp-area="" asp-controller="BusinessUser" asp-action="Logout"><span class="icon-search2 mr-3"></span>Log Out</a></li>
                     }
-                    @if(!User.Identity.IsAuthenticated)
+                    @if (!User.Identity.IsAuthenticated)
                     {
                         <li><a asp-area="" asp-controller="User" asp-action="Register"><span class="icon-search2 mr-3"></span>Register</a></li>
                         <li><a asp-area="" asp-controller="User" asp-action="Login"><span class="icon-search2 mr-3"></span>Login</a></li>

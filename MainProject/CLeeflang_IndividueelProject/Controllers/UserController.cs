@@ -1,4 +1,6 @@
 ﻿using CLeeflang_IndividueelProject.Models;
+using Logic.Reservation;
+using Logic.TimeSlot;
 using Logic.User;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -28,7 +30,8 @@ namespace CLeeflang_IndividueelProject.Controllers
         }
 
         //  Dependicy injection?
-        UserCollection _userCollection = new UserCollection();
+        UserCollection _userCollection = new();
+        ReservationCollection _reservationCollection = new();
 
         public IActionResult Register()
         {
@@ -43,6 +46,12 @@ namespace CLeeflang_IndividueelProject.Controllers
         {
             UserModel user = _userCollection.GetUserByUserName(User.Identity.Name).FirstOrDefault();
             return View(user);
+        }
+
+        public IActionResult ReservationOverview()
+        {
+            IEnumerable<ReservationModel> reservations = _reservationCollection.GetReservationByUserId(_userCollection.GetUserId(User.Identity.Name));
+            return View(reservations);
         }
 
         [HttpPost]

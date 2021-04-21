@@ -40,6 +40,10 @@ namespace Logic.Reservation
 
             return reservations;
         }
+        public int GetNumberOfReservationsByUserId(int userId)
+        {
+            return _reservationCollectionDAL.GetNumberOfReservationsByUserId(userId);
+        }
 
         public IEnumerable<ReservationModel> GetReservationByBusinessId(int businessId)
         {

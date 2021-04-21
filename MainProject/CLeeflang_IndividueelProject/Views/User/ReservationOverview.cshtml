@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Logic.Reservation.ReservationModel>;
+@using Logic.BusinessUser
+@using Logic.TimeSlot
+@{ BusinessUserCollection _businessUserCollection = new();
+    TimeSlotCollection _timeSlotCollection = new();
+}
+
+<table>
+    <tr>
+        <th>Date:</th>
+        <th>Business:</th>
+        <th>Start Time:</th>
+        <th>End Time:</th>
+    </tr>
+
+    @foreach (var reservation in Model)
+    {
+        TimeSlotModel timeSlot = _timeSlotCollection.GetTimeSlotById(reservation.TimeSlotId).FirstOrDefault();
+
+        <tr>
+            <td>@reservation.Date.ToString("dd/MM/yy")</td>
+            <td>@_businessUserCollection.GetBusinessByIdForView(reservation.BusinessId).BusinessName</td>
+            <td>@timeSlot.StartTime.TimeOfDay</td>
+            <td>@timeSlot.EndTime.TimeOfDay</td>
+        </tr>
+    }
+</table>

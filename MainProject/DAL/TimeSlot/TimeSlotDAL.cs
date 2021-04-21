@@ -12,9 +12,14 @@ namespace DAL.TimeSlot
 {
     public class TimeSlotDAL : ITimeSlotDAL, ITimeSlotCollectionDAL
     {
+        public DBManager _dBManager = new DBManager();
 
+        public class Get
+        {            
+            //  Methods that relate to getting timeslots?
+            //  Access _dBManager from within nested class?
+        }
 
-        DBManager _dBManager = new DBManager();
         public void CreateTimeSlot(TimeSlotDTO newTimeSlot)
         {
             //Prepare sql query
@@ -31,6 +36,22 @@ namespace DAL.TimeSlot
             var dictionary = new Dictionary<string, object>
             {
                 {"@businessId", businessId}
+
+            };
+
+
+            var parameters = new DynamicParameters(dictionary);
+
+            return _dBManager.LoadData<TimeSlotDTO>(sql, parameters);
+        }
+
+        public IEnumerable<TimeSlotDTO> LoadTimeSlotByUserId(int userId)
+        {
+            string sql = $"select * from dbo.TimeSlot where UserId = @userId";
+
+            var dictionary = new Dictionary<string, object>
+            {
+                {"@userId", userId}
 
             };
 
