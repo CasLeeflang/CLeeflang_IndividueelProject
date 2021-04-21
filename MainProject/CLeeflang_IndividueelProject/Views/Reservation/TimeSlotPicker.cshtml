@@ -1,8 +1,9 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<TimeSlotModel>
+
 @using Logic.TimeSlot
-@model IEnumerable<TimeSlotModel>
+@using Logic.Reservation
+@{ ReservationCollection _reservationCollection = new();}
+
 
 <h3>Timeslots for @ViewBag.Day @ViewBag.Date.ToString("dd/MM/yyyy")</h3>
 
@@ -11,24 +12,27 @@
         <th>Day</th>
         <th>Start Time</th>
         <th>End Time</th>
-        <th>Spots</th>
+        <th>Available Spots</th>
         <th></th>
 
     </tr>
     @foreach (var timeSlot in Model)
     {
+        int NOfSpotsAvailable = timeSlot.NumberOfSpots - _reservationCollection.GetNumberOfReservationsPerDateAndTimeSlotId(ViewBag.Date, timeSlot.Id);
 
         <tr>
             <td>@timeSlot.DayOTWeek</td>
             <td>@timeSlot.StartTime.TimeOfDay</td>
             <td>@timeSlot.EndTime.TimeOfDay</td>
-            <td>@timeSlot.NumberOfSpots</td>
+            <td>@NOfSpotsAvailable</td>
             <td>
                 <a asp-action="CreateReservation" asp-route-dateString="@ViewBag.Date.ToString("dd/MM/yyyy")" asp-route-userName="@User.Identity.Name" asp-route-pickedTimeSlotId="@timeSlot.Id" asp-route-businessId="@ViewBag.businessId">Reserve</a>
             </td>
         </tr>
+
     }
 </table>
+<div class="text-danger">@TempData["ErrorReservationExists"]</div>
 <div>
     <a asp-controller="Home" asp-action="BusinessPage" asp-route-id="@ViewBag.businessId">Select different date</a>
 </div>

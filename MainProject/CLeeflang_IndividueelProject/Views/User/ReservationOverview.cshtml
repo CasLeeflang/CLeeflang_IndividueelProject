@@ -1,9 +1,4 @@
-﻿@model IEnumerable<Logic.Reservation.ReservationModel>;
-@using Logic.BusinessUser
-@using Logic.TimeSlot
-@{ BusinessUserCollection _businessUserCollection = new();
-    TimeSlotCollection _timeSlotCollection = new();
-}
+﻿@model IEnumerable<CLeeflang_IndividueelProject.Models.Reservation.ReservationOverviewModel>;
 
 <table>
     <tr>
@@ -15,13 +10,12 @@
 
     @foreach (var reservation in Model)
     {
-        TimeSlotModel timeSlot = _timeSlotCollection.GetTimeSlotById(reservation.TimeSlotId).FirstOrDefault();
-
+       
         <tr>
-            <td>@reservation.Date.ToString("dd/MM/yy")</td>
-            <td>@_businessUserCollection.GetBusinessByIdForView(reservation.BusinessId).BusinessName</td>
-            <td>@timeSlot.StartTime.TimeOfDay</td>
-            <td>@timeSlot.EndTime.TimeOfDay</td>
+            <td>@reservation.Date</td>
+            <td>@reservation.BusinessName</td>
+            <td>@reservation.StartTime</td>
+            <td>@reservation.EndTime</td>
         </tr>
     }
 </table>

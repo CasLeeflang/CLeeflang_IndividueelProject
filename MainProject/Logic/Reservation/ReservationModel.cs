@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Variables.ValidationResponse;
 
 namespace Logic.Reservation
 {
@@ -44,6 +45,26 @@ namespace Logic.Reservation
         public void Update(ReservationModel updatedReservation)
         {
             throw new NotImplementedException();
+        }
+
+        public ReservationValidation Validate()
+        {
+            ReservationDTO existingReservation = _reservationDAL.GetReservationByUserIdAndDate(UserId, Date).FirstOrDefault();
+            ReservationValidation _reservationvalidation = new();
+
+            if(existingReservation == null)
+            {
+                _reservationvalidation.Valid = true;
+            }
+            else
+            {
+                if(existingReservation.UserId == UserId)
+                {
+                    _reservationvalidation.ExistsForUser = true;
+                }
+            }
+
+            return _reservationvalidation;
         }
     }
 }

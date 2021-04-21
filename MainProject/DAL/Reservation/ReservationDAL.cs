@@ -64,6 +64,34 @@ namespace DAL.Reservation
             return _dBManager.LoadData<ReservationDTO>(sql, parameters);
         }
 
+        public int GetNumberOfReservationsPerDateAndTimeSlotId(DateTime date, int timeSlotId)
+        {
+            string sql = $"select Date from dbo.Reservation where Date = @date and TimeSlotId = @timeSlotId;";
+
+            var dictionary = new Dictionary<string, object>
+            {
+                {"@date", date },
+                {"@timeSlotId", timeSlotId }
+            };
+
+            var parameters = new DynamicParameters(dictionary);
+            return _dBManager.LoadData<ReservationDTO>(sql, parameters).Count();
+        }
+
+        public IEnumerable<ReservationDTO> GetReservationByUserIdAndDate(int userId, DateTime date)
+        {
+            string sql = $"select * from dbo.Reservation where UserId = @userId and Date = @date";
+
+            var dictionary = new Dictionary<string, object>
+            {
+                {"@userId", userId },
+                {"@date", date }
+            };
+
+            var parameters = new DynamicParameters(dictionary);
+
+            return _dBManager.LoadData<ReservationDTO>(sql, parameters);
+        }
         public void UpdateReservation(ReservationDTO updatedReservation)
         {
             string sql = $"";

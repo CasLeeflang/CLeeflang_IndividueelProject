@@ -12,6 +12,7 @@ namespace Contract_Layer.Reservation
         void CreateReservation(ReservationDTO newReservaton);
         IEnumerable<ReservationDTO> GetReservationByUserId(int userId);
         int GetNumberOfReservationsByUserId(int userId);
+        int GetNumberOfReservationsPerDateAndTimeSlotId(DateTime date, int timeSlotId);
         IEnumerable<ReservationDTO> GetReservationByBusinessId(int businessId);
         void DeleteReservation(int id);
 

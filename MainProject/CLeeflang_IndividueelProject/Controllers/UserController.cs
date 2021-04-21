@@ -1,4 +1,6 @@
 ﻿using CLeeflang_IndividueelProject.Models;
+using CLeeflang_IndividueelProject.Models.Reservation;
+using Logic.BusinessUser;
 using Logic.Reservation;
 using Logic.TimeSlot;
 using Logic.User;
@@ -32,6 +34,8 @@ namespace CLeeflang_IndividueelProject.Controllers
         //  Dependicy injection?
         UserCollection _userCollection = new();
         ReservationCollection _reservationCollection = new();
+        TimeSlotCollection _timeSlotCollection = new();
+        BusinessUserCollection _businessUserCollection = new();
 
         public IActionResult Register()
         {
@@ -51,7 +55,26 @@ namespace CLeeflang_IndividueelProject.Controllers
         public IActionResult ReservationOverview()
         {
             IEnumerable<ReservationModel> reservations = _reservationCollection.GetReservationByUserId(_userCollection.GetUserId(User.Identity.Name));
-            return View(reservations);
+
+            List<ReservationOverviewModel> reservationOverviewModels = new List<ReservationOverviewModel>();
+
+            foreach (var reservation in reservations)
+            {
+                TimeSlotModel timeSlot = _timeSlotCollection.GetTimeSlotById(reservation.TimeSlotId).LastOrDefault();
+                ReservationOverviewModel reservationView = new ReservationOverviewModel
+                {
+                    Id = reservation.Id,
+                    BusinessName = _businessUserCollection.GetBusinessByIdForView(reservation.BusinessId).BusinessName,
+                    Date = reservation.Date.ToString("dd/MM/yyyy"),
+                    StartTime = timeSlot.StartTime.ToString("HH:mm"),
+                    EndTime = timeSlot.EndTime.ToString("HH:mm")
+                };
+                reservationOverviewModels.Add(reservationView);
+
+            }    
+
+            IEnumerable<ReservationOverviewModel> reservationsView = reservationOverviewModels.OrderBy(o => o.Date).ThenBy(o => o.StartTime) ;  
+            return View(reservationsView);
         }
 
         [HttpPost]

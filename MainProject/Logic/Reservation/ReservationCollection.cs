@@ -45,6 +45,11 @@ namespace Logic.Reservation
             return _reservationCollectionDAL.GetNumberOfReservationsByUserId(userId);
         }
 
+        public int GetNumberOfReservationsPerDateAndTimeSlotId(DateTime date, int timeSlotId)
+        {
+            return _reservationCollectionDAL.GetNumberOfReservationsPerDateAndTimeSlotId(date, timeSlotId);
+        }
+
         public IEnumerable<ReservationModel> GetReservationByBusinessId(int businessId)
         {
             IEnumerable<ReservationDTO> reservationDTOs = _reservationCollectionDAL.GetReservationByBusinessId(businessId);
