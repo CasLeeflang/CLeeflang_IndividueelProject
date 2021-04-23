@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CLeeflang_IndividueelProject.Models.Reservation.ReservationOverviewModel>;
+﻿@model IEnumerable<Logic.Reservation.ReservationModel>;
 
     <div class="tabContent">
         <table style="width:100%;">
@@ -13,7 +13,7 @@
             {
 
                 <tr>
-                    <td>@reservation.Date</td>
+                    <td>@reservation.Date.ToString("dd/MM/yyyy")</td>
                     <td>@reservation.BusinessName</td>
                     <td>@reservation.StartTime</td>
                     <td>@reservation.EndTime</td>

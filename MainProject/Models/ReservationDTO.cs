@@ -13,5 +13,10 @@ namespace DTOs
         public int UserId { get; set; }
         public int BusinessId { get; set; }
         public int TimeSlotId { get; set; }
+#nullable enable
+        public string? BusinessName { get; set; }
+        public DateTime? StartTime { get; set; }
+        public DateTime? EndTime { get; set; }
+#nullable disable
     }
 }

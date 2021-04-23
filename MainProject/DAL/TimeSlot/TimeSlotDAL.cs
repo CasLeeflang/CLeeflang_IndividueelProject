@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Contract_Layer.TimeSlot;
 using DAL.DataBase;
 using Microsoft.Extensions.Configuration;
+using System.Linq;
 
 namespace DAL.TimeSlot
 {
@@ -32,6 +33,7 @@ namespace DAL.TimeSlot
         public IEnumerable<TimeSlotDTO> LoadTimeSlotByBusinessId(int businessId)
         {
             string sql = $"select * from dbo.TimeSlot where BusinessId = @businessId";
+            //string sql = $"select T.*, U.BusinessName as BusinessName from dbo.TimeSlot T left join dbo.BusinessUser U on T.BusinessId = U.Id where BusinessId = @businessId";
 
             var dictionary = new Dictionary<string, object>
             {
@@ -59,14 +61,16 @@ namespace DAL.TimeSlot
             return _dBManager.LoadData<TimeSlotDTO>(sql, parameters);
         }
 
-        public IEnumerable<TimeSlotDTO> GetTimeSlotByDayAndBusinessId(string day, int businessId)
+        public IEnumerable<TimeSlotDTO> GetTimeSlotByDayAndBusinessId(DateTime date, string day, int businessId)
         {
-            //  string sql = $"select T.*, Count(R.Id) from dbo.TimeSlot as T left outer join dbo.Reservation as R on T.Id = R.TimeSlotId where BusinessId = @businessId and DayOTWeek = @day"";
+            //string sql = $"select T.*, Count(R.Id) from dbo.TimeSlot as T left outer join dbo.Reservation as R on T.Id = R.TimeSlotId where T.BusinessId = @businessId and T.DayOTWeek = @day";
 
-            string sql = $"Select * from dbo.TimeSlot where BusinessId = @businessId and DayOTWeek = @day";
+            string sql = $"select T.*, count(R.Id) as NumberOfReservations from dbo.TimeSlot T left outer join dbo.Reservation R on T.Id = R.TimeSlotId and R.Date = @date where T.BusinessId = @businessId and T.DayOTWeek = @day group by T.Id, T.BusinessId, T.DayOTWeek, T.StartTime, T.EndTime, T.NumberOfSpots";
+            //string sql = $"Select * from dbo.TimeSlot where BusinessId = @businessId and DayOTWeek = @day";
 
             var dictionary = new Dictionary<string, object>
             {
+                {"@date", date },
                 {"@businessId", businessId },
                 {"@day", day}
             };

@@ -55,25 +55,29 @@ namespace CLeeflang_IndividueelProject.Controllers
         {
             IEnumerable<ReservationModel> reservations = _reservationCollection.GetReservationByUserId(_userCollection.GetUserId(User.Identity.Name));
 
-            List<ReservationOverviewModel> reservationOverviewModels = new List<ReservationOverviewModel>();
+            //List<ReservationOverviewModel> reservationOverviewModels = new List<ReservationOverviewModel>();
 
-            foreach (var reservation in reservations)
-            {
-                TimeSlotModel timeSlot = _timeSlotCollection.GetTimeSlotById(reservation.TimeSlotId).LastOrDefault();
+            //foreach (var reservation in reservations)
+            //{
+            //    TimeSlotModel timeSlot = _timeSlotCollection.GetTimeSlotById(reservation.TimeSlotId).LastOrDefault();
 
-                ReservationOverviewModel reservationView = new ReservationOverviewModel
-                {
-                    Id = reservation.Id,
-                    BusinessName = _businessUserCollection.GetBusinessByIdForView(timeSlot.BusinessId).BusinessName,
-                    Date = reservation.Date.ToString("dd/MM/yyyy"),
-                    StartTime = timeSlot.StartTime.ToString("HH:mm"),
-                    EndTime = timeSlot.EndTime.ToString("HH:mm")
-                };
-                reservationOverviewModels.Add(reservationView);
-            }    
+            //    ReservationOverviewModel reservationView = new ReservationOverviewModel
+            //    {
+            //        Id = reservation.Id,
+            //        BusinessName = reservation.BusinessName,
+            //        Date = reservation.Date.ToString("dd/MM/yyyy"),
+            //        StartTime = timeSlot.StartTime.ToString("HH:mm"),
+            //        EndTime = timeSlot.EndTime.ToString("HH:mm")
+            //    };
+            //    reservationOverviewModels.Add(reservationView);
+            //}    
 
-            IEnumerable<ReservationOverviewModel> reservationsView = reservationOverviewModels.OrderBy(o => o.Date).ThenBy(o => o.StartTime);  
-            return View(reservationsView);
+            //IEnumerable<ReservationOverviewModel> reservationsView = reservationOverviewModels.OrderBy(o => o.Date).ThenBy(o => o.StartTime);
+            //
+            //All of the commented out code above is redundant cause of sql using left join :)
+            //
+
+            return View(reservations);
         }
 
         [HttpPost]

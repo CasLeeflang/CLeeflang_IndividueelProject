@@ -11,7 +11,7 @@ namespace Logic.TimeSlot
     {
         ITimeSlotCollectionDAL _timeSlotCollectionDAL = TimeSlotFactoryDAL.CreateTimeSlotCollectionDAL();
 
-        private List<TimeSlotModel> timeSlots { get;} = new List<TimeSlotModel>();
+        private List<TimeSlotModel> timeSlots { get; } = new List<TimeSlotModel>();
 
         public void CreateTimeSlot(TimeSlotModel newTimeSlot)
         {
@@ -43,13 +43,13 @@ namespace Logic.TimeSlot
                 {
                     TimeSlotModel timeSlot = new TimeSlotModel(timeSlotDTO);
                     timeSlots.Add(timeSlot);
-                } 
+                }
                 return timeSlots;
             }
             catch
             {
                 return timeSlots;
-            }            
+            }
         }
 
 
@@ -74,14 +74,15 @@ namespace Logic.TimeSlot
             }
         }
 
-        public IEnumerable<TimeSlotModel> GetTimeSlotByDayAndBusinessId(string day, int businessId)
+        public IEnumerable<TimeSlotModel> GetTimeSlotByDayAndBusinessId(DateTime date, string day, int businessId)
         {
 
-            IEnumerable<TimeSlotDTO> timeSlotDTOs = _timeSlotCollectionDAL.GetTimeSlotByDayAndBusinessId(day, businessId);
+            IEnumerable<TimeSlotDTO> timeSlotDTOs = _timeSlotCollectionDAL.GetTimeSlotByDayAndBusinessId(date, day, businessId);
             try
             {
-                foreach(var timeslotDTO in timeSlotDTOs)
+                foreach (var timeslotDTO in timeSlotDTOs)
                 {
+                    Console.WriteLine(timeslotDTO.NumberOfReservations);
                     TimeSlotModel timeSlot = new TimeSlotModel(timeslotDTO);
                     timeSlots.Add(timeSlot);
                 }
@@ -92,7 +93,6 @@ namespace Logic.TimeSlot
                 return timeSlots;
             }
         }
-            
 
         public void DeleteTimeSlot(int id)
         {

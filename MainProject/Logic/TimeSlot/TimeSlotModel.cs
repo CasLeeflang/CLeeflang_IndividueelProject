@@ -4,6 +4,7 @@ using System;
 using Contract_Layer.TimeSlot;
 using Variables.ValidationResponse;
 using Logic.Reservation;
+using System.Collections.Generic;
 
 namespace Logic.TimeSlot
 {
@@ -19,6 +20,11 @@ namespace Logic.TimeSlot
         public DateTime EndTime { get; set; }
         public int NumberOfSpots { get; set; }
 
+#nullable enable
+        public int? NumberOfReservations { get; set; }
+        public string? BusinessName { get; set; }
+#nullable disable
+
 
         public TimeSpan TimeSpan
         {
@@ -29,12 +35,12 @@ namespace Logic.TimeSlot
         }
 
 
-        public int AvailableSpotsForDate(DateTime date)
+        public int? AvailableSpots
         {
-
-            //  return NumberOfSpots - _reservationCollection.GetNumberOfReservationsPerDateAndTimeSlotId(date, this.Id);
-
-            return NumberOfSpots;
+            get
+            {
+                return NumberOfSpots - NumberOfReservations;
+            }
         }
 
         public TimeSlotModel(int businessId, string dayOTWeek, DateTime startTime, DateTime endTime, int numberOfSpots)
@@ -51,10 +57,12 @@ namespace Logic.TimeSlot
         {
             Id = timeSlotDTO.Id;
             BusinessId = timeSlotDTO.BusinessId;
+            BusinessName = timeSlotDTO.BusinessName;
             DayOTWeek = timeSlotDTO.DayOTWeek;
             StartTime = timeSlotDTO.StartTime;
             EndTime = timeSlotDTO.EndTime;
             NumberOfSpots = timeSlotDTO.NumberOfSpots;
+            NumberOfReservations = timeSlotDTO.NumberOfReservations;
         }
 
         public void UpdateTimeSlot()

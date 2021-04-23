@@ -16,9 +16,15 @@ namespace Logic.Reservation
 
         public int Id { get; set; }
         public DateTime Date { get; set; }
+
         public int UserId { get; set; }
         public int BusinessId { get; set; }
         public int TimeSlotId { get; set; }
+#nullable enable
+        public string? BusinessName { get; set; }
+        public string? StartTime { get; set; }
+        public string? EndTime { get; set; }
+#nullable disable
 
         public ReservationModel()
         {
@@ -32,6 +38,9 @@ namespace Logic.Reservation
             UserId = reservationDTO.UserId;
             BusinessId = reservationDTO.BusinessId;
             TimeSlotId = reservationDTO.TimeSlotId;
+            BusinessName = reservationDTO.BusinessName;
+            StartTime = ToString(reservationDTO.StartTime, "HH:mm");
+            EndTime = ToString(reservationDTO.EndTime, "HH:mm");
         }
 
         public ReservationModel(DateTime date, int userId, int businessId, int timeSlotId)
@@ -47,18 +56,20 @@ namespace Logic.Reservation
             throw new NotImplementedException();
         }
 
+        private string ToString(DateTime? dt, string format) => dt == null ? "n/a" : ((DateTime)dt).ToString(format);
+
         public ReservationValidation Validate()
         {
             ReservationDTO existingReservation = _reservationDAL.GetReservationByUserIdAndDateAndBusinessId(UserId, Date, BusinessId).FirstOrDefault();
             ReservationValidation _reservationvalidation = new();
 
-            if(existingReservation == null)
+            if (existingReservation == null)
             {
                 _reservationvalidation.Valid = true;
             }
             else
             {
-                if(existingReservation.UserId == UserId)
+                if (existingReservation.UserId == UserId)
                 {
                     _reservationvalidation.ExistsForUser = true;
                 }

@@ -36,7 +36,7 @@ namespace CLeeflang_IndividueelProject.Controllers
 
 
             int dayIndex = (int)DateTime.Parse(Date).DayOfWeek;
-            string day = DotW[dayIndex - 1];
+            string day = DotW[dayIndex - 1];    //  Can eb done more elegantly if DayOTWeek is stored as int in timeslot table 
 
             ViewBag.Day = day;
             ViewBag.Date = DateTime.Parse(Date);
@@ -44,7 +44,7 @@ namespace CLeeflang_IndividueelProject.Controllers
 
             if (DateTime.Parse(Date) > DateTime.Now)
             {
-                IEnumerable<TimeSlotModel> timeSlots = _timeSlotCollection.GetTimeSlotByDayAndBusinessId(day, businessId);
+                IEnumerable<TimeSlotModel> timeSlots = _timeSlotCollection.GetTimeSlotByDayAndBusinessId(DateTime.Parse(Date), day, businessId);
 
                 return View(timeSlots);
             }
@@ -64,7 +64,8 @@ namespace CLeeflang_IndividueelProject.Controllers
             string d = form["Date"];
 
             int dayIndex = (int)DateTime.Parse(d).DayOfWeek;
-            string day = DotW[dayIndex - 1];
+            string day = DotW[dayIndex - 1];    //  Can be done more elegantly if DayOTWeek is stored as int in timeslot table 
+
 
             ViewBag.Day = day;
             ViewBag.Date = DateTime.Parse(d);
@@ -72,7 +73,7 @@ namespace CLeeflang_IndividueelProject.Controllers
 
             if (DateTime.Parse(d) > DateTime.Now)
             {
-                IEnumerable<TimeSlotModel> timeSlots = _timeSlotCollection.GetTimeSlotByDayAndBusinessId(day, businessId);
+                IEnumerable<TimeSlotModel> timeSlots = _timeSlotCollection.GetTimeSlotByDayAndBusinessId(DateTime.Parse(d), day, businessId);
 
                 return View(timeSlots);
             }
