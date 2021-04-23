@@ -18,6 +18,8 @@
     </tr>
     @foreach (var timeSlot in Model)
     {
+        //  do this in view or controller and send new custom view model?
+
         int NOfSpotsAvailable = timeSlot.NumberOfSpots - _reservationCollection.GetNumberOfReservationsPerDateAndTimeSlotId(ViewBag.Date, timeSlot.Id);
 
         <tr>

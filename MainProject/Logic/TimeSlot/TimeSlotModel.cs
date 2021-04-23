@@ -3,6 +3,7 @@ using DTOs;
 using System;
 using Contract_Layer.TimeSlot;
 using Variables.ValidationResponse;
+using Logic.Reservation;
 
 namespace Logic.TimeSlot
 {
@@ -25,6 +26,15 @@ namespace Logic.TimeSlot
             {
                 return EndTime.TimeOfDay - StartTime.TimeOfDay;
             }
+        }
+
+
+        public int AvailableSpotsForDate(DateTime date)
+        {
+
+            //  return NumberOfSpots - _reservationCollection.GetNumberOfReservationsPerDateAndTimeSlotId(date, this.Id);
+
+            return NumberOfSpots;
         }
 
         public TimeSlotModel(int businessId, string dayOTWeek, DateTime startTime, DateTime endTime, int numberOfSpots)

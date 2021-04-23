@@ -1,21 +1,23 @@
 ﻿@model IEnumerable<CLeeflang_IndividueelProject.Models.Reservation.ReservationOverviewModel>;
 
-<table>
-    <tr>
-        <th>Date:</th>
-        <th>Business:</th>
-        <th>Start Time:</th>
-        <th>End Time:</th>
-    </tr>
+    <div class="tabContent">
+        <table style="width:100%;">
+            <tr>
+                <th>Date:</th>
+                <th>Business:</th>
+                <th>Start Time:</th>
+                <th>End Time:</th>
+            </tr>
 
-    @foreach (var reservation in Model)
-    {
-       
-        <tr>
-            <td>@reservation.Date</td>
-            <td>@reservation.BusinessName</td>
-            <td>@reservation.StartTime</td>
-            <td>@reservation.EndTime</td>
-        </tr>
-    }
-</table>
+            @foreach (var reservation in Model)
+            {
+
+                <tr>
+                    <td>@reservation.Date</td>
+                    <td>@reservation.BusinessName</td>
+                    <td>@reservation.StartTime</td>
+                    <td>@reservation.EndTime</td>
+                </tr>
+            }
+        </table>
+    </div>

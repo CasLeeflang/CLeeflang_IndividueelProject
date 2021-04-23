@@ -18,10 +18,9 @@ namespace CLeeflang_IndividueelProject.Controllers
     [Authorize(Roles = "User")]
     public class ReservationController : Controller
     {
-        ReservationCollection _reservationCollection = new();
-        BusinessUserCollection _businessUserCollection = new();
-        TimeSlotCollection _timeSlotCollection = new();
-        UserCollection _userCollection = new();
+        readonly ReservationCollection _reservationCollection = new();
+        readonly TimeSlotCollection _timeSlotCollection = new();
+        readonly UserCollection _userCollection = new();
 
         public IActionResult DatePicker(int businessId)
         {
@@ -43,9 +42,18 @@ namespace CLeeflang_IndividueelProject.Controllers
             ViewBag.Date = DateTime.Parse(Date);
             ViewBag.businessId = businessId;
 
-            IEnumerable<TimeSlotModel> timeSlots = _timeSlotCollection.GetTimeSlotByDayAndBusinessId(day, businessId);
+            if (DateTime.Parse(Date) > DateTime.Now)
+            {
+                IEnumerable<TimeSlotModel> timeSlots = _timeSlotCollection.GetTimeSlotByDayAndBusinessId(day, businessId);
 
-            return View(timeSlots);
+                return View(timeSlots);
+            }
+            else
+            {
+                TempData["ErrorDate"] = "Please select a date later than today!";
+                return RedirectToAction("BusinessPage", "Home", new { id = businessId });
+            }
+
         }
 
         [HttpPost]
@@ -62,9 +70,17 @@ namespace CLeeflang_IndividueelProject.Controllers
             ViewBag.Date = DateTime.Parse(d);
             ViewBag.businessId = businessId;
 
-            IEnumerable<TimeSlotModel> timeSlots = _timeSlotCollection.GetTimeSlotByDayAndBusinessId(day, businessId);
+            if (DateTime.Parse(d) > DateTime.Now)
+            {
+                IEnumerable<TimeSlotModel> timeSlots = _timeSlotCollection.GetTimeSlotByDayAndBusinessId(day, businessId);
 
-            return View(timeSlots);
+                return View(timeSlots);
+            }
+            else
+            {
+                TempData["ErrorDate"] = "Please select a date later than today!";
+                return RedirectToAction("BusinessPage", "Home", new { id = businessId });
+            }
         }
 
         public IActionResult CreateReservation(string dateString, string userName, int businessId, int pickedTimeSlotId)

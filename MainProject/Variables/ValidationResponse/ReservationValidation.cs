@@ -10,5 +10,7 @@ namespace Variables.ValidationResponse
     {
         public bool Valid { get; set; } = false;    
         public bool ExistsForUser { get; set; }
+        public bool InvalidDate { get; set; }
+
     }
 }

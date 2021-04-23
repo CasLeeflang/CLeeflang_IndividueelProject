@@ -11,7 +11,7 @@
 <h1>Welcome to Spot Saver!</h1>
 <h3>Ensure your spot for your favourite activity</h3>
 <h4>Select the business and check availability</h4>
-@{ BusinessUserCollection _businessUserCollection = new BusinessUserCollection(); } @*Dependency injection correct?*@
+@{ BusinessUserCollection _businessUserCollection = new BusinessUserCollection(); } 
 
 <div>
     @foreach (var business in _businessUserCollection.GetAllBusinesses())

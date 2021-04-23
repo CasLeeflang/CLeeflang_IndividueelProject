@@ -66,7 +66,7 @@ namespace DAL.Reservation
 
         public int GetNumberOfReservationsPerDateAndTimeSlotId(DateTime date, int timeSlotId)
         {
-            string sql = $"select Date from dbo.Reservation where Date = @date and TimeSlotId = @timeSlotId;";
+            string sql = $"select Id from dbo.Reservation where Date = @date and TimeSlotId = @timeSlotId;";
 
             var dictionary = new Dictionary<string, object>
             {
@@ -78,14 +78,16 @@ namespace DAL.Reservation
             return _dBManager.LoadData<ReservationDTO>(sql, parameters).Count();
         }
 
-        public IEnumerable<ReservationDTO> GetReservationByUserIdAndDate(int userId, DateTime date)
+        public IEnumerable<ReservationDTO> GetReservationByUserIdAndDateAndBusinessId(int userId, DateTime date, int businessId)
         {
-            string sql = $"select * from dbo.Reservation where UserId = @userId and Date = @date";
+            string sql = $"select * from dbo.Reservation where UserId = @userId and Date = @date and BusinessId = @businessId";
 
             var dictionary = new Dictionary<string, object>
             {
                 {"@userId", userId },
-                {"@date", date }
+                {"@date", date },
+                {"@businessId", businessId }
+
             };
 
             var parameters = new DynamicParameters(dictionary);

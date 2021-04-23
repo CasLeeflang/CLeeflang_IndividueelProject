@@ -49,7 +49,7 @@ namespace Logic.Reservation
 
         public ReservationValidation Validate()
         {
-            ReservationDTO existingReservation = _reservationDAL.GetReservationByUserIdAndDate(UserId, Date).FirstOrDefault();
+            ReservationDTO existingReservation = _reservationDAL.GetReservationByUserIdAndDateAndBusinessId(UserId, Date, BusinessId).FirstOrDefault();
             ReservationValidation _reservationvalidation = new();
 
             if(existingReservation == null)

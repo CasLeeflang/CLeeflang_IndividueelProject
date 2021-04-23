@@ -25,7 +25,7 @@ namespace CLeeflang_IndividueelProject.Controllers
         }
 
         //  Dependicy injection?
-        BusinessUserCollection _businessUserCollection = new BusinessUserCollection();
+        readonly BusinessUserCollection _businessUserCollection = new();
 
         public IActionResult Register()
         {

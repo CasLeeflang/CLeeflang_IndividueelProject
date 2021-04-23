@@ -136,15 +136,13 @@
                                             {
                                                 <tr>
                                                     <th>@timeSlot.DayOTWeek</th>
-                                                    <td>@timeSlot.StartTime.TimeOfDay<td>
+                                                    <td>@timeSlot.StartTime.TimeOfDay</td>
                                                     <td>@timeSlot.EndTime.TimeOfDay</td>
                                                     <td>@timeSlot.NumberOfSpots</td>
                                                     <td>
                                                         <a asp-controller="TimeSlot" asp-action="DeleteTimeSlot" asp-route-id="@timeSlot.Id">Delete</a>
                                                     </td>
-
                                                 </tr>
-
                                             }
                                         }
                                     </table>

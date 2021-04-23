@@ -36,9 +36,7 @@ namespace DAL.TimeSlot
             var dictionary = new Dictionary<string, object>
             {
                 {"@businessId", businessId}
-
             };
-
 
             var parameters = new DynamicParameters(dictionary);
 
@@ -63,6 +61,8 @@ namespace DAL.TimeSlot
 
         public IEnumerable<TimeSlotDTO> GetTimeSlotByDayAndBusinessId(string day, int businessId)
         {
+            //  string sql = $"select T.*, Count(R.Id) from dbo.TimeSlot as T left outer join dbo.Reservation as R on T.Id = R.TimeSlotId where BusinessId = @businessId and DayOTWeek = @day"";
+
             string sql = $"Select * from dbo.TimeSlot where BusinessId = @businessId and DayOTWeek = @day";
 
             var dictionary = new Dictionary<string, object>

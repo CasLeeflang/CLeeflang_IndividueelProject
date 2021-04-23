@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Variables.ValidationResponse;
 
 namespace CLeeflang_IndividueelProject.Models.Date
 {
@@ -10,6 +11,7 @@ namespace CLeeflang_IndividueelProject.Models.Date
     {
         [Required]
         [DataType(DataType.Date)]
+        [ReservationDate(ErrorMessage = "Invalid date")]
         public DateTime Date { get; set; }
     }
 }

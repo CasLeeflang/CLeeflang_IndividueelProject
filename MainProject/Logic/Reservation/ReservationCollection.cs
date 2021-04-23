@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Logic.Reservation
 {
-    public class ReservationCollection
+    public class ReservationCollection 
     {
         IReservationCollectionDAL _reservationCollectionDAL = ReservationFactoryDAL.CreateReservationCollectionDAL();
         private List<ReservationModel> reservations { get; } = new List<ReservationModel>();
