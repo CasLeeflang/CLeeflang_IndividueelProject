@@ -29,51 +29,48 @@ namespace CLeeflang_IndividueelProject.Controllers
         }
 
 
-        public IActionResult TimeSlotPicker(int businessId, string Date)
-        {
+        //public IActionResult TimeSlotPicker(int businessId, string Date)
+        //{
 
-            List<string> DotW = new List<string> { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" };
+        //    List<string> DotW = new List<string> { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" };
 
 
-            int dayIndex = (int)DateTime.Parse(Date).DayOfWeek;
-            string day = DotW[dayIndex - 1];    //  Can eb done more elegantly if DayOTWeek is stored as int in timeslot table 
+        //    int dayIndex = (int)DateTime.Parse(Date).DayOfWeek;
+        //    string day = DotW[dayIndex - 1];    //  Can eb done more elegantly if DayOTWeek is stored as int in timeslot table 
 
-            ViewBag.Day = day;
-            ViewBag.Date = DateTime.Parse(Date);
-            ViewBag.businessId = businessId;
+        //    ViewBag.Day = day;
+        //    ViewBag.Date = DateTime.Parse(Date);
+        //    ViewBag.businessId = businessId;
 
-            if (DateTime.Parse(Date) > DateTime.Now)
-            {
-                IEnumerable<TimeSlotModel> timeSlots = _timeSlotCollection.GetTimeSlotByDayAndBusinessId(DateTime.Parse(Date), day, businessId);
+        //    if (DateTime.Parse(Date) > DateTime.Now)
+        //    {
+        //        IEnumerable<TimeSlotModel> timeSlots = _timeSlotCollection.GetTimeSlotByDayAndBusinessId(DateTime.Parse(Date), day, businessId);
 
-                return View(timeSlots);
-            }
-            else
-            {
-                TempData["ErrorDate"] = "Please select a date later than today!";
-                return RedirectToAction("BusinessPage", "Home", new { id = businessId });
-            }
+        //        return View(timeSlots);
+        //    }
+        //    else
+        //    {
+        //        TempData["ErrorDate"] = "Please select a date later than today!";
+        //        return RedirectToAction("BusinessPage", "Home", new { id = businessId });
+        //    }
 
-        }
+        //}
 
         [HttpPost]
         public IActionResult TimeSlotPicker(int businessId, IFormCollection form)
         {
-
-            List<string> DotW = new List<string> { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" };
             string d = form["Date"];
+            DateTime date = DateTime.Parse(d);
 
-            int dayIndex = (int)DateTime.Parse(d).DayOfWeek;
-            string day = DotW[dayIndex - 1];    //  Can be done more elegantly if DayOTWeek is stored as int in timeslot table 
-
+            string day = DateTime.Parse(d).DayOfWeek.ToString().Substring(0,3);
 
             ViewBag.Day = day;
-            ViewBag.Date = DateTime.Parse(d);
+            ViewBag.Date = date;
             ViewBag.businessId = businessId;
 
-            if (DateTime.Parse(d) > DateTime.Now)
+            if (date >= DateTime.Now && date <= DateTime.Now.AddDays(14))
             {
-                IEnumerable<TimeSlotModel> timeSlots = _timeSlotCollection.GetTimeSlotByDayAndBusinessId(DateTime.Parse(d), day, businessId);
+                IEnumerable<TimeSlotModel> timeSlots = _timeSlotCollection.GetTimeSlotByDayAndBusinessId(date, day, businessId);
 
                 return View(timeSlots);
             }
