@@ -36,7 +36,7 @@ namespace CLeeflang_IndividueelProject.Controllers
 
 
         //    int dayIndex = (int)DateTime.Parse(Date).DayOfWeek;
-        //    string day = DotW[dayIndex - 1];    //  Can eb done more elegantly if DayOTWeek is stored as int in timeslot table 
+        //    string day = DotW[dayIndex - 1];    //  Can be done more elegantly if DayOTWeek is stored as int in timeslot table 
 
         //    ViewBag.Day = day;
         //    ViewBag.Date = DateTime.Parse(Date);
@@ -56,8 +56,7 @@ namespace CLeeflang_IndividueelProject.Controllers
 
         //}
 
-        [HttpPost]
-        public IActionResult TimeSlotPicker(int businessId, IFormCollection form)
+        public IActionResult TimeSlotPicker(int businessId, DateTime date)
         {
             string d = form["Date"];
             DateTime date = DateTime.Parse(d);
@@ -76,20 +75,21 @@ namespace CLeeflang_IndividueelProject.Controllers
             }
             else
             {
-                TempData["ErrorDate"] = "Please select a date later than today!";
+                TempData["ErrorDate"] = "Please select a date later than today and within two weeks!";
                 return RedirectToAction("BusinessPage", "Home", new { id = businessId });
             }
         }
 
-        public IActionResult CreateReservation(string dateString, string userName, int businessId, int pickedTimeSlotId)
+  
+        public IActionResult CreateReservation(DateTime date, int businessId, int pickedTimeSlotId)
         {
-            DateTime date = DateTime.Parse(dateString);
+            DateTime _date = date;
+            int userId = _userCollection.GetUserId(User.Identity.Name); //  get userid from logged in user
 
-            int userId = _userCollection.GetUserId(userName);
-
-            ReservationModel newReservation = new ReservationModel(date, userId, businessId, pickedTimeSlotId);
+            ReservationModel newReservation = new ReservationModel(_date, userId, businessId, pickedTimeSlotId);
 
             ReservationValidation _reservationValidation = newReservation.Validate();
+
             if (_reservationValidation.Valid)
             {
                 _reservationCollection.CreateReservation(newReservation);
@@ -101,7 +101,12 @@ namespace CLeeflang_IndividueelProject.Controllers
                 {
                     TempData["ErrorReservationExists"] = "You already have a timeslot reserved for this date!";
                 }
-                return RedirectToAction("TimeSlotPicker", new { Date = dateString, businessId = businessId });
+                if (_reservationValidation.InvalidDate)
+                {
+                    TempData["ErrorDate"] = "Reservations can only be made between now and two weeks ahead!";
+                }
+                
+                return RedirectToAction("TimeSlotPicker", new { date = _date, businessId = businessId });
             }
         }
     }

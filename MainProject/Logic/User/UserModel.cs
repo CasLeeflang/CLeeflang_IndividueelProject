@@ -20,6 +20,9 @@ namespace Logic.User
         public string Password { get; set; } // Hashed and salted
         public string Email { get; set; }
         public DateTime DoB { get; set; }
+#nullable enable
+        public int? NumberOfReservations { get; set; }
+#nullable disable
 
 
         public UserModel(string userName, string firstName, string lastName, string Password, string Email, DateTime DoB)
@@ -41,6 +44,7 @@ namespace Logic.User
             Password = userDTO.Password;
             Email = userDTO.Email;
             DoB = userDTO.DoB;
+            NumberOfReservations = userDTO.NumberOfReservations;
         }
 
         public void Update(UserModel updatedUser)

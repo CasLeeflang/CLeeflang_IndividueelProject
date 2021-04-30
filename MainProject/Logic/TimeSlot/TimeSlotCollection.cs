@@ -82,7 +82,6 @@ namespace Logic.TimeSlot
             {
                 foreach (var timeslotDTO in timeSlotDTOs)
                 {
-                    Console.WriteLine(timeslotDTO.NumberOfReservations);
                     TimeSlotModel timeSlot = new TimeSlotModel(timeslotDTO);
                     timeSlots.Add(timeSlot);
                 }

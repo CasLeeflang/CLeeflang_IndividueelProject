@@ -1,8 +1,6 @@
-﻿@model IEnumerable<TimeSlotModel>
+﻿@model IEnumerable<Logic.TimeSlot.TimeSlotModel>
 
-@using Logic.TimeSlot
-@using Logic.Reservation
-@{ ReservationCollection _reservationCollection = new();}
+
 
 
 <h3>Timeslots for @ViewBag.Day @ViewBag.Date.ToString("dd/MM/yyyy")</h3>
@@ -13,7 +11,6 @@
         <th>Start Time</th>
         <th>End Time</th>
         <th>Available Spots</th>
-        <th>Available Spots sql</th>
         <th></th>
 
     </tr>
@@ -21,22 +18,21 @@
     {
         //  do this in view or controller and send new custom view model?
 
-        int NOfSpotsAvailable = timeSlot.NumberOfSpots - _reservationCollection.GetNumberOfReservationsPerDateAndTimeSlotId(ViewBag.Date, timeSlot.Id);
-
+       
         <tr>
             <td>@timeSlot.DayOTWeek</td>
             <td>@timeSlot.StartTime.TimeOfDay</td>
             <td>@timeSlot.EndTime.TimeOfDay</td>
-            <td>@NOfSpotsAvailable</td>
             <td>@timeSlot.AvailableSpots</td>
             <td>
-                <a asp-action="CreateReservation" asp-route-dateString="@ViewBag.Date.ToString("dd/MM/yyyy")" asp-route-userName="@User.Identity.Name" asp-route-pickedTimeSlotId="@timeSlot.Id" asp-route-businessId="@ViewBag.businessId">Reserve</a>
+                <a asp-action="CreateReservation" asp-route-date="@ViewBag.Date" asp-route-pickedTimeSlotId="@timeSlot.Id" asp-route-businessId="@ViewBag.businessId">Reserve</a>
             </td>
         </tr>
 
     }
 </table>
 <div class="text-danger">@TempData["ErrorReservationExists"]</div>
+<div class="text-danger">@TempData["ErrorDate"]</div>
 <div>
     <a asp-controller="Home" asp-action="BusinessPage" asp-route-id="@ViewBag.businessId">Select different date</a>
 </div>

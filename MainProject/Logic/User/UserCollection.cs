@@ -56,6 +56,7 @@ namespace Logic.User
 
             foreach(var userDTO in userDTOs)
             {
+                Console.WriteLine(userDTO.NumberOfReservations);
                 UserModel user = new UserModel(userDTO);
                 users.Add(user);
             }

@@ -25,7 +25,6 @@ namespace DAL.User
             var dictionary = new Dictionary<string, object>
             {
                 {"@userName", userName}
-
             };
 
             var parameters = new DynamicParameters(dictionary);

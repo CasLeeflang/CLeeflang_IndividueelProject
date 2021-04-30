@@ -38,7 +38,7 @@ namespace DAL.Reservation
 
         public int GetNumberOfReservationsByUserId(int userId)
         {
-            string sql = $"select Date from dbo.Reservation where UserId = @userId";
+            string sql = $"select count(Date) from dbo.Reservation where UserId = @userId";
 
             var dictionary = new Dictionary<string, object>
             {
@@ -47,7 +47,7 @@ namespace DAL.Reservation
 
             var parameters = new DynamicParameters(dictionary);
 
-            return _dBManager.LoadData<ReservationDTO>(sql, parameters).Count();
+            return _dBManager.LoadData<int>(sql, parameters).First();
         }
 
         public IEnumerable<ReservationDTO> GetReservationByBusinessId(int businessId)

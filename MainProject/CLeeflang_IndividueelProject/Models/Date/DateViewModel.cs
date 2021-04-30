@@ -11,7 +11,8 @@ namespace CLeeflang_IndividueelProject.Models.Date
     {
         [Required]
         [DataType(DataType.Date)]
-        [ReservationDate(ErrorMessage = "Invalid date")]
+        [ReservationDate(ErrorMessage = "Select a date later than today!")]
+        [DateLTTwoWeeks(ErrorMessage = "Select a date no more than two weeks ahead!")]
         public DateTime Date { get; set; }
     }
 }

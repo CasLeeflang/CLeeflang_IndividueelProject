@@ -65,7 +65,15 @@ namespace Logic.Reservation
 
             if (existingReservation == null)
             {
-                _reservationvalidation.Valid = true;
+                if(true)
+                {
+                    _reservationvalidation.Valid = true;
+
+                }
+                else
+                {
+                    _reservationvalidation.InvalidDate = true;
+                }
             }
             else
             {
@@ -73,6 +81,11 @@ namespace Logic.Reservation
                 {
                     _reservationvalidation.ExistsForUser = true;
                 }
+                if (Date.Date < DateTime.Now.Date || Date.Date > DateTime.Now.AddDays(14))
+                {
+                    _reservationvalidation.InvalidDate = true;
+                }
+
             }
 
             return _reservationvalidation;
