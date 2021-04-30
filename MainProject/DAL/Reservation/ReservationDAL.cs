@@ -24,7 +24,23 @@ namespace DAL.Reservation
 
         public IEnumerable<ReservationDTO> GetReservationByUserId(int userId)
         {
-            string sql = $"select R.*, B.BusinessName as BusinessName, T.StartTime as StartTime, T.EndTime as EndTime from dbo.Reservation R left join dbo.BusinessUser B on R.BusinessId = B.Id left join dbo.TimeSlot T on R.TimeSlotId = T.Id where UserId = @userId order by R.Date, T.StartTime";
+
+            //  Star not de bedoeling
+            //  Geen foutmelding als een kolom mist
+            string sql = @"select R.*, B.BusinessName as BusinessName, T.StartTime as StartTime, T.EndTime as EndTime 
+
+                           from 
+
+                           dbo.Reservation R left join dbo.BusinessUser B on R.BusinessId = B.Id 
+                           left join dbo.TimeSlot T on R.TimeSlotId = T.Id 
+
+                           where 
+
+                           UserId = @userId 
+
+                           order by 
+
+                           R.Date, T.StartTime";
 
             var dictionary = new Dictionary<string, object>
             {

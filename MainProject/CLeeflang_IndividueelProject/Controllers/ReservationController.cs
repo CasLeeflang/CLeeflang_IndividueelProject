@@ -29,47 +29,41 @@ namespace CLeeflang_IndividueelProject.Controllers
         }
 
 
-        //public IActionResult TimeSlotPicker(int businessId, string Date)
-        //{
-
-        //    List<string> DotW = new List<string> { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" };
-
-
-        //    int dayIndex = (int)DateTime.Parse(Date).DayOfWeek;
-        //    string day = DotW[dayIndex - 1];    //  Can be done more elegantly if DayOTWeek is stored as int in timeslot table 
-
-        //    ViewBag.Day = day;
-        //    ViewBag.Date = DateTime.Parse(Date);
-        //    ViewBag.businessId = businessId;
-
-        //    if (DateTime.Parse(Date) > DateTime.Now)
-        //    {
-        //        IEnumerable<TimeSlotModel> timeSlots = _timeSlotCollection.GetTimeSlotByDayAndBusinessId(DateTime.Parse(Date), day, businessId);
-
-        //        return View(timeSlots);
-        //    }
-        //    else
-        //    {
-        //        TempData["ErrorDate"] = "Please select a date later than today!";
-        //        return RedirectToAction("BusinessPage", "Home", new { id = businessId });
-        //    }
-
-        //}
-
-        public IActionResult TimeSlotPicker(int businessId, DateTime date)
+        public IActionResult TimeSlotPicker(int businessId, string Date)
         {
-            string d = form["Date"];
-            DateTime date = DateTime.Parse(d);
-
-            string day = DateTime.Parse(d).DayOfWeek.ToString().Substring(0,3);
+            string day = DateTime.Parse(Date).DayOfWeek.ToString().Substring(0, 3);
 
             ViewBag.Day = day;
-            ViewBag.Date = date;
+            ViewBag.Date = DateTime.Parse(Date);
             ViewBag.businessId = businessId;
 
-            if (date >= DateTime.Now && date <= DateTime.Now.AddDays(14))
+            if (DateTime.Parse(Date) >= DateTime.Now && DateTime.Parse(Date) <= DateTime.Now.AddDays(14))
             {
-                IEnumerable<TimeSlotModel> timeSlots = _timeSlotCollection.GetTimeSlotByDayAndBusinessId(date, day, businessId);
+                IEnumerable<TimeSlotModel> timeSlots = _timeSlotCollection.GetTimeSlotByDayAndBusinessId(DateTime.Parse(Date), day, businessId);
+
+                return View(timeSlots);
+            }
+            else
+            {
+                TempData["ErrorDate"] = "Please select a date later than today!";
+                return RedirectToAction("BusinessPage", "Home", new { id = businessId });
+            }
+        }
+
+        [HttpPost]
+        public IActionResult TimeSlotPicker(int businessId, IFormCollection form)
+        {
+            string d = form["Date"];
+
+            string day = DateTime.Parse(d).DayOfWeek.ToString().Substring(0, 3);
+
+            ViewBag.Day = day;
+            ViewBag.Date = DateTime.Parse(d);
+            ViewBag.businessId = businessId;
+
+            if (DateTime.Parse(d) >= DateTime.Now && DateTime.Parse(d) <= DateTime.Now.AddDays(14))
+            {
+                IEnumerable<TimeSlotModel> timeSlots = _timeSlotCollection.GetTimeSlotByDayAndBusinessId(DateTime.Parse(d), day, businessId);
 
                 return View(timeSlots);
             }
@@ -80,10 +74,10 @@ namespace CLeeflang_IndividueelProject.Controllers
             }
         }
 
-  
-        public IActionResult CreateReservation(DateTime date, int businessId, int pickedTimeSlotId)
+
+        public IActionResult CreateReservation(string date, int businessId, int pickedTimeSlotId)
         {
-            DateTime _date = date;
+            DateTime _date = DateTime.Parse(date);
             int userId = _userCollection.GetUserId(User.Identity.Name); //  get userid from logged in user
 
             ReservationModel newReservation = new ReservationModel(_date, userId, businessId, pickedTimeSlotId);
@@ -105,8 +99,8 @@ namespace CLeeflang_IndividueelProject.Controllers
                 {
                     TempData["ErrorDate"] = "Reservations can only be made between now and two weeks ahead!";
                 }
-                
-                return RedirectToAction("TimeSlotPicker", new { date = _date, businessId = businessId });
+
+                return RedirectToAction("TimeSlotPicker", new { Date = date, businessId = businessId });
             }
         }
     }

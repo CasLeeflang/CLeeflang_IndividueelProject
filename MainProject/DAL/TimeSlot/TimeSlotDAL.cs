@@ -64,9 +64,12 @@ namespace DAL.TimeSlot
         public IEnumerable<TimeSlotDTO> GetTimeSlotByDayAndBusinessId(DateTime date, string day, int businessId)
         {
             //string sql = $"select T.*, Count(R.Id) from dbo.TimeSlot as T left outer join dbo.Reservation as R on T.Id = R.TimeSlotId where T.BusinessId = @businessId and T.DayOTWeek = @day";
-
-            string sql = $"select T.*, count(R.Id) as NumberOfReservations from dbo.TimeSlot T left outer join dbo.Reservation R on T.Id = R.TimeSlotId and R.Date = @date where T.BusinessId = @businessId and T.DayOTWeek = @day group by T.Id, T.BusinessId, T.DayOTWeek, T.StartTime, T.EndTime, T.NumberOfSpots";
             //string sql = $"Select * from dbo.TimeSlot where BusinessId = @businessId and DayOTWeek = @day";
+
+
+            //  Star not de bedoeling
+            //  Geen foutmelding als een kolom mist
+            string sql = $"select T.*, count(R.Id) as NumberOfReservations from dbo.TimeSlot T left outer join dbo.Reservation R on T.Id = R.TimeSlotId and R.Date = @date where T.BusinessId = @businessId and T.DayOTWeek = @day group by T.Id, T.BusinessId, T.DayOTWeek, T.StartTime, T.EndTime, T.NumberOfSpots";
 
             var dictionary = new Dictionary<string, object>
             {

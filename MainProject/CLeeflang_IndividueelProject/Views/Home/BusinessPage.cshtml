@@ -41,12 +41,8 @@
 <h4>Date</h4>
 <hr />
 
-<form id="DatePicker" asp-controller="Reservation" asp-action="TimeSlotPicker" asp-route-businessId="@Model.Id" method="post">
-    <input type="date" name="date" value="" />
-    <button type="submit" value="Submit">Check Availability</button>
-</form>
 
-@*@using (Html.BeginForm("TimeSlotPicker", "Reservation", new { businessId = Model.Id }, FormMethod.Post))
+@using (Html.BeginForm("TimeSlotPicker", "Reservation", new { businessId = Model.Id }, FormMethod.Post))
 {
     <table cellpadding="5">
         <tr>
@@ -60,7 +56,7 @@
         @TempData["ErrorDate"]
     </div>
     <input type="submit" value="Submit" />
-}*@
+}
 
 <div class="mb-5">
     <a asp-action="Index">Back to Home</a>
