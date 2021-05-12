@@ -2,6 +2,7 @@
 using Logic.BusinessUser;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -147,6 +148,19 @@ namespace CLeeflang_IndividueelProject.Controllers
 
             HttpContext.SignOutAsync();
             return RedirectToAction("Index", "Home");
+        }
+
+        [Authorize(Roles = "BusinessUser")]
+        public IActionResult BusinessUserPage()
+        {
+            BusinessUserModel businessUser = _businessUserCollection.GetBusinessUserByUserNameOrEmail(User.Identity.Name).FirstOrDefault();
+            return View(businessUser);
+        }
+
+        public IActionResult EditBusinessUser()
+        {
+            BusinessUserModel businessUser = _businessUserCollection.GetBusinessUserByUserNameOrEmail(User.Identity.Name).FirstOrDefault();
+            return View(businessUser);
         }
     }
 }

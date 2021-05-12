@@ -81,5 +81,21 @@ namespace Logic.BusinessUser
 
             return _registerValidation;
         }
+
+        public void UpdateInfo(string info)
+        {
+            BusinessUserDTO updatedBusinessUserDTO = new BusinessUserDTO
+            {
+                Id = Id,
+                BusinessName = BusinessName,
+                UserName = UserName,
+                Password = Password,
+                Email = Email,
+                Info = info,
+                Sector = Sector
+            };
+
+            _businessUserDAL.UpdateInfo(updatedBusinessUserDTO);
+        }
     }
 }

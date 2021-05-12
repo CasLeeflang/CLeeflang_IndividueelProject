@@ -34,7 +34,7 @@ namespace Logic.TimeSlot
         public IEnumerable<TimeSlotModel> GetTimeSlotByBusinessId(int businessId)
         {
             // Load in the TimeSlotDTOs into IEnumerable
-            IEnumerable<TimeSlotDTO> timeSlotDTOs = _timeSlotCollectionDAL.LoadTimeSlotByBusinessId(businessId);
+            IEnumerable<TimeSlotDTO> timeSlotDTOs = _timeSlotCollectionDAL.GetTimeSlotByBusinessId(businessId);
 
             // Map DTO to LogicModel and put into collection list
             try
@@ -56,7 +56,7 @@ namespace Logic.TimeSlot
         public IEnumerable<TimeSlotModel> GetTimeSlotById(int id)
         {
             // Load in the TimeSlotDTOs into IEnumerable
-            IEnumerable<TimeSlotDTO> timeSlotDTOs = _timeSlotCollectionDAL.LoadTimeSlotById(id);
+            IEnumerable<TimeSlotDTO> timeSlotDTOs = _timeSlotCollectionDAL.GetTimeSlotById(id);
 
             // Map DTO to LogicModel and put into collection list
             try

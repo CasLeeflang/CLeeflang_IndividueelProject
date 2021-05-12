@@ -20,7 +20,7 @@ namespace DAL.User
         
         public IEnumerable<UserDTO> GetUserByUserName(string userName)
         {
-            string sql = $"select * from dbo.[User] where UserName = @userName";
+            string sql = $"select Id, UserName, FirstName, LastName, Password, Email, DoB from dbo.[User] where UserName = @userName";
 
             var dictionary = new Dictionary<string, object>
             {
@@ -34,7 +34,7 @@ namespace DAL.User
 
         public IEnumerable<UserDTO> GetUserByUserNameOrEmail(string identifier)
         {
-            string sql = $"select * from dbo.[User] where UserName = @identifier or Email = @identifier";
+            string sql = $"select Id, UserName, FirstName, LastName, Password, Email, DoB from dbo.[User] where UserName = @identifier or Email = @identifier";
 
             var dictionary = new Dictionary<string, object>
             {
@@ -68,7 +68,7 @@ namespace DAL.User
         
         public IEnumerable<UserDTO> CheckUserNameEmail(string userName, string email)       // Used for checking whether the username is in use or not when registering
         {
-            string sql = $"select * from dbo.[User] where (UserName = @userName or Email = @email);";
+            string sql = $"select Id, UserName, FirstName, LastName, Password, Email, DoB from dbo.[User] where (UserName = @userName or Email = @email);";
 
             var dictionary = new Dictionary<string, object>
             {

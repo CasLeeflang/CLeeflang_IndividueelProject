@@ -28,7 +28,7 @@ namespace DAL.BusinessUser
 
         public IEnumerable<BusinessUserDTO> GetBusinessByUserNameOrEmail(string identifier)
         {
-            string sql = $"select * from dbo.BusinessUser where UserName = @identifier or Email = @identifier";
+            string sql = $"select Id, BusinessName, UserName, Password, Email, Info, Sector from dbo.BusinessUser where UserName = @identifier or Email = @identifier";
 
             var dictionary = new Dictionary<string, object>
             {
@@ -61,7 +61,7 @@ namespace DAL.BusinessUser
 
         public IEnumerable<BusinessUserDTO> GetAllBusinesses()
         {
-            string sql = $"select * from dbo.BusinessUser;";
+            string sql = $"select Id, BusinessName, UserName, Password, Email, Info, Sector from dbo.BusinessUser;";
 
             return _dBManager.LoadAllData<BusinessUserDTO>(sql);
         }
@@ -103,7 +103,7 @@ namespace DAL.BusinessUser
         
         public IEnumerable<BusinessUserDTO> CheckBusinessUserNameEmailName(string userName, string email, string businessName)
         {
-            string sql = $"select * from dbo.BusinessUser where (UserName = @userName or Email = @email or BusinessName = @businessName);";
+            string sql = $"select Id, BusinessName, UserName, Password, Email, Info, Sector from dbo.BusinessUser where (UserName = @userName or Email = @email or BusinessName = @businessName);";
             var dictionary = new Dictionary<string, object>
             {
                 {"@userName", userName},
@@ -116,6 +116,11 @@ namespace DAL.BusinessUser
             var parameters = new DynamicParameters(dictionary);
 
             return _dBManager.LoadData<BusinessUserDTO>(sql, parameters);
+        }
+
+        public void UpdateInfo(BusinessUserDTO updatedBusinessUserDTO)
+        {
+
         }
     }
 }

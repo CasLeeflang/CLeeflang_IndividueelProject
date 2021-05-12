@@ -27,7 +27,7 @@ namespace DAL.Reservation
 
             //  Star not de bedoeling
             //  Geen foutmelding als een kolom mist
-            string sql = @"select R.*, B.BusinessName as BusinessName, T.StartTime as StartTime, T.EndTime as EndTime 
+            string sql = @"select R.Id, R.Date, R.UserId, R.BusinessId, R.TimeSlotId, B.BusinessName as BusinessName, T.StartTime as StartTime, T.EndTime as EndTime 
 
                            from 
 
@@ -68,7 +68,7 @@ namespace DAL.Reservation
 
         public IEnumerable<ReservationDTO> GetReservationByBusinessId(int businessId)
         {
-            string sql = $"select * from dbo.Reservation where BusinessId = @businessId";
+            string sql = $"select R.Id, R.Date, R.UserId, R.BusinessId, R.TimeSlotId from dbo.Reservation where BusinessId = @businessId";
 
             var dictionary = new Dictionary<string, object>
             {
@@ -96,7 +96,7 @@ namespace DAL.Reservation
 
         public IEnumerable<ReservationDTO> GetReservationByUserIdAndDateAndBusinessId(int userId, DateTime date, int businessId)
         {
-            string sql = $"select * from dbo.Reservation where UserId = @userId and Date = @date and BusinessId = @businessId";
+            string sql = $"select Id, Date, UserId, BusinessId, TimeSlotId from dbo.Reservation where UserId = @userId and Date = @date and BusinessId = @businessId";
 
             var dictionary = new Dictionary<string, object>
             {

@@ -30,9 +30,9 @@ namespace DAL.TimeSlot
             _dBManager.SaveData(sql, newTimeSlot);
         }
 
-        public IEnumerable<TimeSlotDTO> LoadTimeSlotByBusinessId(int businessId)
+        public IEnumerable<TimeSlotDTO> GetTimeSlotByBusinessId(int businessId)
         {
-            string sql = $"select * from dbo.TimeSlot where BusinessId = @businessId";
+            string sql = $"select Id, BusinessId, DayOTWeek, StartTime, EndTime, NumberOfSpots from dbo.TimeSlot where BusinessId = @businessId";
             //string sql = $"select T.*, U.BusinessName as BusinessName from dbo.TimeSlot T left join dbo.BusinessUser U on T.BusinessId = U.Id where BusinessId = @businessId";
 
             var dictionary = new Dictionary<string, object>
@@ -45,9 +45,9 @@ namespace DAL.TimeSlot
             return _dBManager.LoadData<TimeSlotDTO>(sql, parameters);
         }
 
-        public IEnumerable<TimeSlotDTO> LoadTimeSlotByUserId(int userId)
+        public IEnumerable<TimeSlotDTO> GetTimeSlotByUserId(int userId)
         {
-            string sql = $"select * from dbo.TimeSlot where UserId = @userId";
+            string sql = $"select Id, BusinessId, DayOTWeek, StartTime, EndTime, NumberOfSpots from dbo.TimeSlot where UserId = @userId";
 
             var dictionary = new Dictionary<string, object>
             {
@@ -69,7 +69,7 @@ namespace DAL.TimeSlot
 
             //  Star not de bedoeling
             //  Geen foutmelding als een kolom mist
-            string sql = $"select T.*, count(R.Id) as NumberOfReservations from dbo.TimeSlot T left outer join dbo.Reservation R on T.Id = R.TimeSlotId and R.Date = @date where T.BusinessId = @businessId and T.DayOTWeek = @day group by T.Id, T.BusinessId, T.DayOTWeek, T.StartTime, T.EndTime, T.NumberOfSpots";
+            string sql = $"select T.Id, T.BusinessId, T.DayOTWeek, T.StartTime, T.EndTime, T.NumberOfSpots, count(R.Id) as NumberOfReservations from dbo.TimeSlot T left outer join dbo.Reservation R on T.Id = R.TimeSlotId and R.Date = @date where T.BusinessId = @businessId and T.DayOTWeek = @day group by T.Id, T.BusinessId, T.DayOTWeek, T.StartTime, T.EndTime, T.NumberOfSpots";
 
             var dictionary = new Dictionary<string, object>
             {
@@ -83,9 +83,9 @@ namespace DAL.TimeSlot
             return _dBManager.LoadData<TimeSlotDTO>(sql, parameters);
         }
 
-        public IEnumerable<TimeSlotDTO> LoadTimeSlotById(int id)
+        public IEnumerable<TimeSlotDTO> GetTimeSlotById(int id)
         {
-            string sql = $"select * from dbo.TimeSlot where Id = @id";
+            string sql = $"select Id, BusinessId, DayOTWeek, StartTime, EndTime, NumberOfSpots from dbo.TimeSlot where Id = @id";
 
             var dictionary = new Dictionary<string, object>
             {

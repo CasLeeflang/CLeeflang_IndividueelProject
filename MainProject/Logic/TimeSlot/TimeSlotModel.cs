@@ -34,7 +34,6 @@ namespace Logic.TimeSlot
             }
         }
 
-
         public int? AvailableSpots
         {
             get
@@ -44,8 +43,7 @@ namespace Logic.TimeSlot
         }
 
         public TimeSlotModel(int businessId, string dayOTWeek, DateTime startTime, DateTime endTime, int numberOfSpots)
-        {
-            
+        {            
             BusinessId = businessId;
             DayOTWeek = dayOTWeek;
             StartTime = new DateTime(9999, 01, 01) + startTime.TimeOfDay;   //  Removes the date from the datetime object
