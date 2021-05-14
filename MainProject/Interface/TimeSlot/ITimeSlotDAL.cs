@@ -10,6 +10,5 @@ namespace Contract_Layer.TimeSlot
     {
         void UpdateTimeSlot();
 
-
     }
 }
