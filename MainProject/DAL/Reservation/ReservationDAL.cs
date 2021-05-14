@@ -24,9 +24,6 @@ namespace DAL.Reservation
 
         public IEnumerable<ReservationDTO> GetReservationByUserId(int userId)
         {
-
-            //  Star not de bedoeling
-            //  Geen foutmelding als een kolom mist
             string sql = @"select R.Id, R.Date, R.UserId, R.BusinessId, R.TimeSlotId, B.BusinessName as BusinessName, T.StartTime as StartTime, T.EndTime as EndTime 
 
                            from 
