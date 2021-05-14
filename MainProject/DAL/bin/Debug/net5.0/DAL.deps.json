@@ -9,9 +9,8 @@
       "DAL/1.0.0": {
         "dependencies": {
           "Microsoft.Extensions.Configuration": "5.0.0",
-          "SQLDataAccess": "1.0.0",
           "System.Configuration.ConfigurationManager": "5.0.0",
-          "Variables": "1.0.0"
+          "System.Data.SqlClient": "4.8.2"
         },
         "runtime": {
           "DAL.dll": {}
@@ -237,8 +236,7 @@
       "Contract Layer/1.0.0": {
         "dependencies": {
           "DTOs": "1.0.0",
-          "Dapper": "2.0.78",
-          "Variables": "1.0.0"
+          "Dapper": "2.0.78"
         },
         "runtime": {
           "Contract Layer.dll": {}
@@ -247,20 +245,6 @@
       "DTOs/1.0.0": {
         "runtime": {
           "DTOs.dll": {}
-        }
-      },
-      "SQLDataAccess/1.0.0": {
-        "dependencies": {
-          "Dapper": "2.0.78",
-          "System.Data.SqlClient": "4.8.2"
-        },
-        "runtime": {
-          "SQLDataAccess.dll": {}
-        }
-      },
-      "Variables/1.0.0": {
-        "runtime": {
-          "Variables.dll": {}
         }
       }
     }
@@ -410,16 +394,6 @@
       "sha512": ""
     },
     "DTOs/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "SQLDataAccess/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Variables/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

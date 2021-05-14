@@ -10,5 +10,6 @@ namespace Contract_Layer.Reservation
     public interface IReservationDAL
     {
         void UpdateReservation(ReservationDTO updatedReservation);
+        IEnumerable<ReservationDTO> GetReservationByUserIdAndDateAndBusinessId(int userId, DateTime date, int businessId);
     }
 }

@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CLeeflang_IndividueelProject.Models;
-using Contract_Layer;
-using Logic;
+using Logic.TimeSlot;
 using Logic.BusinessUser;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -15,8 +14,8 @@ namespace CLeeflang_IndividueelProject.Controllers
     [Authorize(Roles = "BusinessUser")]
     public class TimeSlotController : Controller
     {
-        TimeSlotCollection _timeSlotCollection = new TimeSlotCollection();
-        BusinessUserCollection _businessUserCollection = new BusinessUserCollection();
+        readonly TimeSlotCollection _timeSlotCollection = new();
+        readonly BusinessUserCollection _businessUserCollection = new();
 
         public IActionResult ManageTimeSlot()
         {

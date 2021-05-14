@@ -15,9 +15,8 @@ namespace DTOs
         public string Password { get; set; } // Hashed and salted
         public string Email { get; set; }
         public DateTime DoB { get; set; }
-        public UserDTO()
-        {
-
-        }
+#nullable enable
+        public int? NumberOfReservations { get; set; }
+#nullable disable
     }
 }

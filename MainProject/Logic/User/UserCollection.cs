@@ -56,6 +56,7 @@ namespace Logic.User
 
             foreach(var userDTO in userDTOs)
             {
+                Console.WriteLine(userDTO.NumberOfReservations);
                 UserModel user = new UserModel(userDTO);
                 users.Add(user);
             }
@@ -66,7 +67,8 @@ namespace Logic.User
         {
             //  returns the id based on the username of the user
 
-            throw new NotImplementedException();
+            int userId = _userCollectionDAL.GetUserId(userName).LastOrDefault().Id;
+            return userId;
         }
 
     }

@@ -71,7 +71,7 @@ namespace Logic.BusinessUser
                 businessUsers.Add(business);
             }
 
-            return businessUsers.FirstOrDefault();
+            return businessUsers.LastOrDefault();
             
         }
 

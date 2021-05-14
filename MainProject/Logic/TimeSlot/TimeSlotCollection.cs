@@ -1,18 +1,17 @@
 ﻿using FactoryDAL;
 using Contract_Layer;
 using DTOs;
-using SQLDataAccess;
 using System;
 using System.Collections.Generic;
 using Contract_Layer.TimeSlot;
 
-namespace Logic
+namespace Logic.TimeSlot
 {
     public class TimeSlotCollection
     {
         ITimeSlotCollectionDAL _timeSlotCollectionDAL = TimeSlotFactoryDAL.CreateTimeSlotCollectionDAL();
 
-        private List<TimeSlotModel> timeSlots { get;} = new List<TimeSlotModel>();
+        private List<TimeSlotModel> timeSlots { get; } = new List<TimeSlotModel>();
 
         public void CreateTimeSlot(TimeSlotModel newTimeSlot)
         {
@@ -35,7 +34,7 @@ namespace Logic
         public IEnumerable<TimeSlotModel> GetTimeSlotByBusinessId(int businessId)
         {
             // Load in the TimeSlotDTOs into IEnumerable
-            IEnumerable<TimeSlotDTO> timeSlotDTOs = _timeSlotCollectionDAL.LoadTimeSlotByBusinessId(businessId);
+            IEnumerable<TimeSlotDTO> timeSlotDTOs = _timeSlotCollectionDAL.GetTimeSlotByBusinessId(businessId);
 
             // Map DTO to LogicModel and put into collection list
             try
@@ -44,13 +43,54 @@ namespace Logic
                 {
                     TimeSlotModel timeSlot = new TimeSlotModel(timeSlotDTO);
                     timeSlots.Add(timeSlot);
-                } 
+                }
                 return timeSlots;
             }
             catch
             {
                 return timeSlots;
-            }            
+            }
+        }
+
+
+        public IEnumerable<TimeSlotModel> GetTimeSlotById(int id)
+        {
+            // Load in the TimeSlotDTOs into IEnumerable
+            IEnumerable<TimeSlotDTO> timeSlotDTOs = _timeSlotCollectionDAL.GetTimeSlotById(id);
+
+            // Map DTO to LogicModel and put into collection list
+            try
+            {
+                foreach (var timeSlotDTO in timeSlotDTOs)
+                {
+                    TimeSlotModel timeSlot = new TimeSlotModel(timeSlotDTO);
+                    timeSlots.Add(timeSlot);
+                }
+                return timeSlots;
+            }
+            catch
+            {
+                return timeSlots;
+            }
+        }
+
+        public IEnumerable<TimeSlotModel> GetTimeSlotByDayAndBusinessId(DateTime date, string day, int businessId)
+        {
+
+            IEnumerable<TimeSlotDTO> timeSlotDTOs = _timeSlotCollectionDAL.GetTimeSlotByDayAndBusinessId(date, day, businessId);
+            try
+            {
+                foreach (var timeslotDTO in timeSlotDTOs)
+                {
+                    TimeSlotModel timeSlot = new TimeSlotModel(timeslotDTO);
+                    timeSlots.Add(timeSlot);
+                }
+                return timeSlots;
+            }
+            catch
+            {
+                return timeSlots;
+            }
         }
 
         public void DeleteTimeSlot(int id)

@@ -14,6 +14,8 @@ namespace Contract_Layer.BusinessUser
         //public bool ValidateNewBusinessUser(string userName, string email);
 
         IEnumerable<BusinessUserDTO> CheckBusinessUserNameEmailName(string userName, string email, string businessName);
+        void UpdateInfo(BusinessUserDTO updatedBusinessUserDTO);
+
 
     }
 }

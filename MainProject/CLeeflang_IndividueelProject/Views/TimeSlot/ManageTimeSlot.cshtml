@@ -3,7 +3,7 @@
     ViewData["Title"] = "CreateTimeSlot";
 }
 
-@using Logic;
+@using Logic.TimeSlot;
 @using Logic.BusinessUser; 
 
 
@@ -142,9 +142,7 @@
                                                     <td>
                                                         <a asp-controller="TimeSlot" asp-action="DeleteTimeSlot" asp-route-id="@timeSlot.Id">Delete</a>
                                                     </td>
-
                                                 </tr>
-
                                             }
                                         }
                                     </table>

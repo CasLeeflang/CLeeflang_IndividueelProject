@@ -37,9 +37,6 @@
               "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Models\\DTOs.csproj": {
                 "projectPath": "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Models\\DTOs.csproj"
               },
-              "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\SQLDataAccess\\SQLDataAccess.csproj": {
-                "projectPath": "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\SQLDataAccess\\SQLDataAccess.csproj"
-              },
               "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Variables\\Variables.csproj": {
                 "projectPath": "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Variables\\Variables.csproj"
               }
@@ -58,7 +55,7 @@
           "dependencies": {
             "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
               "target": "Package",
-              "version": "[3.1.12, )"
+              "version": "[5.0.5, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
@@ -87,7 +84,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -117,12 +114,6 @@
             "projectReferences": {
               "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Interface\\Contract Layer.csproj": {
                 "projectPath": "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Interface\\Contract Layer.csproj"
-              },
-              "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\SQLDataAccess\\SQLDataAccess.csproj": {
-                "projectPath": "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\SQLDataAccess\\SQLDataAccess.csproj"
-              },
-              "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Variables\\Variables.csproj": {
-                "projectPath": "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Variables\\Variables.csproj"
               }
             }
           }
@@ -144,6 +135,10 @@
             "System.Configuration.ConfigurationManager": {
               "target": "Package",
               "version": "[5.0.0, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.2, )"
             }
           },
           "imports": [
@@ -161,7 +156,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -191,9 +186,6 @@
             "projectReferences": {
               "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\DAL\\DAL.csproj": {
                 "projectPath": "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\DAL\\DAL.csproj"
-              },
-              "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Interface\\Contract Layer.csproj": {
-                "projectPath": "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Interface\\Contract Layer.csproj"
               }
             }
           }
@@ -222,7 +214,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -252,9 +244,6 @@
             "projectReferences": {
               "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Models\\DTOs.csproj": {
                 "projectPath": "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Models\\DTOs.csproj"
-              },
-              "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Variables\\Variables.csproj": {
-                "projectPath": "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Variables\\Variables.csproj"
               }
             }
           }
@@ -289,7 +278,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -322,6 +311,9 @@
               },
               "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Models\\DTOs.csproj": {
                 "projectPath": "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Models\\DTOs.csproj"
+              },
+              "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Variables\\Variables.csproj": {
+                "projectPath": "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Variables\\Variables.csproj"
               }
             }
           }
@@ -350,7 +342,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -404,71 +396,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\SQLDataAccess\\SQLDataAccess.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\SQLDataAccess\\SQLDataAccess.csproj",
-        "projectName": "SQLDataAccess",
-        "projectPath": "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\SQLDataAccess\\SQLDataAccess.csproj",
-        "packagesPath": "C:\\Users\\casle\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\SQLDataAccess\\obj\\",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "C:\\Users\\casle\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "net5.0"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net5.0": {
-            "targetAlias": "net5.0",
-            "projectReferences": {}
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "net5.0": {
-          "targetAlias": "net5.0",
-          "dependencies": {
-            "Dapper": {
-              "target": "Package",
-              "version": "[2.0.78, )"
-            },
-            "System.Data.SqlClient": {
-              "target": "Package",
-              "version": "[4.8.2, )"
-            }
-          },
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -522,7 +450,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }

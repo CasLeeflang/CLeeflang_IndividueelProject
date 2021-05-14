@@ -15,7 +15,7 @@ namespace CLeeflang_IndividueelProject.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        BusinessUserCollection _businessUserCollection = new();
+        readonly BusinessUserCollection _businessUserCollection = new();
 
         public HomeController(ILogger<HomeController> logger)
         {
