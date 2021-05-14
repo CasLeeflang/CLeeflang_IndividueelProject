@@ -10,9 +10,9 @@ namespace Contract_Layer.TimeSlot
     public interface ITimeSlotCollectionDAL
     {
         void CreateTimeSlot(TimeSlotDTO newTimeSlot);
-        IEnumerable<TimeSlotDTO> GetTimeSlotByBusinessId(int businessId);
-        IEnumerable<TimeSlotDTO> GetTimeSlotByDayAndBusinessId(DateTime date, string day, int businessId);
-        IEnumerable<TimeSlotDTO> GetTimeSlotById(int id);
+
+        // void UpdateTimeSlot();
+        IEnumerable<TimeSlotDTO> LoadTimeSlotByBusinessId(int businessId);
         void DeleteTimeSlot(int id);
     }
 }

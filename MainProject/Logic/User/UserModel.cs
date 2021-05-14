@@ -20,9 +20,6 @@ namespace Logic.User
         public string Password { get; set; } // Hashed and salted
         public string Email { get; set; }
         public DateTime DoB { get; set; }
-#nullable enable
-        public int? NumberOfReservations { get; set; }
-#nullable disable
 
 
         public UserModel(string userName, string firstName, string lastName, string Password, string Email, DateTime DoB)
@@ -44,22 +41,17 @@ namespace Logic.User
             Password = userDTO.Password;
             Email = userDTO.Email;
             DoB = userDTO.DoB;
-            NumberOfReservations = userDTO.NumberOfReservations;
         }
 
         public void Update(UserModel updatedUser)
         {
-            UserDTO updateUserDTO = new UserDTO
-            {
-               UserName = updatedUser.UserName,
-                FirstName = updatedUser.FirstName,
-                LastName = updatedUser.LastName,
-                Password = updatedUser.Password,
-                Email = updatedUser.Email,
-                DoB = updatedUser.DoB
-            };            
-
-            _userDAL.UpdateUser(updateUserDTO);
+            this.Id = updatedUser.Id;
+            this.UserName = updatedUser.UserName;
+            this.FirstName = updatedUser.FirstName;
+            this.LastName = updatedUser.LastName;
+            this.Password = updatedUser.Password;
+            this.Email = updatedUser.Email;
+            this.DoB = updatedUser.DoB;
         }
 
         public UserRegistration Validate()

@@ -13,7 +13,7 @@ namespace DAL.DataBase
     public class DBManager
     {
 
-        private readonly string connectionString = "Data Source=DESKTOP-KQ65BAV;Initial Catalog=SpotSaverDB;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        private readonly string connectionString = "Data Source=DESKTOP-KQ65BAV;Initial Catalog=Database;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         //private readonly IConfiguration _configuration;
 

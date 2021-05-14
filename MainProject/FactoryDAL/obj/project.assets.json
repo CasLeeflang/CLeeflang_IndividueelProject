@@ -278,7 +278,8 @@
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
           "DTOs": "1.0.0",
-          "Dapper": "2.0.78"
+          "Dapper": "2.0.78",
+          "Variables": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Contract Layer.dll": {}
@@ -293,8 +294,9 @@
         "dependencies": {
           "Contract Layer": "1.0.0",
           "Microsoft.Extensions.Configuration": "5.0.0",
+          "SQLDataAccess": "1.0.0",
           "System.Configuration.ConfigurationManager": "5.0.0",
-          "System.Data.SqlClient": "4.8.2"
+          "Variables": "1.0.0"
         },
         "compile": {
           "bin/placeholder/DAL.dll": {}
@@ -311,6 +313,30 @@
         },
         "runtime": {
           "bin/placeholder/DTOs.dll": {}
+        }
+      },
+      "SQLDataAccess/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "Dapper": "2.0.78",
+          "System.Data.SqlClient": "4.8.2"
+        },
+        "compile": {
+          "bin/placeholder/SQLDataAccess.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SQLDataAccess.dll": {}
+        }
+      },
+      "Variables/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/Variables.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Variables.dll": {}
         }
       }
     }
@@ -919,10 +945,21 @@
       "type": "project",
       "path": "../Models/DTOs.csproj",
       "msbuildProject": "../Models/DTOs.csproj"
+    },
+    "SQLDataAccess/1.0.0": {
+      "type": "project",
+      "path": "../SQLDataAccess/SQLDataAccess.csproj",
+      "msbuildProject": "../SQLDataAccess/SQLDataAccess.csproj"
+    },
+    "Variables/1.0.0": {
+      "type": "project",
+      "path": "../Variables/Variables.csproj",
+      "msbuildProject": "../Variables/Variables.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "Contract Layer >= 1.0.0",
       "DAL >= 1.0.0"
     ]
   },
@@ -955,6 +992,9 @@
           "projectReferences": {
             "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\DAL\\DAL.csproj": {
               "projectPath": "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\DAL\\DAL.csproj"
+            },
+            "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Interface\\Contract Layer.csproj": {
+              "projectPath": "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Interface\\Contract Layer.csproj"
             }
           }
         }
@@ -983,7 +1023,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1,6 +1,6 @@
 ﻿using DTOs;
 using System.Collections.Generic;
-
+using Variables;
 
 namespace Contract_Layer.User
 {

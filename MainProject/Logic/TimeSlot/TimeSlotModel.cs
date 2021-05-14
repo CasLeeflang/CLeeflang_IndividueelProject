@@ -1,29 +1,22 @@
 ﻿using FactoryDAL;
+using Contract_Layer;
 using DTOs;
 using System;
 using Contract_Layer.TimeSlot;
 using Variables.ValidationResponse;
-using Logic.Reservation;
-using System.Collections.Generic;
 
-namespace Logic.TimeSlot
+namespace Logic
 {
     public class TimeSlotModel
     {
 
         ITimeSlotDAL _timeSlotDAL = TimeSlotFactoryDAL.CreateTimeSlotDAL();
-
         public int Id { get; set; }
         public int BusinessId { get; set; }
         public string DayOTWeek { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
         public int NumberOfSpots { get; set; }
-
-#nullable enable
-        public int? NumberOfReservations { get; set; }
-        public string? BusinessName { get; set; }
-#nullable disable
 
 
         public TimeSpan TimeSpan
@@ -34,20 +27,12 @@ namespace Logic.TimeSlot
             }
         }
 
-        public int? AvailableSpots
-        {
-            get
-            {
-                return NumberOfSpots - NumberOfReservations;
-            }
-        }
-
         public TimeSlotModel(int businessId, string dayOTWeek, DateTime startTime, DateTime endTime, int numberOfSpots)
-        {            
+        {
             BusinessId = businessId;
             DayOTWeek = dayOTWeek;
-            StartTime = new DateTime(9999, 01, 01) + startTime.TimeOfDay;   //  Removes the date from the datetime object
-            EndTime = new DateTime(9999, 01, 01) + endTime.TimeOfDay;
+            StartTime = startTime;
+            EndTime = endTime;
             NumberOfSpots = numberOfSpots;
         }
 
@@ -55,17 +40,15 @@ namespace Logic.TimeSlot
         {
             Id = timeSlotDTO.Id;
             BusinessId = timeSlotDTO.BusinessId;
-            BusinessName = timeSlotDTO.BusinessName;
             DayOTWeek = timeSlotDTO.DayOTWeek;
             StartTime = timeSlotDTO.StartTime;
             EndTime = timeSlotDTO.EndTime;
             NumberOfSpots = timeSlotDTO.NumberOfSpots;
-            NumberOfReservations = timeSlotDTO.NumberOfReservations;
         }
 
         public void UpdateTimeSlot()
         {
-            _timeSlotDAL.UpdateTimeSlot();
+            throw new NotImplementedException();
         }
 
         public TimeSlotCreation Validate()

@@ -16,28 +16,15 @@ namespace DAL.Reservation
 
         public void CreateReservation(ReservationDTO newReservaton)
         {
-            string sql = @"insert into dbo.Reservation (Date, UserId, BusinessId, TimeSlotId)
-                            values(@Date, @UserId, @BusinessId, @TimeSlotId);";
+            string sql = @"insert into dbo.Reservation ()
+                            values(@);";
 
             _dBManager.SaveData(sql, newReservaton);
         }
 
         public IEnumerable<ReservationDTO> GetReservationByUserId(int userId)
         {
-            string sql = @"select R.Id, R.Date, R.UserId, R.BusinessId, R.TimeSlotId, B.BusinessName as BusinessName, T.StartTime as StartTime, T.EndTime as EndTime 
-
-                           from 
-
-                           dbo.Reservation R left join dbo.BusinessUser B on R.BusinessId = B.Id 
-                           left join dbo.TimeSlot T on R.TimeSlotId = T.Id 
-
-                           where 
-
-                           UserId = @userId 
-
-                           order by 
-
-                           R.Date, T.StartTime";
+            string sql = $"select * from dbo.Reservation where UserId = @userId";
 
             var dictionary = new Dictionary<string, object>
             {
@@ -47,25 +34,11 @@ namespace DAL.Reservation
             var parameters = new DynamicParameters(dictionary);
 
             return _dBManager.LoadData<ReservationDTO>(sql, parameters);
-        }
-
-        public int GetNumberOfReservationsByUserId(int userId)
-        {
-            string sql = $"select count(Date) from dbo.Reservation where UserId = @userId";
-
-            var dictionary = new Dictionary<string, object>
-            {
-                {"@userId", userId }
-            };
-
-            var parameters = new DynamicParameters(dictionary);
-
-            return _dBManager.LoadData<int>(sql, parameters).First();
         }
 
         public IEnumerable<ReservationDTO> GetReservationByBusinessId(int businessId)
         {
-            string sql = $"select R.Id, R.Date, R.UserId, R.BusinessId, R.TimeSlotId from dbo.Reservation where BusinessId = @businessId";
+            string sql = $"select * from dbo.Reservation where BusinessId = @businessId";
 
             var dictionary = new Dictionary<string, object>
             {
@@ -77,36 +50,6 @@ namespace DAL.Reservation
             return _dBManager.LoadData<ReservationDTO>(sql, parameters);
         }
 
-        public int GetNumberOfReservationsPerDateAndTimeSlotId(DateTime date, int timeSlotId)
-        {
-            string sql = $"select Id from dbo.Reservation where Date = @date and TimeSlotId = @timeSlotId;";
-
-            var dictionary = new Dictionary<string, object>
-            {
-                {"@date", date },
-                {"@timeSlotId", timeSlotId }
-            };
-
-            var parameters = new DynamicParameters(dictionary);
-            return _dBManager.LoadData<ReservationDTO>(sql, parameters).Count();
-        }
-
-        public IEnumerable<ReservationDTO> GetReservationByUserIdAndDateAndBusinessId(int userId, DateTime date, int businessId)
-        {
-            string sql = $"select Id, Date, UserId, BusinessId, TimeSlotId from dbo.Reservation where UserId = @userId and Date = @date and BusinessId = @businessId";
-
-            var dictionary = new Dictionary<string, object>
-            {
-                {"@userId", userId },
-                {"@date", date },
-                {"@businessId", businessId }
-
-            };
-
-            var parameters = new DynamicParameters(dictionary);
-
-            return _dBManager.LoadData<ReservationDTO>(sql, parameters);
-        }
         public void UpdateReservation(ReservationDTO updatedReservation)
         {
             string sql = $"";

@@ -2,6 +2,8 @@ C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\DAL\bin
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\DAL\bin\Debug\net5.0\DAL.dll
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\DAL\bin\Debug\net5.0\ref\DAL.dll
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\DAL\bin\Debug\net5.0\DAL.pdb
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\DAL\bin\Debug\net5.0\SQLDataAccess.dll
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\DAL\bin\Debug\net5.0\SQLDataAccess.pdb
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\DAL\obj\Debug\net5.0\DAL.csprojAssemblyReference.cache
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\DAL\obj\Debug\net5.0\DAL.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\DAL\obj\Debug\net5.0\DAL.AssemblyInfoInputs.cache
@@ -11,6 +13,8 @@ C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\DAL\obj
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\DAL\obj\Debug\net5.0\DAL.dll
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\DAL\obj\Debug\net5.0\ref\DAL.dll
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\DAL\obj\Debug\net5.0\DAL.pdb
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\DAL\bin\Debug\net5.0\Variables.dll
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\DAL\bin\Debug\net5.0\Variables.pdb
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\DAL\bin\Debug\net5.0\Contract Layer.dll
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\DAL\bin\Debug\net5.0\Contract Layer.pdb
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\DAL\bin\Debug\net5.0\DTOs.dll

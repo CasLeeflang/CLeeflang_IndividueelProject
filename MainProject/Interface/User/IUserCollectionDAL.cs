@@ -13,6 +13,5 @@ namespace Contract_Layer.User
         IEnumerable<UserDTO> GetUserByUserNameOrEmail(string identifier);
 
         IEnumerable<UserDTO> GetUserByUserName(string userName);
-        IEnumerable<UserDTO> GetUserId(string userName);
     }
 }
