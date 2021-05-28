@@ -4,6 +4,7 @@
 
 <head>
     <link rel="stylesheet" href="~/css/card_animation.css">
+    <link rel="stylesheet" href="~/css/Grid.css" />
 </head>
 
 @using Logic.BusinessUser;
@@ -13,14 +14,14 @@
 <h4>Select the business and check availability</h4>
 @{ BusinessUserCollection _businessUserCollection = new BusinessUserCollection(); } 
 
-<div>
+<div class="grid-container-home">
+
+
     @foreach (var business in _businessUserCollection.GetAllBusinesses())
     {
-        <a class="nav-link expand-hover" asp-controller="Home" asp-action="BusinessPage" asp-route-id="@business.Id">
-            <div class="card mb-2">
-                <div class="row">
+        <a class="nav-link expand-hover " asp-controller="Home" asp-action="BusinessPage" asp-route-id="@business.Id">
+            <div class="card mb-2 business-card">
                     <div class="card-body">@business.BusinessName</div>
-                </div>
             </div>
         </a>
     }

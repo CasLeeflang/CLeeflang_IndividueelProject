@@ -4,161 +4,159 @@
 }
 
 @using Logic.TimeSlot;
-@using Logic.BusinessUser; 
+@using Logic.BusinessUser;
 
 
 <head>
     <link rel="stylesheet" href="~/css/TimeSlotContainer.css" />
+    <link rel="stylesheet" href="~/css/Grid.css" />
     <script src="~/js/TimeSlot.js"></script>
 </head>
 
+
 <h1>Manage Time Slots</h1>
-<div class="container">
-    <div class="row">
-        <div style="width:70%">
-            <div class="col-md-4">
-                <form asp-action="SaveTimeSlot" id="TimeSlotForm">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="form-group">
-                        <label asp-for="DayOTWeek" class="control-label">Day:</label>
-                        <select asp-for="DayOTWeek" class="form-control">
-                            <option value="Mon">Monday</option>
-                            <option value="Tue">Tuesday</option>
-                            <option value="Wed">Wednesday</option>
-                            <option value="Thu">Thursday</option>
-                            <option value="Fri">Friday</option>
-                            <option value="Sat">Saturday</option>
-                            <option value="Sun">Sunday</option>
-                        </select>
-                        <span asp-validation-for="DayOTWeek" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="StartTime" class="control-label">Start Time:</label>
-                        <input asp-for="StartTime" class="form-control" />
-                        <span asp-validation-for="StartTime" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="EndTime" class="control-label">End Time:</label>
-                        <input asp-for="EndTime" class="form-control" />
-                        <span asp-validation-for="EndTime" class="text-danger"></span>
-                    </div>
-                    <div class="text-danger">@ViewBag.TimeSlotError</div>
-                    <div class="form-group">
-                        <label asp-for="NumberOfSpots" class="control-label">Available spots:</label>
-                        <input asp-for="NumberOfSpots" class="form-control" />
-                        <span asp-validation-for="NumberOfSpots" class="text-danger"></span>
-                    </div>
-                    <div class="text-danger">@ViewBag.SpotError</div>
-                    <div class="form-group row">
-                        <input type="submit" value="Create" class="btn btn-primary mb-3" />
-                        <a asp-controller="Home" asp-action="Index">Back to List</a>
-                    </div>
-                </form>
+<div class="grid-container-ts">
+    <div>
+        <form asp-action="SaveTimeSlot" id="TimeSlotForm">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="DayOTWeek" class="control-label">Day:</label>
+                <select asp-for="DayOTWeek" class="form-control">
+                    <option value="Mon">Monday</option>
+                    <option value="Tue">Tuesday</option>
+                    <option value="Wed">Wednesday</option>
+                    <option value="Thu">Thursday</option>
+                    <option value="Fri">Friday</option>
+                    <option value="Sat">Saturday</option>
+                    <option value="Sun">Sunday</option>
+                </select>
+                <span asp-validation-for="DayOTWeek" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="StartTime" class="control-label">Start Time:</label>
+                <input asp-for="StartTime" class="form-control" />
+                <span asp-validation-for="StartTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndTime" class="control-label">End Time:</label>
+                <input asp-for="EndTime" class="form-control" />
+                <span asp-validation-for="EndTime" class="text-danger"></span>
+            </div>
+            <div class="text-danger">@ViewBag.TimeSlotError</div>
+            <div class="form-group">
+                <label asp-for="NumberOfSpots" class="control-label">Available spots:</label>
+                <input asp-for="NumberOfSpots" class="form-control" />
+                <span asp-validation-for="NumberOfSpots" class="text-danger"></span>
+            </div>
+            <div class="text-danger">@ViewBag.SpotError</div>
+            <div class="form-group row">
+                <a asp-controller="Home" asp-action="Index" class="ml-2">Back to List</a>
+                <input type="submit" value="Add" class="btn btn-primary mb-3 mr-2" />
+            </div>
+        </form>
+
+    </div>
+
+
+
+    <div class="container">
+        <div class="tab">
+            <button class="tablinks" onclick="openDay(event, 'Mon')">Monday</button>
+            <button class="tablinks" onclick="openDay(event, 'Tue')">Tuesday</button>
+            <button class="tablinks" onclick="openDay(event, 'Wed')">Wednesday</button>
+            <button class="tablinks" onclick="openDay(event, 'Thu')">Thursday</button>
+            <button class="tablinks" onclick="openDay(event, 'Fri')">Friday</button>
+            <button class="tablinks" onclick="openDay(event, 'Sat')">Saturday</button>
+            <button class="tablinks" onclick="openDay(event, 'Sun')">Sunday</button>
+        </div>
+        @{ TimeSlotCollection _timeSlotCollection = new TimeSlotCollection();
+            BusinessUserCollection _businessUserCollection = new BusinessUserCollection();
+            IEnumerable<TimeSlotModel> timeSlots = _timeSlotCollection.GetTimeSlotByBusinessId(_businessUserCollection.GetBusinessId(User.Identity.Name)).OrderBy(o => o.StartTime);
+
+            List<string> DotW = new List<string> { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" };
+
+        }
+
+
+
+        <!-- Tab content -->
+        <div class="weekBox">
+
+            @foreach (var day in DotW)
+            {
+                if (day == "Mon")
+                {
+                    <div id="@day" class="tabcontent" style="display: block;">
+                        <div class="TimeSlots">
+                            <table style="width:100%">
+                                <tr>
+                                    <th>Day</th>
+                                    <th>Start Time</th>
+                                    <th>End Time</th>
+                                    <th>Spots</th>
+                                    <th></th>
+
+                                </tr>
+                                @foreach (var timeSlot in timeSlots)
+                                {
+                                    if (timeSlot.DayOTWeek == day)
+                                    {
+                                        <tr>
+                                            <th>@timeSlot.DayOTWeek</th>
+                                            <td>@timeSlot.StartTime.TimeOfDay</td>
+                                            <td>@timeSlot.EndTime.TimeOfDay</td>
+                                            <td>@timeSlot.NumberOfSpots</td>
+                                            <td>
+                                                <a asp-controller="TimeSlot" asp-action="DeleteTimeSlot" asp-route-id="@timeSlot.Id">Delete</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </table>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div id="@day" class="tabcontent" style="display: none;">
+                        <div class="TimeSlots">
+                            <table style="width:100%">
+                                <tr>
+                                    <th>Day</th>
+                                    <th>Start Time</th>
+                                    <th>End Time</th>
+                                    <th>Spots</th>
+                                    <th></th>
+
+                                </tr>
+                                @foreach (var timeSlot in timeSlots)
+                                {
+                                    if (timeSlot.DayOTWeek == day)
+                                    {
+                                        <tr>
+                                            <th>@timeSlot.DayOTWeek</th>
+                                            <td>@timeSlot.StartTime.TimeOfDay</td>
+                                            <td>@timeSlot.EndTime.TimeOfDay</td>
+                                            <td>@timeSlot.NumberOfSpots</td>
+                                            <td>
+                                                <a asp-controller="TimeSlot" asp-action="DeleteTimeSlot" asp-route-id="@timeSlot.Id">Delete</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </table>
+                        </div>
+                    </div>
+                }
+
+            }
+
+
         </div>
 
-
-        <div class="row">
-            <div class="container">
-                <div class="tab">
-                    <button class="tablinks" onclick="openDay(event, 'Mon')">Monday</button>
-                    <button class="tablinks" onclick="openDay(event, 'Tue')">Tuesday</button>
-                    <button class="tablinks" onclick="openDay(event, 'Wed')">Wednesday</button>
-                    <button class="tablinks" onclick="openDay(event, 'Thu')">Thursday</button>
-                    <button class="tablinks" onclick="openDay(event, 'Fri')">Friday</button>
-                    <button class="tablinks" onclick="openDay(event, 'Sat')">Saturday</button>
-                    <button class="tablinks" onclick="openDay(event, 'Sun')">Sunday</button>
-                </div>
-                @{ TimeSlotCollection _timeSlotCollection = new TimeSlotCollection();
-                    BusinessUserCollection _businessUserCollection = new BusinessUserCollection();
-                    IEnumerable<TimeSlotModel> timeSlots = _timeSlotCollection.GetTimeSlotByBusinessId(_businessUserCollection.GetBusinessId(User.Identity.Name)).OrderBy(o => o.StartTime);
-
-                    List<string> DotW = new List<string> { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" };
-
-                } @*Load Based on BusinessUserId*@
-
-
-
-                <!-- Tab content -->
-                <div class="weekBox">
-
-                    @foreach (var day in DotW)
-                    {
-                        if (day == "Mon")
-                        {
-                            <div id="@day" class="tabcontent" style="display: block;">
-                                <div class="TimeSlots">
-                                    <table style="width:100%">
-                                        <tr>
-                                            <th>Day</th>
-                                            <th>Start Time</th>
-                                            <th>End Time</th>
-                                            <th>Spots</th>
-                                            <th></th>
-
-                                        </tr>
-                                        @foreach (var timeSlot in timeSlots)
-                                        {
-                                            if (timeSlot.DayOTWeek == day)
-                                            {
-                                                <tr>
-                                                    <th>@timeSlot.DayOTWeek</th>
-                                                    <td>@timeSlot.StartTime.TimeOfDay</td>
-                                                    <td>@timeSlot.EndTime.TimeOfDay</td>
-                                                    <td>@timeSlot.NumberOfSpots</td>
-                                                    <td>
-                                                        <a asp-controller="TimeSlot" asp-action="DeleteTimeSlot" asp-route-id="@timeSlot.Id">Delete</a>
-                                                    </td>
-                                                </tr>
-                                            }
-                                        }
-                                    </table>
-                                    <a href="#TimeSlotForm">Add TimeSlot</a>
-                                </div>
-                            </div>
-                        }
-                        else
-                        {
-                            <div id="@day" class="tabcontent" style="display: none;">
-                                <div class="TimeSlots">
-                                    <table style="width:100%">
-                                        <tr>
-                                            <th>Day</th>
-                                            <th>Start Time</th>
-                                            <th>End Time</th>
-                                            <th>Spots</th>
-                                            <th></th>
-
-                                        </tr>
-                                        @foreach (var timeSlot in timeSlots)
-                                        {
-                                            if (timeSlot.DayOTWeek == day)
-                                            {
-                                                <tr>
-                                                    <th>@timeSlot.DayOTWeek</th>
-                                                    <td>@timeSlot.StartTime.TimeOfDay</td>
-                                                    <td>@timeSlot.EndTime.TimeOfDay</td>
-                                                    <td>@timeSlot.NumberOfSpots</td>
-                                                    <td>
-                                                        <a asp-controller="TimeSlot" asp-action="DeleteTimeSlot" asp-route-id="@timeSlot.Id">Delete</a>
-                                                    </td>
-                                                </tr>
-                                            }
-                                        }
-                                    </table>
-                                    <a href="#TimeSlotForm">Add TimeSlot</a>
-                                </div>
-                            </div>
-                        }
-
-                    }
-
-
-                </div>
-            </div>
-        </div>
     </div>
 </div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

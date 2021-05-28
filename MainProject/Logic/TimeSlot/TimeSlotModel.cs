@@ -21,7 +21,7 @@ namespace Logic.TimeSlot
         public int NumberOfSpots { get; set; }
 
 #nullable enable
-        public int? NumberOfReservations { get; set; }
+        private int? NumberOfReservations { get; }
         public string? BusinessName { get; set; }
 #nullable disable
 

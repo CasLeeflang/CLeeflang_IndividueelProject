@@ -1,0 +1,36 @@
+﻿
+@media (max-width: 900px) {
+    .grid-container-ts {
+        display: grid;
+        grid-row-gap: 20px;
+        grid-template-rows: 1fr 1fr;
+    }
+}
+
+@media (min-width: 900px){
+
+    .grid-container-ts {
+        display: grid;
+        grid-column-gap: 20px;
+        grid-template-columns: 1fr 2fr;
+    }
+}
+
+
+.timeslot-input {
+    grid-area: i;
+}
+
+.timeslot-display {
+    grid-area: d;
+}
+
+
+.grid-container-home{
+    display:grid;
+    grid-template-rows:1fr;
+}
+
+.business-card{
+    
+}
