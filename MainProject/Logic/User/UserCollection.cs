@@ -12,7 +12,16 @@ namespace Logic.User
     public class UserCollection
     {
         //  Dependicy injection
-        IUserCollectionDAL _userCollectionDAL = UserFactoryDAL.CreateUserCollectionDAL();
+        IUserCollectionDAL _userCollectionDAL;
+        public UserCollection()
+        {
+            _userCollectionDAL = UserFactoryDAL.CreateUserCollectionDAL();
+        }
+
+        public UserCollection(IUserCollectionDAL userCollectionDAL)
+        {
+            _userCollectionDAL = userCollectionDAL;
+        }
 
         private List<UserModel> users { get;} = new List<UserModel>();
 

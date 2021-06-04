@@ -13,6 +13,18 @@ namespace Logic.User
     public class UserModel
     {
         IUserDAL _userDAL = UserFactoryDAL.CreateUserDAL();
+
+
+        public UserModel(string userName, string firstName, string lastName, string Password, string Email, DateTime DoB, IUserDAL userDAL)
+        {
+            _userDAL = userDAL;
+            UserName = userName;
+            FirstName = firstName;
+            LastName = lastName;
+            this.Password = Password;
+            this.Email = Email;
+            this.DoB = DoB;
+        }
         public int Id { get; set; }
         public string UserName { get; set; }
         public string FirstName { get; set; }

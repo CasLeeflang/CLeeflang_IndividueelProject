@@ -37,6 +37,14 @@ namespace DAL.DataBase
             }
         }
 
+        public int UpdateData(string sql, DynamicParameters parameters)
+        {
+            using (IDbConnection cnn = new SqlConnection(GetConnectionString()))
+            {
+                return cnn.Execute(sql, parameters);
+            }
+        }
+
         public IEnumerable<T> LoadData<T>(string sql, DynamicParameters parameters)
         {
             using (IDbConnection cnn = new SqlConnection(GetConnectionString()))
