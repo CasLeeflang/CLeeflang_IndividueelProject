@@ -1,0 +1,17 @@
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\TestDAL\bin\Debug\net5.0\TestDAL.deps.json
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\TestDAL\bin\Debug\net5.0\TestDAL.dll
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\TestDAL\bin\Debug\net5.0\ref\TestDAL.dll
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\TestDAL\bin\Debug\net5.0\TestDAL.pdb
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\TestDAL\bin\Debug\net5.0\Contract Layer.dll
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\TestDAL\bin\Debug\net5.0\DTOs.dll
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\TestDAL\bin\Debug\net5.0\Contract Layer.pdb
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\TestDAL\bin\Debug\net5.0\DTOs.pdb
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\TestDAL\obj\Debug\net5.0\TestDAL.csprojAssemblyReference.cache
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\TestDAL\obj\Debug\net5.0\TestDAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\TestDAL\obj\Debug\net5.0\TestDAL.AssemblyInfoInputs.cache
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\TestDAL\obj\Debug\net5.0\TestDAL.AssemblyInfo.cs
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\TestDAL\obj\Debug\net5.0\TestDAL.csproj.CoreCompileInputs.cache
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\TestDAL\obj\Debug\net5.0\TestDAL.csproj.CopyComplete
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\TestDAL\obj\Debug\net5.0\TestDAL.dll
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\TestDAL\obj\Debug\net5.0\ref\TestDAL.dll
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\TestDAL\obj\Debug\net5.0\TestDAL.pdb

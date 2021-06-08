@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "xYNoWZP3Q3RMA/b7YyCX4KEdGt5Y7C8imMNeh8OodMOtHExVAFW2PTLB7e2v8hgIDR//L2KvC3pEGfVaKYvWiQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\TestDAL\\TestDAL.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\casle\\.nuget\\packages\\dapper\\2.0.78\\dapper.2.0.78.nupkg.sha512"
+  ],
+  "logs": []
+}

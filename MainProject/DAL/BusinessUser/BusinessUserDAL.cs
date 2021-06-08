@@ -28,7 +28,7 @@ namespace DAL.BusinessUser
 
         public IEnumerable<BusinessUserDTO> GetBusinessByUserNameOrEmail(string identifier)
         {
-            string sql = $"select * from dbo.BusinessUser where UserName = @identifier or Email = @identifier";
+            string sql = $"select Id, BusinessName, UserName, Password, Email, Info, Sector from dbo.BusinessUser where UserName = @identifier or Email = @identifier";
 
             var dictionary = new Dictionary<string, object>
             {
@@ -54,14 +54,43 @@ namespace DAL.BusinessUser
             return _dBManager.LoadData<BusinessUserDTO>(sql, parameters);
         }
 
-        public void UpdateBusinessUser(BusinessUserDTO updatedBusinessUser)
+        public int UpdateBusinessUser(BusinessUserDTO updatedBusinessUser)
         {
-            string sql = $"";
+            string sql = $"update dbo.BusinessUser set BusinessName = @businessName, UserName = @userName, Email = @email, Info = @info, Sector = @sector where Id = @businessId;";
+
+            var dictionary = new Dictionary<string, object>
+            {
+                {"@businessName", updatedBusinessUser.BusinessName },
+                {"@userName", updatedBusinessUser.UserName },
+                {"@email", updatedBusinessUser.Email },
+                {"@info", updatedBusinessUser.Info },
+                {"@sector", updatedBusinessUser.Sector },
+                {"@businessId", updatedBusinessUser.Id }
+            };
+
+            var parameters = new DynamicParameters(dictionary);
+
+            return _dBManager.UpdateData(sql, parameters);
+        }
+
+        public int UpdateBusinessInfo(BusinessUserDTO businessInfo)
+        {
+            string sql = $"update dbo.BusinessUser set Info = @info where Id = @businessId;";
+
+            var dictionary = new Dictionary<string, object>
+            {
+                {"@info", businessInfo.Info },
+                {"@id", businessInfo.Id }
+            };
+
+            var parameters = new DynamicParameters(dictionary);
+
+            return _dBManager.UpdateData(sql, parameters);
         }
 
         public IEnumerable<BusinessUserDTO> GetAllBusinesses()
         {
-            string sql = $"select * from dbo.BusinessUser;";
+            string sql = $"select Id, BusinessName, UserName, Password, Email, Info, Sector from dbo.BusinessUser;";
 
             return _dBManager.LoadAllData<BusinessUserDTO>(sql);
         }
@@ -103,7 +132,7 @@ namespace DAL.BusinessUser
         
         public IEnumerable<BusinessUserDTO> CheckBusinessUserNameEmailName(string userName, string email, string businessName)
         {
-            string sql = $"select * from dbo.BusinessUser where (UserName = @userName or Email = @email or BusinessName = @businessName);";
+            string sql = $"select Id, BusinessName, UserName, Password, Email, Info, Sector from dbo.BusinessUser where (UserName = @userName or Email = @email or BusinessName = @businessName);";
             var dictionary = new Dictionary<string, object>
             {
                 {"@userName", userName},

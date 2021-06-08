@@ -1,21 +1,13 @@
 ﻿using Dapper;
 using DTOs;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Variables;
 using Contract_Layer.User;
 using DAL.DataBase;
-using Microsoft.Extensions.Configuration;
 
 namespace DAL.User
 {
     public class UserDAL : IUserDAL, IUserCollectionDAL
     {
-
-
         DBManager _dBManager = new DBManager();
         public void CreateUser(UserDTO newUser)
         {
@@ -28,12 +20,11 @@ namespace DAL.User
         
         public IEnumerable<UserDTO> GetUserByUserName(string userName)
         {
-            string sql = $"select * from dbo.[User] where UserName = @userName";
+            string sql = $"select Id, UserName, FirstName, LastName, Password, Email, DoB from dbo.[User] where UserName = @userName";
 
             var dictionary = new Dictionary<string, object>
             {
                 {"@userName", userName}
-
             };
 
             var parameters = new DynamicParameters(dictionary);
@@ -43,14 +34,27 @@ namespace DAL.User
 
         public IEnumerable<UserDTO> GetUserByUserNameOrEmail(string identifier)
         {
-            string sql = $"select * from dbo.[User] where UserName = @identifier or Email = @identifier";
+            string sql = $"select Id, UserName, FirstName, LastName, Password, Email, DoB from dbo.[User] where UserName = @identifier or Email = @identifier";
 
             var dictionary = new Dictionary<string, object>
             {
                 {"@identifier", identifier}
-
             };
 
+
+            var parameters = new DynamicParameters(dictionary);
+
+            return _dBManager.LoadData<UserDTO>(sql, parameters);
+        }
+
+        public IEnumerable<UserDTO> GetUserId(string userName)
+        {
+            string sql = $"select Id from dbo.[User] where Username = @username";
+
+            var dictionary = new Dictionary<string, object>
+            {
+                {"@username", userName }
+            };
 
             var parameters = new DynamicParameters(dictionary);
 
@@ -64,7 +68,7 @@ namespace DAL.User
         
         public IEnumerable<UserDTO> CheckUserNameEmail(string userName, string email)       // Used for checking whether the username is in use or not when registering
         {
-            string sql = $"select * from dbo.[User] where (UserName = @userName or Email = @email);";
+            string sql = $"select Id, UserName, FirstName, LastName, Password, Email, DoB from dbo.[User] where (UserName = @userName or Email = @email);";
 
             var dictionary = new Dictionary<string, object>
             {

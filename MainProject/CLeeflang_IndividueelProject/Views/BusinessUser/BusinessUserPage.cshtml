@@ -1,0 +1,53 @@
+﻿@model Logic.BusinessUser.BusinessUserModel
+
+@{
+    ViewData["Title"] = "BusinessUserPage";
+}
+<link rel="stylesheet" href="~/css/Grid.css" />
+
+<script src="~/js/quill.js"></script>
+<script src="~/js/quill.min.js"></script>
+<script type="text/javascript" src="//use.typekit.net/wtt0gtr.js"></script>
+<script type="text/javascript">try { Typekit.load(); } catch (e) { }</script>
+
+<h1>Profile page for @Model.BusinessName</h1>
+<h3>logo</h3>
+
+<div class="profile-container">
+    <div class="page-pp">profile Pic</div>
+    <div class="page-head">Header</div>
+    <div class="page-info">
+        <div class="info-container">
+            <div>BusinessName</div>
+            <div>@Model.BusinessName</div>
+
+            <div>userName</div>
+            <div>@Model.UserName</div>
+
+            <div>Email</div>
+            <div>@Model.Email</div>
+
+            <div>Sector</div>
+            <div>@Model.Sector</div>
+
+            <div>Info</div>
+            <div>@Model.Info</div>
+        </div>
+    </div>
+
+    @*<div id="@Model.Id InfoContainer">Something went wrong getting this data.</div>
+        <div class="" hidden id="@Model.Id RawInfo">@Model.Info</div>*@
+    @Html.ActionLink("Edit", "EditBusinessUser")
+</div>
+
+<script>
+            var contentString = document.getElementById("@Model.Id RawInfo").innerHTML;
+            var contentJSON = JSON.parse(contentString);
+            document.getElementById('@Model.Id InfoContainer').innerHTML = quillGetHTML(contentJSON);
+
+            function quillGetHTML(inputDelta) {
+                var tempCont = document.createElement("div");
+                (new Quill(tempCont)).setContents(inputDelta);
+                return tempCont.getElementsByClassName("ql-editor")[0].innerHTML;
+            }
+</script> 

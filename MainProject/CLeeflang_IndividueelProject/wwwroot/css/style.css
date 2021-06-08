@@ -51,7 +51,7 @@ aside {
     -ms-transform: translateX(100%);
     transform: translateX(100%); }
     .show-sidebar aside .toggle .burger:before, .show-sidebar aside .toggle .burger span, .show-sidebar aside .toggle .burger:after {
-      background: #fff; }
+      background: #000; }
   .show-sidebar aside {
     -webkit-box-shadow: 10px 0 30px 0 rgba(0, 0, 0, 0.1);
     box-shadow: 10px 0 30px 0 rgba(0, 0, 0, 0.1); }

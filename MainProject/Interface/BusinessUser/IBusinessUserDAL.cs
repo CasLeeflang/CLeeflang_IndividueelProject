@@ -9,11 +9,11 @@ namespace Contract_Layer.BusinessUser
 {
     public interface IBusinessUserDAL
     {
-        void UpdateBusinessUser(BusinessUserDTO newBusinessUser);
+        int UpdateBusinessUser(BusinessUserDTO newBusinessUser);
 
         //public bool ValidateNewBusinessUser(string userName, string email);
 
         IEnumerable<BusinessUserDTO> CheckBusinessUserNameEmailName(string userName, string email, string businessName);
-
+        int UpdateBusinessInfo(BusinessUserDTO businessInfo);
     }
 }

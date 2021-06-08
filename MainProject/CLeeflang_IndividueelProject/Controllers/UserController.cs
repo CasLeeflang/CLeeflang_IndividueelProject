@@ -1,4 +1,8 @@
 ﻿using CLeeflang_IndividueelProject.Models;
+using CLeeflang_IndividueelProject.Models.Reservation;
+using Logic.BusinessUser;
+using Logic.Reservation;
+using Logic.TimeSlot;
 using Logic.User;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -27,8 +31,10 @@ namespace CLeeflang_IndividueelProject.Controllers
             _salt = PassSalt.Salt;      // Set Salt
         }
 
-        //  Dependicy injection?
-        UserCollection _userCollection = new UserCollection();
+        readonly UserCollection _userCollection = new();
+        readonly ReservationCollection _reservationCollection = new();
+        readonly TimeSlotCollection _timeSlotCollection = new();
+        readonly BusinessUserCollection _businessUserCollection = new();
 
         public IActionResult Register()
         {
@@ -43,6 +49,35 @@ namespace CLeeflang_IndividueelProject.Controllers
         {
             UserModel user = _userCollection.GetUserByUserName(User.Identity.Name).FirstOrDefault();
             return View(user);
+        }
+
+        public IActionResult ReservationOverview()
+        {
+            IEnumerable<ReservationModel> reservations = _reservationCollection.GetReservationByUserId(_userCollection.GetUserId(User.Identity.Name));
+
+            //List<ReservationOverviewModel> reservationOverviewModels = new List<ReservationOverviewModel>();
+
+            //foreach (var reservation in reservations)
+            //{
+            //    TimeSlotModel timeSlot = _timeSlotCollection.GetTimeSlotById(reservation.TimeSlotId).LastOrDefault();
+
+            //    ReservationOverviewModel reservationView = new ReservationOverviewModel
+            //    {
+            //        Id = reservation.Id,
+            //        BusinessName = reservation.BusinessName,
+            //        Date = reservation.Date.ToString("dd/MM/yyyy"),
+            //        StartTime = timeSlot.StartTime.ToString("HH:mm"),
+            //        EndTime = timeSlot.EndTime.ToString("HH:mm")
+            //    };
+            //    reservationOverviewModels.Add(reservationView);
+            //}    
+
+            //IEnumerable<ReservationOverviewModel> reservationsView = reservationOverviewModels.OrderBy(o => o.Date).ThenBy(o => o.StartTime);
+            //
+            //All of the commented out code above is redundant cause of sql using left join :)
+            //
+
+            return View(reservations);
         }
 
         [HttpPost]
@@ -134,7 +169,7 @@ namespace CLeeflang_IndividueelProject.Controllers
             }
         }
 
-        public void Authenticate(UserModel user)     // Method to authenticate the user once the password is checked
+        public void Authenticate(UserModel user)     // Method to authenticate a user once the password is checked
         {
             var claims = new List<Claim>();
 

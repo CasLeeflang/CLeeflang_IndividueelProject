@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Logic.TimeSlot.TimeSlotModel>
+
+
+
+
+<h3>Timeslots for @ViewBag.Day @ViewBag.Date.ToString("dd/MM/yyyy")</h3>
+
+<table style="width:100%">
+    <tr>
+        <th>Day</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+        <th>Available Spots</th>
+        <th></th>
+
+    </tr>
+    @foreach (var timeSlot in Model)
+    {
+        //  do this in view or controller and send new custom view model?
+
+       
+        <tr>
+            <td>@timeSlot.DayOTWeek</td>
+            <td>@timeSlot.StartTime.TimeOfDay</td>
+            <td>@timeSlot.EndTime.TimeOfDay</td>
+            <td>@timeSlot.AvailableSpots</td>
+            <td>
+                <a asp-action="CreateReservation" asp-route-date="@ViewBag.Date" asp-route-pickedTimeSlotId="@timeSlot.Id" asp-route-businessId="@ViewBag.businessId">Reserve</a>
+            </td>
+        </tr>
+
+    }
+</table>
+<div class="text-danger">@TempData["ErrorReservationExists"]</div>
+<div class="text-danger">@TempData["ErrorDate"]</div>
+<div>
+    <a asp-controller="Home" asp-action="BusinessPage" asp-route-id="@ViewBag.businessId">Select different date</a>
+</div>

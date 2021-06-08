@@ -11,8 +11,19 @@ namespace Logic.BusinessUser
 {
     public class BusinessUserCollection
     {
-        //  Dependicy injection
-        IBusinessUserCollectionDAL _BusinessUserCollectionDAL = BusinessUserFactoryDAL.CreateBusinessUserCollectionDAL();
+        IBusinessUserCollectionDAL _BusinessUserCollectionDAL;  
+
+        public BusinessUserCollection()
+        {
+            _BusinessUserCollectionDAL = BusinessUserFactoryDAL.CreateBusinessUserCollectionDAL();
+
+        }
+
+        public BusinessUserCollection(IBusinessUserCollectionDAL businessUserCollectionDAL)
+        {
+            _BusinessUserCollectionDAL = businessUserCollectionDAL;
+        }
+
 
         private List<BusinessUserModel> businessUsers { get; } = new List<BusinessUserModel>();
 
@@ -31,7 +42,6 @@ namespace Logic.BusinessUser
             };
 
             _BusinessUserCollectionDAL.CreateBusinessUser(newBusinessUserDTO);
-
         }
 
         public IEnumerable<BusinessUserModel> GetAllBusinesses()
@@ -39,11 +49,13 @@ namespace Logic.BusinessUser
             //  Returns all businesses
 
             IEnumerable<BusinessUserDTO> businessUserDTOs = _BusinessUserCollectionDAL.GetAllBusinesses();
+
             foreach (var businessUserDTO in businessUserDTOs)
             {
                 BusinessUserModel businessUser = new BusinessUserModel(businessUserDTO);
                 businessUsers.Add(businessUser);
             }
+
             return businessUsers;
         }
 
@@ -71,7 +83,7 @@ namespace Logic.BusinessUser
                 businessUsers.Add(business);
             }
 
-            return businessUsers.FirstOrDefault();
+            return businessUsers.LastOrDefault();
             
         }
 
