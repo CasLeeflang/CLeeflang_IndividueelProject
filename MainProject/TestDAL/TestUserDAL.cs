@@ -10,8 +10,11 @@ namespace TestDAL
     {
         public static List<UserDTO> UserStorage { get; private set; } = new List<UserDTO>();
 
+        public List<UserDTO> TempStorage { get; private set; } = new List<UserDTO>();
+
         public void CreateUser(UserDTO user)
         {
+            user.Id = 0;
             UserStorage.Add(user);
         }
 
@@ -22,16 +25,18 @@ namespace TestDAL
 
         public void UpdateUser(UserDTO user)
         {
+
         }
 
         public IEnumerable<UserDTO> GetUserByUserName(string userName)
         {
-            return UserStorage.FirstOrDefault(o => o.UserName == userName) as IEnumerable<UserDTO>;
+            TempStorage.Add(UserStorage.FirstOrDefault(o => o.UserName == userName));
+            return TempStorage;
         }
         public IEnumerable<UserDTO> GetUserByUserNameOrEmail(string identifier)
         {
-            
-            return UserStorage.FirstOrDefault(o => o.UserName == identifier || o.Email == identifier) as IEnumerable<UserDTO>;
+            TempStorage.Add(UserStorage.FirstOrDefault(o => o.UserName == identifier || o.Email == identifier));
+            return TempStorage;
         }
 
         public IEnumerable<UserDTO> GetUserId(string userName)
@@ -40,7 +45,8 @@ namespace TestDAL
         }
         public IEnumerable<UserDTO> CheckUserNameEmail(string userName, string email)
         {
-            return UserStorage.FirstOrDefault(o => o.UserName == userName || o.Email == email) as IEnumerable<UserDTO>;
-        }        
+            TempStorage.Add(UserStorage.FirstOrDefault(o => o.UserName == userName || o.Email == email));
+            return TempStorage;
+        }
     }
 }

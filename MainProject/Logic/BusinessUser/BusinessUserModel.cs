@@ -15,6 +15,19 @@ namespace Logic.BusinessUser
     {
         IBusinessUserDAL _businessUserDAL = BusinessUserFactoryDAL.CreateBusinessUserDAL();
 
+        //  Used For Testing
+        public BusinessUserModel(int id, string businessName, string userName, string password, string email, string sector, IBusinessUserDAL businessUserDAL)
+        {
+            _businessUserDAL = businessUserDAL;
+            Id = id;
+            BusinessName = businessName;
+            UserName = userName;
+            Password = password;
+            Email = email;
+            Info = "";
+            Sector = sector;
+        }
+
         public int Id { get; set; }
         public string BusinessName { get; set; }
         public string UserName { get; set; }
