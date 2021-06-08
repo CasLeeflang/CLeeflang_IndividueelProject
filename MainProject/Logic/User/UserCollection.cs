@@ -12,16 +12,7 @@ namespace Logic.User
     public class UserCollection
     {
         //  Dependicy injection
-        IUserCollectionDAL _userCollectionDAL;
-        public UserCollection()
-        {
-            _userCollectionDAL = UserFactoryDAL.CreateUserCollectionDAL();
-        }
-
-        public UserCollection(IUserCollectionDAL userCollectionDAL)
-        {
-            _userCollectionDAL = userCollectionDAL;
-        }
+        IUserCollectionDAL _userCollectionDAL = UserFactoryDAL.CreateUserCollectionDAL();
 
         private List<UserModel> users { get;} = new List<UserModel>();
 
@@ -65,6 +56,7 @@ namespace Logic.User
 
             foreach(var userDTO in userDTOs)
             {
+                Console.WriteLine(userDTO.NumberOfReservations);
                 UserModel user = new UserModel(userDTO);
                 users.Add(user);
             }

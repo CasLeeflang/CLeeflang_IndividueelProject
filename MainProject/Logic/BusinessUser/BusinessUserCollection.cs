@@ -11,19 +11,7 @@ namespace Logic.BusinessUser
 {
     public class BusinessUserCollection
     {
-        IBusinessUserCollectionDAL _BusinessUserCollectionDAL;  
-
-        public BusinessUserCollection()
-        {
-            _BusinessUserCollectionDAL = BusinessUserFactoryDAL.CreateBusinessUserCollectionDAL();
-
-        }
-
-        public BusinessUserCollection(IBusinessUserCollectionDAL businessUserCollectionDAL)
-        {
-            _BusinessUserCollectionDAL = businessUserCollectionDAL;
-        }
-
+        IBusinessUserCollectionDAL _BusinessUserCollectionDAL = BusinessUserFactoryDAL.CreateBusinessUserCollectionDAL();
 
         private List<BusinessUserModel> businessUsers { get; } = new List<BusinessUserModel>();
 

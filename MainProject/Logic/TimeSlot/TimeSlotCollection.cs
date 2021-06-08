@@ -9,17 +9,7 @@ namespace Logic.TimeSlot
 {
     public class TimeSlotCollection
     {
-        ITimeSlotCollectionDAL _timeSlotCollectionDAL;
-
-        public TimeSlotCollection()
-        {
-            _timeSlotCollectionDAL = TimeSlotFactoryDAL.CreateTimeSlotCollectionDAL();
-        }
-
-        public TimeSlotCollection(ITimeSlotCollectionDAL timeSlotCollectionDAL)
-        {
-            _timeSlotCollectionDAL = timeSlotCollectionDAL;
-        }
+        ITimeSlotCollectionDAL _timeSlotCollectionDAL = TimeSlotFactoryDAL.CreateTimeSlotCollectionDAL();
 
         private List<TimeSlotModel> timeSlots { get; } = new List<TimeSlotModel>();
 

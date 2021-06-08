@@ -11,17 +11,7 @@ namespace Logic.Reservation
 {
     public class ReservationCollection 
     {
-        IReservationCollectionDAL _reservationCollectionDAL;
-        public ReservationCollection()
-        {
-            _reservationCollectionDAL = ReservationFactoryDAL.CreateReservationCollectionDAL();
-        }
-
-        public ReservationCollection(IReservationCollectionDAL reservationCollectionDAL)
-        {
-            _reservationCollectionDAL = reservationCollectionDAL;
-        }
-
+        IReservationCollectionDAL _reservationCollectionDAL = ReservationFactoryDAL.CreateReservationCollectionDAL();
         private List<ReservationModel> reservations { get; } = new List<ReservationModel>();
 
         public void CreateReservation(ReservationModel newReservation)

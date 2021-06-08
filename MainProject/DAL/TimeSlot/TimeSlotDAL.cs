@@ -45,6 +45,22 @@ namespace DAL.TimeSlot
             return _dBManager.LoadData<TimeSlotDTO>(sql, parameters);
         }
 
+        public IEnumerable<TimeSlotDTO> GetTimeSlotByUserId(int userId)
+        {
+            string sql = $"select Id, BusinessId, DayOTWeek, StartTime, EndTime, NumberOfSpots from dbo.TimeSlot where UserId = @userId";
+
+            var dictionary = new Dictionary<string, object>
+            {
+                {"@userId", userId}
+
+            };
+
+
+            var parameters = new DynamicParameters(dictionary);
+
+            return _dBManager.LoadData<TimeSlotDTO>(sql, parameters);
+        }
+
         public IEnumerable<TimeSlotDTO> GetTimeSlotByDayAndBusinessId(DateTime date, string day, int businessId)
         {
             //string sql = $"select T.*, Count(R.Id) from dbo.TimeSlot as T left outer join dbo.Reservation as R on T.Id = R.TimeSlotId where T.BusinessId = @businessId and T.DayOTWeek = @day";

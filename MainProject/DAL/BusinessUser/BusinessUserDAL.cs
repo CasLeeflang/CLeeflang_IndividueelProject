@@ -54,38 +54,9 @@ namespace DAL.BusinessUser
             return _dBManager.LoadData<BusinessUserDTO>(sql, parameters);
         }
 
-        public int UpdateBusinessUser(BusinessUserDTO updatedBusinessUser)
+        public void UpdateBusinessUser(BusinessUserDTO updatedBusinessUser)
         {
-            string sql = $"update dbo.BusinessUser set BusinessName = @businessName, UserName = @userName, Email = @email, Info = @info, Sector = @sector where Id = @businessId;";
-
-            var dictionary = new Dictionary<string, object>
-            {
-                {"@businessName", updatedBusinessUser.BusinessName },
-                {"@userName", updatedBusinessUser.UserName },
-                {"@email", updatedBusinessUser.Email },
-                {"@info", updatedBusinessUser.Info },
-                {"@sector", updatedBusinessUser.Sector },
-                {"@businessId", updatedBusinessUser.Id }
-            };
-
-            var parameters = new DynamicParameters(dictionary);
-
-            return _dBManager.UpdateData(sql, parameters);
-        }
-
-        public int UpdateBusinessInfo(BusinessUserDTO businessInfo)
-        {
-            string sql = $"update dbo.BusinessUser set Info = @info where Id = @businessId;";
-
-            var dictionary = new Dictionary<string, object>
-            {
-                {"@info", businessInfo.Info },
-                {"@id", businessInfo.Id }
-            };
-
-            var parameters = new DynamicParameters(dictionary);
-
-            return _dBManager.UpdateData(sql, parameters);
+            string sql = $"";
         }
 
         public IEnumerable<BusinessUserDTO> GetAllBusinesses()
@@ -145,6 +116,11 @@ namespace DAL.BusinessUser
             var parameters = new DynamicParameters(dictionary);
 
             return _dBManager.LoadData<BusinessUserDTO>(sql, parameters);
+        }
+
+        public void UpdateInfo(BusinessUserDTO updatedBusinessUserDTO)
+        {
+
         }
     }
 }
