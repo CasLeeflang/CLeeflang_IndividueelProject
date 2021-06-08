@@ -3,51 +3,58 @@
 @{
     ViewData["Title"] = "BusinessUserPage";
 }
-<link rel="stylesheet" href="~/css/Grid.css" />
 
-<script src="~/js/quill.js"></script>
-<script src="~/js/quill.min.js"></script>
-<script type="text/javascript" src="//use.typekit.net/wtt0gtr.js"></script>
-<script type="text/javascript">try { Typekit.load(); } catch (e) { }</script>
+<h1>BusinessUserPage</h1>
 
-<h1>Profile page for @Model.BusinessName</h1>
-<h3>logo</h3>
-
-<div class="profile-container">
-    <div class="page-pp">profile Pic</div>
-    <div class="page-head">Header</div>
-    <div class="page-info">
-        <div class="info-container">
-            <div>BusinessName</div>
-            <div>@Model.BusinessName</div>
-
-            <div>userName</div>
-            <div>@Model.UserName</div>
-
-            <div>Email</div>
-            <div>@Model.Email</div>
-
-            <div>Sector</div>
-            <div>@Model.Sector</div>
-
-            <div>Info</div>
-            <div>@Model.Info</div>
-        </div>
-    </div>
-
-    @*<div id="@Model.Id InfoContainer">Something went wrong getting this data.</div>
-        <div class="" hidden id="@Model.Id RawInfo">@Model.Info</div>*@
-    @Html.ActionLink("Edit", "EditBusinessUser")
+<div>
+    <h4>BusinessUserModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BusinessName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BusinessName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Info)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Info)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Sector)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Sector)
+        </dd>
+    </dl>
 </div>
-
-<script>
-            var contentString = document.getElementById("@Model.Id RawInfo").innerHTML;
-            var contentJSON = JSON.parse(contentString);
-            document.getElementById('@Model.Id InfoContainer').innerHTML = quillGetHTML(contentJSON);
-
-            function quillGetHTML(inputDelta) {
-                var tempCont = document.createElement("div");
-                (new Quill(tempCont)).setContents(inputDelta);
-                return tempCont.getElementsByClassName("ql-editor")[0].innerHTML;
-            }
-</script> 
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

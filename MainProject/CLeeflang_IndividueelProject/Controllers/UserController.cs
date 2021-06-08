@@ -169,7 +169,7 @@ namespace CLeeflang_IndividueelProject.Controllers
             }
         }
 
-        public void Authenticate(UserModel user)     // Method to authenticate a user once the password is checked
+        public void Authenticate(UserModel user)     // Method to authenticate the user once the password is checked
         {
             var claims = new List<Claim>();
 

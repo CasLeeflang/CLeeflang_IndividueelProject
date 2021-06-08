@@ -14,14 +14,6 @@ namespace Logic.Reservation
     {
         IReservationDAL _reservationDAL = FactoryDAL.ReservationFactoryDAL.CreateReservationDAL();
 
-        public ReservationModel(DateTime date, int userId, int businessId, int timeSlotId, IReservationDAL reservationDAL)
-        {
-            _reservationDAL = reservationDAL;
-            Date = date;
-            UserId = userId;
-            BusinessId = businessId;
-            TimeSlotId = timeSlotId;
-        }
         public int Id { get; set; }
         public DateTime Date { get; set; }
 

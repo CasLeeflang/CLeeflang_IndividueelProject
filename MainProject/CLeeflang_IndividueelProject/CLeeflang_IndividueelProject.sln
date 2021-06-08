@@ -17,10 +17,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FactoryDAL", "..\FactoryDAL
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Variables", "..\Variables\Variables.csproj", "{3827A82D-AEC1-43A2-89FE-EC90771EDD04}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicTests", "..\LogicTests\LogicTests.csproj", "{CA83A868-FD85-4CB5-9C44-4A4500D9FB25}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestDAL", "..\TestDAL\TestDAL.csproj", "{B7CC095D-881A-4D55-BCBF-D404B3D824D7}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,14 +51,6 @@ Global
 		{3827A82D-AEC1-43A2-89FE-EC90771EDD04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3827A82D-AEC1-43A2-89FE-EC90771EDD04}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3827A82D-AEC1-43A2-89FE-EC90771EDD04}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CA83A868-FD85-4CB5-9C44-4A4500D9FB25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CA83A868-FD85-4CB5-9C44-4A4500D9FB25}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CA83A868-FD85-4CB5-9C44-4A4500D9FB25}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CA83A868-FD85-4CB5-9C44-4A4500D9FB25}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B7CC095D-881A-4D55-BCBF-D404B3D824D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B7CC095D-881A-4D55-BCBF-D404B3D824D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B7CC095D-881A-4D55-BCBF-D404B3D824D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B7CC095D-881A-4D55-BCBF-D404B3D824D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

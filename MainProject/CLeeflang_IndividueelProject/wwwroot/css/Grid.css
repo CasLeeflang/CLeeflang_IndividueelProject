@@ -34,39 +34,3 @@
 .business-card{
     
 }
-
-
-.profile-container{
-    display:grid;
-    grid-template-rows: 2fr 5fr;
-    grid-template-columns: 1fr 3fr;
-    grid-template-areas:
-        "p h"
-        "i i"
-}
-
-
-.page-pp{
-    grid-area: p;
-}
-
-.page-head{
-    grid-area: h;
-}
-.page-info{
-    grid-area: i;
-}
-
-.info-container{
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-columns:1fr 3fr;
-    grid-gap: 5px;
-}
-
-.info-param{
-    grid-area: ip;
-}
-.info-val{
-    grid-area: iv;
-}
