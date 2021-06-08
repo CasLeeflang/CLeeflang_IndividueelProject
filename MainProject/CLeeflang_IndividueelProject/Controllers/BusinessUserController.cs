@@ -162,5 +162,50 @@ namespace CLeeflang_IndividueelProject.Controllers
             BusinessUserModel businessUser = _businessUserCollection.GetBusinessUserByUserNameOrEmail(User.Identity.Name).FirstOrDefault();
             return View(businessUser);
         }
+
+        [HttpPost]
+        public IActionResult UpdateBusinessUser(BusinessUserModel updatedBusinessUser)
+        {
+            BusinessRegistration _businessUserValidation = updatedBusinessUser.Validate();
+            try
+            {
+
+                if (_businessUserValidation.Valid)
+                {
+                    if (updatedBusinessUser.Update() == 1)
+                    {
+                        Authenticate(updatedBusinessUser);
+                        return RedirectToAction("BusinessUserPage");
+                    }
+                    else
+                    {
+                        ViewBag.LoginError = "Error occured while loging in, please try again!";
+                        return RedirectToAction("EditBusinessUser");
+                    }
+                }
+                else
+                {
+                    if (_businessUserValidation.BusinessNameError)
+                    {
+                        ViewBag.ErrorMessageBusinessName = "Business name already in use!";
+                    }
+                    if (_businessUserValidation.UserNameError)
+                    {
+                        ViewBag.ErrorMessageUserName = "Username already in use!";
+                    }
+                    if (_businessUserValidation.EmailError)
+                    {
+                        ViewBag.ErrorMessageEmail = "Email adress already in use!";
+                    }
+
+                    return RedirectToAction("EditBusinessUser");
+                }
+            }
+            catch (Exception)
+            {
+                ViewBag.LoginError = "Error occured while loging in, please try again!";
+                return RedirectToAction("EditBusinessUser");
+            }
+        }
     }
 }

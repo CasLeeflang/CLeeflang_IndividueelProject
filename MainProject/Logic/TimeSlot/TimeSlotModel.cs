@@ -80,7 +80,7 @@ namespace Logic.TimeSlot
             {
                 _creationValidation.SpotError = true;
             }
-            if(_creationValidation.TimeError == false && _creationValidation.SpotError == false)
+            if(!_creationValidation.TimeError  && !_creationValidation.SpotError)
             {
                 _creationValidation.Valid = true;
             }
