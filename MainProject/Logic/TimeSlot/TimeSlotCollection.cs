@@ -40,7 +40,6 @@ namespace Logic.TimeSlot
         }
 
 
-
         public IEnumerable<TimeSlotModel> GetTimeSlotByBusinessId(int businessId)
         {
             // Load in the TimeSlotDTOs into IEnumerable

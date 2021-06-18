@@ -103,5 +103,11 @@ namespace CLeeflang_IndividueelProject.Controllers
                 return RedirectToAction("TimeSlotPicker", new { Date = date, businessId = businessId });
             }
         }
+
+        public IActionResult DeleteReservation(int id)
+        {
+            _reservationCollection.DeleteReservation(id);
+            return RedirectToAction("ReservationOverview", "User");
+        }
     }
 }

@@ -24,7 +24,6 @@ namespace DAL.DataBase
 
         public string GetConnectionString()
         {
-
             //return _configuration.GetConnectionString("ConnDb");
             return connectionString;
         }

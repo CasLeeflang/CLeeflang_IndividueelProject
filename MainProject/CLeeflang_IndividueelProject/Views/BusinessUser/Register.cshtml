@@ -10,8 +10,15 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Register">
+        <form asp-action="Register" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label class="control-label">Logo:</label>
+                <div id="upload-photo">@Html.TextBoxFor(m => m.ImageFile, new { @type = "file", @class = "input-file" })</div>
+                <div class="text-danger mt-1">@ViewBag.ImageError</div>
+            </div>
+
             <div class="form-group">
                 <label asp-for="BusinessName" class="control-label">Name of your business:</label>
                 <input asp-for="BusinessName" class="form-control" />

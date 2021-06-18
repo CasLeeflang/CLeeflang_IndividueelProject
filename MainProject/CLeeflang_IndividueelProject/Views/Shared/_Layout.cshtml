@@ -3,9 +3,11 @@
 
 @using Logic.Reservation;
 @using Logic.User
+@using Logic.BusinessUser;
 
 @{ ReservationCollection _reservationCollection = new();
     UserCollection _userCollection = new();
+    BusinessUserCollection _businessUserCollection = new();
 }
 
 <head>
@@ -18,7 +20,7 @@
     <link rel="stylesheet" href="~/css/style.css">
 </head>
 
-<body>
+<body class="sv-background">
     <nav>
 
         <aside class="sidebar">
@@ -35,24 +37,42 @@
 
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <div class="profile">
-                        <img src="~/images/person_4.jpg" alt="Profile Picture" class="img-fluid">
-                        <h3 class="name">@User.Identity.Name</h3>
-                    </div>
+
                     if (User.IsInRole("User"))
                     {
+                        UserModel user = _userCollection.GetUserByUserName(User.Identity.Name).First();
+                        <div class="profile">
+                            @if (user.ImageBase64 != null)
+                            {
+                                <img class="profile-img-round" src="data:image/png;base64, @user.ImageBase64" alt="Missing Profile Picture">
+                            }
+                            else
+                            {
+                                <img class="profile-img-round" src="~/Logo/Default_ProfilePicture.png" alt="Missing image">
+                            }
+
+                            <h3 class="name">@User.Identity.Name</h3>
+                        </div>
                         <div class="counter d-flex justify-content-center">
                             <div class="col nav-menu">
                                 <ul>
                                     <li>
                                         <a style="text-decoration:none;" asp-area="" asp-controller="User" asp-action="ReservationOverview">
-                                            <strong class="number">@_reservationCollection.GetNumberOfReservationsByUserId((int)_userCollection.GetUserId(User.Identity.Name))</strong>
+                                            <strong class="number">@_reservationCollection.GetNumberOfReservationsByUserId(user.Id)</strong>
                                             <span class="number-label">Reservations</span>
                                         </a>
                                     </li>
                                 </ul>
 
                             </div>
+                        </div>
+                    }
+                    else if (User.IsInRole("BusinessUser"))
+                    {
+                        BusinessUserModel businessUser = _businessUserCollection.GetBusinessUserByUserNameOrEmail(User.Identity.Name).First();
+                        <div class="profile">
+                            <img src="data:image/png;base64, @businessUser.ImageBase64" alt="Logo">
+                            <h3 class="name">@User.Identity.Name</h3>
                         </div>
                     }
                 }
@@ -89,7 +109,7 @@
         </aside>
     </nav>
 
-    <div style="height:100px; width:100%; background-color:rgb(157 157 157 / 0.41); ">
+    <div style="height:100px; width:100%; background-color:rgb(228 228 228); ">
 
     </div>
 
@@ -103,11 +123,28 @@
     @RenderSection("Scripts", required: false)
 
     <div class="container pt-3">
-        <main role="main" class="pb-3">
+        <main role="main" class="pb-3 ">
             @RenderBody()
         </main>
     </div>
 
+    <footer>
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-12">
+                    <div class="copyright-text">
+                        <p>
+                            Copyright 2021
+
+                            | SpotSaver
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
+
 
 </html>

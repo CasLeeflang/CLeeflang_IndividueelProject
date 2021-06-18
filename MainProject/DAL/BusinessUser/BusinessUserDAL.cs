@@ -1,6 +1,5 @@
 ﻿using Dapper;
 using DTOs;
-
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -21,14 +20,14 @@ namespace DAL.BusinessUser
 
         public void CreateBusinessUser(BusinessUserDTO newBusinessUser)
         {
-            string sql = @"insert into dbo.BusinessUser (BusinessName, UserName, Password, Email, Info, Sector)
-                          values(@BusinessName, @UserName, @Password, @Email, @Info, @Sector);";
+            string sql = @"insert into dbo.BusinessUser (BusinessName, UserName, Password, Email, Info, Sector, ImageByteArray)
+                          values(@BusinessName, @UserName, @Password, @Email, @Info, @Sector, @ImageByteArray);";
             _dBManager.SaveData(sql, newBusinessUser);
         }
 
         public IEnumerable<BusinessUserDTO> GetBusinessByUserNameOrEmail(string identifier)
         {
-            string sql = $"select Id, BusinessName, UserName, Password, Email, Info, Sector from dbo.BusinessUser where UserName = @identifier or Email = @identifier";
+            string sql = $"select Id, BusinessName, UserName, Password, Email, Info, Sector, ImageByteArray from dbo.BusinessUser where UserName = @identifier or Email = @identifier";
 
             var dictionary = new Dictionary<string, object>
             {
@@ -42,7 +41,7 @@ namespace DAL.BusinessUser
 
         public IEnumerable<BusinessUserDTO> GetBusinessByIdForView(int id)
         {
-            string sql = $"select Id, BusinessName, Info, Sector from dbo.BusinessUser where Id = @id ";
+            string sql = $"select Id, BusinessName, Info, Sector, ImageByteArray from dbo.BusinessUser where Id = @id ";
 
             var dictionary = new Dictionary<string, object>
             {
@@ -56,7 +55,7 @@ namespace DAL.BusinessUser
 
         public int UpdateBusinessUser(BusinessUserDTO updatedBusinessUser)
         {
-            string sql = $"update dbo.BusinessUser set BusinessName = @businessName, UserName = @userName, Email = @email, Info = @info, Sector = @sector where Id = @businessId;";
+            string sql = $"update dbo.BusinessUser set BusinessName = @businessName, UserName = @userName, Email = @email, Info = @info, Sector = @sector, ImageByteArray = @imageByteArray where Id = @businessId;";
 
             var dictionary = new Dictionary<string, object>
             {
@@ -65,7 +64,8 @@ namespace DAL.BusinessUser
                 {"@email", updatedBusinessUser.Email },
                 {"@info", updatedBusinessUser.Info },
                 {"@sector", updatedBusinessUser.Sector },
-                {"@businessId", updatedBusinessUser.Id }
+                {"@businessId", updatedBusinessUser.Id },
+                {"@imageByteArray", updatedBusinessUser.ImageByteArray }
             };
 
             var parameters = new DynamicParameters(dictionary);
@@ -90,7 +90,7 @@ namespace DAL.BusinessUser
 
         public IEnumerable<BusinessUserDTO> GetAllBusinesses()
         {
-            string sql = $"select Id, BusinessName, UserName, Password, Email, Info, Sector from dbo.BusinessUser;";
+            string sql = $"select Id, BusinessName, UserName, Password, Email, Info, Sector, ImageByteArray from dbo.BusinessUser;";
 
             return _dBManager.LoadAllData<BusinessUserDTO>(sql);
         }
@@ -138,7 +138,6 @@ namespace DAL.BusinessUser
                 {"@userName", userName},
                 {"@email", email },
                 {"@businessName", businessName }
-
             };
 
 

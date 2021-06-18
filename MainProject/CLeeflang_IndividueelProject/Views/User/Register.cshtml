@@ -10,8 +10,13 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-controller="User" asp-action="Register">
+        <form asp-controller="User" asp-action="Register" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">Logo:</label>
+                <div id="upload-photo">@Html.TextBoxFor(m => m.ImageFile, new { @type = "file", @class = "input-file" })</div>
+                <div class="text-danger mt-1">@ViewBag.ImageError</div>
+            </div>
             <div class="form-group">
                 <label asp-for="UserName" class="control-label">Username:</label>
                 <input asp-for="UserName" class="form-control" />

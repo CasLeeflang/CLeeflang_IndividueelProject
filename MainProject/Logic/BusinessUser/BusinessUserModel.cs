@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using Variables;
 using Variables.ValidationResponse;
 using Contract_Layer.BusinessUser;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace Logic.BusinessUser
 {
@@ -35,11 +37,15 @@ namespace Logic.BusinessUser
         public string Email { get; set; }
         public string Info { get; set; }
         public string Sector { get; set; }
+        public IFormFile ImageFile { get; set; }
+        public Byte[] ImageByteArray { get; set; }
+        public string ImageBase64 { get; set; }
 
         public BusinessUserModel()
         {
 
         }
+
         public BusinessUserModel(string businessName, string userName, string password, string email, string sector)
         {
             BusinessName = businessName;
@@ -50,6 +56,16 @@ namespace Logic.BusinessUser
             Sector = sector;
         }
 
+        public BusinessUserModel(IFormFile imageFile, string businessName, string userName, string password, string email, string sector)
+        {
+            ImageByteArray = ImageToByteArray();
+            BusinessName = businessName;
+            UserName = userName;
+            Password = password;
+            Email = email;
+            Info = "";
+            Sector = sector;
+        }
         public BusinessUserModel(BusinessUserDTO businessUserDTO)
         {
             Id = businessUserDTO.Id;
@@ -59,6 +75,8 @@ namespace Logic.BusinessUser
             Email = businessUserDTO.Email;
             Info = businessUserDTO.Info;
             Sector = businessUserDTO.Sector;
+            ImageByteArray = businessUserDTO.ImageByteArray;
+            ImageBase64 = ByteArrayToStringbase64();
         }
 
         public int Update()
@@ -70,7 +88,8 @@ namespace Logic.BusinessUser
                 UserName = UserName,
                 Email = Email,
                 Info = Info,
-                Sector = Sector
+                Sector = Sector,
+                ImageByteArray = ImageByteArray
             };
 
             return _businessUserDAL.UpdateBusinessUser(updatedBusinessUserDTO);
@@ -84,41 +103,49 @@ namespace Logic.BusinessUser
 
             BusinessRegistration _registerValidation = new BusinessRegistration();
 
-            foreach (var existingBusinessUser in _existingBusinessUsers)
+            if (_existingBusinessUsers.Count() == 0)
+            {
+                _registerValidation.Valid = true;
+            }
+            else
             {
 
-                if (existingBusinessUser == null)
+                foreach (var existingBusinessUser in _existingBusinessUsers)
                 {
-                    _registerValidation.Valid = true;
-                }
-                else
-                {
-                    if(existingBusinessUser.Id == Id && _existingBusinessUsers.Count() == 1)
+
+                    if (existingBusinessUser == null)
                     {
                         _registerValidation.Valid = true;
                     }
-
-                    if (existingBusinessUser.Id != Id)
+                    else
                     {
-                        if (existingBusinessUser.UserName.ToLower() == UserName.ToLower())
+                        if (existingBusinessUser.Id == Id && _existingBusinessUsers.Count() == 1)
                         {
-                            _registerValidation.UserNameError = true;
-
-                        }
-                        if (existingBusinessUser.Email.ToLower() == Email.ToLower())
-                        {
-                            _registerValidation.EmailError = true;
-                        }
-                        if (existingBusinessUser.BusinessName.ToLower() == BusinessName.ToLower())
-                        {
-                            _registerValidation.BusinessNameError = true;
+                            _registerValidation.Valid = true;
                         }
 
-                        if (!_registerValidation.UserNameError && !_registerValidation.EmailError && !_registerValidation.BusinessNameError)
+                        if (existingBusinessUser.Id != Id)
                         {
-                            _registerValidation.Valid = true;   
+                            if (existingBusinessUser.UserName.ToLower() == UserName.ToLower())
+                            {
+                                _registerValidation.UserNameError = true;
+
+                            }
+                            if (existingBusinessUser.Email.ToLower() == Email.ToLower())
+                            {
+                                _registerValidation.EmailError = true;
+                            }
+                            if (existingBusinessUser.BusinessName.ToLower() == BusinessName.ToLower())
+                            {
+                                _registerValidation.BusinessNameError = true;
+                            }
+
+                            if (!_registerValidation.UserNameError && !_registerValidation.EmailError && !_registerValidation.BusinessNameError)
+                            {
+                                _registerValidation.Valid = true;
+                            }
                         }
-                    }                                    
+                    }
                 }
             }
 
@@ -134,6 +161,39 @@ namespace Logic.BusinessUser
             };
 
             _businessUserDAL.UpdateBusinessInfo(updatedBusinessUserDTO);
+        }
+
+        public Byte[] ImageToByteArray()
+        {
+            if (ImageFile != null)
+            {
+                var sourceStream = ImageFile.OpenReadStream();
+
+                using (var memoryStream = new MemoryStream())
+                {
+                    sourceStream.CopyTo(memoryStream);
+                    var imageByteArray = memoryStream.ToArray();
+                    ImageByteArray = imageByteArray;
+                }
+            }
+            else
+            {
+                ImageByteArray = new Byte[0];
+            }
+            return ImageByteArray;
+        }
+
+        private string ByteArrayToStringbase64()
+        {
+            if (ImageByteArray.Length > 0)
+            {
+                return Convert.ToBase64String(ImageByteArray);
+            }
+            else
+            {
+                return null;
+            }
+
         }
     }
 }

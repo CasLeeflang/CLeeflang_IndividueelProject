@@ -10,12 +10,12 @@
 <script type="text/javascript" src="//use.typekit.net/wtt0gtr.js"></script>
 <script type="text/javascript">try { Typekit.load(); } catch (e) { }</script>
 
+
 <h1>Profile page for @Model.BusinessName</h1>
-<h3>logo</h3>
+<img class="profile-logo" src="data:image/png;base64, @Model.ImageBase64" />
 
 <div class="profile-container">
-    <div class="page-pp">profile Pic</div>
-    <div class="page-head">Header</div>
+
     <div class="page-info">
         <div class="info-container">
             <div>BusinessName</div>
@@ -37,9 +37,12 @@
 
     @*<div id="@Model.Id InfoContainer">Something went wrong getting this data.</div>
         <div class="" hidden id="@Model.Id RawInfo">@Model.Info</div>*@
-    @Html.ActionLink("Edit", "EditBusinessUser")
+
 </div>
 
+<button class="btn">
+    <a asp-action="EditBusinessUser">Edit</a>
+</button>
 <script>
             var contentString = document.getElementById("@Model.Id RawInfo").innerHTML;
             var contentJSON = JSON.parse(contentString);

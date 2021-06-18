@@ -15,6 +15,7 @@ namespace DTOs
         public string Email { get; set; }
         public string Info { get; set; }
         public string Sector { get; set; }
+        public Byte[] ImageByteArray { get; set; }
 
         public BusinessUserDTO()
         {

@@ -70,3 +70,8 @@
 .info-val{
     grid-area: iv;
 }
+
+.profile-logo{
+    max-width: 200px;
+    max-height: 200px;
+}

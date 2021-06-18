@@ -48,7 +48,7 @@ namespace CLeeflang_IndividueelProject.Controllers
 
             if (ModelState.IsValid)     //  Check if the viewmodel is valid
             {
-                BusinessUserModel newBusinessUser = new BusinessUserModel(newViewBusinessUser.BusinessName, newViewBusinessUser.UserName, newViewBusinessUser.Password, newViewBusinessUser.Email, newViewBusinessUser.Sector);
+                BusinessUserModel newBusinessUser = new BusinessUserModel(newViewBusinessUser.ImageFile, newViewBusinessUser.BusinessName, newViewBusinessUser.UserName, newViewBusinessUser.Password, newViewBusinessUser.Email, newViewBusinessUser.Sector);
 
                 BusinessRegistration _businessUserValidation = newBusinessUser.Validate();      //  Get the registration validation response
 
@@ -167,11 +167,12 @@ namespace CLeeflang_IndividueelProject.Controllers
         public IActionResult UpdateBusinessUser(BusinessUserModel updatedBusinessUser)
         {
             BusinessRegistration _businessUserValidation = updatedBusinessUser.Validate();
-            try
-            {
+            //try
+            //{
 
                 if (_businessUserValidation.Valid)
                 {
+                    updatedBusinessUser.ImageToByteArray();
                     if (updatedBusinessUser.Update() == 1)
                     {
                         Authenticate(updatedBusinessUser);
@@ -179,8 +180,8 @@ namespace CLeeflang_IndividueelProject.Controllers
                     }
                     else
                     {
-                        ViewBag.LoginError = "Error occured while loging in, please try again!";
-                        return RedirectToAction("EditBusinessUser");
+                        ViewBag.LoginError = "Error occured while logging in, please try again!";
+                        return RedirectToAction("Login");
                     }
                 }
                 else
@@ -200,12 +201,12 @@ namespace CLeeflang_IndividueelProject.Controllers
 
                     return RedirectToAction("EditBusinessUser");
                 }
-            }
-            catch (Exception)
-            {
-                ViewBag.LoginError = "Error occured while loging in, please try again!";
-                return RedirectToAction("EditBusinessUser");
-            }
+            //}
+            //catch (Exception)
+            //{
+            //    ViewBag.LoginError = "Error occured while loging in, please try again!";
+            //    return RedirectToAction("EditBusinessUser");
+            //}
         }
     }
 }

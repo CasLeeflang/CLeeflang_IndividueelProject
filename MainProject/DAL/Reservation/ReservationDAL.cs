@@ -114,7 +114,16 @@ namespace DAL.Reservation
 
         public void DeleteReservation(int id)
         {
-            string sql = $"";
+            string sql = $"delete from dbo.Reservation where Id = @id";
+
+            var dictionary = new Dictionary<string, object>
+            {
+                {"@id", id }
+            };
+
+            var parameters = new DynamicParameters(dictionary);
+
+            _dBManager.DeleteData<ReservationDTO>(sql, parameters);
         }
     }
 }

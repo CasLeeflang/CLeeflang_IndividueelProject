@@ -7,7 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Variables.ValidationResponse;
 using Contract_Layer.User;
-
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace Logic.User
 {
@@ -35,6 +36,9 @@ namespace Logic.User
         public string Password { get; set; } // Hashed and salted
         public string Email { get; set; }
         public DateTime DoB { get; set; }
+        public IFormFile ImageFile { get; set; }
+        public Byte[] ImageByteArray { get; set; }
+        public string ImageBase64 { get; set; }
 #nullable enable
         public int? NumberOfReservations { get; set; }
         public object CookieAuthenticationDefaults { get; private set; }
@@ -43,6 +47,17 @@ namespace Logic.User
 
         public UserModel(string userName, string firstName, string lastName, string Password, string Email, DateTime DoB)
         {
+            UserName = userName;
+            FirstName = firstName;
+            LastName = lastName;
+            this.Password = Password;
+            this.Email = Email;
+            this.DoB = DoB;
+        }
+
+        public UserModel(IFormFile imageFile, string userName, string firstName, string lastName, string Password, string Email, DateTime DoB)
+        {
+            ImageFile = imageFile;
             UserName = userName;
             FirstName = firstName;
             LastName = lastName;
@@ -61,6 +76,8 @@ namespace Logic.User
             Email = userDTO.Email;
             DoB = userDTO.DoB;
             NumberOfReservations = userDTO.NumberOfReservations;
+            ImageByteArray = userDTO.ImageByteArray;
+            ImageBase64 = ByteArrayToStringbase64();
         }
 
         public void Update(UserModel updatedUser)
@@ -72,7 +89,8 @@ namespace Logic.User
                 LastName = updatedUser.LastName,
                 Password = updatedUser.Password,
                 Email = updatedUser.Email,
-                DoB = updatedUser.DoB
+                DoB = updatedUser.DoB,
+                ImageByteArray = updatedUser.ImageByteArray
             };            
 
             _userDAL.UpdateUser(updateUserDTO);
@@ -117,6 +135,38 @@ namespace Logic.User
             }
 
             return _registerValidation;
-        }     
+        }
+        public Byte[] ImageToByteArray()
+        {
+            if (ImageFile != null)
+            {
+                var sourceStream = ImageFile.OpenReadStream();
+
+                using (var memoryStream = new MemoryStream())
+                {
+                    sourceStream.CopyTo(memoryStream);
+                    var imageByteArray = memoryStream.ToArray();
+                    ImageByteArray = imageByteArray;
+                }
+            }
+            else
+            {
+                ImageByteArray = new Byte[0];
+            }
+
+            return ImageByteArray;
+        }
+
+        private string ByteArrayToStringbase64()
+        {
+            if (ImageByteArray.Length > 0)
+            {
+                return Convert.ToBase64String(ImageByteArray);
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }

@@ -28,6 +28,8 @@ namespace Logic.User
         public void CreateUser(UserModel newUser)
         {
             //  Creates a new user
+            //  Translate image into ByteArray
+            newUser.ImageToByteArray();
 
             // Map Logic model to DTO
             UserDTO newUserDTO = new UserDTO
@@ -37,7 +39,9 @@ namespace Logic.User
                 LastName = newUser.LastName,
                 Password = newUser.Password,
                 Email = newUser.Email,
-                DoB = newUser.DoB
+                DoB = newUser.DoB,
+                ImageByteArray = newUser.ImageByteArray
+                
             };
 
             _userCollectionDAL.CreateUser(newUserDTO);

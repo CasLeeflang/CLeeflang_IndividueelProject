@@ -24,7 +24,8 @@ namespace CLeeflang_IndividueelProject.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            
+            return View(_businessUserCollection.GetAllBusinesses());
         }
 
         public IActionResult Privacy()

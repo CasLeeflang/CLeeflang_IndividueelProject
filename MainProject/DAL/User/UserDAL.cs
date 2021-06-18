@@ -12,15 +12,15 @@ namespace DAL.User
         public void CreateUser(UserDTO newUser)
         {
             // Prepare SQL
-            string sql = @"insert into dbo.[User] (UserName, FirstName, LastName, Password, Email, DoB)
-                            values(@UserName, @FirstName, @LastName, @Password, @Email, @DoB);";
+            string sql = @"insert into dbo.[User] (UserName, FirstName, LastName, Password, Email, DoB, ImageByteArray)
+                            values(@UserName, @FirstName, @LastName, @Password, @Email, @DoB, @ImageByteArray);";
 
             _dBManager.SaveData(sql, newUser);
         }  
         
         public IEnumerable<UserDTO> GetUserByUserName(string userName)
         {
-            string sql = $"select Id, UserName, FirstName, LastName, Password, Email, DoB from dbo.[User] where UserName = @userName";
+            string sql = $"select Id, UserName, FirstName, LastName, Password, Email, DoB, ImageByteArray from dbo.[User] where UserName = @userName";
 
             var dictionary = new Dictionary<string, object>
             {
@@ -34,7 +34,7 @@ namespace DAL.User
 
         public IEnumerable<UserDTO> GetUserByUserNameOrEmail(string identifier)
         {
-            string sql = $"select Id, UserName, FirstName, LastName, Password, Email, DoB from dbo.[User] where UserName = @identifier or Email = @identifier";
+            string sql = $"select Id, UserName, FirstName, LastName, Password, Email, DoB, ImageByteArray from dbo.[User] where UserName = @identifier or Email = @identifier";
 
             var dictionary = new Dictionary<string, object>
             {
@@ -68,7 +68,7 @@ namespace DAL.User
         
         public IEnumerable<UserDTO> CheckUserNameEmail(string userName, string email)       // Used for checking whether the username is in use or not when registering
         {
-            string sql = $"select Id, UserName, FirstName, LastName, Password, Email, DoB from dbo.[User] where (UserName = @userName or Email = @email);";
+            string sql = $"select Id, UserName, FirstName, LastName, Password, Email, DoB, ImageByteArray from dbo.[User] where (UserName = @userName or Email = @email);";
 
             var dictionary = new Dictionary<string, object>
             {

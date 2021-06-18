@@ -20,3 +20,10 @@ function openDay(evt, dayName) {
     document.getElementById(dayName).style.display = "block";
     evt.currentTarget.className += " active";
 }
+
+
+function loadDay(evt, dayName) {
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById(dayName).style.display = "block";
+    evt.currentTarget.className += " active";
+}

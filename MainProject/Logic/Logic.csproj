@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.7" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\FactoryDAL\FactoryDAL.csproj" />
     <ProjectReference Include="..\Models\DTOs.csproj" />
     <ProjectReference Include="..\Variables\Variables.csproj" />

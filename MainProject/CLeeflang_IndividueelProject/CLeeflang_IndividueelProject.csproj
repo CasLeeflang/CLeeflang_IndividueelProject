@@ -35,6 +35,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="5.0.7" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
     <PackageReference Include="System.Web.Helpers.Crypto" Version="3.2.3" />
   </ItemGroup>

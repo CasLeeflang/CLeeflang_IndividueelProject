@@ -1,4 +1,5 @@
 ﻿using Contract_Layer;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,6 +10,8 @@ namespace CLeeflang_IndividueelProject.Models
 {
     public class UserViewModel
     {
+        public IFormFile ImageFile { get; set; }
+
         [Required]
         [DataType(DataType.Text)]
         [RegularExpression(@"^[0-9a-zA-Z''-'\s]{1,40}$", ErrorMessage = "special characters are not  allowed.")]

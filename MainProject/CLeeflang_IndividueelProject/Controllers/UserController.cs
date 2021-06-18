@@ -53,29 +53,7 @@ namespace CLeeflang_IndividueelProject.Controllers
 
         public IActionResult ReservationOverview()
         {
-            IEnumerable<ReservationModel> reservations = _reservationCollection.GetReservationByUserId(_userCollection.GetUserId(User.Identity.Name));
-
-            //List<ReservationOverviewModel> reservationOverviewModels = new List<ReservationOverviewModel>();
-
-            //foreach (var reservation in reservations)
-            //{
-            //    TimeSlotModel timeSlot = _timeSlotCollection.GetTimeSlotById(reservation.TimeSlotId).LastOrDefault();
-
-            //    ReservationOverviewModel reservationView = new ReservationOverviewModel
-            //    {
-            //        Id = reservation.Id,
-            //        BusinessName = reservation.BusinessName,
-            //        Date = reservation.Date.ToString("dd/MM/yyyy"),
-            //        StartTime = timeSlot.StartTime.ToString("HH:mm"),
-            //        EndTime = timeSlot.EndTime.ToString("HH:mm")
-            //    };
-            //    reservationOverviewModels.Add(reservationView);
-            //}    
-
-            //IEnumerable<ReservationOverviewModel> reservationsView = reservationOverviewModels.OrderBy(o => o.Date).ThenBy(o => o.StartTime);
-            //
-            //All of the commented out code above is redundant cause of sql using left join :)
-            //
+            IEnumerable<ReservationModel> reservations = _reservationCollection.GetReservationByUserId(_userCollection.GetUserId(User.Identity.Name));       
 
             return View(reservations);
         }
@@ -91,7 +69,7 @@ namespace CLeeflang_IndividueelProject.Controllers
             if (ModelState.IsValid)     //  Checks if viewmodel is valid
             {
 
-                UserModel newUser = new UserModel(newViewUser.UserName, newViewUser.FirstName, newViewUser.LastName, newViewUser.Password, newViewUser.Email, newViewUser.DoB);
+                UserModel newUser = new UserModel(newViewUser.ImageFile, newViewUser.UserName, newViewUser.FirstName, newViewUser.LastName, newViewUser.Password, newViewUser.Email, newViewUser.DoB);
 
                 UserRegistration _userValidation = newUser.Validate();      //   Get the registration validation response
 
@@ -191,6 +169,11 @@ namespace CLeeflang_IndividueelProject.Controllers
 
             HttpContext.SignOutAsync();
             return RedirectToAction("Index", "Home");
+        }
+
+        public IActionResult Edit()
+        {
+            return View();
         }
     }
 }

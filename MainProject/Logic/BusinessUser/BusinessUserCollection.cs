@@ -11,7 +11,7 @@ namespace Logic.BusinessUser
 {
     public class BusinessUserCollection
     {
-        IBusinessUserCollectionDAL _BusinessUserCollectionDAL;  
+        IBusinessUserCollectionDAL _BusinessUserCollectionDAL;
 
         public BusinessUserCollection()
         {
@@ -30,16 +30,21 @@ namespace Logic.BusinessUser
         public void CreateBusinessUser(BusinessUserModel newBusinessUser)
         {
             //  Creates new business user
+            newBusinessUser.ImageToByteArray();
 
             BusinessUserDTO newBusinessUserDTO = new BusinessUserDTO
             {
+
                 BusinessName = newBusinessUser.BusinessName,
                 UserName = newBusinessUser.UserName,
                 Password = newBusinessUser.Password,
                 Email = newBusinessUser.Email,
                 Info = newBusinessUser.Info,
-                Sector = newBusinessUser.Sector
+                Sector = newBusinessUser.Sector,
+                ImageByteArray = newBusinessUser.ImageByteArray
             };
+
+
 
             _BusinessUserCollectionDAL.CreateBusinessUser(newBusinessUserDTO);
         }
@@ -62,7 +67,7 @@ namespace Logic.BusinessUser
         public IEnumerable<BusinessUserModel> GetBusinessUserByUserNameOrEmail(string identifier)
         {
             //  Returns businesses where username or email equals the identifier
-            
+
             IEnumerable<BusinessUserDTO> businessUserDTOs = _BusinessUserCollectionDAL.GetBusinessByUserNameOrEmail(identifier);
 
             foreach (var businessUserDTO in businessUserDTOs)
@@ -75,7 +80,7 @@ namespace Logic.BusinessUser
 
         public BusinessUserModel GetBusinessByIdForView(int id)
         {
-            IEnumerable<BusinessUserDTO> _businessDTOS =  _BusinessUserCollectionDAL.GetBusinessByIdForView(id);
+            IEnumerable<BusinessUserDTO> _businessDTOS = _BusinessUserCollectionDAL.GetBusinessByIdForView(id);
 
             foreach (var businessDTO in _businessDTOS)
             {
@@ -84,7 +89,7 @@ namespace Logic.BusinessUser
             }
 
             return businessUsers.LastOrDefault();
-            
+
         }
 
         public int GetBusinessId(string userName)

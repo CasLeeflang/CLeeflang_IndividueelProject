@@ -11,6 +11,15 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("Contract Layer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Interfac" +
+    "e", "Contract Layer.csproj", "0")]
+[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\DAL", "DAL.csproj", "0")]
+[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("DTOs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Models", "DTOs.csproj", "0")]
+[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("FactoryDAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\FactoryD" +
+    "AL", "FactoryDAL.csproj", "0")]
+[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("Logic, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Logic", "Logic.csproj", "0")]
+[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("Variables, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "C:\\Users\\casle\\Documents\\GitHub\\CLeeflang_IndividueelProject\\MainProject\\Variable" +
+    "s", "Variables.csproj", "0")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("CLeeflang_IndividueelProject")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]

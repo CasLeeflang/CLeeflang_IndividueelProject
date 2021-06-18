@@ -72,5 +72,10 @@ namespace Logic.Reservation
 
             return reservations;
         }
+
+        public void DeleteReservation(int id)
+        {
+            _reservationCollectionDAL.DeleteReservation(id);
+        }
     }
 }

@@ -1,29 +1,52 @@
-﻿@{
+﻿@model IEnumerable<BusinessUserModel>
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <head>
     <link rel="stylesheet" href="~/css/card_animation.css">
     <link rel="stylesheet" href="~/css/Grid.css" />
+    <link rel="stylesheet" href="~/css/style.css" />
 </head>
 
 @using Logic.BusinessUser;
 
-<h1>Welcome to Spot Saver!</h1>
-<h3>Ensure your spot for your favourite activity</h3>
-<h4>Select the business and check availability</h4>
-@{ BusinessUserCollection _businessUserCollection = new BusinessUserCollection(); } 
+<div class="v-main__wrap v-content__wrap">
 
-<div class="grid-container-home">
+    <div class="site-container elevation-shadow">
 
+        <div class="home-header">
+            <div class="row">
 
-    @foreach (var business in _businessUserCollection.GetAllBusinesses())
-    {
-        <a class="nav-link expand-hover " asp-controller="Home" asp-action="BusinessPage" asp-route-id="@business.Id">
-            <div class="card mb-2 business-card">
-                    <div class="card-body">@business.BusinessName</div>
+                <div class="col-7">
+
+                    <h1>Welcome to Spot Saver!</h1>
+                    <h3>Ensure your spot for your favourite activity!</h3>
+                    <br/>
+                    <h4>Select the business and check availability.</h4>
+                </div>
+                <div class="col-5">
+                    <img class="center mb-5" style="max-width:95%;" src="~/Logo/SpotSaverLogo.png" alt="Logo Image" /><br>
+                </div>
             </div>
-        </a>
-    }
-</div>
 
+        </div>
+
+        <div class="container business-container">
+
+
+            @foreach (var business in Model)
+            {
+                <a class="nav-link expand-hover" style="display:inline-block;" asp-controller="Home" asp-action="BusinessPage" asp-route-id="@business.Id">
+                    <div class="card text-center " style="width:20rem; ">
+                        <img class="card-img-top" src="data:image/png;base64, @business.ImageBase64" alt="Missing Logo" style="height:200px; object-fit: contain;" />
+                        <div class="card-body">
+                            <h5 class="card-title">@business.BusinessName</h5>
+                            <p class="card-tag">@business.Sector</p>
+                        </div>
+                    </div>
+                </a>
+            }
+        </div>
+    </div>
+</div>
