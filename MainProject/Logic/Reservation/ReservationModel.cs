@@ -30,6 +30,8 @@ namespace Logic.Reservation
         public int TimeSlotId { get; set; }
 #nullable enable
         public string? BusinessName { get; set; }
+        public string? FirstName { get; set; }
+        public string? LastName { get; set; }
         public string? StartTime { get; set; }
         public string? EndTime { get; set; }
 #nullable disable
@@ -47,6 +49,8 @@ namespace Logic.Reservation
             BusinessId = reservationDTO.BusinessId;
             TimeSlotId = reservationDTO.TimeSlotId;
             BusinessName = reservationDTO.BusinessName;
+            FirstName = reservationDTO.FirstName;
+            LastName = reservationDTO.LastName;
             StartTime = ToString(reservationDTO.StartTime, "HH:mm");
             EndTime = ToString(reservationDTO.EndTime, "HH:mm");
         }

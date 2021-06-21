@@ -14,9 +14,10 @@ namespace Contract_Layer.BusinessUser
         IEnumerable<BusinessUserDTO> GetBusinessByUserNameOrEmail(string identifier);
         IEnumerable<BusinessUserDTO> GetBusinessByIdForView(int id);
 
-
+        IEnumerable<BusinessUserDTO> GetBusinessByUserNameForView(string userName);
         int GetBusinessId(string userName);
 
         IEnumerable<BusinessUserDTO> GetAllBusinesses();
+        IEnumerable<BusinessUserDTO> GetBusinessById(int id);
     }
 }

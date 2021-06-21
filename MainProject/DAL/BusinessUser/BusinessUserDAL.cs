@@ -39,6 +39,21 @@ namespace DAL.BusinessUser
             return _dBManager.LoadData<BusinessUserDTO>(sql, parameters);
         }
 
+
+        public IEnumerable<BusinessUserDTO> GetBusinessById(int id)
+        {
+            string sql = $"select Id, BusinessName, UserName, Password, Email, Info, Sector, ImageByteArray from dbo.BusinessUser where Id = @identifier";
+
+            var dictionary = new Dictionary<string, object>
+            {
+                {"@identifier", id }
+            };
+
+            var parameters = new DynamicParameters(dictionary);
+
+            return _dBManager.LoadData<BusinessUserDTO>(sql, parameters);
+        }
+
         public IEnumerable<BusinessUserDTO> GetBusinessByIdForView(int id)
         {
             string sql = $"select Id, BusinessName, Info, Sector, ImageByteArray from dbo.BusinessUser where Id = @id ";
@@ -46,6 +61,20 @@ namespace DAL.BusinessUser
             var dictionary = new Dictionary<string, object>
             {
                 {"@id", id }
+            };
+
+            var parameters = new DynamicParameters(dictionary);
+
+            return _dBManager.LoadData<BusinessUserDTO>(sql, parameters);
+        }
+
+        public IEnumerable<BusinessUserDTO> GetBusinessByUserNameForView(string userName)
+        {
+            string sql = $"select Id, BusinessName, Info, Sector, ImageByteArray from dbo.BusinessUser where UserName = @userName ";
+
+            var dictionary = new Dictionary<string, object>
+            {
+                {"@userName", userName }
             };
 
             var parameters = new DynamicParameters(dictionary);

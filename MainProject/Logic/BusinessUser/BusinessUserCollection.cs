@@ -64,6 +64,7 @@ namespace Logic.BusinessUser
             return businessUsers;
         }
 
+
         public IEnumerable<BusinessUserModel> GetBusinessUserByUserNameOrEmail(string identifier)
         {
             //  Returns businesses where username or email equals the identifier
@@ -78,9 +79,37 @@ namespace Logic.BusinessUser
             return businessUsers;
         }
 
+        public BusinessUserModel GetBusinessUserById(int identifier)
+        {
+            //  Returns businesses where username or email equals the identifier
+
+            IEnumerable<BusinessUserDTO> businessUserDTOs = _BusinessUserCollectionDAL.GetBusinessById(identifier);
+
+            foreach (var businessUserDTO in businessUserDTOs)
+            {
+                BusinessUserModel businessUser = new BusinessUserModel(businessUserDTO);
+                businessUsers.Add(businessUser);
+            }
+            return businessUsers.First();
+        }
+
         public BusinessUserModel GetBusinessByIdForView(int id)
         {
             IEnumerable<BusinessUserDTO> _businessDTOS = _BusinessUserCollectionDAL.GetBusinessByIdForView(id);
+
+            foreach (var businessDTO in _businessDTOS)
+            {
+                BusinessUserModel business = new BusinessUserModel(businessDTO);
+                businessUsers.Add(business);
+            }
+
+            return businessUsers.LastOrDefault();
+
+        }
+
+        public BusinessUserModel GetBusinessByUserNameForView(string userName)
+        {
+            IEnumerable<BusinessUserDTO> _businessDTOS = _BusinessUserCollectionDAL.GetBusinessByUserNameForView(userName);
 
             foreach (var businessDTO in _businessDTOS)
             {

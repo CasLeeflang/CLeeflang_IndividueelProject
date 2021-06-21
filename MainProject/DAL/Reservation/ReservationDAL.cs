@@ -24,12 +24,14 @@ namespace DAL.Reservation
 
         public IEnumerable<ReservationDTO> GetReservationByUserId(int userId)
         {
-            string sql = @"select R.Id, R.Date, R.UserId, R.BusinessId, R.TimeSlotId, B.BusinessName as BusinessName, T.StartTime as StartTime, T.EndTime as EndTime 
+            string sql = @"select R.Id, R.Date, R.UserId, R.BusinessId, R.TimeSlotId, U.FirstName as Firstname, U.LastName as LastName, B.BusinessName as BusinessName, T.StartTime as StartTime, T.EndTime as EndTime 
 
                            from 
 
-                           dbo.Reservation R left join dbo.BusinessUser B on R.BusinessId = B.Id 
+                           dbo.Reservation R 
+                           left join dbo.BusinessUser B on R.BusinessId = B.Id 
                            left join dbo.TimeSlot T on R.TimeSlotId = T.Id 
+                           left join dbo.[User] U on R.UserId = U.Id
 
                            where 
 
@@ -65,7 +67,22 @@ namespace DAL.Reservation
 
         public IEnumerable<ReservationDTO> GetReservationByBusinessId(int businessId)
         {
-            string sql = $"select R.Id, R.Date, R.UserId, R.BusinessId, R.TimeSlotId from dbo.Reservation where BusinessId = @businessId";
+            string sql = @"select R.Id, R.Date, R.UserId, R.BusinessId, R.TimeSlotId, U.FirstName as Firstname, U.LastName as LastName, B.BusinessName as BusinessName, T.StartTime as StartTime, T.EndTime as EndTime 
+
+                           from 
+
+                           dbo.Reservation R 
+                           left join dbo.BusinessUser B on R.BusinessId = B.Id 
+                           left join dbo.TimeSlot T on R.TimeSlotId = T.Id 
+                           left join dbo.[User] U on R.UserId = U.Id
+
+                           where 
+
+                           R.BusinessId = @businessId 
+
+                           order by 
+
+                           R.Date, T.StartTime";
 
             var dictionary = new Dictionary<string, object>
             {

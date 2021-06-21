@@ -40,7 +40,6 @@ C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeefla
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Authentication.Core.dll
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Authentication.dll
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Authentication.OAuth.dll
-C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Authorization.dll
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Authorization.Policy.dll
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Components.Authorization.dll
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Components.dll
@@ -74,7 +73,6 @@ C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeefla
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Identity.dll
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Localization.dll
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Localization.Routing.dll
-C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Metadata.dll
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Mvc.Abstractions.dll
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Mvc.ApiExplorer.dll
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Mvc.Core.dll
@@ -439,3 +437,6 @@ C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeefla
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\obj\Debug\net5.0\Razor\Views\User\Edit.cshtml.g.cs
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.Testing.dll
 C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\bin\Debug\net5.0\Microsoft.AspNetCore.TestHost.dll
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\obj\Debug\net5.0\Razor\Views\Home\BusinessDashboard.cshtml.g.cs
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\bin\Debug\net5.0\Microsoft.AspNetCore.Authorization.dll
+C:\Users\casle\Documents\GitHub\CLeeflang_IndividueelProject\MainProject\CLeeflang_IndividueelProject\bin\Debug\net5.0\Microsoft.AspNetCore.Metadata.dll

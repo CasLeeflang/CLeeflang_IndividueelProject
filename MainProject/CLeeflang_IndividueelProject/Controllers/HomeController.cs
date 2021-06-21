@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using CLeeflang_IndividueelProject.Models;
 using Logic;
 using Logic.BusinessUser;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CLeeflang_IndividueelProject.Controllers
 {
@@ -24,14 +25,26 @@ namespace CLeeflang_IndividueelProject.Controllers
 
         public IActionResult Index()
         {
-            
-            return View(_businessUserCollection.GetAllBusinesses());
+            if (User.IsInRole("BusinessUser"))
+            {
+                return RedirectToAction("BusinessDashboard");
+            }
+            else
+            {
+                return View(_businessUserCollection.GetAllBusinesses());
+
+            }
         }
 
+        [Authorize(Roles = "BusinessUser")]
+        public IActionResult BusinessDashboard()
+        {
+            return View(_businessUserCollection.GetBusinessByUserNameForView(User.Identity.Name));
+        }
         public IActionResult Privacy()
         {
             return View();
-        }        
+        }
 
         public IActionResult BusinessPage(int id)
         {

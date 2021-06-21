@@ -1,38 +1,117 @@
 ﻿@model IEnumerable<Logic.TimeSlot.TimeSlotModel>
 
+@using Logic.BusinessUser;
+@{
+
+    BusinessUserCollection businessUserCollection = new();
+    BusinessUserModel business = businessUserCollection.GetBusinessUserById(ViewBag.businessId);
+
+
+}
+<head>
+
+    <link rel="stylesheet" href="~/css/TimeSlotContainer.css" />
+    <link rel="stylesheet" href="~/css/card_animation.css">
+    <link rel="stylesheet" href="~/css/Grid.css" />
+    <link rel="stylesheet" href="~/css/style.css" />
+
+</head>
+
+<div class="v-main__wrap v-content__wrap">
+
+    <div class="site-container elevation-shadow">
+
+        <div class="home-header">
+            <div class="row">
+
+                <div class="col-5" style="padding:15px;">
+                    <div style=" vertical-align: middle;">
+                        <h3>See the available timeslots below to make a reservation</h3>
+                    </div>
+                    <div class="business-info">
+                        <p>@business.Info</p>
+                    </div>
+                </div>
+                <div class="col-5" style="max-height:200px;">
+                    <img class="card-img-top" src="data:image/png;base64, @business.ImageBase64" alt="Missing Logo" style="height:200px; object-fit: contain;" />
+                </div>
+            </div>
+
+        </div>
+
+        <div class="container business-container " style="padding:10px;">
+
+            <div class="row" style="min-height:400px;">
+                <div class="col-5">
+                    <div class="date-picker">
+                        <h4>Select a date below and check the availability.</h4>
+                        <hr />
 
 
 
-<h3>Timeslots for @ViewBag.Day @ViewBag.Date.ToString("dd/MM/yyyy")</h3>
+                        @using (Html.BeginForm("TimeSlotPicker", "Reservation", new { businessId = business.Id }, FormMethod.Post))
+                        {
+                            <table cellpadding="5" class="ml-5">
+                                <tr>
+                                    <td>Date:</td>
+                                    <td><input type="date" name="Date" value="" /></td>
+                                </tr>
+                            </table>
+                            <br /> <div class="text-danger">
+                                @TempData["ErrorDate"]
+                            </div>
+                            <div class="ml-5">
 
-<table style="width:100%">
-    <tr>
-        <th>Day</th>
-        <th>Start Time</th>
-        <th>End Time</th>
-        <th>Available Spots</th>
-        <th></th>
+                                <div class="p-1">
+                                    <input class="btn btn-primary" type="submit" value="See timeslots" />
+                                </div>
+                                
+                            </div>
 
-    </tr>
-    @foreach (var timeSlot in Model)
-    {
-        //  do this in view or controller and send new custom view model?
+                        }
+                    <div class="p-1 ml-5">
+                        <a class="btn btn-primary" asp-action="BusinessPage" asp-controller="Home" asp-route-id="@business.Id">Back</a>
+                    </div>
 
-       
-        <tr>
-            <td>@timeSlot.DayOTWeek</td>
-            <td>@timeSlot.StartTime.TimeOfDay</td>
-            <td>@timeSlot.EndTime.TimeOfDay</td>
-            <td>@timeSlot.AvailableSpots</td>
-            <td>
-                <a asp-action="CreateReservation" asp-route-date="@ViewBag.Date" asp-route-pickedTimeSlotId="@timeSlot.Id" asp-route-businessId="@ViewBag.businessId">Reserve</a>
-            </td>
-        </tr>
 
-    }
-</table>
-<div class="text-danger">@TempData["ErrorReservationExists"]</div>
-<div class="text-danger">@TempData["ErrorDate"]</div>
-<div>
-    <a asp-controller="Home" asp-action="BusinessPage" asp-route-id="@ViewBag.businessId">Select different date</a>
+                    </div>
+                </div>
+
+                <div class="col-7">
+                    <div class="container timeslot-container">
+                        <h4>Time slots for @ViewBag.Date.ToString("dd/MM/yyyy"):</h4>
+                        <table style="width:100%" class="text-light">
+                            <tr>
+                                <th>Day</th>
+                                <th>Start Time</th>
+                                <th>End Time</th>
+                                <th>Available Spots</th>
+                                <th></th>
+
+                            </tr>
+                            @foreach (var timeSlot in Model)
+                            {
+                                //  do this in view or controller and send new custom view model?
+
+
+                                <tr>
+                                    <td>@timeSlot.DayOTWeek</td>
+                                    <td>@timeSlot.StartTime.TimeOfDay</td>
+                                    <td>@timeSlot.EndTime.TimeOfDay</td>
+                                    <td>@timeSlot.AvailableSpots</td>
+                                    <td>
+                                        <a class="btn btn-primary btn-lightgreen text-dark" asp-action="CreateReservation" asp-route-date="@ViewBag.Date" asp-route-pickedTimeSlotId="@timeSlot.Id" asp-route-businessId="@business.Id">Reserve</a>
+                                    </td>
+                                </tr>
+
+                            }
+                        </table>
+                        <div class="text-danger">@TempData["ErrorReservationExists"]</div>
+                        <div class="text-danger">@TempData["ErrorDate"]</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>

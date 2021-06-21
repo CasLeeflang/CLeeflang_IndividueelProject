@@ -31,21 +31,30 @@ namespace CLeeflang_IndividueelProject.Controllers
 
         public IActionResult TimeSlotPicker(int businessId, string Date)
         {
-            string day = DateTime.Parse(Date).DayOfWeek.ToString().Substring(0, 3);
-
-            ViewBag.Day = day;
-            ViewBag.Date = DateTime.Parse(Date);
-            ViewBag.businessId = businessId;
-
-            if (DateTime.Parse(Date) >= DateTime.Now && DateTime.Parse(Date) <= DateTime.Now.AddDays(14))
+            try
             {
-                IEnumerable<TimeSlotModel> timeSlots = _timeSlotCollection.GetTimeSlotByDayAndBusinessId(DateTime.Parse(Date), day, businessId);
 
-                return View(timeSlots);
+                string day = DateTime.Parse(Date).DayOfWeek.ToString().Substring(0, 3);
+
+                ViewBag.Day = day;
+                ViewBag.Date = DateTime.Parse(Date);
+                ViewBag.businessId = businessId;
+
+                if (DateTime.Parse(Date) > DateTime.Now && DateTime.Parse(Date) <= DateTime.Now.AddDays(14))
+                {
+                    IEnumerable<TimeSlotModel> timeSlots = _timeSlotCollection.GetTimeSlotByDayAndBusinessId(DateTime.Parse(Date), day, businessId);
+
+                    return View(timeSlots);
+                }
+                else
+                {
+                    TempData["ErrorDate"] = "Please select a date between today and two weeks!";
+                    return RedirectToAction("BusinessPage", "Home", new { id = businessId });
+                }
             }
-            else
+            catch
             {
-                TempData["ErrorDate"] = "Please select a date later than today!";
+                TempData["ErrorDate"] = "Please select a date between today and two weeks!";
                 return RedirectToAction("BusinessPage", "Home", new { id = businessId });
             }
         }
@@ -54,22 +63,30 @@ namespace CLeeflang_IndividueelProject.Controllers
         public IActionResult TimeSlotPicker(int businessId, IFormCollection form)
         {
             string d = form["Date"];
-
-            string day = DateTime.Parse(d).DayOfWeek.ToString().Substring(0, 3);
-
-            ViewBag.Day = day;
-            ViewBag.Date = DateTime.Parse(d);
-            ViewBag.businessId = businessId;
-
-            if (DateTime.Parse(d) >= DateTime.Now && DateTime.Parse(d) <= DateTime.Now.AddDays(14))
+            try
             {
-                IEnumerable<TimeSlotModel> timeSlots = _timeSlotCollection.GetTimeSlotByDayAndBusinessId(DateTime.Parse(d), day, businessId);
 
-                return View(timeSlots);
+                string day = DateTime.Parse(d).DayOfWeek.ToString().Substring(0, 3);
+
+                ViewBag.Day = day;
+                ViewBag.Date = DateTime.Parse(d);
+                ViewBag.businessId = businessId;
+
+                if (DateTime.Parse(d) >= DateTime.Now && DateTime.Parse(d) <= DateTime.Now.AddDays(14))
+                {
+                    IEnumerable<TimeSlotModel> timeSlots = _timeSlotCollection.GetTimeSlotByDayAndBusinessId(DateTime.Parse(d), day, businessId);
+                    ViewBag.businessId = businessId;
+                    return View(timeSlots);
+                }
+                else
+                {
+                    TempData["ErrorDate"] = "Please select a date between today and two weeks!";
+                    return RedirectToAction("BusinessPage", "Home", new { id = businessId });
+                }
             }
-            else
+            catch
             {
-                TempData["ErrorDate"] = "Please select a date later than today and within two weeks!";
+                TempData["ErrorDate"] = "Please select a date between today and two weeks!!";
                 return RedirectToAction("BusinessPage", "Home", new { id = businessId });
             }
         }

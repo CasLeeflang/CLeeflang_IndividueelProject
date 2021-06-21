@@ -1,17 +1,25 @@
-﻿@model CLeeflang_IndividueelProject.Models.TimeSlotViewModel
+﻿@model Logic.BusinessUser.BusinessUserModel
 @{
-    ViewData["Title"] = "CreateTimeSlot";
+    ViewData["Title"] = "Home Page";
 }
-
-@using Logic.TimeSlot;
 @using Logic.BusinessUser;
+@using Logic.Reservation;
+@using Logic.TimeSlot
+
+@{ ReservationCollection reservationCollection = new();
+    IEnumerable<ReservationModel> reservations = reservationCollection.GetReservationByBusinessId(Model.Id).OrderBy(o => o.Date).ThenBy(o => o.StartTime).Where(o => o.Date > DateTime.Now);
+
+}
 
 
 <head>
-    <link rel="stylesheet" href="~/css/TimeSlotContainer.css" />
+    <link rel="stylesheet" href="~/css/card_animation.css">
     <link rel="stylesheet" href="~/css/Grid.css" />
+    <link rel="stylesheet" href="~/css/style.css" />
+    <link rel="stylesheet" href="~/css/TimeSlotContainer.css" />
     <script src="~/js/TimeSlot.js"></script>
 </head>
+
 
 <div class="v-main__wrap v-content__wrap">
 
@@ -27,59 +35,64 @@
 
                 </div>
                 <div class="col-5">
-                    <img class="center mb-5" style="max-width:95%;" src="data:image/png;base64" alt="Logo Image" /><br>
+                    <img class="center mb-5" style="max-width:95%;" src="data:image/png;base64, @Model.ImageBase64" alt="Logo Image" /><br>
                 </div>
             </div>
 
         </div>
 
-        <div class="container business-container text-light">
+        <div class="container business-container text-light row pt-3">
 
+            <div class="col-8">
 
-            <h1>Edit Time Slots</h1>
-            <div class="grid-container-ts">
+                <h3>Upcomming reservations</h3>
+                <div class="reservation-headers row">
+                    <div class="col-lg-3 col-sm-2">
+                        <p>Name</p>
+                    </div>
+
+                    <div class="col-lg-2 col-sm-2">
+                        <p>Date</p>
+                    </div>
+                    <div class="col-lg-1 col-sm-1">
+                        <p>Start</p>
+                    </div>
+                    <div class="col-lg-2 col-sm-1">
+                        <p>End</p>
+                    </div>
+                    <div class="col-lg-3 col-sm-3">
+                    </div>
+                </div>
                 <div>
-                    <form asp-action="SaveTimeSlot" id="TimeSlotForm">
-                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                        <div class="form-group">
-                            <label asp-for="DayOTWeek" class="control-label">Day:</label>
-                            <select asp-for="DayOTWeek" class="form-control">
-                                <option value="Mon">Monday</option>
-                                <option value="Tue">Tuesday</option>
-                                <option value="Wed">Wednesday</option>
-                                <option value="Thu">Thursday</option>
-                                <option value="Fri">Friday</option>
-                                <option value="Sat">Saturday</option>
-                                <option value="Sun">Sunday</option>
-                            </select>
-                            <span asp-validation-for="DayOTWeek" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="StartTime" class="control-label">Start Time:</label>
-                            <input asp-for="StartTime" class="form-control" />
-                            <span asp-validation-for="StartTime" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="EndTime" class="control-label">End Time:</label>
-                            <input asp-for="EndTime" class="form-control" />
-                            <span asp-validation-for="EndTime" class="text-danger"></span>
-                        </div>
-                        <div class="text-danger">@ViewBag.TimeSlotError</div>
-                        <div class="form-group">
-                            <label asp-for="NumberOfSpots" class="control-label">Available spots:</label>
-                            <input asp-for="NumberOfSpots" class="form-control" />
-                            <span asp-validation-for="NumberOfSpots" class="text-danger"></span>
-                        </div>
-                        <div class="text-danger">@ViewBag.SpotError</div>
-                        <div class="form-group row">
-                            <a asp-controller="Home" asp-action="Index" class="ml-2">Back to List</a>
-                            <input type="submit" value="Add" class="btn btn-primary mb-3 mr-2" />
-                        </div>
-                    </form>
+                    @foreach (var reservation in reservations)
+                    {
+                        <div class="reservation-container row">
+                            <div class="col-lg-3 col-sm-2">
+                                <p>@reservation.FirstName @reservation.LastName</p>
+                            </div>
 
+                            <div class="col-lg-2 col-sm-2">
+                                <p>@reservation.Date.ToString("dd/MM/yyyy")</p>
+                            </div>
+                            <div class="col-lg-1 col-sm-1">
+                                <p>@reservation.StartTime</p>
+                            </div>
+                            <div class="col-lg-2 col-sm-2">
+                                <p>@reservation.EndTime</p>
+                            </div>
+                            <div class="col-lg-3 col-sm-3">
+                                <a class="btn btn-primary">Check-in</a>
+                            </div>
+                        </div>
+                    }
                 </div>
 
+            </div>
 
+
+            <div class="col-4">
+
+                <h3>Timeslots for your business</h3>
 
                 <div class="container">
                     <div class="tab">
@@ -98,10 +111,6 @@
                         List<string> DotW = new List<string> { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" };
 
                     }
-
-
-
-                    <!-- Tab content -->
                     <div class="weekBox">
 
                         @foreach (var day in DotW)
@@ -128,9 +137,7 @@
                                                         <td>@timeSlot.StartTime.TimeOfDay</td>
                                                         <td>@timeSlot.EndTime.TimeOfDay</td>
                                                         <td>@timeSlot.NumberOfSpots</td>
-                                                        <td>
-                                                            <a asp-controller="TimeSlot" asp-action="DeleteTimeSlot" asp-route-id="@timeSlot.Id">Delete</a>
-                                                        </td>
+
                                                     </tr>
                                                 }
                                             }
@@ -160,9 +167,7 @@
                                                         <td>@timeSlot.StartTime.TimeOfDay</td>
                                                         <td>@timeSlot.EndTime.TimeOfDay</td>
                                                         <td>@timeSlot.NumberOfSpots</td>
-                                                        <td>
-                                                            <a asp-controller="TimeSlot" asp-action="DeleteTimeSlot" asp-route-id="@timeSlot.Id">Delete</a>
-                                                        </td>
+
                                                     </tr>
                                                 }
                                             }
@@ -177,18 +182,11 @@
                     </div>
 
                 </div>
+                <br/>
+                <a class="btn btn-primary" asp-action="ManageTimeSlot" asp-controller="TimeSlot">Edit Time Slots</a>
             </div>
-
-
-
 
 
         </div>
     </div>
 </div>
-
-
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

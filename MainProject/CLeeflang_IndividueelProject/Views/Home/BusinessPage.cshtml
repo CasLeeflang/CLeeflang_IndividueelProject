@@ -54,7 +54,7 @@
 
                             @using (Html.BeginForm("TimeSlotPicker", "Reservation", new { businessId = Model.Id }, FormMethod.Post))
                             {
-                                <table cellpadding="5">
+                                <table cellpadding="5" class="ml-5">
                                     <tr>
                                         <td>Date:</td>
                                         <td><input type="date" name="Date" value="" /></td>
@@ -63,9 +63,9 @@
                                 <br /> <div class="text-danger">
                                     @TempData["ErrorDate"]
                                 </div>
-                                <div class="row">
-                                    <div class="col-2 p-1">
-                                        <input class="btn btn-primary" type="submit" value="Submit" />
+                                <div class="ml-5">
+                                    <div class="p-1">
+                                        <input class="btn btn-primary" type="submit" value="See timeslots" />
                                     </div>
                                 </div>
                             }
@@ -73,11 +73,11 @@
                         </div>
                     </div>
 
-                    <div class="col-7">                      
+                    <div class="col-7">
                         <div class="container timeslot-container">
                             <h4>See the timeslots created by @Model.BusinessName here.</h4>
                             <h6>Note these are not specific for a date yet.</h6>
-                            <div class="tab mb-3" >
+                            <div class="tab mb-3">
                                 <button class="tablinks active" onclick="openDay(event, 'Mon')">Monday</button>
                                 <button class="tablinks" onclick="openDay(event, 'Tue')">Tuesday</button>
                                 <button class="tablinks" onclick="openDay(event, 'Wed')">Wednesday</button>

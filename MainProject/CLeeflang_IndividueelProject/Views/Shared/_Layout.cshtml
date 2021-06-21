@@ -71,19 +71,23 @@
                     {
                         BusinessUserModel businessUser = _businessUserCollection.GetBusinessUserByUserNameOrEmail(User.Identity.Name).First();
                         <div class="profile">
-                            <img src="data:image/png;base64, @businessUser.ImageBase64" alt="Logo">
-                            <h3 class="name">@User.Identity.Name</h3>
+                            <img style="max-width:200px;" src="data:image/png;base64, @businessUser.ImageBase64" alt="Logo">
+                            <br/>
+                            <h3 class="name mt-3">@User.Identity.Name</h3>
                         </div>
                     }
                 }
 
                 <div class="nav-menu">
                     <ul>
-                        <li><a asp-area="" asp-controller="Home" asp-action=""><span class="icon-home mr-3"></span>Home</a></li>
+                        @if (!User.IsInRole("BusinessUser"))
+                        {
+                            <li><a asp-area="" asp-controller="Home" asp-action=""><span class="icon-home mr-3"></span>Home</a></li>
+                        }
 
                         @if (User.IsInRole("BusinessUser"))
                         {
-                            <li><a asp-area="" asp-controller="TimeSlot" asp-action="ManageTimeSlot"><span class="icon-search2 mr-3"></span>Manage TimeSlots</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action=""><span class="icon-home mr-3"></span>Dashboard</a></li>
                         }
 
                         @if (User.Identity.IsAuthenticated && User.IsInRole("User"))

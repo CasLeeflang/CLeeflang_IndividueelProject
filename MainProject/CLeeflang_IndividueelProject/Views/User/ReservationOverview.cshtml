@@ -1,119 +1,113 @@
-﻿@model IEnumerable<Logic.Reservation.ReservationModel>
+﻿@model IEnumerable<Logic.Reservation.ReservationModel>;
 
-<style>
-    tr.spaceUnder > td {
-        padding-bottom: 1em;
-    }
+<link rel="stylesheet" href="~/css/style.css" />
 
-    .ResevationContainer {
-        background-color: rgb(0 100 0 / 0.30);
-        height: 40px;
-        margin-bottom: 10px;
-        border-radius: 4px;
-    }
+<style>    
 
-    .ResDate, .ResBusiness, .ResStart, .ResEnd {
-        margin-left: 2px;
-    }
 </style>
 
-<h1>Upcomming Reservations:</h1>
+<div class="v-main__wrap v-content__wrap">
+    <div class="site-container elevation-shadow">
 
-<div class="">
-    <div class="row">
-        <div class="ResDate col-2">
-            Date:
+
+
+
+        <div class="reservation-table-headers">
+            <h1>Upcomming Reservations:</h1>
+            <div class="row">
+                <div class="ResDate col-2">
+                    Date:
+                </div>
+
+                <div class="ResBusiness col-2">
+                    Business:
+                </div>
+
+                <div class="ResStart col-2">
+                    Start Time:
+                </div>
+
+                <div class="ResEnd col-2">
+                    End Time:
+                </div>
+            </div>
         </div>
 
-        <div class="ResBusiness col-2">
-            Business:
+        @foreach (var reservation in Model.Where(o => o.Date.Date >= DateTime.Now.Date))
+        {
+
+            <div class="ResevationContainer elevation-shadow">
+                <div class="row">
+                    <div class="ResDate col-lg-2 col-sm-1">
+                        @reservation.Date.ToString("dd/MM/yyyy")
+                    </div>
+
+                    <div class="ResBusiness col-lg-2 col-sm-1">
+                        @reservation.BusinessName
+                    </div>
+
+                    <div class="ResStart col-lg-2 col-sm-1">
+                        @reservation.StartTime
+                    </div>
+
+                    <div class="ResEnd col-lg-2 col-sm-1">
+                        @reservation.EndTime
+                    </div>
+
+                    <div>
+                        <a class="btn btn-primary" asp-action="DeleteReservation" asp-controller="Reservation" asp-route-id="@reservation.Id">Cancel booking</a>
+                    </div>
+                </div>
+            </div>
+
+
+        }
+
+        <div class="reservation-table-headers">
+            <h1>Past Reservations:</h1>
+            <div class="row">
+                <div class="ResDate col-2">
+                    Date:
+                </div>
+
+                <div class="ResBusiness col-2">
+                    Business:
+                </div>
+
+                <div class="ResStart col-2">
+                    Start Time:
+                </div>
+
+                <div class="ResEnd col-2">
+                    End Time:
+                </div>
+            </div>
         </div>
 
-        <div class="ResStart col-2">
-            Start Time:
-        </div>
 
-        <div class="ResEnd col-2">
-            End Time:
-        </div>
+        @foreach (var reservation in Model.Where(o => o.Date.Date < DateTime.Now.Date))
+        {
+
+            <div class="ResevationContainer elevation-shadow">
+                <div class="row">
+                    <div class="ResDate col-lg-2 col-sm-1">
+                        @reservation.Date.ToString("dd/MM/yyyy")
+                    </div>
+
+                    <div class="ResBusiness col-lg-2 col-sm-1">
+                        @reservation.BusinessName
+                    </div>
+
+                    <div class="ResStart col-lg-2 col-sm-1">
+                        @reservation.StartTime
+                    </div>
+
+                    <div class="ResEnd col-lg-2 col-sm-1">
+                        @reservation.EndTime
+                    </div>
+                </div>
+            </div>
+        }
+
     </div>
 </div>
-
-@foreach (var reservation in Model.Where(o => o.Date.Date >= DateTime.Now.Date))
-{
-
-    <div class="ResevationContainer">
-        <div class="row">
-            <div class="ResDate col-lg-2 col-sm-1">
-                @reservation.Date.ToString("dd/MM/yyyy")
-            </div>
-
-            <div class="ResBusiness col-lg-2 col-sm-1">
-                @reservation.BusinessName
-            </div>
-
-            <div class="ResStart col-lg-2 col-sm-1">
-                @reservation.StartTime
-            </div>
-
-            <div class="ResEnd col-lg-2 col-sm-1">
-                @reservation.EndTime
-            </div>
-
-            <div>
-                <a asp-action="DeleteReservation" asp-controller="Reservation" asp-route-id="@reservation.Id">Cancel booking</a>
-            </div>
-        </div>
-    </div>
-
-
-}
-
-<h1>Past Reservations:</h1>
-
-<div class="">
-    <div class="row">
-        <div class="ResDate col-2">
-            Date:
-        </div>
-
-        <div class="ResBusiness col-2">
-            Business:
-        </div>
-
-        <div class="ResStart col-2">
-            Start Time:
-        </div>
-
-        <div class="ResEnd col-2">
-            End Time:
-        </div>
-    </div>
-
- 
-</div>
-
-@foreach (var reservation in Model.Where(o => o.Date.Date < DateTime.Now.Date))
-{
-
-    <div class="ResevationContainer">
-        <div class="row">
-            <div class="ResDate col-lg-2 col-sm-1">
-                @reservation.Date.ToString("dd/MM/yyyy")
-            </div>
-
-            <div class="ResBusiness col-lg-2 col-sm-1">
-                @reservation.BusinessName
-            </div>
-
-            <div class="ResStart col-lg-2 col-sm-1">
-                @reservation.StartTime
-            </div>
-
-            <div class="ResEnd col-lg-2 col-sm-1">
-                @reservation.EndTime
-            </div>
-        </div>
-    </div>
-}
-
