@@ -7,7 +7,7 @@
 @using Logic.TimeSlot
 
 @{ ReservationCollection reservationCollection = new();
-    IEnumerable<ReservationModel> reservations = reservationCollection.GetReservationByBusinessId(Model.Id).OrderBy(o => o.Date).ThenBy(o => o.StartTime).Where(o => o.Date > DateTime.Now);
+    IEnumerable<ReservationModel> reservations = reservationCollection.GetReservationByBusinessId(Model.Id).OrderBy(o => o.Date).ThenBy(o => o.StartTime).Where(o => o.Date.Date == DateTime.Now.Date);
 
 }
 
@@ -32,6 +32,7 @@
 
                     <h1>Welcome to Your business Dashboard!</h1>
                     <h3>Here you can manage your business.</h3>
+                    <a asp-action="EditBusinessUser" asp-controller="BusinessUser">Edit</a>
 
                 </div>
                 <div class="col-5">
@@ -45,7 +46,7 @@
 
             <div class="col-8">
 
-                <h3>Upcomming reservations</h3>
+                <h3>Today's reservations</h3>
                 <div class="reservation-headers row">
                     <div class="col-lg-3 col-sm-2">
                         <p>Name</p>
@@ -64,7 +65,7 @@
                     </div>
                 </div>
                 <div>
-                    @foreach (var reservation in reservations)
+                    @foreach (var reservation in reservations.Where(o => o.CheckedIn == false))
                     {
                         <div class="reservation-container row">
                             <div class="col-lg-3 col-sm-2">
@@ -80,13 +81,56 @@
                             <div class="col-lg-2 col-sm-2">
                                 <p>@reservation.EndTime</p>
                             </div>
+
                             <div class="col-lg-3 col-sm-3">
-                                <a class="btn btn-primary">Check-in</a>
+                                <a asp-action="CheckCustomerIn" asp-controller="Reservation" asp-route-reservationId="@reservation.Id" class="btn btn-primary">Check-In</a>
                             </div>
                         </div>
                     }
                 </div>
 
+                <h3>Checked-In reservations</h3>
+                <div class="reservation-headers row">
+                    <div class="col-lg-3 col-sm-2">
+                        <p>Name</p>
+                    </div>
+
+                    <div class="col-lg-2 col-sm-2">
+                        <p>Date</p>
+                    </div>
+                    <div class="col-lg-1 col-sm-1">
+                        <p>Start</p>
+                    </div>
+                    <div class="col-lg-2 col-sm-1">
+                        <p>End</p>
+                    </div>
+                    <div class="col-lg-3 col-sm-3">
+                    </div>
+                </div>
+                <div>
+                    @foreach (var reservation in reservations.Where(o => o.CheckedIn == true))
+                    {
+                        <div class="reservation-container row">
+                            <div class="col-lg-3 col-sm-2">
+                                <p>@reservation.FirstName @reservation.LastName</p>
+                            </div>
+
+                            <div class="col-lg-2 col-sm-2">
+                                <p>@reservation.Date.ToString("dd/MM/yyyy")</p>
+                            </div>
+                            <div class="col-lg-1 col-sm-1">
+                                <p>@reservation.StartTime</p>
+                            </div>
+                            <div class="col-lg-2 col-sm-2">
+                                <p>@reservation.EndTime</p>
+                            </div>
+
+                            <div class="col-lg-3 col-sm-3">
+                                <a asp-action="CheckCustomerOut" asp-controller="Reservation" asp-route-reservationId="@reservation.Id" class="btn btn-primary btn-red">Check-Out</a>
+                            </div>
+                        </div>
+                    }
+                </div>
             </div>
 
 
@@ -182,7 +226,7 @@
                     </div>
 
                 </div>
-                <br/>
+                <br />
                 <a class="btn btn-primary" asp-action="ManageTimeSlot" asp-controller="TimeSlot">Edit Time Slots</a>
             </div>
 

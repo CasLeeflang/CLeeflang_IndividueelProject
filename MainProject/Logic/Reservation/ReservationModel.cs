@@ -29,6 +29,7 @@ namespace Logic.Reservation
         public int BusinessId { get; set; }
         public int TimeSlotId { get; set; }
 #nullable enable
+        public bool CheckedIn { get; set; }
         public string? BusinessName { get; set; }
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
@@ -48,6 +49,7 @@ namespace Logic.Reservation
             UserId = reservationDTO.UserId;
             BusinessId = reservationDTO.BusinessId;
             TimeSlotId = reservationDTO.TimeSlotId;
+            CheckedIn = reservationDTO.CheckedIn;
             BusinessName = reservationDTO.BusinessName;
             FirstName = reservationDTO.FirstName;
             LastName = reservationDTO.LastName;
@@ -61,6 +63,7 @@ namespace Logic.Reservation
             UserId = userId;
             BusinessId = businessId;
             TimeSlotId = timeSlotId;
+            CheckedIn = false;
         }
 
         public void Update(ReservationModel updatedReservation)
@@ -91,6 +94,16 @@ namespace Logic.Reservation
             }
 
             return _reservationvalidation;
+        }
+
+        public void CheckCustomerIn()
+        {
+            _reservationDAL.CheckCustomerIn(Id);
+        }
+
+        public void CheckCustomerOut()
+        {
+            _reservationDAL.CheckCustomerOut(Id);
         }
     }
 }

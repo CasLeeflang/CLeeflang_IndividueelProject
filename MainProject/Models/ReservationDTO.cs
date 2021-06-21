@@ -14,6 +14,7 @@ namespace DTOs
         public int BusinessId { get; set; }
         public int TimeSlotId { get; set; }
 #nullable enable
+        public bool CheckedIn { get; set; }
         public string? BusinessName { get; set; }
         public string? FirstName { get; set; }
         public string? LastName { get; set; }

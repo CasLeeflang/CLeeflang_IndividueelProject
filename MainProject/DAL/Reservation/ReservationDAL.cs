@@ -16,15 +16,15 @@ namespace DAL.Reservation
 
         public void CreateReservation(ReservationDTO newReservaton)
         {
-            string sql = @"insert into dbo.Reservation (Date, UserId, BusinessId, TimeSlotId)
-                            values(@Date, @UserId, @BusinessId, @TimeSlotId);";
+            string sql = @"insert into dbo.Reservation (Date, UserId, BusinessId, TimeSlotId, CheckedIn)
+                            values(@Date, @UserId, @BusinessId, @TimeSlotId, @CheckedIn);";
 
             _dBManager.SaveData(sql, newReservaton);
         }
 
         public IEnumerable<ReservationDTO> GetReservationByUserId(int userId)
         {
-            string sql = @"select R.Id, R.Date, R.UserId, R.BusinessId, R.TimeSlotId, U.FirstName as Firstname, U.LastName as LastName, B.BusinessName as BusinessName, T.StartTime as StartTime, T.EndTime as EndTime 
+            string sql = @"select R.Id, R.Date, R.UserId, R.BusinessId, R.TimeSlotId, R.CheckedIn, U.FirstName as Firstname, U.LastName as LastName, B.BusinessName as BusinessName, T.StartTime as StartTime, T.EndTime as EndTime 
 
                            from 
 
@@ -67,7 +67,7 @@ namespace DAL.Reservation
 
         public IEnumerable<ReservationDTO> GetReservationByBusinessId(int businessId)
         {
-            string sql = @"select R.Id, R.Date, R.UserId, R.BusinessId, R.TimeSlotId, U.FirstName as Firstname, U.LastName as LastName, B.BusinessName as BusinessName, T.StartTime as StartTime, T.EndTime as EndTime 
+            string sql = @"select R.Id, R.Date, R.UserId, R.BusinessId, R.TimeSlotId, R.CheckedIn, U.FirstName as Firstname, U.LastName as LastName, B.BusinessName as BusinessName, T.StartTime as StartTime, T.EndTime as EndTime 
 
                            from 
 
@@ -110,7 +110,7 @@ namespace DAL.Reservation
 
         public IEnumerable<ReservationDTO> GetReservationByUserIdAndDateAndBusinessId(int userId, DateTime date, int businessId)
         {
-            string sql = $"select Id, Date, UserId, BusinessId, TimeSlotId from dbo.Reservation where UserId = @userId and Date = @date and BusinessId = @businessId";
+            string sql = $"select Id, Date, UserId, BusinessId, TimeSlotId, CheckedIn from dbo.Reservation where UserId = @userId and Date = @date and BusinessId = @businessId";
 
             var dictionary = new Dictionary<string, object>
             {
@@ -141,6 +141,62 @@ namespace DAL.Reservation
             var parameters = new DynamicParameters(dictionary);
 
             _dBManager.DeleteData<ReservationDTO>(sql, parameters);
+        }
+        public void CheckCustomerIn(int reservationId)
+        {
+            string sql = $"update dbo.Reservation set CheckedIn = 1 where Id = @reservationId;";
+
+            var dictionary = new Dictionary<string, object>
+            {
+                {"@reservationId", reservationId }
+            };
+
+            var paramaters = new DynamicParameters(dictionary);
+
+            _dBManager.UpdateData(sql, paramaters);
+        }
+
+        public void CheckCustomerOut(int reservationId)
+        {
+            string sql = $"update dbo.Reservation set CheckedIn = 0 where Id = @reservationId;";
+
+            var dictionary = new Dictionary<string, object>
+            {
+                {"@reservationId", reservationId }
+            };
+
+            var paramaters = new DynamicParameters(dictionary);
+
+            _dBManager.UpdateData(sql, paramaters);
+        }
+
+        public IEnumerable<ReservationDTO> GetReservationById(int reservationId)
+        {
+            string sql = @"select R.Id, R.Date, R.UserId, R.BusinessId, R.TimeSlotId, R.CheckedIn, U.FirstName as Firstname, U.LastName as LastName, B.BusinessName as BusinessName, T.StartTime as StartTime, T.EndTime as EndTime 
+
+                           from 
+
+                           dbo.Reservation R 
+                           left join dbo.BusinessUser B on R.BusinessId = B.Id 
+                           left join dbo.TimeSlot T on R.TimeSlotId = T.Id 
+                           left join dbo.[User] U on R.UserId = U.Id
+
+                           where 
+
+                           R.Id = @reservationId 
+
+                           order by 
+
+                           R.Date, T.StartTime";
+
+            var dictionary = new Dictionary<string, object>
+            {
+                {"@reservationId", reservationId}
+            };
+
+            var parameters = new DynamicParameters(dictionary);
+
+            return _dBManager.LoadData<ReservationDTO>(sql, parameters) ;
         }
     }
 }

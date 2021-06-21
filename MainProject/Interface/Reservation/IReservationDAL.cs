@@ -11,5 +11,7 @@ namespace Contract_Layer.Reservation
     {
         void UpdateReservation(ReservationDTO updatedReservation);
         IEnumerable<ReservationDTO> GetReservationByUserIdAndDateAndBusinessId(int userId, DateTime date, int businessId);
+        void CheckCustomerIn(int reservationId);
+        void CheckCustomerOut(int reservationId);
     }
 }

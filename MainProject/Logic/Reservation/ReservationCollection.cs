@@ -77,5 +77,18 @@ namespace Logic.Reservation
         {
             _reservationCollectionDAL.DeleteReservation(id);
         }
+
+        public IEnumerable<ReservationModel> GetReservationById(int reservationId)
+        {
+            IEnumerable<ReservationDTO> reservationDTOs = _reservationCollectionDAL.GetReservationById(reservationId);
+
+            foreach (var reservationDTO in reservationDTOs)
+            {
+                ReservationModel reservation = new ReservationModel(reservationDTO);
+                reservations.Add(reservation);
+            }
+
+            return reservations;
+        }
     }
 }

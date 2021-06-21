@@ -15,7 +15,7 @@ using Variables.ValidationResponse;
 
 namespace CLeeflang_IndividueelProject.Controllers
 {
-    [Authorize(Roles = "User")]
+    [Authorize(Roles = "User, BusinessUser")]
     public class ReservationController : Controller
     {
         readonly ReservationCollection _reservationCollection = new();
@@ -28,7 +28,7 @@ namespace CLeeflang_IndividueelProject.Controllers
             return View();
         }
 
-
+        [Authorize(Roles = "User")]
         public IActionResult TimeSlotPicker(int businessId, string Date)
         {
             try
@@ -40,7 +40,7 @@ namespace CLeeflang_IndividueelProject.Controllers
                 ViewBag.Date = DateTime.Parse(Date);
                 ViewBag.businessId = businessId;
 
-                if (DateTime.Parse(Date) > DateTime.Now && DateTime.Parse(Date) <= DateTime.Now.AddDays(14))
+                if (DateTime.Parse(Date).Date >= DateTime.Now.Date && DateTime.Parse(Date) <= DateTime.Now.AddDays(14))
                 {
                     IEnumerable<TimeSlotModel> timeSlots = _timeSlotCollection.GetTimeSlotByDayAndBusinessId(DateTime.Parse(Date), day, businessId);
 
@@ -59,6 +59,7 @@ namespace CLeeflang_IndividueelProject.Controllers
             }
         }
 
+        [Authorize(Roles = "User")]
         [HttpPost]
         public IActionResult TimeSlotPicker(int businessId, IFormCollection form)
         {
@@ -72,7 +73,7 @@ namespace CLeeflang_IndividueelProject.Controllers
                 ViewBag.Date = DateTime.Parse(d);
                 ViewBag.businessId = businessId;
 
-                if (DateTime.Parse(d) >= DateTime.Now && DateTime.Parse(d) <= DateTime.Now.AddDays(14))
+                if (DateTime.Parse(d).Date >= DateTime.Now.Date && DateTime.Parse(d) <= DateTime.Now.AddDays(14))
                 {
                     IEnumerable<TimeSlotModel> timeSlots = _timeSlotCollection.GetTimeSlotByDayAndBusinessId(DateTime.Parse(d), day, businessId);
                     ViewBag.businessId = businessId;
@@ -91,7 +92,7 @@ namespace CLeeflang_IndividueelProject.Controllers
             }
         }
 
-
+        [Authorize(Roles = "User")]
         public IActionResult CreateReservation(string date, int businessId, int pickedTimeSlotId)
         {
             DateTime _date = DateTime.Parse(date);
@@ -125,6 +126,26 @@ namespace CLeeflang_IndividueelProject.Controllers
         {
             _reservationCollection.DeleteReservation(id);
             return RedirectToAction("ReservationOverview", "User");
+        }
+
+        [Authorize(Roles = "BusinessUser")]
+        public IActionResult CheckCustomerIn(int reservationId)
+        {
+            ReservationModel reservation = _reservationCollection.GetReservationById(reservationId).LastOrDefault();
+
+            reservation.CheckCustomerIn();
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        [Authorize(Roles = "BusinessUser")]
+        public IActionResult CheckCustomerOut(int reservationId)
+        {
+            ReservationModel reservation = _reservationCollection.GetReservationById(reservationId).LastOrDefault();
+
+            reservation.CheckCustomerOut();
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }

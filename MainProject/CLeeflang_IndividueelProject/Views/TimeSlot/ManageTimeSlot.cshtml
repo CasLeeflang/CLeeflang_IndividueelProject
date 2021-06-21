@@ -5,8 +5,11 @@
 
 @using Logic.TimeSlot;
 @using Logic.BusinessUser;
-
-
+@{ 
+    BusinessUserCollection businessUserCollection = new();
+    int businessId = businessUserCollection.GetBusinessId(User.Identity.Name);
+    BusinessUserModel business = businessUserCollection.GetBusinessUserById(businessId);
+}
 <head>
     <link rel="stylesheet" href="~/css/TimeSlotContainer.css" />
     <link rel="stylesheet" href="~/css/Grid.css" />
@@ -27,7 +30,7 @@
 
                 </div>
                 <div class="col-5">
-                    <img class="center mb-5" style="max-width:95%;" src="data:image/png;base64" alt="Logo Image" /><br>
+                    <img class="center mb-5" style="max-width:95%;" src="data:image/png;base64, @business.ImageBase64" alt="Logo Image" /><br>
                 </div>
             </div>
 
@@ -92,8 +95,7 @@
                         <button class="tablinks" onclick="openDay(event, 'Sun')">Sunday</button>
                     </div>
                     @{ TimeSlotCollection _timeSlotCollection = new TimeSlotCollection();
-                        BusinessUserCollection _businessUserCollection = new BusinessUserCollection();
-                        IEnumerable<TimeSlotModel> timeSlots = _timeSlotCollection.GetTimeSlotByBusinessId(_businessUserCollection.GetBusinessId(User.Identity.Name)).OrderBy(o => o.StartTime);
+                        IEnumerable<TimeSlotModel> timeSlots = _timeSlotCollection.GetTimeSlotByBusinessId(businessId).OrderBy(o => o.StartTime);
 
                         List<string> DotW = new List<string> { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" };
 
